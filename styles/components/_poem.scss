@@ -1,0 +1,74 @@
+#poem {
+    background-color: rgba(0,0,0,.7);
+    box-shadow: 0px 1px 1px rgb(30, 49, 53);
+    border-radius: 2px;
+    animation: Wiggle 50s linear infinite;
+    z-index: 1000;
+    position: relative;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: .25;
+        pointer-events: none; 
+        background: linear-gradient(44deg, rgba(155,175,215,0.3), rgba(140,150,130,.3));
+        background-size: 400% 400%;
+      
+        -webkit-animation: Gradient 20s ease-in-out infinite;
+        -moz-animation: Gradient 20s ease-in-out infinite;
+        animation: Gradient 20s ease-in-out infinite;
+      }
+    form {
+        margin: 0;
+        padding: 17px 15px;
+        @include xs { padding: 17px 30px; }
+        color: rgba(252, 245, 254, 0.8);
+        text-shadow: 0px 1px 1px rgb(12, 15, 10);
+
+        position: relative;
+        legend {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            font-size: 9.5px;
+            text-transform: uppercase;
+            user-select: none;
+            color: rgba(255,255,255, 0);
+            text-shadow: 0px 0px 0px transparent;
+            transition: color 700ms ease-in-out,
+                        text-shadow 2000ms ease-in-out;
+        }
+        &:hover, &:active {
+            legend {
+                color: rgba(255,255,255, 0.7);
+                text-shadow: 0px 1px 1px rgb(12, 15, 10);
+                transition: color 1200ms ease-in-out,
+                            text-shadow 700ms ease-in-out;
+            }
+        }
+    }
+
+    //Debug:
+    .debug-placement, .debug-bday {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: lighter;
+        position: absolute;
+        background-color: white;
+        color: black;
+        opacity: .4;
+        padding: 2px;
+        left: -35%;
+    }
+    .debug-placement {
+        top: 25%;
+    }
+    .debug-bday {
+        top: -25%;
+    }
+    &:focus {
+        outline: none;
+    }
+}

@@ -1,0 +1,14 @@
+<article data-bind="visible: poemData" id="poem">
+    <div class="debug-bday" data-bind="visible: showPlacements">
+        <div data-bind="text: birthDay"></div>
+        <div data-bind="text: location"></div>
+        <div data-bind="text: coords"></div>
+    </div>
+    <div data-bind="foreach: lines">
+        <form>
+            <span data-bind="text: line"></span>
+            <legend data-bind="text: placement"></legend>
+            <span data-bind="text: placement, visible: $parent.showPlacements" class="debug-placement"></span>
+        </form>
+    </div>
+</article>
