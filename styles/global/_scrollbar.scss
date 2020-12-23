@@ -1,0 +1,13 @@
+::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #afa17e;
+}
+
+// firefox only
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #afa17e transparent;
+}

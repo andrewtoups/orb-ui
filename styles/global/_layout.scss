@@ -1,0 +1,61 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body, html {
+  min-height: 100vh;
+  @include xs { min-height: -webkit-fill-available; }
+  margin: 0; overflow: hidden;
+  position: relative;
+}
+main:after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  height: 100vh;
+  width: 100%;
+  pointer-events: none; 
+  background: linear-gradient(44deg, #b5cec8, #d9d3b2);
+  background-size: 400% 400%;
+
+  -webkit-animation: Gradient 20s ease-in-out infinite;
+  -moz-animation: Gradient 20s ease-in-out infinite;
+  animation: Gradient 20s ease-in-out infinite;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(10, 10, 5, 0.75);
+    // font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+section {
+    margin: 15px 0;
+    @include xs { margin: 15px 10px; }
+}
+
+.loader { position: relative; }
+.loader:after {
+  content: '∠';
+  position: absolute;
+  height: 100%; width: 100%;
+  top: 0; left: 0;
+  display: flex;
+  align-items: center; justify-content: center;
+  transform-origin: 62% 43%;
+  opacity: 1;
+  transition: opacity, ease-in-out, 400ms;
+
+  animation: Spinner 1.5s linear infinite;
+  color: black;
+}
+.loader.masked:after {
+  opacity: 0;
+  transition: opacity, ease-in-out, 400ms;
+}
+main .loader {
+  position: absolute;
+  font-size: 50px;
+}
