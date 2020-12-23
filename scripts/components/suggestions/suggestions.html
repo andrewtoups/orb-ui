@@ -1,0 +1,31 @@
+<div data-bind="event: {keydown: keyDown}, keyDownBubble: false" class="suggestion-select">
+    <input class="placeholder" type="text" data-bind="attr: { placeholder: placeholder }" readonly tabindex="-1">
+    <input class="suggestion-input" type="text" data-bind="textInput: query, hasFocus: inputFocus, attr: {disabled: valueSet}" autocomplete="chrome-off">
+    <div data-bind="visible: valueSet, hasFocus: valueSet" class="selection-mask" tabindex="0">
+        <span data-bind="text: selected"></span>
+        <button data-bind="click: unselect" type="button" tabindex="-1">×</button>
+    </div>
+</div>
+<div data-bind="visible: show" class="suggestions">
+    <ul data-bind="foreach: {data: results, as: 'result'}">
+        <li>
+            <button data-bind="event: {mousedown: $parent.select, touchstart: $parent.activate,
+                                    mouseenter: $parent.activate, mouseleave: $parent.deactivate,
+                                    touchend: $parent.select, touchcancel: $parent.deactivate},
+                                    css: {'active': active()}" type="button" tabindex="-1">
+            <!-- ko template: { nodes: $componentTemplateNodes, data: result }-->
+            <!-- /ko -->
+        </button>
+    </li>
+</ul>
+</div>
+<!-- <div>
+    <span data-bind="text: inFocus"></span>
+    <span data-bind="text: inputFocus"></span>
+    <span data-bind="text: maskFocus"></span>
+</div>
+<div style="font-size: .75em">
+    <span>inFocus</span>
+    <span>inputFocus</span>
+    <span>maskFocus</span>
+</div> -->
