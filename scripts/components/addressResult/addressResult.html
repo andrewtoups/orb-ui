@@ -1,0 +1,15 @@
+<!-- ko if: type() === 'city' -->
+<b data-bind="text: city"></b>
+<span data-bind="text: state"></span>
+<em data-bind="text: country"></em>
+<small data-bind="text: county"></small>
+<!-- /ko -->
+
+<!-- ko if: type() === 'state' -->
+<b data-bind="text: state"></b>
+<em data-bind="text: country"></em>
+<!-- /ko -->
+
+<!-- ko if: type() === 'country' -->
+<b data-bind="text: country"></b>
+<!-- /ko -->
