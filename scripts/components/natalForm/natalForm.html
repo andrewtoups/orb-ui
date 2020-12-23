@@ -1,0 +1,70 @@
+<form class="natal-form" data-bind="css: {masked: !(months().length === 12 && suggestionFieldsReady)}" autocomplete="off">
+    <i class="loader" data-bind="visible: isLoading"></i>
+    <fieldset class="birth-time">
+        <div class="legend" role="legend">Birth time: </div>
+        <div>
+            <div>
+                <label>Month</label>
+                <select data-bind="cleanValue: month, options: months, optionsText: 'short', optionsValue: 'num'"></select>
+            </div>
+
+            <div>
+                <label>Day</label>
+                <select data-bind="cleanValue: day, options: days"></select>
+            </div>
+
+            <div>
+                <label>Year</label>
+                <select data-bind="cleanValue: year, options: years"></select>
+            </div>
+        </div>
+        <div>
+            <div>
+                <label>Hour</label> 
+                <select data-bind="cleanValue: hour, options: hours"></select>
+            </div>
+            <div>
+                <label>Minutes</label>
+                <select data-bind="cleanValue: minute, options: minutes"></select>
+            </div>
+            <div>
+                <label>AM/PM</label>
+                <select data-bind="cleanValue: pmOffset">
+                    <option value="0">AM</option>
+                    <option value="12">PM</option>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset data-bind="if: suggestionFieldsReady" class="location">
+        <div class="legend" role="legend">Birth location: </div>
+        <div>
+            <label>City</label>
+            <div data-bind="component: {name: 'suggestions', params: cityParams}" class="suggestion-container">
+                <span data-bind="component: {name: 'addressResult', params: {address: address, type: 'city'}}"></span>
+            </div>
+        </div>
+        <div>
+            <label>State</label>
+            <div data-bind="component: {name: 'suggestions', params: stateParams}" class="suggestion-container">
+                <span data-bind="component: {name: 'addressResult', params: {address: result.address, type: 'state'}}"></span>
+            </div>
+        </div>
+        <div>
+            <label>Country</label>
+            <div data-bind="component: {name: 'suggestions', params: countryParams}" class="suggestion-container">
+                <span data-bind="component: {name: 'addressResult', params: {address: result.address, type: 'country'}}"></span>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="submit">
+        <div>
+            <button data-bind="click: calculateChart,
+                            enable: submitReady,
+                            hasFocus: submitReady" type="button">Submit</button>
+        </div>
+    </fieldset>
+    <button id="random" type="button" data-bind="click: randomChart">random chart</button>
+</form>
+
