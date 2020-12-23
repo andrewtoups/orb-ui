@@ -1,0 +1,13 @@
+// https://makingcss.com/transform
+@keyframes Wiggle {
+    0%   {transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) scale(1) skewX(0deg);}
+    33%  {transform: rotateX(5deg) rotateY(5deg) rotateZ(-0.05deg) translateX(0.1px) translateY(0.1px) scale(1.005) skewX(0deg);}
+    33%  {transform: rotateX(5deg) rotateY(-5deg) rotateZ(-0.05deg) translateX(0.1px) translateY(0.2px) scale(0.995) skewX(0deg);}
+    66%  {transform: rotateX(-5deg) rotateY(5deg) rotateZ(0.05deg) translateX(-0.1px) translateY(0.0px) scale(1) skewX(0deg);}
+    66%  {transform: rotateX(-5deg) rotateY(-5deg) rotateZ(-0.05deg) translateX(-0.1px) translateY(0.1px) scale(0.995) skewX(0deg);}
+    100% {transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) scale(1) skewX(0deg);}
+}
+    // -webkit-transform: rotateX(10deg) rotateY(3deg) rotateZ(-0.05deg) translateX(0px) scale(1) skewX(1deg);
+    // -moz-transform: rotateX(10deg) rotateY(3deg) rotateZ(-0.05deg) translateX(0px) scale(1) skewX(1deg);
+    // -ms-transform: rotateX(10deg) rotateY(3deg) rotateZ(-0.05deg) translateX(0px) scale(1) skewX(1deg);
+    // -o-transform: rotateX(10deg) rotateY(3deg) rotateZ(-0.05deg) translateX(0px) scale(1) skewX(1deg);
