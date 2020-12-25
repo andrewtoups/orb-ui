@@ -159,7 +159,7 @@ form.natal-form {
         }
         &.untouched {
             background-color: rgba(75, 45, 40, 0.35);
-            color: rgba(255,255,255,.2);
+            color: rgba(255,255,255,0);
             &:focus {
                 color: rgba(255,255,255,1);
             }
