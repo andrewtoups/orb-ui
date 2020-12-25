@@ -35,32 +35,26 @@ define(['ko'], function(ko){
         };
 
         self.rankResult = (result) => {
-            let testStr = "";
             let resStr = result.address[params.type].toLowerCase();
-            let rank;
-            let offset = 0;
-            for (let i = 0; i < resStr.length; i++) {
-                let char = resStr.charAt(i) === " " ? "" : resStr.charAt(i);
-                if (char === "") offset++;
-                testStr += char;
-                if (!params.query().startsWith(testStr) || resStr === testStr) {
-                    rank = i;
-                    i = resStr.length;
-                }
-            }
-            if (!rank) rank = 0;
-            return rank + offset;
+            let q = params.query().toLowerCase();
+            let rank = resStr === q ? 1 :
+                        resStr.startsWith(q) && resStr.includes(q) ? 2 :
+                        resStr.includes(q) ? resStr.length : 3;
+            if (!rank) rank = 4;
+            return rank;
         }
         
         self.results = ko.computed(() => {
+            params.status(true);
             if (self.valueSet()) results = [];
             else if (params.results().length) results = params.results().map((result) => new Suggestion(result));
             else results = params.results();
             results = results.filter(result => result.rank() > 0);
             results.sort((a,b) => {
-                return a.rank === b.rank ? 0 :
-                        a.rank > b.rank ? 1 : -1;
+                return a.rank() === b.rank() ? 0 :
+                        a.rank() > b.rank() ? 1 : -1;
             });
+            params.status(false);
             return results;
         });
         self.inputFocus = ko.observable(false);
@@ -91,6 +85,9 @@ define(['ko'], function(ko){
             if (!newValue.find(result => result.active() === true) && newValue.length) {
                 self.activate(newValue[0]);
             }
+            else if (newValue.length === 0){
+                self.activeResult(null);
+            }
         });
         
         self.activate = function(suggestion){
@@ -111,7 +108,7 @@ define(['ko'], function(ko){
             
             let pResult = useActiveResult ? self.activeResult() : useTopResult ? self.results()[0] : false;
             if (pResult && self.show()) {
-                p = params.query().substring(0, pResult.rank()) + pResult.address[params.type].substring(pResult.rank(), pResult.address[params.type].length);
+                p = params.query() + pResult.address[params.type].substring(params.query().length, pResult.address[params.type].length);
             } else {
                 p = "";
             }

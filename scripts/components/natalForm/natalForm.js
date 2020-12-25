@@ -195,12 +195,12 @@ define([
                         switch (type) {
                             case 'city':
                                 address.city = p.name;
-                                address.state = p.state;
-                                address.country = p.country;
+                                address.state = p.state ? p.state : null;
+                                address.country = p.country ? p.country : null;
                                 break;
                             case 'state':
                                 address.state = p.name;
-                                address.country = p.country;
+                                address.country = p.country ? p.country : null;
                                 break;
                             case 'country':
                                 address.country = p.country;
@@ -233,6 +233,7 @@ define([
             if (!newValue) self.coordinates(null);
         });
         
+        self.suggestionsLoading = ko.observable(false);
         suggestionFields.forEach(type => {
             self[type+'Results'] = ko.observableArray([]);
             self[type+'Selected'] = ko.observable();
@@ -245,13 +246,17 @@ define([
             self[type+'Query'] = ko.computed(() => self[type+'Input']());
             self[type+'Query'].subscribe(newValue => { self.geoLookupQuery(newValue, self[type+'Results'], type) });
             self[type+'Query'].extend({rateLimit: 50});
+            
+            self[type+"resultsLoading"] = ko.observable(false);
+            self[type+"resultsLoading"].subscribe(newValue => self.suggestionsLoading(newValue));
     
             self[type+'Params'] = {
                 query: self[type+'Input'],
                 results: self[type+'Results'],
                 selected: self[type+'Selected'],
                 value: self.currentLocationValue,
-                type: type
+                type: type,
+                status: self[type+"resultsLoading"]
             };
         });
 
@@ -262,6 +267,7 @@ define([
             if (!self.suggestionFieldsReady()) return true;
             if (self.loadingTZ()) return true;
             if (self.loadingGeoResults()) return true;
+            if (self.suggestionsLoading()) return true;
             if (self.loadingRandom()) return true;
             return false;
         });
