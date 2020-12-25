@@ -1,3 +1,6 @@
+# Styles
+styles/*.css*
+
 # Logs
 logs
 *.log
