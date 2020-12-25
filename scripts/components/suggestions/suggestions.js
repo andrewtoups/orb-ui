@@ -109,7 +109,7 @@ define(['ko'], function(ko){
             
             let pResult = useActiveResult ? self.activeResult() : useTopResult ? self.results()[0] : false;
             if (pResult && self.show()) {
-                p = params.query().substring(0, pResult.rank()) + pResult.address[params.type].substring(pResult.rank(), pResult.address[params.type].length);
+                p = params.query() + pResult.address[params.type].substring(params.query().length, pResult.address[params.type].length);
             } else {
                 p = "";
             }
