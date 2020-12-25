@@ -86,6 +86,9 @@ define(['ko'], function(ko){
             if (!newValue.find(result => result.active() === true) && newValue.length) {
                 self.activate(newValue[0]);
             }
+            else if (newValue.length === 0){
+                self.activeResult(null);
+            }
         });
         
         self.activate = function(suggestion){
