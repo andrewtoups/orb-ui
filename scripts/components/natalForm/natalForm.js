@@ -195,12 +195,12 @@ define([
                         switch (type) {
                             case 'city':
                                 address.city = p.name;
-                                address.state = p.state;
-                                address.country = p.country;
+                                address.state = p.state ? p.state : null;
+                                address.country = p.country ? p.country : null;
                                 break;
                             case 'state':
                                 address.state = p.name;
-                                address.country = p.country;
+                                address.country = p.country ? p.country : null;
                                 break;
                             case 'country':
                                 address.country = p.country;
