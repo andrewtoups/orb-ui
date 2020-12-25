@@ -9,13 +9,14 @@ form.natal-form {
     z-index: 1;
 
     .loader {
-        right: 20px;
         position: absolute;
-        top: 20px;
-        // @include xs { position: fixed; top: unset; right: 35px; bottom: 20px; }
+        top: 0; right: 0;
+        @include xs { position: fixed; top: unset; right: 35px; bottom: 20px; }
+        transform-origin: top right;
+        @include xs { transform-origin: bottom right; }
+        transform: scale(40);
         opacity: .6;
-        font-size: 1.1em;
-        @include xs { font-size: 3.5em; }
+        @include xs { transform: scale(60) }
         @include xs { text-shadow: 0px 0px 15px white;}
     }
 

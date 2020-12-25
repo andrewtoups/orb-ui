@@ -36,15 +36,13 @@ section {
     @include xs { margin: 15px 10px; }
 }
 
-.loader { position: relative; }
+.loader { position: relative; height: 1px; width: 1px; }
 .loader:after {
-  content: '∠';
+  content: '';
+  background-image: url(svg/eye-of-providence.svg);
+  background-size: contain;
   position: absolute;
   height: 100%; width: 100%;
-  top: 0; left: 0;
-  display: flex;
-  align-items: center; justify-content: center;
-  transform-origin: 62% 43%;
   opacity: 1;
   transition: opacity, ease-in-out, 400ms;
 
@@ -57,5 +55,5 @@ section {
 }
 main .loader {
   position: absolute;
-  font-size: 50px;
+  transform: scale(60);
 }
