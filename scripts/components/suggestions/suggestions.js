@@ -35,32 +35,27 @@ define(['ko'], function(ko){
         };
 
         self.rankResult = (result) => {
-            let testStr = "";
             let resStr = result.address[params.type].toLowerCase();
-            let rank;
-            let offset = 0;
-            for (let i = 0; i < resStr.length; i++) {
-                let char = resStr.charAt(i) === " " ? "" : resStr.charAt(i);
-                if (char === "") offset++;
-                testStr += char;
-                if (!params.query().startsWith(testStr) || resStr === testStr) {
-                    rank = i;
-                    i = resStr.length;
-                }
-            }
-            if (!rank) rank = 0;
-            return rank + offset;
+            let q = params.query().toLowerCase();
+            let rank = resStr === q ? 1 :
+                        resStr.startsWith(q) && resStr.includes(q) ? 2 :
+                        resStr.includes(q) ? resStr.length : 3;
+            if (!rank) rank = 4;
+            return rank;
         }
         
         self.results = ko.computed(() => {
+            params.status(true);
+            console.log("receiving results from params.results: ", params.results());
             if (self.valueSet()) results = [];
             else if (params.results().length) results = params.results().map((result) => new Suggestion(result));
             else results = params.results();
             results = results.filter(result => result.rank() > 0);
             results.sort((a,b) => {
-                return a.rank === b.rank ? 0 :
-                        a.rank > b.rank ? 1 : -1;
+                return a.rank() === b.rank() ? 0 :
+                        a.rank() > b.rank() ? 1 : -1;
             });
+            params.status(false);
             return results;
         });
         self.inputFocus = ko.observable(false);
