@@ -46,7 +46,6 @@ define(['ko'], function(ko){
         
         self.results = ko.computed(() => {
             params.status(true);
-            console.log("receiving results from params.results: ", params.results());
             if (self.valueSet()) results = [];
             else if (params.results().length) results = params.results().map((result) => new Suggestion(result));
             else results = params.results();
