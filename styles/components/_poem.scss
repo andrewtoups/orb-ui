@@ -4,7 +4,7 @@
     border-radius: 2px;
     animation: Wiggle 50s linear infinite;
     z-index: 1000;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     @include pseudo-clone('after');
     &:after {
         background: linear-gradient(45deg, rgba($gold,0.15), rgba($gold, .45));
