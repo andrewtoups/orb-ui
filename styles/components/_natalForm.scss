@@ -1,6 +1,8 @@
 form.natal-form {
-    opacity: 1;
-    transition: opacity, ease-in-out, 400ms;
+
+    background-color: $gold;
+    color: $blue;
+    opacity: .85;
     transition: opacity, ease-in-out, 1200ms;
     &.masked { opacity: 0; }
     
@@ -18,8 +20,6 @@ form.natal-form {
         @include xs { text-shadow: 0px 0px 15px white;}
     }
 
-    background-color: rgba(255, 255, 255, 0.55);
-    color: rgba(10,10,10,0.65);
     border-radius: 2px;
     padding: 10px;
     position: relative;
@@ -31,17 +31,14 @@ form.natal-form {
         flex-direction: column;
         text-align: center;
 
-        &:focus-within legend, &:focus-within .legend {
-            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='1' stroke-dasharray='2 2' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
-            color: rgba(20,20,20,0.95);
-        }
+        &:focus-within legend, &:focus-within .legend { color: $coal; }
 
         &:last-child {
             padding-top: 0;
         }
 
         legend, .legend {
-            border-bottom: 1px dotted rgba(10,10,10,0.65);
+            border-bottom: 1px dashed $coal;
             align-self: baseline;
         }
 
@@ -72,10 +69,7 @@ form.natal-form {
                 justify-content: space-evenly;
                 > div {
                     flex: 1 0 0;
-                    &:focus-within label {
-                        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='1' stroke-dasharray='2 2' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
-                        color: rgba(20,20,20,0.95);
-                    }
+                    &:focus-within label { color: $coal; }
                 }
             }
             label {
@@ -87,10 +81,7 @@ form.natal-form {
         &.location {
             > div {
                 justify-content: space-between;
-                &:focus-within label {
-                    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='1' stroke-dasharray='2 2' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
-                    color: rgba(20,20,20,0.95);
-                }
+                &:focus-within label { color: $coal; }
             }
             label {
                 font-size: 1em;
@@ -108,9 +99,11 @@ form.natal-form {
                 font-size: 0.8em;
                 @include xs { font-size: 1.1em; }
                 text-transform: uppercase;
-                color: rgba(255,255,255,.75);
                 padding: 10px 15px;
                 @include xs { padding: 15px 20px; }
+                
+                background-color: $blue;
+                color: white;
                 cursor: pointer;
                 &[disabled='']:hover {
                     background-color: rgba(75, 45, 40, 0.85);
@@ -131,9 +124,20 @@ form.natal-form {
                 &[disabled]:after {
                     content: "...";
                     background-color: rgb(132, 118, 114);
+
+                &:hover {
+                    background-color: lighten($color: $blue, $amount: 30%);
+                    transition: background-color ease-in-out 75ms;
                 }
                 &.loading:after {
                     content: "loading...";
+                
+                &.disabled {
+                    background-color: lighten($color: $blue, $amount: 50%);
+                    cursor: not-allowed;
+                    &:hover {
+                        background-color: lighten($color: $blue, $amount: 40%);
+                    }
                 }
             }
         }
@@ -141,9 +145,9 @@ form.natal-form {
     }
     input, select, button {
         border: none;
-        background-color: rgba(75, 45, 40, 0.5);
-        transition: background-color, ease-in-out, 75ms;
-        color: rgb(255, 255, 255);
+        border-bottom: 1px solid rgba($blue, .5);
+        background-color: transparent;
+        color: $coal;
         font-size: 1.2em;
         padding-left: 5px;
         z-index: 1;
@@ -159,11 +163,11 @@ form.natal-form {
             background-color: rgba(75, 45, 40, 0.35);
             color: rgba(255,255,255,0);
             &:focus {
-                color: rgba(255,255,255,1);
+                color: rgba($coal, .5);
             }
         }
         &[disabled=""] {
-            background-color: rgba(75, 45, 40, 0.25);
+            background-color: darken($color: $gold, $amount: 50%);
             cursor: not-allowed;
         }
     }

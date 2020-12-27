@@ -7,6 +7,11 @@ body, html {
   margin: 0; overflow: hidden;
   position: relative;
 }
+
+main {
+  background-color: $blue;
+}
+
 main:after {
   content: '';
   position: absolute;
@@ -14,8 +19,8 @@ main:after {
   height: 100vh;
   width: 100%;
   pointer-events: none; 
-  background: linear-gradient(44deg, #b5cec8, #d9d3b2);
-  background-size: 400% 400%;
+  background: linear-gradient(44deg, rgba($coal, .5), rgba($gold, .25));
+  background-size: cover;
 
   -webkit-animation: Gradient 20s ease-in-out infinite;
   -moz-animation: Gradient 20s ease-in-out infinite;
@@ -27,7 +32,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(10, 10, 5, 0.75);
     // font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -47,7 +51,7 @@ section {
   transition: opacity, ease-in-out, 400ms;
 
   animation: Spinner 1.5s linear infinite;
-  color: black;
+  color: rgba($coal, .8);
 }
 .loader.masked:after {
   opacity: 0;
