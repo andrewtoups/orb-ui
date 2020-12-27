@@ -96,47 +96,37 @@ form.natal-form {
                 margin: 0;
             }
             button {
+                padding: 10px 15px;
+                @include xs { padding: 15px 20px; }
                 font-size: 0.8em;
                 @include xs { font-size: 1.1em; }
                 text-transform: uppercase;
-                padding: 10px 15px;
-                @include xs { padding: 15px 20px; }
+                border: none;
                 
                 background-color: $blue;
+                text-shadow: 0px 0px 0px transparent;
+                transition: background-color ease-in-out 800ms,
+                            color ease-in-out 800ms,
+                            text-shadow ease-in-out 800ms;
                 color: white;
                 cursor: pointer;
-                &[disabled='']:hover {
-                    background-color: rgba(75, 45, 40, 0.85);
-                    transition: background-color, ease-in-out, 75ms;
-                }
-                position: relative;
-                &:after {
-                    font-size: 0.7em;
-                    position: absolute;
-                    height: 100%;
-                    width: 100%;
-                    top: 0;
-                    left: 0;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-                &[disabled]:after {
-                    content: "...";
-                    background-color: rgb(132, 118, 114);
 
                 &:hover {
                     background-color: lighten($color: $blue, $amount: 30%);
                     transition: background-color ease-in-out 75ms;
                 }
-                &.loading:after {
-                    content: "loading...";
                 
                 &.disabled {
                     background-color: lighten($color: $blue, $amount: 50%);
+                    text-shadow: 0px 0px 1.5px white;
+                    transition: background-color ease-in-out 75ms,
+                                color ease-in-out 75ms,
+                                text-shadow ease-in-out 75ms;
+                    color: transparent;
                     cursor: not-allowed;
                     &:hover {
                         background-color: lighten($color: $blue, $amount: 40%);
+                        transition: background-color ease-in-out 75ms;
                     }
                 }
             }
