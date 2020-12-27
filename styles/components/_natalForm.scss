@@ -178,6 +178,7 @@ form.natal-form {
             display: none;
         }
     }
+    option { background-color: $gold; }
 
     .input-container    { @include pseudo-clone('before'); }
     .selection-mask     { @include pseudo-clone('before', $position: 'absolute')};
