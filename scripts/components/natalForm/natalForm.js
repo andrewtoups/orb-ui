@@ -13,18 +13,18 @@ define([
         self.currentLocationValue = ko.observable(null);
         self.coordinates = ko.computed(() => self.currentLocationValue() ? self.currentLocationValue().coordinates : null);
         self.coordinates.extend({deferred: true});
-
+        
         // Time Data:
         self.timeObservables = ko.observableArray([
-            {name: "month",     init: "1"},
-            {name: "day",       init: false},
+            {name: "month",     init: 1},
+            {name: "day",       init: 1},
             {name: "year",      init: false},
-            {name: "hour",      init: "0"},
-            {name: "minute",    init: "0"},
-            {name: "pmOffset",  init: "0"}
+            {name: "hour",      init: 1},
+            {name: "minute",    init: 0},
+            {name: "pmOffset",  init: 0}
         ]);
         self.timeObservables().forEach(({name, init}, index) => {
-            self[name] = init ? ko.observable(init) : ko.observable();
+            self[name] = init !== false ? ko.observable(init) : ko.observable();
         });
         self.birthTimeTouched = function() {
             return self.timeObservables().every(({name}) => self[name].touched ? self[name].touched() : false);
@@ -59,10 +59,12 @@ define([
         
         // Webform properties:
 
-        self.months = ko.observableArray(['Jan']);
+        self.months = ko.observableArray();
         fetch('https://api.2psy.net/orbData/months')
         .then(response => response.json())
-        .then(data => self.months(data));
+        .then(data => {
+            self.months(data);
+        });
         
         self.days = ko.computed(() => {
             if (self.months() && self.month() ? self.months().length === 12 : false) {
@@ -98,6 +100,10 @@ define([
             minutes[i] = i;
         }
         self.minutes = ko.observableArray(minutes);            
+
+        self.timeFieldsReady = ko.computed(() => {
+            return self.months ? self.months().length === 12 : false && self.days ? self.days().length === self.months()[self.month() - 1].days : false;
+        });
         
         // Timezone offset Lookup:
         const azureKey = "zFm6zIHbxMFA9y-fM4rFv2HLSPw7UjBYulvrTTe2TeE";
