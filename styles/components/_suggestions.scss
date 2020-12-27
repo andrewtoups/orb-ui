@@ -1,0 +1,98 @@
+.suggestion-container {
+    input.placeholder {
+        position: absolute;
+        top: 0; left: 0; height: 100%; width: 100%;
+        z-index: 1;
+        border: none;
+    }
+    input.suggestion-input {
+        background-color: transparent;
+        position: relative;
+        z-index: 2;
+        &:hover { background-color: transparent; }
+    }
+    .suggestion-select {
+        position: relative;
+    }
+    .selection-mask {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+    
+        background-color: $gold;
+        color: $coal;
+    
+        button {
+            padding: 0px 5px 3px;
+            cursor: pointer;
+            height: 100%;
+            color: rgba($coal, .5);
+            @include xs { min-width: auto; }
+        }
+        span {
+            flex-grow: 1;
+            align-self: stretch;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            padding-left: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    
+    .suggestions {
+        position: absolute;
+        top: 26px;
+        @include xs { top: 33px; }
+        z-index: 4;
+        background-color: mix(white, $gold, $weight: 0.5);
+    
+        margin-top: 0;
+        width: 100%;
+        
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+            @include xs {
+                position: absolute;
+                width: 100%;
+            }
+        }
+        button {
+            width: 100%;
+            min-width: 100%;
+            text-align: left;
+            padding: 10px 0px 10px 5px;
+    
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+    
+            line-height: 1;
+            background-color: $gold;
+            // @include xs { background-color: rgb(69, 39, 35); }
+            cursor: pointer;
+             > * {font-size: .75em;}
+            &.active {
+                width: auto;
+                background-color: darken($color: $gold, $amount: 50%);
+                padding-right: 5px;
+                @include xs {
+                    position: absolute;
+                    right: -20%;
+                    width: 90vw;
+                }
+            }
+        }
+    }
+}

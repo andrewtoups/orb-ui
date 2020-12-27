@@ -187,30 +187,6 @@ form.natal-form {
         }
     }
 
-    .suggestion-container {
-        flex-basis: 65%;
-        position: relative;
-        input[type="text"] { width: 100%; }
-    }
-
-    .suggestions {
-        position: absolute;
-        top: 26px;
-        @include xs { top: 33px; }
-        z-index: 4;
-        background-color: rgb(65, 35, 30);
-
-        margin-top: 0;
-        width: 100%;
-        
-        ul {
-            list-style: none;
-            padding-left: 0;
-            margin: 0;
-            @include xs {
-                position: absolute;
-                width: 100%;
-            }
     .input-container    { @include pseudo-clone('before'); }
     .selection-mask     { @include pseudo-clone('before', $position: 'absolute')};
     .input-container, .selection-mask {
@@ -220,79 +196,17 @@ form.natal-form {
             background-position-y: 15px;
             transition: background-position-y 150ms linear;
         }
-        button {
-            width: 100%;
-            min-width: 100%;
-            text-align: left;
-            padding: 10px 0px 10px 5px;
-
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-
-            line-height: 1;
-            @include xs { background-color: rgb(69, 39, 35); }
-            cursor: pointer;
-             > * {font-size: .75em;}
-            &.active {
-                width: auto;
-                background-color: rgba(105, 75, 70);
-                padding-right: 5px;
-                @include xs {
-                    position: absolute;
-                    right: -20%;
-                    width: 90vw;
-                }
-            }
         &:hover:before, &:focus-within:before {
             background-position-y: 0px;
             transition: background-position-y 150ms linear;
         }
     }
-    
-    .placeholder {
-        position: absolute;
-        top: 0; left: 0; height: 100%; width: 100%;
-        z-index: 1;
-    }
-    .suggestion-input {
-        background-color: transparent;
+    .selection-mask button { border: none; }
+
+    .suggestion-container {
+        flex-basis: 65%;
         position: relative;
-        z-index: 2;
-        &:hover { background-color: transparent; }
-    }
-    .suggestion-select {
-        position: relative;
-    }
-    .selection-mask {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 3;
-
-        background-color: rgba(75, 45, 40, 1);
-        color: white;
-
-        &:focus { outline: 2.7px solid rgba(255,255,255,.75); }
-
-        button {
-            padding: 0px 5px 3px;
-            cursor: pointer;
-            height: 100%;
-            @include xs { min-width: auto; }
-        }
-        span {
-            padding-left: 5px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+        input[type="text"] { width: 100%; }
     }
 }
 
