@@ -8,6 +8,7 @@
     @include pseudo-clone('after');
     &:after {
         background: linear-gradient(45deg, rgba($gold,0.15), rgba($gold, .45));
+        background-size: contain;
 
         animation: Gradient 10s ease-in-out infinite;
       }
