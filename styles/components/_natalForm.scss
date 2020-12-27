@@ -1,11 +1,9 @@
 // svg borders: https://kovart.github.io/dashed-border-generator/
 form.natal-form {
-    &.masked {
-        opacity: 0;
-        transition: opacity, ease-in-out, 400ms;
-    }
     opacity: 1;
     transition: opacity, ease-in-out, 400ms;
+    &.masked { opacity: 0; }
+    
     z-index: 1;
 
     .loader {
