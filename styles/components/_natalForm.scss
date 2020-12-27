@@ -6,6 +6,9 @@ form.natal-form {
     transition: opacity, ease-in-out, 1200ms;
     &.masked { opacity: 0; }
     
+    border-radius: 2px;
+    padding: 10px;
+    position: relative;
     z-index: 1;
 
     .loader {
@@ -20,10 +23,6 @@ form.natal-form {
         @include xs { text-shadow: 0px 0px 15px white;}
     }
 
-    border-radius: 2px;
-    padding: 10px;
-    position: relative;
-
     fieldset {
         border: none;
 
@@ -33,9 +32,7 @@ form.natal-form {
 
         &:focus-within legend, &:focus-within .legend { color: $coal; }
 
-        &:last-child {
-            padding-top: 0;
-        }
+        &:last-child { padding-top: 0; }
 
         legend, .legend {
             border-bottom: 1px dashed $coal;

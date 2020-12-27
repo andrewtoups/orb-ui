@@ -9,7 +9,12 @@ body, html {
 }
 
 main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: $blue;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 main:after {
@@ -22,19 +27,11 @@ main:after {
   background: linear-gradient(44deg, rgba($coal, .5), rgba($gold, .25));
   background-size: cover;
 
-  -webkit-animation: Gradient 20s ease-in-out infinite;
-  -moz-animation: Gradient 20s ease-in-out infinite;
+  // -webkit-animation: Gradient 20s ease-in-out infinite;
+  // -moz-animation: Gradient 20s ease-in-out infinite;
   animation: Gradient 20s ease-in-out infinite;
 }
 
-main {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
 section {
     margin: 15px 0;
     @include xs { margin: 15px 10px; }
