@@ -4,17 +4,9 @@
     border-radius: 2px;
     animation: Wiggle 50s linear infinite;
     z-index: 1000;
-    position: relative;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    @include pseudo-clone('after');
     &:after {
-        content: '';
-        position: absolute;
-        top: 0; left: 0;
-        height: 100%;
-        width: 100%;
-        opacity: .25;
-        pointer-events: none; 
-        background-size: 400% 400%;
         -webkit-animation: Gradient 20s ease-in-out infinite;
         -moz-animation: Gradient 20s ease-in-out infinite;
         animation: Gradient 20s ease-in-out infinite;

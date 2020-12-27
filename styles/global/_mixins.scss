@@ -1,0 +1,21 @@
+@mixin mask {
+    position: absolute; display: block;
+    height: 100%; width: 100%;
+    top: 0; left: 0;
+}
+
+@mixin pseudo-clone($layer: 'before', $content: '', $position: relative) {
+    position: $position;
+    @if $layer == 'before' {
+        &:before {
+            content: $content;
+            @include mask;
+        }
+    } @else {
+        &:after {
+            content: $content;
+            pointer-events: none;
+            @include mask;
+        }
+    }
+}

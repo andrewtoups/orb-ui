@@ -211,6 +211,14 @@ form.natal-form {
                 position: absolute;
                 width: 100%;
             }
+    .input-container    { @include pseudo-clone('before'); }
+    .selection-mask     { @include pseudo-clone('before', $position: 'absolute')};
+    .input-container, .selection-mask {
+        &:before {
+            background-image: linear-gradient(to top, rgba($blue, .25), transparent 15px);
+            background-repeat: no-repeat;
+            background-position-y: 15px;
+            transition: background-position-y 150ms linear;
         }
         button {
             width: 100%;
@@ -236,6 +244,9 @@ form.natal-form {
                     width: 90vw;
                 }
             }
+        &:hover:before, &:focus-within:before {
+            background-position-y: 0px;
+            transition: background-position-y 150ms linear;
         }
     }
     
