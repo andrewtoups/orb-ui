@@ -80,7 +80,8 @@
         <div>
             <button data-bind="click: calculateChart,
                             enable: submitReady,
-                            hasFocus: submitReady" type="button">Submit</button>
+                            hasFocus: submitReady,
+                            attr: {title: submitReady() ? '' : 'Fill out birth time and location to proceed.'}" type="button">Submit</button>
         </div>
     </fieldset>
     <button id="random" type="button" data-bind="click: randomChart">random chart</button>
