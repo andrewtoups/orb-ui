@@ -1,14 +1,4 @@
 // https://www.gradient-animator.com/
-@-webkit-keyframes Gradient {
-  0%{background-position:69% 0%; opacity: .15;}
-  50%{background-position:32% 100%; opacity: .45;}
-  100%{background-position:69% 0%; opacity: .15;}
-}
-@-moz-keyframes Gradient {
-  0%{background-position:69% 0%; opacity: .15;}
-  50%{background-position:32% 100%; opacity: .45;}
-  100%{background-position:69% 0%; opacity: .15;}
-}
 @keyframes Gradient {
   0%{background-position:69% 0%; opacity: .15;}
   50%{background-position:32% 100%; opacity: .45;}
