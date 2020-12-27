@@ -1,0 +1,10 @@
+// colors:
+$blue: rgb(53, 57, 75);
+$gold: rgb(255, 240, 183);
+$coal: rgb(10, 10, 10);
+
+// gradients:
+$bg-input-focus: linear-gradient(to top, rgba($blue, .25), transparent 15px);
+
+// svg borders: https://kovart.github.io/dashed-border-generator/
+$dotted-border: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='1' stroke-dasharray='2 2' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
