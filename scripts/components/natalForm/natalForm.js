@@ -1,6 +1,7 @@
 define([
     'ko',
-    'utils/clean'
+    'utils/clean',
+    'utils/optionsPlaceholder'
 ], function(ko){
     return function() {
         var self = this;
@@ -16,18 +17,13 @@ define([
         
         // Time Data:
         self.timeObservables = ko.observableArray([
-            {name: "month",     init: 1},
-            {name: "day",       init: 1},
-            {name: "year",      init: false},
-            {name: "hour",      init: 1},
-            {name: "minute",    init: 0},
-            {name: "pmOffset",  init: 0}
+            "month", "day", "year", "hour", "minute", "pmOffset"
         ]);
-        self.timeObservables().forEach(({name, init}, index) => {
-            self[name] = init !== false ? ko.observable(init) : ko.observable();
+        self.timeObservables().forEach((name, index) => {
+            self[name] = ko.observable();
         });
         self.birthTimeTouched = function() {
-            return self.timeObservables().every(({name}) => self[name].touched ? self[name].touched() : false);
+            return self.timeObservables().every(name => self[name].touched ? self[name].touched() : false);
         };
         
         self.milHour = ko.computed(() => parseInt(self.hour()) + parseInt(self.pmOffset()));
@@ -67,16 +63,19 @@ define([
         });
         
         self.days = ko.computed(() => {
+            let length;
             if (self.months() && self.month() ? self.months().length === 12 : false) {
                 let isLeapYear = ((self.year() % 4 == 0) && (self.year() % 100 != 0)) || (self.year() % 400 == 0);
-                let length = self.months()[self.month() - 1].days;
+                length = self.months()[self.month() - 1].days;
                 if (isLeapYear && self.month() === "2") length++;
-                let days = [];
-                for (let i = 0; i < length; i++) {
-                    days[i] = i + 1;
-                }
-                return days;
+            } else {
+                length = 31; // In case user hasn't selected a month yet
             }
+            let days = [];
+            for (let i = 0; i < length; i++) {
+                days[i] = i + 1;
+            }
+            return days;
         });
         
         let years = [];

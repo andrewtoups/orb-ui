@@ -6,21 +6,21 @@
             <div>
                 <label>Month</label>
                 <span class="input-container">
-                    <select data-bind="cleanValue: month, options: months, optionsText: 'short', optionsValue: 'num'"></select>
+                    <select data-bind="cleanValue: month, options: months, optionsPlaceholder: months()[0].short, optionsText: 'short', optionsValue: 'num'"></select>
                 </span>
             </div>
 
             <div>
                 <label>Day</label>
                 <span class="input-container">
-                    <select data-bind="cleanValue: day, options: days"></select>
+                    <select data-bind="cleanValue: day, options: days, optionsPlaceholder: 1"></select>
                 </span>
             </div>
 
             <div>
                 <label>Year</label>
                 <span class="input-container">
-                    <select data-bind="cleanValue: year, options: years"></select>
+                    <select data-bind="cleanValue: year, options: years, optionsPlaceholder: defaultYear"></select>
                 </span>
             </div>
         </div>
@@ -28,13 +28,13 @@
             <div>
                 <label>Hour</label> 
                 <span class="input-container">
-                    <select data-bind="cleanValue: hour, options: hours"></select>
+                    <select data-bind="cleanValue: hour, options: hours, optionsPlaceholder: 1"></select>
                 </span>
             </div>
             <div>
                 <label>Minutes</label>
                 <span class="input-container">
-                    <select data-bind="cleanValue: minute, options: minutes"></select>
+                    <select data-bind="cleanValue: minute, options: minutes, optionsPlaceholder: 0"></select>
                 </span>
             </div>
             <div>
