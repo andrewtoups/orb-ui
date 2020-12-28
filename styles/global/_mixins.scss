@@ -19,3 +19,23 @@
         }
     }
 }
+
+// future reference: 
+// https://graphicdesign.stackexchange.com/questions/113007/how-to-determine-the-equivalent-opaque-rgb-color-for-a-given-partially-transpare
+// https://en.wikipedia.org/wiki/Transparency_%28graphic%29#Compositing_calculations
+@function op-form($opacity, $trans, $bg) {
+    @return $trans + (1-$opacity)*$bg;
+}
+
+@function opacity-compensate($background-color, $translucent-color){
+    $redT: red($translucent-color);
+    $redB: red($background-color);
+    $greenT: green($translucent-color);
+    $greenB: green($background-color);
+    $blueT: blue($translucent-color);
+    $blueB: blue($background-color);
+    $p: alpha($translucent-color);
+
+    $result: rgba(op-form($p, $redT, $redB), op-form($p, $greenT, $greenB), op-form($p, $blueT, $blueB), $p);
+    @return $result;
+}
