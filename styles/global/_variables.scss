@@ -1,7 +1,16 @@
 // colors:
-$blue: rgb(53, 57, 75);
-$gold: rgb(255, 240, 183);
+$blue: rgb(21, 67, 96);
+$light-blue: rgb(33, 97, 140); // #21618c
+$gold: rgb(255, 236, 179);
+$gold-bright: rgb(255, 253, 231);
 $coal: rgb(10, 10, 10);
+
+$main-bg-c: $blue;
+$form-bg-c: opacity-compensate($blue, rgba($light-blue, .35));
+
+$form-text-c: $gold-bright;
+$poem-text-c: $gold-bright;
+$poem-text-hover-c: $gold;
 
 // gradients:
 $bg-input-focus: linear-gradient(to top, rgba($blue, .25), transparent 15px);

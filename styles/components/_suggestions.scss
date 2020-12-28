@@ -26,14 +26,14 @@
         left: 0;
         z-index: 3;
     
-        background-color: $gold;
-        color: $coal;
+        background-color: $form-bg-c;
+        color: $form-text-c;
     
         button {
             padding: 0px 5px 3px;
             cursor: pointer;
             height: 100%;
-            color: rgba($coal, .5);
+            color: rgba($form-text-c, .5);
             @include xs { min-width: auto; }
         }
         span {
@@ -54,7 +54,7 @@
         top: 26px;
         @include xs { top: 33px; }
         z-index: 4;
-        background-color: mix(white, $gold, $weight: 0.5);
+        background-color: mix(white, $form-bg-c, $weight: 0.5);
     
         margin-top: 0;
         width: 100%;
@@ -79,13 +79,13 @@
             white-space: nowrap;
     
             line-height: 1;
-            background-color: $gold;
+            background-color: $form-bg-c;
             // @include xs { background-color: rgb(69, 39, 35); }
             cursor: pointer;
              > * {font-size: .75em;}
             &.active {
                 width: auto;
-                background-color: darken($color: $gold, $amount: 50%);
+                background-color: lighten($color: $form-bg-c, $amount: 20%);
                 padding-right: 5px;
                 @include xs {
                     position: absolute;

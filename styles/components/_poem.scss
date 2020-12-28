@@ -16,7 +16,7 @@
         margin: 0;
         padding: 17px 15px;
         @include xs { padding: 17px 30px; }
-        color: rgba(252, 245, 254, 0.8);
+        color: $poem-text-c;
         text-shadow: 0px 1px 1px $coal;
 
         position: relative;
@@ -28,13 +28,14 @@
             text-transform: uppercase;
             user-select: none;
             color: rgba($gold, 0);
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-shadow: 0px 0px 0px transparent;
             transition: color 700ms ease-in-out,
                         text-shadow 2000ms ease-in-out;
         }
         &:hover, &:active {
             legend {
-                color: rgba($gold, 0.5);
+                color: rgba($poem-text-hover-c, 1);
                 text-shadow: 0px 1px 1px $coal;
                 transition: color 1200ms ease-in-out,
                             text-shadow 700ms ease-in-out;

@@ -12,15 +12,14 @@ main {
   height: 100%;
   display: flex;
   justify-content: center; align-items: center;
-  
-  background-color: $blue;
+  background-color: $main-bg-c;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   @include pseudo-clone('before');
 }
 
 main:before {
   background-size: cover;
-  background: linear-gradient(44deg, rgba($coal, .5), rgba($gold, .25));
+  background: linear-gradient(44deg, rgba($coal, .5), rgba($gold-bright, .25));
   animation: Gradient 20s ease-in-out infinite;
 }
 
