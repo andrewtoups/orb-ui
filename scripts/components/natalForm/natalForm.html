@@ -40,10 +40,7 @@
             <div>
                 <label>AM/PM</label>
                 <span class="input-container">
-                    <select data-bind="cleanValue: pmOffset">
-                        <option value="0">AM</option>
-                        <option value="12">PM</option>
-                    </select>
+                    <select data-bind="cleanValue: pmOffset, options: pmOffsets, optionsPlaceholder: 'AM', optionsText: 'label', optionsValue: 'value'"></select>
                 </span>
             </div>
         </div>

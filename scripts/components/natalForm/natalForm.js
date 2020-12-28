@@ -98,7 +98,15 @@ define([
         for (let i = 0; i < 60; i++) {
             minutes[i] = i;
         }
-        self.minutes = ko.observableArray(minutes);            
+        self.minutes = ko.observableArray(minutes);
+
+        self.pmOffsets = ko.observableArray([{
+            label: "AM",
+            value: 0
+        }, {
+            label: "PM",
+            value: 12
+        }]);
 
         self.timeFieldsReady = ko.computed(() => {
             return self.months ? self.months().length === 12 : false && self.days ? self.days().length === self.months()[self.month() - 1].days : false;
