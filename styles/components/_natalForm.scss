@@ -30,7 +30,19 @@ form.natal-form {
         flex-direction: column;
         text-align: center;
 
-        &:focus-within legend, &:focus-within .legend { color: $coal; }
+        &:focus-within legend { color: $coal; }
+        &:focus-within .legend { color:
+            rgba($gold, 0);
+            transition: color 500ms ease-in-out;
+        }
+        .legend {
+            position: absolute;
+            top: -30px;
+            color: rgba($gold, 1);
+            white-space: nowrap;
+            transition: color 500ms ease-in-out;
+            animation: Wavy 10s ease-in-out infinite;
+        }
 
         &:last-child { padding-top: 0; }
 
@@ -55,11 +67,11 @@ form.natal-form {
             margin: 10px 0;
             display: flex;
             align-items: baseline;
-            > div {
-                display: flex;
-                flex-direction: column-reverse;
-                align-items: center;
-            }
+        }
+        > div > div, .single-line {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
         }
         &.birth-time {
             > div {
@@ -208,6 +220,7 @@ button#random {
     opacity: .75;
     bottom: 5px;
     right: 5px; 
+    max-width: 120px;
     text-transform: uppercase;
     padding: 6px 10px;
     transform: scale(0.56);

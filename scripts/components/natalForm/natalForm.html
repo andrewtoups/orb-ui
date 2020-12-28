@@ -1,7 +1,7 @@
 <form class="natal-form" data-bind="css: {masked: !timeFieldsReady() || !suggestionFieldsReady()}" autocomplete="off">
     <i class="loader" data-bind="visible: isLoading"></i>
     <fieldset class="birth-time" data-bind="if: timeFieldsReady">
-        <div class="legend" role="legend">Birth time: </div>
+        <div class="legend" role="legend">Enter your birth time and location: </div>
         <div>
             <div>
                 <label>Month</label>
@@ -47,31 +47,11 @@
                 </span>
             </div>
         </div>
-    </fieldset>
-
-    <fieldset data-bind="if: suggestionFieldsReady" class="location">
-        <div class="legend" role="legend">Birth location: </div>
-        <div>
+        <div class="single-line">
             <label>City</label>
             <span class="input-container">
                 <div data-bind="component: {name: 'suggestions', params: cityParams}" class="suggestion-container">
                     <span data-bind="component: {name: 'addressResult', params: {address: address, type: 'city'}}"></span>
-                </div>
-            </span>
-        </div>
-        <div>
-            <label>State</label>
-            <span class="input-container">
-                <div data-bind="component: {name: 'suggestions', params: stateParams}" class="suggestion-container">
-                    <span data-bind="component: {name: 'addressResult', params: {address: result.address, type: 'state'}}"></span>
-                </div>
-            </span>
-        </div>
-        <div>
-            <label>Country</label>
-            <span class="input-container">
-                <div data-bind="component: {name: 'suggestions', params: countryParams}" class="suggestion-container">
-                    <span data-bind="component: {name: 'addressResult', params: {address: result.address, type: 'country'}}"></span>
                 </div>
             </span>
         </div>
