@@ -111,6 +111,20 @@ define([
         self.timeFieldsReady = ko.computed(() => {
             return self.months ? self.months().length === 12 : false && self.days ? self.days().length === self.months()[self.month() - 1].days : false;
         });
+
+        // Time summary:
+        self.tzOffset = ko.observable();
+        self.histTimeZone = ko.observable();
+        self.timeSummary = ko.computed(() => {
+            let s =   self.month() ? self.month() : '';
+            s += s && self.day() ? `/${self.day()}` : '';
+            s += s && self.year() ? `/${self.year()}` : '';
+            s += s && self.hour() ? ` ${self.hour()}` : '';
+            s += s && self.minute() ? `:${self.minute()} ` : '';
+            s += s && self.pmOffset() ? (self.pmOffset() === 0 ? 'AM' : 'PM') : '';
+            s += s && self.histTimeZone() ? self.histTimeZone() : '';
+            return s;
+        });
         
         // Timezone offset Lookup:
         const azureKey = "zFm6zIHbxMFA9y-fM4rFv2HLSPw7UjBYulvrTTe2TeE";
@@ -130,6 +144,9 @@ define([
                             if (data.hasOwnProperty('TimeZones') ? data.TimeZones.length : false) {
                                 let historicalOffset = parseInt(data.TimeZones[0].ReferenceTime.StandardOffset);
                                 let DSTOffset = parseInt(data.TimeZones[0].ReferenceTime.DaylightSavings);
+                                let timezoneTag = data.TimeZones[0].ReferenceTime.Tag;
+                                self.tzOffset(historicalOffset + DSTOffset);
+                                self.histTimeZone(timezoneTag);
                                 let UTCdate = new Date(rawDate);
                                 UTCdate.setHours(UTCdate.getHours() - (historicalOffset + DSTOffset));
                                 self.UTCdate(UTCdate);
