@@ -189,8 +189,11 @@ form.natal-form {
         &::-ms-expand {
             display: none;
         }
+        option {
+            background-color: $gold;
+            &.hide { display: none; }
+        }
     }
-    option { background-color: $gold; }
 
     .input-container    { @include pseudo-clone('before'); }
     .selection-mask     { @include pseudo-clone('before', $position: 'absolute')};
