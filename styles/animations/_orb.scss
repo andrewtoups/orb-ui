@@ -1,0 +1,5 @@
+@keyframes Orb {
+    0%      {transform: rotate(0deg);    opacity: .45;}
+    50%     {transform: rotate(180deg);  opacity: .95;}
+    100%    {transform: rotate(360deg);  opacity: .45;}
+}
