@@ -115,7 +115,8 @@ form.natal-form {
                 
                 &.disabled {
                     background-color: lighten($color: $gold-bright, $amount: 50%);
-                    text-shadow: 0px 0px 1.5px $blue;
+                    text-shadow: 0px 0px 2px $blue;
+                    @include xs { text-shadow: 0px 0px 4px $blue; }
                     transition: background-color ease-in-out 75ms,
                                 color ease-in-out 75ms,
                                 text-shadow ease-in-out 75ms;
