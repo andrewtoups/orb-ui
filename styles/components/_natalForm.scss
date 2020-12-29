@@ -191,7 +191,7 @@ form.natal-form {
             display: none;
         }
         option {
-            background-color: $$form-bg-c;
+            background-color: $form-bg-c;
             &.hide { display: none; }
         }
     }
