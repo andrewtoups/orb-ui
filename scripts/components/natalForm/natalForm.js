@@ -86,7 +86,6 @@ define([
         }
         self.years = ko.observableArray(years);
         self.defaultYear = ko.observable(maxYear - 18);
-        self.year(self.defaultYear());
         
         let hours = [];
         for (let i = 0; i < 12; i++) {
