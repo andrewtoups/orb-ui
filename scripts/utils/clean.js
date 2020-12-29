@@ -46,13 +46,13 @@ define(['ko'], function(ko) {
                 return value;
             },
             init: cleanInit
-        }
+        };
         ko.bindingHandlers.cleanTextInput = {
             preprocess: function(value, name, addBinding){
                 addBinding("textInput", value);
                 return value;
             },
             init: cleanInit
-        }
+        };
     })();
 });

@@ -22,6 +22,7 @@ define([
         self.timeObservables().forEach((name, index) => {
             self[name] = ko.observable();
         });
+        
         self.birthTimeTouched = function() {
             return self.timeObservables().every(name => self[name].touched ? self[name].touched() : false);
         };
@@ -54,7 +55,6 @@ define([
         self.UTCdate = ko.observable();
         
         // Webform properties:
-
         self.months = ko.observableArray();
         fetch('https://api.2psy.net/orbData/months')
         .then(response => response.json())
