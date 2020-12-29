@@ -13,9 +13,8 @@ main {
   display: flex;
   justify-content: center; align-items: center;
   background-color: $main-bg-c;
-  background-image: url('bg/3px-tile.png');
-  background-blend-mode: screen;
-  animation: Moire 50s ease-in-out infinite;
+  // @include moire;
+  // animation: Moire 50s ease-in-out infinite;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   @include pseudo-clone('before');
 }
