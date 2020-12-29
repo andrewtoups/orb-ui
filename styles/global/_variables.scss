@@ -9,8 +9,8 @@ $main-bg-c: $blue;
 $form-bg-c: opacity-compensate($blue, rgba($light-blue, .35));
 
 $form-text-c: $gold-bright;
-$poem-text-c: $gold-bright;
-$poem-text-hover-c: $gold;
+$poem-text-c: $coal;
+$poem-text-hover-c: $blue;
 
 // gradients:
 $bg-input-focus: linear-gradient(to top, rgba($blue, .25), transparent 15px);

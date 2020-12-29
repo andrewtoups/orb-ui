@@ -1,13 +1,14 @@
 #poem {
-    background-color: rgba($coal, .1);
-    box-shadow: 0px 0px 1000px -50px rgba($gold, .25);
+    // background-color: rgba($coal, .1);
+    background-color: opacity-compensate($main-bg-c, rgba($gold, .85));
+    box-shadow: 0px 0px 1000px -50px rgba($coal, .25);
     border-radius: 2px;
     animation: Wiggle 50s linear infinite;
     z-index: 1000;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     @include pseudo-clone('after');
     &:after {
-        background: linear-gradient(45deg, rgba($gold,0.15), rgba($gold, .45));
+        background: linear-gradient(45deg, rgba($gold-bright,0.15), rgba($coal, .45));
         background-size: contain;
 
         animation: Gradient 10s ease-in-out infinite;
@@ -41,7 +42,7 @@
         padding: 17px 15px;
         @include xs { padding: 17px 30px; }
         color: $poem-text-c;
-        text-shadow: 0px 1px 1px $coal;
+        text-shadow: 0px 1px 1px rgba($blue, .25);
 
         position: relative;
         legend {
