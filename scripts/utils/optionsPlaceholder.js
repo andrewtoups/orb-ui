@@ -17,6 +17,13 @@ define(['ko'], function(ko){
             },
             init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
                 let placeholderText = ko.isObservable(valueAccessor()) ? String(valueAccessor()()) : String(valueAccessor());
+                vm.pointerMode.subscribe(newValue => {
+                    if (newValue === 'touch') {
+                        hide(v.placeholderEl);
+                    } else {
+                        show(v.placeholderEl);
+                    }
+                });
                 let listeners = [
                     'mousedown', 'focusout', 'touchstart', 'blur', 'change'
                 ];

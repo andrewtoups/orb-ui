@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles/main.css" type="text/css">
 </head>
 <body>
-    <main data-bind="if: ready, event: {keydown: keyDown}, keydownBubble: false" tabindex="0">
+    <main data-bind="if: ready, event: {keydown: keyDown}, keydownBubble: false, inputMode: inputMode" tabindex="0">
         <div class="debug">
             <dl>
                 <!-- ko foreach: requestCounter -->

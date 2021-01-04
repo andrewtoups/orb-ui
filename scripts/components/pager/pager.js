@@ -1,7 +1,16 @@
-define(['ko'], function(ko){
+define([
+    'ko',
+    'utils/inputModeSwitcher'
+], function(ko, inputMode){
     return function() {
         var self = this;
         
+        self.inputMode = ko.observable();
+        self.pointerMode = ko.computed(() => {
+            if (self.inputMode() === 'touch' || self.inputMode() === 'mouse') {
+                return self.inputMode();
+            }
+        });
         self.registry = ko.observableArray(['pager']);
         self.pages = [
             'natalForm',
