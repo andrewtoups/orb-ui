@@ -1,5 +1,6 @@
 define(['ko'], function(ko){
     return (function(){
+        let delegation = false;
         let hide = element => {
             element.classList.add('hide');
             element.disabled = true;
@@ -8,7 +9,10 @@ define(['ko'], function(ko){
             element.classList.remove('hide');
             element.disabled = false;
         };
-        let forceChange = element => { element.dispatchEvent(new Event('change')); }
+        let forceChange = element => {
+            delegation = true;
+            element.dispatchEvent(new Event('change'));
+        };
 
         ko.bindingHandlers.optionsPlaceholder = {
             preprocess: function(value, name, addBinding) {
@@ -16,7 +20,11 @@ define(['ko'], function(ko){
                 return value;
             },
             init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-                let placeholderText = ko.isObservable(valueAccessor()) ? String(valueAccessor()()) : String(valueAccessor());
+                let v = valueAccessor;
+                let placeholderText = ko.isObservable(v()) ? String(v()()) : String(v());
+                v.options = Array.from(element.querySelectorAll('option'));
+                v.placeholderEl = v.options.find(o => o.innerText === placeholderText && !o.value);
+                v.placeholderEl.classList.add('placeholder');
                 vm.pointerMode.subscribe(newValue => {
                     if (newValue === 'touch') {
                         hide(v.placeholderEl);
@@ -24,35 +32,50 @@ define(['ko'], function(ko){
                         show(v.placeholderEl);
                     }
                 });
+                v.defaultEl = v.options.find(o => o.innerText === placeholderText && o.value) ?
+                                        v.options.find(o => o.innerText === placeholderText && o.value) : false;
+                element.value = v.defaultEl ? v.defaultEl.value : element.value;
+                v.setDefault = () => { element.value = v.defaultEl ? v.defaultEl.value : v.options[0].value; };
                 let listeners = [
-                    'mousedown', 'focusout', 'touchstart', 'blur', 'change'
+                    'focus', 'focusin', 'mousedown', 'touchstart', 'touchend', 'blur', 'focusout', 'change', 'keydown'
                 ];
-                valueAccessor.touchEvent = false;
+                let escapers = ['focusout', 'blur'];
+                let interactions = ['mousedown', 'focusin', 'focus'];
+                let browsingKeys = ['ArrowUp', 'ArrowDown'];
 
                 let autoSelect = function(e){
-                    let options = Array.from(element.querySelectorAll('option'));
-                    let placeholderEl = options.find(o => o.innerText === placeholderText && !o.value);
-                    let defaultEl = options.find(o => o.innerText === placeholderText && o.value) ?
-                        options.find(o => o.innerText === placeholderText && o.value) : false;
-                    if (defaultEl && !element.value) element.value = defaultEl.value;
-                    if (e.type === 'touchstart') valueAccessor.touchEvent = true;
+                    let browsing = interactions.includes(e.type) && e.target === element;
+                    let browsingWithKeyboard = (browsingKeys.includes(e.key));
+                    let defaultElIsntFirst = (v.options.indexOf(v.defaultEl) > 1);
+                    let selecting = (e.type === 'mousedown' && e.target.tagName === 'OPTION');
+                    let escaping = escapers.includes(e.type);
                     
-                    if (e.type === 'mousedown' || e.type === 'touchstart') {
-                        if (e.target === element) hide(placeholderEl);
-                        else {
-                            element.value = e.target.value;
-                            forceChange(element);
-                        }
+                    if (browsingWithKeyboard) element.value = "";
+
+                    if (browsing) {
+                        hide(v.placeholderEl);
+                        mm(`placeholder "${v.placeholderEl.innerText}"'s class is: ${v.placeholderEl.classList[0]}`);
+                        mm(`placeholder "${v.placeholderEl.innerText}"'s disabled status is: ${v.placeholderEl.disabled}`);
                     }
-                    else if (e.type === 'blur') show(placeholderEl);
-                    else if (e.type === 'focusout' && valueAccessor.touchEvent) {
-                        element.value = defaultEl ? defaultEl.value : options[0].value;
+
+                    if (defaultElIsntFirst) element.value = !element.value && v.defaultEl ? v.defaultEl.value : element.value;
+
+                    if (selecting) {
+                        element.value = e.target.value;
                         forceChange(element);
                     }
-                    else if (e.type === 'change') {
-                        element.removeChild(placeholderEl);
-                        element.value = defaultEl ? defaultEl.value : options[0].value;
+                    if (e.type === 'blur') show(v.placeholderEl);
+
+                    if (escaping) { // Just select whatever was highlighted:
+                        console.log("value set by escaping");
+                        v.setDefault();
+                        forceChange(element);
+                    }
+                    if (e.type === 'change') {
+                        element.removeChild(v.placeholderEl);
+                        if (!element.value && !delegation) v.setDefault();
                         listeners.forEach(event => { element.removeEventListener(event, autoSelect)});
+                        delegation = false;
                     }
                 };
                 listeners.forEach(event => { element.addEventListener(event, autoSelect)});
