@@ -9,12 +9,7 @@ define([
         vm.loadComponent('suggestions');
         vm.loadComponent('addressResult');
         self.suggestionFieldsReady = ko.computed(() => vm.registry().includes('suggestions') && vm.registry().includes('addressResult'));
-        
-        // Location Data:
-        self.currentLocationValue = ko.observable(null);
-        self.coordinates = ko.computed(() => self.currentLocationValue() ? self.currentLocationValue().coordinates : null);
-        self.coordinates.extend({deferred: true});
-        
+                
         // Time Data:
         self.timeObservables = ko.observableArray([
             "month", "day", "year", "hour", "minute", "pmOffset"
@@ -53,8 +48,8 @@ define([
             });
         });
         self.UTCdate = ko.observable();
-        
-        // Webform properties:
+
+        // Time webform observables:
         self.months = ko.observableArray();
         fetch('https://api.2psy.net/orbData/months')
         .then(response => response.json())
@@ -110,6 +105,72 @@ define([
         self.timeFieldsReady = ko.computed(() => {
             return self.months ? self.months().length === 12 : false && self.days ? self.days().length === self.months()[self.month() - 1].days : false;
         });
+
+        // Location Data:
+        let locationFields = [
+            'country',
+            'state',
+            'city'
+        ];
+
+        self.suggestionsLoading = ko.observable(false);
+        locationFields.forEach(type => {
+            // Location Webform Observables:
+            self[type] = ko.observable();
+            self[type].subscribe(newValue => {
+                if (newValue) self.locationOptions().push(`${type}=${newValue.replace(/\s+/g, '+').toLowerCase()}`);
+                else self.locationOptions(self.locationOptions().filter(str => str.includes(type)));
+            });
+
+            // Additional params for suggestions module:
+            self[type+'ResponseData'] = ko.observableArray([]);
+            self[type+'Results'] = ko.computed(() => {
+                if (self[type+'ResponseData']().length) {
+                    return self[type+'ResponseData']().map(item => {
+                        return {
+                            value: item.address[type].toLowerCase(),
+                            data: item.address
+                        };
+                    });
+                } else {
+                    return [];
+                }
+            });
+            self[type+'Results'].subscribe(newValue => {
+                if (self.auto() && newValue.length) self[type](newValue[0].value);
+            });
+
+            self[type+'Query'] = ko.observable('');
+            self[type+'Query'].subscribe(newValue => { geoLookupQuery(newValue, self[type+'ResponseData'], type) });
+            self[type+'Query'].extend({rateLimit: 50});
+            
+            self[type+"resultsLoading"] = ko.observable(false);
+            self[type+"resultsLoading"].subscribe(newValue => self.suggestionsLoading(newValue));
+
+            self[type+'Params'] = {
+                query: self[type+'Query'],
+                results: self[type+'Results'],
+                value: self[type],
+                status: self[type+"resultsLoading"]
+            };
+        });
+
+        self.currentLocationValue = ko.computed(() => {
+            if (self.city() && self.cityResponseData()) {
+                return self.cityResponseData().find(item => item.address.city.toLowerCase() === self.city());
+            } else {
+                return null;
+            }
+        });
+        self.coordinates = ko.computed(() => {
+            if (self.currentLocationValue()) {
+                return self.currentLocationValue().coordinates;
+            } else {
+                return null;
+            }
+        });
+        self.coordinates.extend({deferred: true});
+
 
         // Time summary:
         self.tzOffset = ko.observable();
@@ -176,7 +237,6 @@ define([
             let cond = (
                 self.coordinates()
                 && self.UTCdate()
-                && self.citySelected()
                 && self.birthTimeTouched()
             );
             return !!cond;
@@ -187,7 +247,7 @@ define([
             let coordinates = self.coordinates() ? self.coordinates() : [-92.0198427,30.2240897];
             let long = coordinates[0];
             let lat = coordinates[1];
-            let location = self.currentLocationValue() ? self.currentLocationValue().address : {city: "Opelousas", state: "Louisiana", country: "United State of America"}
+            let location = self.currentLocationValue().address;
             let route = `calculateChart/${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}/${d.getHours()}/${d.getMinutes()}/${long}/${lat}`;
             
             fetch(`https://api.2psy.net/${route}`)
@@ -202,7 +262,7 @@ define([
         self.loadingGeoResults = ko.observable(false);
         self.locationOptions = ko.observableArray([]);
         self.photonQueryStr = ko.pureComputed(() => self.coordinates() ? `&lat=${self.coordinates()[1]}&lon=${self.coordinates()[0]}` : '');
-        self.geoLookupQuery = function(query, results, type){
+        function geoLookupQuery(query, results, type){
             let locationString = self.locationOptions().length ? self.locationOptions().join('&') : '';
             locationString = locationString.length ? `${locationString}&${type}` : type;
             if (query.length > 2) {
@@ -213,9 +273,9 @@ define([
                 .then(data => {
                     results(data.features.filter(r => {
                         let conditions = r.properties.type !== type ? false :
-                                        self.countrySelected() && type !== 'country' ? r.properties.country === self.countrySelected() :
-                                        self.stateSelected() && type !== 'state' ? r.properties.state === self.stateSelected() :
-                                        self.citySelected() && type !== 'city' ? r.properties.city === self.citySelected() :
+                                        self.country() && type !== 'country' ? r.properties.country === self.country() :
+                                        self.state() && type !== 'state' ? r.properties.state === self.state() :
+                                        self.city() && type !== 'city' ? r.properties.city === self.city() :
                                         true;
                         return conditions;
                     }).map(r => {
@@ -248,46 +308,6 @@ define([
                 results([]);
             }
         };
-
-        // Set up auto suggest fields:
-        let suggestionFields = [
-            'country',
-            'state',
-            'city'
-        ];
-        self.currentLocationValue.subscribe(newValue => {
-            self.countrySelected(newValue.address.country ? newValue.address.country : null);
-            self.stateSelected(newValue.address.state ? newValue.address.state : null);
-            self.citySelected(newValue.address.city ? newValue.address.city : null);
-            if (!newValue) self.coordinates(null);
-        });
-        
-        self.suggestionsLoading = ko.observable(false);
-        suggestionFields.forEach(type => {
-            self[type+'Results'] = ko.observableArray([]);
-            self[type+'Selected'] = ko.observable();
-            self[type+'Selected'].subscribe(newValue => {
-                if (newValue) self.locationOptions().push(`${type}=${newValue.replace(/\s+/g, '+').toLowerCase()}`);
-                else self.locationOptions(self.locationOptions().filter(str => str.includes(type)));
-            });
-
-            self[type+'Input'] = ko.observable('');
-            self[type+'Query'] = ko.computed(() => self[type+'Input']());
-            self[type+'Query'].subscribe(newValue => { self.geoLookupQuery(newValue, self[type+'Results'], type) });
-            self[type+'Query'].extend({rateLimit: 50});
-            
-            self[type+"resultsLoading"] = ko.observable(false);
-            self[type+"resultsLoading"].subscribe(newValue => self.suggestionsLoading(newValue));
-    
-            self[type+'Params'] = {
-                query: self[type+'Input'],
-                results: self[type+'Results'],
-                selected: self[type+'Selected'],
-                value: self.currentLocationValue,
-                type: type,
-                status: self[type+"resultsLoading"]
-            };
-        });
 
         // Loading state:
         self.loadingRandom = ko.observable(false);
