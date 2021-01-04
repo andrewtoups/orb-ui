@@ -54,8 +54,6 @@ define(['ko'], function(ko){
 
                     if (browsing) {
                         hide(v.placeholderEl);
-                        mm(`placeholder "${v.placeholderEl.innerText}"'s class is: ${v.placeholderEl.classList[0]}`);
-                        mm(`placeholder "${v.placeholderEl.innerText}"'s disabled status is: ${v.placeholderEl.disabled}`);
                     }
 
                     if (defaultElIsntFirst) element.value = !element.value && v.defaultEl ? v.defaultEl.value : element.value;
