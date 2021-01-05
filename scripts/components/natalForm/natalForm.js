@@ -11,15 +11,15 @@ define([
         self.suggestionFieldsReady = ko.computed(() => vm.registry().includes('suggestions') && vm.registry().includes('addressResult'));
                 
         // Time Data:
-        self.timeObservables = ko.observableArray([
+        self.timeObservables =[
             "month", "day", "year", "hour", "minute", "pmOffset"
-        ]);
-        self.timeObservables().forEach((name, index) => {
+        ];
+        self.timeObservables.forEach((name, index) => {
             self[name] = ko.observable();
         });
         
         self.birthTimeTouched = function() {
-            return self.timeObservables().every(name => self[name].touched ? self[name].touched() : false);
+            return self.timeObservables.every(name => self[name].touched ? self[name].touched() : false);
         };
         
         self.milHour = ko.computed(() => parseInt(self.hour()) + parseInt(self.pmOffset()));
