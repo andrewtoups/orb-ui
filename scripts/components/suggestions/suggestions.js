@@ -83,16 +83,17 @@ define(['ko'], function(ko){
 
         
         self.placeholder = ko.computed(() => {
-            let useActiveResult = !self.activeResult().value ? false :
-                self.activeResult().value.toLowerCase().startsWith(params.query().toLowerCase()) ? true : false;
-            let useTopResult = useActiveResult ? false : !self.results().length ? false :
-                self.results()[0].value.toLowerCase().startsWith(params.query().toLowerCase()) ? true : false;
-            
-            let pResult = useActiveResult ? self.activeResult().value : useTopResult ? self.results()[0].value : false;
-            if (pResult && self.show()) {
-                p = params.query() + pResult.substring(params.query().length, pResult.length);
-            } else {
-                p = "";
+            let p = "";
+            if (!self.valueSet()){
+                let useActiveResult = !self.activeResult().value ? false :
+                    self.activeResult().value.toLowerCase().startsWith(params.query().toLowerCase()) ? true : false;
+                let useTopResult = useActiveResult ? false : !self.results().length ? false :
+                    self.results()[0].value.toLowerCase().startsWith(params.query().toLowerCase()) ? true : false;
+                
+                let pResult = useActiveResult ? self.activeResult().value : useTopResult ? self.results()[0].value : false;
+                if (pResult && self.show()) {
+                    p = params.query() + pResult.substring(params.query().length, pResult.length);
+                }
             }
             return p;
         });
