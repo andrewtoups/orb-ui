@@ -1,5 +1,7 @@
 .debug {
-    @include xs { display: none; }
+    // @include xs { display: none; }
+    @include xs { transform: scale(.75); transform-origin: top left; }
+    display: flex;
     position: absolute;
     top: 10px;
     left: 10px;
