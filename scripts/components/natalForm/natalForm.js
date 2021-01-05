@@ -364,8 +364,8 @@ define([
                         name === "months" || name === "hours" ? val + 1 : val;
             }
             let time = 0;
-            let rTime = 10;
-            let interval = rTime/10;
+            let rTime = 200;
+            let interval = rTime/5;
             let waitTime = 100;
             const randomize = window.setInterval(() => {
                 console.log('randomizing... ', time);
