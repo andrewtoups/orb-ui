@@ -123,7 +123,10 @@ define([
             // Additional params for suggestions module:
             self[type+"ResponseData"] = ko.observableArray([]);
             self[type+"ResponseData"].subscribe(newValue => {
-                if (self.auto() && newValue.length) self[type+"Index"](Math.floor(Math.random()*newValue.length));
+                if (self.auto() && newValue.length) {
+                    self[type+"Query"]('');
+                    self[type+"Index"](Math.floor(Math.random()*newValue.length));
+                }
             });
 
             self[type+"Query"] = ko.observable('');
