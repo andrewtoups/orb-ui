@@ -48,7 +48,7 @@
             <label>City</label>
             <span class="input-container">
                 <div data-bind="component: {name: 'suggestions', params: cityParams}" class="suggestion-container">
-                    <span data-bind="component: {name: 'addressResult', params: {address: result.resultData, type: 'city'}}"></span>
+                    <span data-bind="component: {name: 'addressResult', params: {address: result.resultData.address, type: 'city'}}"></span>
                 </div>
             </span>
         </div>
