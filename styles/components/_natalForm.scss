@@ -15,12 +15,10 @@ form.natal-form {
         position: absolute;
         top: 0; right: 0;
         @include xs { position: fixed; top: unset; right: 35px; bottom: 20px; }
-        transform-origin: top right;
-        @include xs { transform-origin: bottom right; }
-        transform: scale(40);
+        height: 40px; width: 40px;
         opacity: .6;
-        @include xs { transform: scale(60) }
-        @include xs { text-shadow: 0px 0px 15px $blue-2;}
+        @include xs { height: 60px; width: 60px; }
+        @include xs { text-shadow: 0px 0px 15px $blue;}
     }
 
     fieldset {
@@ -32,15 +30,15 @@ form.natal-form {
 
         &:focus-within legend { color: $coal; }
         &:focus-within .legend {
-            color: rgba($form-text-c, 0);
-            transition: color 500ms ease-in-out;
+            opacity: 0;
+            transition: opacity 500ms ease-in-out;
         }
         .legend {
             position: absolute;
-            top: -30px;
-            color: rgba($form-text-c, 1);
-            white-space: nowrap;
-            transition: color 500ms ease-in-out;
+            bottom: 102%;
+            opacity: 1;
+            color: $form-text-c;
+            transition: opacity 500ms ease-in-out;
             animation: Wavy 10s ease-in-out infinite;
         }
 
@@ -151,25 +149,29 @@ form.natal-form {
         color: $form-text-c;
         cursor: pointer;
         font-size: 1.2em;
+        -webkit-appearance: none;
+        -webkit-border-radius: 0;
+        border-radius: 0;
         
         padding-left: 5px;
+        padding: 0 3px;
         position: relative;
         z-index: 1;
         
         @include xs {
-            min-width: 75px;
-            padding: 5px;
+            min-width: 50px;
+            padding: 0 5px;
         }
         
         &:focus { outline: none; }
-        &.clean, &[type="text"]:empty {
-            border-bottom: 1px dashed rgba($form-text-c, .5);
+        &.clean, &.clean::placeholder, &.clean[type="text"] {
+            border-bottom: 1px dashed rgba($gold-bright, .5);
             color: rgba($form-text-c,0);
             &:focus {
                 color: rgba($form-text-c, .5);
             }
         }
-        &.placeholder:empty { border: none; }
+        &.placeholder { border: none; }
         &.dirty:focus {
             color: rgba($form-text-c, 1);
         }
@@ -179,6 +181,15 @@ form.natal-form {
             cursor: not-allowed;
         }
     }
+    input[type="number"] {
+        width: 50px;
+        -moz-appearance: textfield;
+    }
+    input[type="number"]::-webkit-inner-spin-button, 
+    input[type="number"]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+    }
     .selection-mask { border-bottom: 1px solid rgba($form-text-c, .5); }
     select {
         text-align: center;
@@ -186,7 +197,6 @@ form.natal-form {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        padding: 2px 3px;
         // IE:
         &::-ms-expand {
             display: none;
@@ -208,6 +218,7 @@ form.natal-form {
         }
         &:hover:before, &:focus-within:before {
             background-position-y: 0px;
+            @include xs { background-position-y: -2px; }
             transition: background-position-y 150ms linear;
         }
     }
@@ -216,7 +227,13 @@ form.natal-form {
     .suggestion-container {
         flex-basis: 65%;
         position: relative;
-        input[type="text"] { width: 100%; }
+        input[type="text"] {
+            width: 100%;
+            color:rgba($form-text-c, .5);
+            &:focus {
+                color:rgba($form-text-c, 1);
+            }
+        }
     }
 }
 .summary {
