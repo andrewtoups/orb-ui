@@ -20,7 +20,7 @@ form.natal-form {
         transform: scale(40);
         opacity: .6;
         @include xs { transform: scale(60) }
-        @include xs { text-shadow: 0px 0px 15px $blue;}
+        @include xs { text-shadow: 0px 0px 15px $blue-2;}
     }
 
     fieldset {
@@ -112,31 +112,32 @@ form.natal-form {
                 text-transform: uppercase;
                 border: none;
                 
-                background-color: $gold-bright;
+                background-color: transparent;
                 text-shadow: 0px 0px 0px transparent;
                 transition: background-color ease-in-out 800ms,
                             color ease-in-out 800ms,
                             text-shadow ease-in-out 800ms;
-                color: $blue;
+                color: $blue-2;
                 cursor: pointer;
 
                 &:hover {
-                    background-color: lighten($color: $gold-bright, $amount: 30%);
+                    background-color: lighten($color: $gold-2, $amount: 10%);
                     transition: background-color ease-in-out 75ms;
                 }
                 
                 &.disabled {
-                    background-color: lighten($color: $gold-bright, $amount: 50%);
-                    text-shadow: 0px 0px 2px $blue;
-                    @include xs { text-shadow: 0px 0px 4px $blue; }
-                    transition: background-color ease-in-out 75ms,
+                    opacity: .75;
+                    text-shadow: 0px 0px 2px $blue-2;
+                    @include xs { text-shadow: 0px 0px 4px $blue-2; }
+                    transition: opacity ease-in-out 75ms,
                                 color ease-in-out 75ms,
+                                background-color ease-in-out 75ms,
                                 text-shadow ease-in-out 75ms;
                     color: transparent;
                     cursor: not-allowed;
                     &:hover {
-                        background-color: lighten($color: $gold-bright, $amount: 40%);
-                        transition: background-color ease-in-out 75ms;
+                        opacity: .85;
+                        transition: opacity ease-in-out 75ms;
                     }
                 }
             }
@@ -145,7 +146,7 @@ form.natal-form {
     }
     input, select, button {
         border: none;
-        border-bottom: 1px solid rgba($gold-bright, .5);
+        border-bottom: 1px solid rgba($form-text-c, .5);
         background-color: transparent;
         color: $form-text-c;
         cursor: pointer;
@@ -162,7 +163,7 @@ form.natal-form {
         
         &:focus { outline: none; }
         &.clean, &[type="text"]:empty {
-            border-bottom: 1px dashed rgba($gold-bright, .5);
+            border-bottom: 1px dashed rgba($form-text-c, .5);
             color: rgba($form-text-c,0);
             &:focus {
                 color: rgba($form-text-c, .5);
@@ -178,7 +179,7 @@ form.natal-form {
             cursor: not-allowed;
         }
     }
-    .selection-mask { border-bottom: 1px solid rgba($gold-bright, .5); }
+    .selection-mask { border-bottom: 1px solid rgba($form-text-c, .5); }
     select {
         text-align: center;
         text-align-last: center;
@@ -200,7 +201,7 @@ form.natal-form {
     .selection-mask     { @include pseudo-clone('before', $position: 'absolute')};
     .input-container, .selection-mask {
         &:before {
-            background-image: linear-gradient(to top, rgba($gold-bright, .25), transparent 15px);
+            background-image: linear-gradient(to top, rgba($form-text-c, .25), transparent 15px);
             background-repeat: no-repeat;
             background-position-y: 15px;
             transition: background-position-y 150ms linear;
