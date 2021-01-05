@@ -54,7 +54,7 @@
         top: 26px;
         @include xs { top: 33px; }
         z-index: 4;
-        background-color: mix(white, $form-bg-c, $weight: 0.5);
+        background-color: $form-bg-c;
     
         margin-top: 0;
         width: 100%;
