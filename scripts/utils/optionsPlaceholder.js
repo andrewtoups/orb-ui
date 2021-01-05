@@ -65,7 +65,6 @@ define(['ko'], function(ko){
                     if (e.type === 'blur') show(v.placeholderEl);
 
                     if (escaping) { // Just select whatever was highlighted:
-                        console.log("value set by escaping");
                         v.setDefault();
                         forceChange(element);
                     }
