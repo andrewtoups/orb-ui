@@ -119,12 +119,13 @@ form.natal-form {
                     @include xs { text-shadow: 0px 0px 4px $blue-2; }
                     transition: opacity ease-in-out 75ms,
                                 color ease-in-out 75ms,
+                                background-color ease-in-out 75ms,
                                 text-shadow ease-in-out 75ms;
                     color: transparent;
                     cursor: not-allowed;
                     &:hover {
-                        background-color: lighten($color: $gold-bright, $amount: 40%);
-                        transition: background-color ease-in-out 75ms;
+                        opacity: .85;
+                        transition: opacity ease-in-out 75ms;
                     }
                 }
             }
