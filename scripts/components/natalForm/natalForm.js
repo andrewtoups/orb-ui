@@ -233,8 +233,12 @@ define([
                 self.coordinates()
                 && self.UTCdate()
                 && self.birthTimeTouched()
+                && !self.timeProcessing()
             );
-            if (cond && self.auto()) self.calculateChart();
+            if (cond && self.auto()) {
+                self.auto(false);
+                self.calculateChart();
+            }
             return !!cond;
         });
 
