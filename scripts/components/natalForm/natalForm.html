@@ -1,7 +1,7 @@
 <form class="natal-form" data-bind="css: {masked: !timeFieldsReady() || !suggestionFieldsReady()}" autocomplete="off">
     <i class="loader" data-bind="visible: isLoading"></i>
     <fieldset class="birth-time" data-bind="if: timeFieldsReady">
-        <div class="legend" role="legend">Birth time: </div>
+        <div class="legend" role="legend">Birth time and location: </div>
         <div>
             <div>
                 <label>Month</label>
@@ -20,7 +20,7 @@
             <div>
                 <label>Year</label>
                 <span class="input-container">
-                    <select data-bind="cleanValue: year, options: years"></select>
+                    <input data-bind="cleanValue: year, attr: {max: maxYear, min: minYear}, event: {focus: setDefaultYear, input: validate}" type="number" inputmode="numeric">
                 </span>
             </div>
         </div>
