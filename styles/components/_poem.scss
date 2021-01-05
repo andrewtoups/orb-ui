@@ -79,15 +79,20 @@
         position: absolute;
         background-color: white;
         color: black;
-        opacity: .4;
+        opacity: .7;
         padding: 2px;
-        left: -35%;
+        margin: 0;
     }
     .debug-placement {
         top: 25%;
+        left: -35%;
     }
     .debug-bday {
-        top: -25%;
+        top: 0;
+        left: 0;
+    }
+    &.moon > div.debug-bday {
+        margin: 0;
     }
     &:focus {
         outline: none;
