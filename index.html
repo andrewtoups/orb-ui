@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="styles/main.css" type="text/css">
 </head>
 <body>
-<<<<<<< HEAD
     <main data-bind="if: ready, event: {keydown: keyDown}, keydownBubble: false, inputMode: inputMode" tabindex="0">
         <div class="debug">
             <dl>
@@ -21,9 +20,6 @@
                 <dt>total:</dt><dd data-bind="text: requestsThisSession"></dd>
             </dl>
         </div>
-=======
-    <main data-bind="if: ready, event: {keydown: keyDown}, keydownBubble: false" tabindex="0">
->>>>>>> origin/v1design
         <div class="loader" data-bind="visible: isLoading, css: {masked: currentPageComponent}"></div>
         <section data-bind="component: currentPageComponent"></section>
     </main>
