@@ -227,7 +227,6 @@ define([
             if (!self.rawDate() && self.rawDateReady()) {
                 self.setRawDate();
             }
-            console.log('coordinates subscription');
             self.tzLookup(self.rawDate(), newValue);
         });
 
