@@ -23,6 +23,7 @@ define([
         };
         
         self.milHour = ko.computed(() => parseInt(self.hour()) + parseInt(self.pmOffset()));
+        self.timeProcessing = ko.observable(false);
         self.rawDateReady = ko.computed(() => {
             if (self.year() !== null &&
             self.month() !== null &&
@@ -30,12 +31,15 @@ define([
             self.milHour() !== null &&
             self.minute() !== null &&
             self.birthTimeTouched()) {
+                self.timeProcessing(true);
                 return true;
+            } else {
+                self.timeProcessing(false);
             }
         });
         self.rawDate = ko.computed(() => {
             if (self.rawDateReady()){
-                console.log('setting new raw date');
+                self.timeProcessing(false);
                 return new Date(self.year(), self.month() - 1, self.day(), self.milHour(), self.minute());
             }
         });
@@ -312,6 +316,7 @@ define([
             if (self.loadingGeoResults()) return true;
             if (self.suggestionsLoading()) return true;
             if (self.loadingRandom()) return true;
+            if (self.timeProcessing()) return true;
             return false;
         });
         self.isLoading.subscribe(newValue => {
