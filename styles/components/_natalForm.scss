@@ -17,10 +17,11 @@ form.natal-form {
         @include xs { position: fixed; top: unset; right: 35px; bottom: 20px; }
         transform-origin: top right;
         @include xs { transform-origin: bottom right; }
-        transform: scale(40);
+        height: 40px; width: 40px;
         opacity: .6;
-        @include xs { transform: scale(60) }
+        @include xs { height: 60px; width: 60px; }
         @include xs { text-shadow: 0px 0px 15px $blue-2;}
+        &:after { filter: invert(100%); }
     }
 
     fieldset {
