@@ -13,9 +13,9 @@ define(['ko'], function(ko){
         self.index = params.index;
         self.value(null);
         self.valueSet = ko.computed(() => self.value() !== null );
-        self.setValue = function(index, value, event){
+        self.setValue = function(index, result, event){
             event.preventDefault();
-            self.value(value);
+            self.value(result.value);
             self.index(index);
             if (self.activeResult()) self.deactivate(self.activeResult());
         };
@@ -122,7 +122,7 @@ define(['ko'], function(ko){
                 case 'selection':
                     if (event.key === "Enter" && self.valueSet()) self.unsetValue();
                     else if (event.key === "Tab" && event.shiftKey) return true;
-                    else if (self.activeResult() && !self.valueSet()) self.setValue(index, self.activeResult().value, event);
+                    else if (self.activeResult() && !self.valueSet()) self.setValue(index, self.activeResult(), event);
                     break;
                 case 'escape':
                     self.unsetValue();
