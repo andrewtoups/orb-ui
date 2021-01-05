@@ -2,20 +2,20 @@
     <input class="placeholder" type="text" data-bind="attr: { placeholder: placeholder }" readonly tabindex="-1">
     <input class="suggestion-input" type="text" data-bind="cleanTextInput: query, hasFocus: inputFocus, attr: {disabled: valueSet}" autocomplete="chrome-off">
     <div data-bind="visible: valueSet, hasFocus: valueSet" class="selection-mask" tabindex="0">
-        <span data-bind="text: selected"></span>
-        <button data-bind="click: unselect" type="button" tabindex="-1">×</button>
+        <span data-bind="text: value"></span>
+        <button data-bind="click: unsetValue" type="button" tabindex="-1">×</button>
     </div>
 </div>
 <div data-bind="visible: show" class="suggestions">
     <ul data-bind="foreach: {data: results, as: 'result'}">
         <li>
-            <button data-bind="event: {mousedown: $parent.select, touchstart: $parent.activate,
+            <button data-bind="event: {mousedown: $parent.setValue.bind($data, $index()), touchstart: $parent.activate,
                                     mouseenter: $parent.activate, mouseleave: $parent.deactivate,
-                                    touchend: $parent.select, touchcancel: $parent.deactivate},
+                                    touchend: $parent.setValue.bind($data, $index()), touchcancel: $parent.deactivate},
                                     css: {'active': active()}" type="button" tabindex="-1">
-            <!-- ko template: { nodes: $componentTemplateNodes, data: result }-->
+            <!-- ko template: { nodes: $componentTemplateNodes }-->
             <!-- /ko -->
-        </button>
-    </li>
-</ul>
+            </button>
+        </li>
+    </ul>
 </div>

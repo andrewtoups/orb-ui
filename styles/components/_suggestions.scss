@@ -64,8 +64,10 @@
             padding-left: 0;
             margin: 0;
             @include xs {
-                position: absolute;
-                width: 100%;
+                position: fixed;
+                width: 100vw;
+                left: 0;
+                background-color: $gold;
             }
         }
         button {
@@ -80,7 +82,6 @@
     
             line-height: 1;
             background-color: $form-bg-c;
-            // @include xs { background-color: rgb(69, 39, 35); }
             cursor: pointer;
              > * {font-size: .75em;}
             &.active {
@@ -88,9 +89,7 @@
                 background-color: lighten($color: $form-bg-c, $amount: 20%);
                 padding-right: 5px;
                 @include xs {
-                    position: absolute;
-                    right: -20%;
-                    width: 90vw;
+                    background-color: darken($color: $gold, $amount: 20%);
                 }
             }
         }

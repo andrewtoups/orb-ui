@@ -1,11 +1,12 @@
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
+html { position: fixed; }
 body, html {
-  min-height: 100vh;
+  height: 100%; width: 100%;
   @include xs { min-height: -webkit-fill-available; }
   margin: 0; overflow: hidden;
-  position: relative;
 }
 
 main {

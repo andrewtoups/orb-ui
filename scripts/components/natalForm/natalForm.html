@@ -1,26 +1,26 @@
 <form class="natal-form" data-bind="css: {masked: !timeFieldsReady() || !suggestionFieldsReady()}" autocomplete="off">
     <i class="loader" data-bind="visible: isLoading"></i>
     <fieldset class="birth-time" data-bind="if: timeFieldsReady">
-        <div class="legend" role="legend">Birth time and location: </div>
+        <div class="legend" role="legend">Enter your birth time and location: </div>
         <div>
             <div>
                 <label>Month</label>
                 <span class="input-container">
-                    <select data-bind="cleanValue: month, options: months, optionsText: 'short', optionsValue: 'num'"></select>
+                    <select data-bind="cleanValue: month, options: months, optionsPlaceholder: months()[0].short, optionsText: 'short', optionsValue: 'num'"></select>
                 </span>
             </div>
 
             <div>
                 <label>Day</label>
                 <span class="input-container">
-                    <select data-bind="cleanValue: day, options: days"></select>
+                    <select data-bind="cleanValue: day, options: days, optionsPlaceholder: 1"></select>
                 </span>
             </div>
 
             <div>
                 <label>Year</label>
                 <span class="input-container">
-                    <select data-bind="cleanValue: year, options: years"></select>
+                    <select data-bind="cleanValue: year, options: years, optionsPlaceholder: defaultYear"></select>
                 </span>
             </div>
         </div>
@@ -28,50 +28,27 @@
             <div>
                 <label>Hour</label> 
                 <span class="input-container">
-                    <select data-bind="cleanValue: hour, options: hours"></select>
+                    <select data-bind="cleanValue: hour, options: hours, optionsPlaceholder: 1"></select>
                 </span>
             </div>
             <div>
                 <label>Minutes</label>
                 <span class="input-container">
-                    <select data-bind="cleanValue: minute, options: minutes"></select>
+                    <select data-bind="cleanValue: minute, options: minutes, optionsPlaceholder: 0"></select>
                 </span>
             </div>
             <div>
                 <label>AM/PM</label>
                 <span class="input-container">
-                    <select data-bind="cleanValue: pmOffset">
-                        <option value="0">AM</option>
-                        <option value="12">PM</option>
-                    </select>
+                    <select data-bind="cleanValue: pmOffset, options: pmOffsets, optionsPlaceholder: 'AM', optionsText: 'label', optionsValue: 'value'"></select>
                 </span>
             </div>
         </div>
-    </fieldset>
-
-    <fieldset data-bind="if: suggestionFieldsReady" class="location">
-        <div class="legend" role="legend">Birth location: </div>
-        <div>
+        <div class="single-line">
             <label>City</label>
             <span class="input-container">
                 <div data-bind="component: {name: 'suggestions', params: cityParams}" class="suggestion-container">
-                    <span data-bind="component: {name: 'addressResult', params: {address: address, type: 'city'}}"></span>
-                </div>
-            </span>
-        </div>
-        <div>
-            <label>State</label>
-            <span class="input-container">
-                <div data-bind="component: {name: 'suggestions', params: stateParams}" class="suggestion-container">
-                    <span data-bind="component: {name: 'addressResult', params: {address: result.address, type: 'state'}}"></span>
-                </div>
-            </span>
-        </div>
-        <div>
-            <label>Country</label>
-            <span class="input-container">
-                <div data-bind="component: {name: 'suggestions', params: countryParams}" class="suggestion-container">
-                    <span data-bind="component: {name: 'addressResult', params: {address: result.address, type: 'country'}}"></span>
+                    <span data-bind="component: {name: 'addressResult', params: {address: result.resultData.address, type: 'city'}}"></span>
                 </div>
             </span>
         </div>
@@ -85,6 +62,10 @@
                             attr: {title: submitReady() ? '' : 'Fill out birth time and location to proceed.'}" type="button">Submit</button>
         </div>
     </fieldset>
+    <div class="summary">
+        <div data-bind="text: timeSummary"></div>
+        <!-- <div data-bind="text: locationSummary"></div> -->
+    </div>
     <button id="random" type="button" data-bind="click: randomChart">random chart</button>
 </form>
 
