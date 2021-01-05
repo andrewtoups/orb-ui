@@ -43,8 +43,6 @@ define([
                 if (!self.registry().includes(name)) {
                     ko.components.register(name, vm);
                     self.registry.push(name);
-                } else {
-                    ko.components.defaultloader.loadComponent(name, vm);
                 }
             });
         };
