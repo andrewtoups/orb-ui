@@ -160,9 +160,8 @@ define([
         
         self.currentLocationValue = ko.computed(() => {
             let r = self.latestResult() ? self.latestResult() : new Result();
-            let cond = r.address.city && r.address.state && r.address.country;
-            if (cond && self.auto()) self.city(r.address.city);
-            if (cond) return r;
+            if (r.address.city && self.auto()) self.city(r.address.city);
+            if (r.address.city) return r;
         });
         self.coordinates = ko.computed(() => {
             if (self.currentLocationValue()) {
