@@ -220,7 +220,6 @@ define([
         }
         self.rawDate.subscribe(newValue => {
             if (newValue instanceof Date) {
-                console.log("rawDate subscription");
                 self.tzLookup(newValue, self.coordinates());
             }
         });
