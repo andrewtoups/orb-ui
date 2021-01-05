@@ -231,12 +231,14 @@ define([
         });
 
         // Submit:
+        self.auto = ko.observable(false);
         self.submitReady = ko.computed(() => {
             let cond = (
                 self.coordinates()
                 && self.UTCdate()
                 && self.birthTimeTouched()
             );
+            if (cond && self.auto()) self.calculateChart();
             return !!cond;
         });
 
@@ -322,13 +324,15 @@ define([
             vm.isLoading(newValue);
         });
 
+        
         //Debug:
-        self.randomChart = function(){
-            self.loadingRandom(true);
-            document.querySelectorAll('select').forEach(node => {
+        self.randomChart = function() {
+            self.auto(true);
+            document.querySelectorAll('select, input').forEach(node => {
                 node.focus();
                 node.blur();
             });
+            self.cityQuery('springfield');
             let rInt = (min,max) => Math.floor(Math.random() * (max - min) + min);
             let setRand = (name) => {
                 let max = self[name]().length;
@@ -337,15 +341,29 @@ define([
                 return name === "years" ? val + 1900 :
                         name === "months" || name === "hours" ? val + 1 : val;
             }
-            self.month(setRand("months"));
-            self.day(setRand("days"));
-            self.year(setRand("years"));
-            self.hour(setRand("hours"));
-            self.minute(setRand("minutes"));
-            self.pmOffset(rInt(0,2)*12);
-            self.setRawDate();
-            self.UTCdate(new Date(self.rawDate()));
-            self.calculateChart();
+            let time = 0;
+            let rTime = 10;
+            let interval = rTime/10;
+            let waitTime = 100;
+            const randomize = window.setInterval(() => {
+                console.log('randomizing... ', time);
+                time += interval;
+                self.month(setRand("months"));
+                self.day(setRand("days"));
+                self.year(setRand("years"));
+                self.hour(setRand("hours"));
+                self.minute(setRand("minutes"));
+                self.pmOffset(rInt(0,2)*12);
+                if (time > rTime) {
+                    console.log('stop');
+                    window.clearInterval(randomize)
+                    setTimeout(() => {
+                        console.log('setting time: ', time);
+                        self.setRawDate();
+                        self.UTCdate(new Date(self.rawDate()));
+                    }, waitTime);
+                };
+            }, interval);
         }
     }
 });
