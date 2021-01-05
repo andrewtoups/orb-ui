@@ -379,6 +379,16 @@ define([
                     window.clearInterval(randomize)
                     setTimeout(() => {
                         self.UTCdate(new Date(self.rawDate()));
+                        let tryAgain = () => {
+                            if (self.cityResponseData().length === 0) {
+                                randCity();
+                                setTimeout(tryAgain, waitTime + rTime);
+                            }
+                        }
+                        let sub = self.loadingGeoResults.subscribe(status => {
+                            if (!status && self.auto() && self.cityResponseData().length === 0) tryAgain();
+                            else sub.dispose();
+                        });
                     }, waitTime);
                 };
             }, interval);
