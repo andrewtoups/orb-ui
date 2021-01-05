@@ -368,7 +368,6 @@ define([
             let interval = rTime/5;
             let waitTime = 100;
             const randomize = window.setInterval(() => {
-                console.log('randomizing... ', time);
                 time += interval;
                 self.month(setRand("months"));
                 self.day(setRand("days"));
@@ -377,10 +376,8 @@ define([
                 self.minute(setRand("minutes"));
                 self.pmOffset(rInt(0,2)*12);
                 if (time > rTime) {
-                    console.log('stop');
                     window.clearInterval(randomize)
                     setTimeout(() => {
-                        console.log('setting time: ', time);
                         self.UTCdate(new Date(self.rawDate()));
                     }, waitTime);
                 };
