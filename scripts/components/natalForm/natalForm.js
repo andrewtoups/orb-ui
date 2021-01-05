@@ -348,7 +348,13 @@ define([
                 node.focus();
                 node.blur();
             });
-            self.cityQuery('springfield');
+            let randCity = () => {
+                require(['dataStore/cities'], cities => {
+                    let randCity = cities[Math.floor(Math.random()*cities.length)];
+                    self.cityQuery(randCity);
+                });
+            };
+            randCity();
             let rInt = (min,max) => Math.floor(Math.random() * (max - min) + min);
             let setRand = (name) => {
                 let max = self[name]().length;
