@@ -71,7 +71,7 @@ define([
         });
         
         let years = [];
-        const minYear = 1900;
+        const minYear = 1800;
         const maxYear = new Date().getFullYear();
         for (let i = 0; i <= maxYear - minYear; i++){
             years[i] = minYear + i;

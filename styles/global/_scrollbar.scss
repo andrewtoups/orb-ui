@@ -3,11 +3,11 @@
     background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-    background: darken($gold, 50%);
+    background: darken($form-bg-c, 50%);
 }
 
 // firefox only
 * {
     scrollbar-width: thin;
-    scrollbar-color: darken($gold, 50%) transparent;
+    scrollbar-color: darken($form-bg-c, 50%) transparent;
 }

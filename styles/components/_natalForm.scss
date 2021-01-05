@@ -15,10 +15,13 @@ form.natal-form {
         position: absolute;
         top: 0; right: 0;
         @include xs { position: fixed; top: unset; right: 35px; bottom: 20px; }
+        transform-origin: top right;
+        @include xs { transform-origin: bottom right; }
         height: 40px; width: 40px;
         opacity: .6;
         @include xs { height: 60px; width: 60px; }
-        @include xs { text-shadow: 0px 0px 15px $blue;}
+        @include xs { text-shadow: 0px 0px 15px $blue-2;}
+        &:after { filter: invert(100%); }
     }
 
     fieldset {
