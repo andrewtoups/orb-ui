@@ -30,7 +30,7 @@ section {
     @include xs { margin: 15px 10px; }
 }
 
-.loader { position: relative; height: 1px; width: 1px; }
+.loader { position: relative; height: 50px; width: 50px; }
 .loader:after {
   fill: $gold-bright;
   content: '';
@@ -50,5 +50,5 @@ section {
 }
 main .loader {
   position: absolute;
-  transform: scale(60);
+  height: 60px; width: 60px;
 }
