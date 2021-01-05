@@ -15,6 +15,7 @@ define(['ko'], function(ko){
         self.valueSet = ko.computed(() => self.value() !== null );
         self.setValue = function(index, result, event){
             event.preventDefault();
+            self.query('');
             self.value(result.value);
             self.index(index);
             if (self.activeResult()) self.deactivate(self.activeResult());
