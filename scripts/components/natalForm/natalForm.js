@@ -33,20 +33,13 @@ define([
                 return true;
             }
         });
-        self.rawDate = ko.observable();
-        self.setRawDate = () => {
-            if (!self.rawDate()) self.rawDate(new Date(self.year(), self.month() - 1, self.day(), self.milHour(), self.minute()));
-            else if (new Date(self.year(), self.month() - 1, self.day(), self.milHour(), self.minute()).getTime() !== self.rawDate().getTime()) {
-                self.rawDate(new Date(self.year(), self.month() - 1, self.day(), self.milHour(), self.minute()));
+        self.rawDate = ko.computed(() => {
+            if (self.rawDateReady()){
+                console.log('setting new raw date');
+                return new Date(self.year(), self.month() - 1, self.day(), self.milHour(), self.minute());
             }
-        };
-        document.querySelectorAll('select').forEach(node => {
-            node.addEventListener('blur', event => {
-                if (self.rawDateReady()) {
-                    self.setRawDate();
-                }
-            });
         });
+        self.rawDate.extend({rateLimit: 1000});
         self.UTCdate = ko.observable();
 
         // Time webform observables:
@@ -220,17 +213,13 @@ define([
                 }
             }
         }
-        self.rawDate.subscribe(newValue => {
-            if (newValue instanceof Date) {
-                self.tzLookup(newValue, self.coordinates());
+        let tzSub = newValue => {
+            if (self.rawDate() && self.coordinates()) {
+                self.tzLookup(self.rawDate(), self.coordinates());
             }
-        });
-        self.coordinates.subscribe(newValue => {
-            if (!self.rawDate() && self.rawDateReady()) {
-                self.setRawDate();
-            }
-            self.tzLookup(self.rawDate(), newValue);
-        });
+        };
+        self.rawDate.subscribe(tzSub);
+        self.coordinates.subscribe(tzSub);
 
         // Submit:
         self.auto = ko.observable(false);
