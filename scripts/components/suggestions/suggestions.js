@@ -10,16 +10,19 @@ define(['ko'], function(ko){
         };
 
         self.value = params.value;
+        self.index = params.index;
         self.value(null);
         self.valueSet = ko.computed(() => self.value() !== null );
-        self.setValue = function(value, event){
+        self.setValue = function(index, value, event){
             event.preventDefault();
             self.value(value);
+            self.index(index);
             if (self.activeResult()) self.deactivate(self.activeResult());
         };
         self.unsetValue = function(){
             self.query('');
             self.value(null);
+            self.index(null);
         };
 
         self.rankResult = (result) => {
@@ -104,10 +107,10 @@ define(['ko'], function(ko){
                     if (keyActions[action].includes(event.key)) return action;
                 }
             })();
+            let index = self.results().indexOf(self.activeResult());
             switch (interception) {
                 case 'navigation':
                     event.preventDefault();
-                    let index = self.results().indexOf(self.activeResult());
                     let destination = index === -1 ? 0 : 
                                     event.key === "ArrowUp" ? index-1 :
                                     event.key === "ArrowDown" ? index+1 : false;
@@ -119,7 +122,7 @@ define(['ko'], function(ko){
                 case 'selection':
                     if (event.key === "Enter" && self.valueSet()) self.unsetValue();
                     else if (event.key === "Tab" && event.shiftKey) return true;
-                    else if (self.activeResult()) self.setValue(self.activeResult().value, event);
+                    else if (self.activeResult() && !self.valueSet()) self.setValue(index, self.activeResult().value, event);
                     break;
                 case 'escape':
                     self.unsetValue();

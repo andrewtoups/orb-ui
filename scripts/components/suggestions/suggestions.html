@@ -9,9 +9,9 @@
 <div data-bind="visible: show" class="suggestions">
     <ul data-bind="foreach: {data: results, as: 'result'}">
         <li>
-            <button data-bind="event: {mousedown: $parent.setValue, touchstart: $parent.activate,
+            <button data-bind="event: {mousedown: $parent.setValue.bind($data, $index()), touchstart: $parent.activate,
                                     mouseenter: $parent.activate, mouseleave: $parent.deactivate,
-                                    touchend: $parent.setValue, touchcancel: $parent.deactivate},
+                                    touchend: $parent.setValue.bind($data, $index()), touchcancel: $parent.deactivate},
                                     css: {'active': active()}" type="button" tabindex="-1">
             <!-- ko template: { nodes: $componentTemplateNodes }-->
             <!-- /ko -->

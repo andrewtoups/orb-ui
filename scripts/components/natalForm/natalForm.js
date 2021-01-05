@@ -112,32 +112,21 @@ define([
             'state',
             'city'
         ];
+        let Result = function(address, coordinates) {
+            this.address = address || {city: null, state: null, country: null};
+            this.coordinates = coordinates || null;
+        };
 
         self.suggestionsLoading = ko.observable(false);
+        self.latestResult = ko.observable();
         locationFields.forEach(type => {
             // Location Webform Observables:
             self[type] = ko.observable();
-            self[type].subscribe(newValue => {
-                if (newValue) self.locationOptions().push(`${type}=${newValue.replace(/\s+/g, '+').toLowerCase()}`);
-                else self.locationOptions(self.locationOptions().filter(str => str.includes(type)));
-            });
 
             // Additional params for suggestions module:
-            self[type+'ResponseData'] = ko.observableArray([]);
-            self[type+'Results'] = ko.computed(() => {
-                if (self[type+'ResponseData']().length) {
-                    return self[type+'ResponseData']().map(item => {
-                        return {
-                            value: item.address[type].toLowerCase(),
-                            data: item.address
-                        };
-                    });
-                } else {
-                    return [];
-                }
-            });
-            self[type+'Results'].subscribe(newValue => {
-                if (self.auto() && newValue.length) self[type](newValue[0].value);
+            self[type+"ResponseData"] = ko.observableArray([]);
+            self[type+"ResponseData"].subscribe(newValue => {
+                if (self.auto() && newValue.length) self[type+"Index"](Math.floor(Math.random()*newValue.length));
             });
 
             self[type+'Query'] = ko.observable('');
@@ -147,20 +136,33 @@ define([
             self[type+"resultsLoading"] = ko.observable(false);
             self[type+"resultsLoading"].subscribe(newValue => self.suggestionsLoading(newValue));
 
+            self[type+"Index"] = ko.observable();
+            self[type+"Index"].subscribe(newValue => {
+                let r = self[type+"ResponseData"]()[newValue];
+                if (r) {
+                    self.locationOptions().push(`${type}=${r.value.replace(/\s+/g, '+').toLowerCase()}`);
+                    self.latestResult(new Result(r.data.address, r.data.coordinates));
+                }
+                else {
+                    self.locationOptions(self.locationOptions().filter(str => str.includes(type)));
+                    self.latestResult(new Result());
+                }
+            });
+
             self[type+'Params'] = {
                 query: self[type+'Query'],
                 results: self[type+'Results'],
                 value: self[type],
                 status: self[type+"resultsLoading"]
+                index: self[type+"Index"]
             };
         });
 
         self.currentLocationValue = ko.computed(() => {
-            if (self.city() && self.cityResponseData()) {
-                return self.cityResponseData().find(item => item.address.city.toLowerCase() === self.city());
-            } else {
-                return null;
-            }
+            let r = self.latestResult() ? self.latestResult() : new Result();
+            let cond = r.address.city && r.address.state && r.address.country;
+            if (cond && self.auto()) self.city(r.address.city);
+            if (cond) return r;
         });
         self.coordinates = ko.computed(() => {
             if (self.currentLocationValue()) {
@@ -281,25 +283,29 @@ define([
                     }).map(r => {
                         let p = r.properties;
                         let address = {};
+                        let value;
                         switch (type) {
                             case 'city':
+                                value = p.name;
                                 address.city = p.name;
                                 address.state = p.state ? p.state : null;
                                 address.country = p.country ? p.country : null;
                                 break;
                             case 'state':
+                                value = p.name;
                                 address.state = p.name;
                                 address.country = p.country ? p.country : null;
                                 break;
                             case 'country':
+                                value = p.country;
                                 address.country = p.country;
                                 break;
                             default:
                                 break;
                         }
                         return {
-                            address: address,
-                            coordinates: r.geometry.coordinates
+                            value: value,
+                            data: new Result(address, r.geometry.coordinates)
                         };
                     }));
                     self.loadingGeoResults(false);
