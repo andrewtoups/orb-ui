@@ -271,14 +271,15 @@ define([
                 fetch(`https://photon.komoot.io/api/?q=${query}${self.photonQueryStr()}`)
                 .then(response => response.json())
                 .then(data => {
-                    results(data.features.filter(r => {
+                    let filtered = data.features.filter(r => {
                         let conditions = r.properties.type !== type ? false :
                                         self.country() && type !== 'country' ? r.properties.country === self.country() :
                                         self.state() && type !== 'state' ? r.properties.state === self.state() :
                                         self.city() && type !== 'city' ? r.properties.city === self.city() :
                                         true;
                         return conditions;
-                    }).map(r => {
+                    });
+                    let process = r => {
                         let p = r.properties;
                         let address = {};
                         let value;
@@ -305,8 +306,18 @@ define([
                             value: value,
                             data: new Result(address, r.geometry.coordinates)
                         };
-                    }));
-                    self.loadingGeoResults(false);
+                    }
+                    if (filtered.length === 0){
+                        fetch(`https://photon.komoot.io/api/?q=${query}${self.photonQueryStr()}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            results(data.features.map(process));
+                            self.loadingGeoResults(false);
+                        });
+                    } else {
+                        results(filtered.map(process));
+                        self.loadingGeoResults(false);
+                    }
                 });
             } else {
                 results([]);
