@@ -1,0 +1,7 @@
+@keyframes Wavy {
+    0%   { transform: skewX(0deg)   skewY(0deg)    rotateY(0deg) rotateX(0deg);   } 
+    25%  { transform: skewX(5deg)   skewY(-0.1deg) rotateY(-7deg) rotateX(15deg);   }
+    50%  { transform: skewX(0deg)   skewY(0deg)    rotateY(0deg) rotateX(0deg);   }
+    75%  { transform: skewX(-5deg)  skewY(0.1deg)  rotateY(7deg) rotateX(-15deg);  }
+    100% { transform: skewX(0deg)   skewY(0deg)    rotateY(0deg) rotateX(0deg);   }
+}
