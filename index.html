@@ -11,15 +11,6 @@
 </head>
 <body>
     <main data-bind="if: ready, event: {keydown: keyDown}, keydownBubble: false" tabindex="0">
-        <div class="debug">
-            <dl>
-                <!-- ko foreach: requestCounter -->
-                <dt data-bind="text: name"></dt>
-                <dd data-bind="text: requests"></dd>
-                <!-- /ko -->
-                <dt>total:</dt><dd data-bind="text: requestsThisSession"></dd>
-            </dl>
-        </div>
         <div class="loader" data-bind="visible: isLoading, css: {masked: currentPageComponent}"></div>
         <section data-bind="component: currentPageComponent"></section>
     </main>
