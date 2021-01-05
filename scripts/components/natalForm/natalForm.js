@@ -381,7 +381,6 @@ define([
                     window.clearInterval(randomize)
                     setTimeout(() => {
                         console.log('setting time: ', time);
-                        self.setRawDate();
                         self.UTCdate(new Date(self.rawDate()));
                     }, waitTime);
                 };
