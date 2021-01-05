@@ -122,9 +122,9 @@ define([
                 if (self.auto() && newValue.length) self[type+"Index"](Math.floor(Math.random()*newValue.length));
             });
 
-            self[type+'Query'] = ko.observable('');
-            self[type+'Query'].subscribe(newValue => { geoLookupQuery(newValue, self[type+'ResponseData'], type) });
-            self[type+'Query'].extend({rateLimit: 50});
+            self[type+"Query"] = ko.observable('');
+            self[type+"Query"].subscribe(newValue => { geoLookupQuery(newValue, self[type+'ResponseData'], type) });
+            self[type+"Query"].extend({rateLimit: 50});
             
             self[type+"resultsLoading"] = ko.observable(false);
             self[type+"resultsLoading"].subscribe(newValue => self.suggestionsLoading(newValue));
@@ -142,15 +142,15 @@ define([
                 }
             });
 
-            self[type+'Params'] = {
-                query: self[type+'Query'],
-                results: self[type+'Results'],
+            self[type+"Params"] = {
+                query: self[type+"Query"],
+                results: self[type+"ResponseData"],
                 value: self[type],
-                status: self[type+"resultsLoading"]
+                status: self[type+"resultsLoading"],
                 index: self[type+"Index"]
             };
         });
-
+        
         self.currentLocationValue = ko.computed(() => {
             let r = self.latestResult() ? self.latestResult() : new Result();
             let cond = r.address.city && r.address.state && r.address.country;
@@ -165,7 +165,6 @@ define([
             }
         });
         self.coordinates.extend({deferred: true});
-
 
         // Time summary:
         self.tzOffset = ko.observable();
