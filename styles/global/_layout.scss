@@ -29,6 +29,13 @@ main:before {
 section {
     margin: 15px 0;
     @include xs { margin: 15px 10px; }
+
+    opacity: 1;
+    transition: opacity, ease-out, 1200ms;
+    &.masked {
+        opacity: 0;
+        transition: opacity, ease-in, 1200ms;
+    }
 }
 
 .loader { position: relative; height: 50px; width: 50px; }
@@ -52,4 +59,17 @@ main .loader {
   position: absolute;
   height: 60px; width: 60px;
   filter: $gold-2-svg;
+}
+main .orb-loader {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  img { max-width: 90vw; }
+
+  opacity: 1;
+  transition: opacity ease-out 1200ms;
+  &.masked {
+    opacity: 0;
+    transition: opacity ease-in 1200ms;
+  }
 }

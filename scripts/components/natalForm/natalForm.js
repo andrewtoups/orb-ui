@@ -341,6 +341,7 @@ define([
         };
 
         // Loading state:
+        self.firstLoad = ko.observable(true);
         self.loadingRandom = ko.observable(false);
         self.isLoading = ko.computed(() => {
             if (self.months().length !== 12) return true;
@@ -353,6 +354,14 @@ define([
             return false;
         });
         self.isLoading.subscribe(newValue => {
+            if (self.firstLoad()) {
+                setTimeout(() => {
+                    vm.isLoading(newValue);
+                    self.firstLoad(false);
+                }, 1200);
+            } else {
+                vm.isLoading(newValue);
+            }
             vm.isLoading(newValue);
         });
 

@@ -66,8 +66,9 @@ define([
             return self.registry().includes(self.currentPage());
         });
 
-        self.changePage('natalForm');
-
+        setTimeout(() => {
+            self.changePage('natalForm');
+        }, 1200);
         self.isLoading = ko.observable(true);
 
         self.requestCounter = ko.observableArray([{

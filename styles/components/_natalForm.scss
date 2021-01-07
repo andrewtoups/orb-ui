@@ -2,9 +2,6 @@ form.natal-form {
 
     background-color: $form-bg-c;
     color: $form-text-c;
-    opacity: 1;
-    transition: opacity, ease-in-out, 1200ms;
-    &.masked { opacity: 0; }
     
     border-radius: 2px;
     padding: 10px;
