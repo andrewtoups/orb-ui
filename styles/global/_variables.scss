@@ -1,20 +1,35 @@
+// hex to css filter calculator: https://codepen.io/sosuke/pen/Pjoqqp
+
 // colors:
-$blue: rgb(21, 67, 96);
-$blue-2: hsl(244, 97%, 15%);
-$blue-light: rgb(33, 97, 140); // #21618c
-$gold: rgb(255, 236, 179);
-$gold-2: rgb(234, 233, 153);
-$gold-bright: rgb(255, 253, 231);
-$coal: rgb(10, 10, 10);
+$blue:              #154360; // #154360
+$blue-svg:          invert(20%) sepia(18%) saturate(2920%) hue-rotate(166deg) brightness(94%) contrast(88%);
+$blue-2:            #06014b; // #06014b
+$blue-2-svg:        invert(8%) sepia(32%) saturate(6960%) hue-rotate(240deg) brightness(89%) contrast(119%);
+$blue-light:        #21618c; // #21618c
+$blue-light-svg:    invert(26%) sepia(96%) saturate(677%) hue-rotate(169deg) brightness(92%) contrast(81%);
+$gold:              #ffecb3; // #ffecb3
+$gold-svg:          invert(82%) sepia(49%) saturate(240%) hue-rotate(347deg) brightness(105%) contrast(103%);
+$gold-2:            #eae999; // #eae999
+$gold-2-svg:        invert(91%) sepia(38%) saturate(381%) hue-rotate(1deg) brightness(96%) contrast(91%);
+$gold-bright:       #fffde7; // #fffde7
+$gold-bright-svg:   invert(94%) sepia(15%) saturate(356%) hue-rotate(36deg) brightness(107%) contrast(104%);
+$coal:              #0a0a0a; //#0a0a0a
+$coal-svg:          invert(0%) sepia(95%) saturate(6%) hue-rotate(331deg) brightness(96%) contrast(92%);
 
-$main-bg-c: darken($blue-2, 5%);
-$form-bg-c: $gold-2;
+$main-bg-c:     darken($blue-2, 5%);
+$main-bg-c-svg: $blue-2-svg;
+$form-bg-c:     $gold-2;
+$form-bg-c-svg: $gold-2-svg;
 
-$form-text-c: $main-bg-c;
-$poem-text-c: $blue;
+$form-text-c:           $main-bg-c;
+$form-text-c-svg:       $main-bg-c-svg;
+$poem-text-c:           $blue;
+$poem-text-c-svg:       $blue-svg;
 $poem-text-hover-c: $blue-light;
+$poem-text-hover-c-svg: $blue-light-svg;
 
 $moon-color: $gold-2;
+$moon-color-svg: $gold-2-svg;
 
 // gradients:
 $bg-input-focus: linear-gradient(to top, rgba($blue-2, .25), transparent 15px);

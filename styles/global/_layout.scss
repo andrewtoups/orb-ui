@@ -33,7 +33,6 @@ section {
 
 .loader { position: relative; height: 50px; width: 50px; }
 .loader:after {
-  fill: $gold-bright;
   content: '';
   background-image: url(svg/eye-of-providence.svg);
   background-size: contain;
@@ -52,4 +51,5 @@ section {
 main .loader {
   position: absolute;
   height: 60px; width: 60px;
+  filter: $gold-2-svg;
 }
