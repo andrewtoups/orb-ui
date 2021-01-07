@@ -68,8 +68,7 @@ define([
 
         setTimeout(() => {
             self.changePage('natalForm');
-        }, 1200);
-        self.isLoading = ko.observable(true);
+        }, 0);
 
         self.requestCounter = ko.observableArray([{
             name: 'azure',

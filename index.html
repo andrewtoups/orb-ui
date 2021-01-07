@@ -10,9 +10,13 @@
     <link rel="stylesheet" href="styles/main.css" type="text/css">
 </head>
 <body>
-    <main data-bind="if: ready, event: {keydown: keyDown}, keydownBubble: false, inputMode: inputMode" tabindex="0">
-        <div class="loader" data-bind="visible: isLoading, css: {masked: currentPageComponent}"></div>
-        <section data-bind="component: currentPageComponent"></section>
+    <main data-bind="event: {keydown: keyDown}, keydownBubble: false, inputMode: inputMode" tabindex="0">
+        <div class="orb orb-loader" data-bind="css: {masked: currentPageComponent}">
+            <img src="styles/png/orb-logo.png">
+        </div>
+        <!-- ko if: ready -->
+        <section data-bind="component: currentPageComponent, css: {masked: isLoading()}"></section>
+        <!-- /ko -->
     </main>
     <script async data-main="scripts/rConfig" src="scripts/vendor/require.js"></script>
 </body>
