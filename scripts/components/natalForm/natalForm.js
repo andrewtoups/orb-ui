@@ -354,14 +354,6 @@ define([
             return false;
         });
         self.isLoading.subscribe(newValue => {
-            if (self.firstLoad()) {
-                setTimeout(() => {
-                    vm.isLoading(newValue);
-                    self.firstLoad(false);
-                }, 1200);
-            } else {
-                vm.isLoading(newValue);
-            }
             vm.isLoading(newValue);
         });
 
