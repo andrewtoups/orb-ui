@@ -2,7 +2,7 @@ define(['ko'], function(ko){
     let inputModeSwitcher = (cb) => {
         let currentMode;
         let waiting = false;
-        const timeout = 1000;
+        const timeout = 1200;
 
         let Mode = function(events, otherModes) {
             this.events = events;

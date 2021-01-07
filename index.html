@@ -19,6 +19,12 @@
                 <!-- /ko -->
                 <dt>total:</dt><dd data-bind="text: requestsThisSession"></dd>
             </dl>
+            <dl>
+                <dt>Input Mode:</dt>
+                <dd data-bind="text: inputMode"></dd>
+                <dt>Pointer mode:</dt>
+                <dd data-bind="text: pointerMode"></dd>
+            </dl>
         </div>
         <div class="loader" data-bind="visible: isLoading, css: {masked: currentPageComponent}"></div>
         <section data-bind="component: currentPageComponent"></section>

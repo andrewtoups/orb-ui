@@ -3,6 +3,7 @@
     @include xs { transform: scale(.75); transform-origin: top left; }
     display: flex;
     position: absolute;
+    color: $gold-2;
     top: 10px;
     left: 10px;
     margin: 0;
@@ -11,14 +12,15 @@
     text-transform: uppercase;
     font-weight: bold;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    z-index: 2000;
 
     &:hover, &:active {
+        color: $coal;
         background-color: rgba(255,255,255.75);
-        z-index: 1000;
     }
 
     dl {
-        margin: 0;
+        margin: 0 5px;
         dt {
             text-decoration: underline;
         }

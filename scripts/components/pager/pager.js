@@ -6,9 +6,12 @@ define([
         var self = this;
         
         self.inputMode = ko.observable();
-        self.pointerMode = ko.computed(() => {
-            if (self.inputMode() === 'touch' || self.inputMode() === 'mouse') {
-                return self.inputMode();
+        self.pointerMode = ko.observable();
+        self.inputMode.subscribe(newValue => {
+            if (newValue === 'touch' || newValue === 'mouse') {
+                self.pointerMode(newValue);
+            } else {
+                self.pointerMode(self.pointerMode());
             }
         });
         self.registry = ko.observableArray(['pager']);
