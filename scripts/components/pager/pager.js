@@ -70,6 +70,8 @@ define([
             self.changePage('natalForm');
         }, 1200);
         self.isLoading = ko.observable(true);
+        self.pageComponentAnimating = ko.observable(false);
+        self.orbAnimating = ko.observable(false);
 
         self.requestCounter = ko.observableArray([{
             name: 'azure',
