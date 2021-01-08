@@ -60,16 +60,26 @@ main .loader {
   height: 60px; width: 60px;
   filter: $gold-2-svg;
 }
-main .orb-loader {
-  position: fixed;
-  pointer-events: none;
-  z-index: 0;
-  img { max-width: 90vw; }
-
+main .orb {
   opacity: 1;
   transition: opacity ease-out 1200ms;
   &.masked {
     opacity: 0;
     transition: opacity ease-in 1200ms;
+  }
+  &.orb-loader {
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    img { max-width: 90vw; }
+  }
+  &.logo {
+    position: absolute;
+    top: 10px;
+    text-align: center;
+    img {
+      width: 25%;
+      animation: Pulsate 5s ease-in-out infinite;
+    }
   }
 }

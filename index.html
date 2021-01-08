@@ -26,11 +26,11 @@
                 <dd data-bind="text: pointerMode"></dd>
             </dl>
         </div>
-        <div class="orb" data-bind="class: orbClass, transitionState: orbAnimating">
+        <div class="orb orb-loader" data-bind="css: {masked: currentPageComponent}">
             <img src="styles/png/orb-logo.png">
         </div>
         <!-- ko if: ready -->
-        <section data-bind="component: currentPageComponent, css: {masked: isLoading()}, transitionState: pageComponentAnimating"></section>
+        <section data-bind="component: currentPageComponent, css: {masked: !registry().includes('suggestions')}"></section>
         <!-- /ko -->
     </main>
     <script async data-main="scripts/rConfig" src="scripts/vendor/require.js"></script>

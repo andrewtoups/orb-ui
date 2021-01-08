@@ -1,14 +1,15 @@
-@import 'animations/gradient';
-@import 'animations/orb';
-@import 'animations/wiggle';
-@import 'animations/spinner';
-@import 'animations/moire';
-
 @import 'global/mixins';
 @import 'global/variables';
 @import 'global/responsive-framework';
 @import 'global/scrollbar';
 @import 'global/layout';
+
+@import 'animations/gradient';
+@import 'animations/orb';
+@import 'animations/wiggle';
+@import 'animations/spinner';
+@import 'animations/moire';
+@import 'animations/pulsate';
 
 @import 'components/debug';
 @import 'components/natalForm';

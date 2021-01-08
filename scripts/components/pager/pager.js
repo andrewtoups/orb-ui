@@ -29,6 +29,7 @@ define([
             if (!self.registry().includes(name)) self.loadComponent(name);
         }
 
+        self.isLoading = ko.observable(true);
         self.loadComponent = function(name){
             let cPath = "components";
             let jsPath = `${cPath}/${name}/${name}`;
