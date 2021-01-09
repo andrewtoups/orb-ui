@@ -12,7 +12,9 @@
 <body>
     <main data-bind="event: {keydown: keyDown}, keydownBubble: false, inputMode: inputMode" tabindex="0">
         <div class="orb orb-loader" data-bind="css: {masked: currentPageComponent}">
-            <img src="styles/png/orb-logo.png">
+            <!-- <img src="styles/png/orb-logo.png"> -->
+            <img src="styles/png/orb-logo-blue.png">
+            <!-- <img src="styles/png/orb-logo-blue-with-glow.png"> -->
         </div>
         <!-- ko if: ready -->
         <section data-bind="component: currentPageComponent, css: {masked: !registry().includes('suggestions')}"></section>
