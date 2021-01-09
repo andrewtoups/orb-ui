@@ -5,15 +5,6 @@ define([
     return function() {
         var self = this;
         
-        self.inputMode = ko.observable();
-        self.pointerMode = ko.observable();
-        self.inputMode.subscribe(newValue => {
-            if (newValue === 'touch' || newValue === 'mouse') {
-                self.pointerMode(newValue);
-            } else {
-                self.pointerMode(self.pointerMode());
-            }
-        });
         self.registry = ko.observableArray(['pager']);
         self.pages = [
             'natalForm',
@@ -74,6 +65,18 @@ define([
         self.pageComponentAnimating = ko.observable(false);
         self.orbAnimating = ko.observable(false);
 
+        // Global input tracking:
+        self.inputMode = ko.observable();
+        self.pointerMode = ko.observable();
+        self.inputMode.subscribe(newValue => {
+            if (newValue === 'touch' || newValue === 'mouse') {
+                self.pointerMode(newValue);
+            } else {
+                self.pointerMode(self.pointerMode());
+            }
+        });
+        
+        // Debug:
         self.requestCounter = ko.observableArray([{
             name: 'azure',
             requests: ko.observable(0)
