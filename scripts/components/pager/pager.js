@@ -1,10 +1,105 @@
 define([
     'ko',
-    'utils/inputModeSwitcher'
-], function(ko, inputMode){
+    'utils/inputModeSwitcher',
+    'utils/page'
+], function(ko, inputMode, {Page, Transition}){
     return function() {
-        var self = this;
+        let self = this;
+        const splashDelay = 0;
+
+        // Pager states:
+        self.registry = ko.observableArray(['pager']);
+
+        self.splashTimeout = ko.observable(true);
+        setTimeout(() => {self.splashTimeout(false)}, splashDelay);
+
+        self.initialLoadComplete = ko.computed(() => !self.splashTimeout() );
+        self.natalFormSubmitted = ko.observable(false);
+
+        self.isLoading = ko.observable(true);
         
+        self.pageLoading = ko.observable(false);
+        self.pageLoading.subscribe(s => { self.isLoading(s) });
+
+        self.natalFormReady = ko.observable(false);
+        self.poemDataReady = ko.observable(false);
+
+        // Define pages and show/hide states:
+        let natalForm = new Page('natalForm');
+        natalForm.show(new Transition(self.natalFormReady));
+        natalForm.hide(new Transition(self.poemDataReady));
+
+        let poem = new Page('poem');
+        self.poemReady = ko.computed(() => self.poemDataReady() && natalForm.hiding());
+        poem.show(new Transition(self.poemReady, 'zoom'));
+
+        self.loadComponent = function(name, state){
+            if (!self.registry().includes(name)) {
+                state && state(true);
+                let cPath = "components";
+                let jsPath = `${cPath}/${name}/${name}`;
+                let htmlPath = `text!${cPath}/${name}/${name}.html`;
+                require([jsPath, htmlPath], function(viewModel, template){
+                    var vm = {
+                        viewModel: {
+                            createViewModel: function(params, componentInfo){
+                                self[name] = new viewModel(params);
+                                return self[name];
+                            }
+                        },
+                        template: template
+                    };
+                    ko.components.register(name, vm);
+                    self.registry.push(name);
+                    state && state(false);
+                });
+            }
+        };
+        self.removeComponent = function(name){
+            self.registry.remove(name);
+            ko.components.unregister(name);
+        };
+
+        let Pages = [
+            natalForm, poem
+        ];
+        self.pages = ko.observableArray([]);
+        Pages.forEach(page => {
+            page.loading.subscribe(s => self.pageLoading(s));
+            if (page.dispose) {
+                let sub = page.hidingComplete.subscribe(s => {
+                    if (self.pages().includes(page)) {
+                        self.pages(self.pages().filter(p => p !== page));
+                    };
+                    s && self.removeComponent(page.name());
+                    s && sub.dispose();
+                });
+            }
+        });        
+
+        self.loadPage = (pageName, params) => {
+            let page = Pages.find(page => page.name() === pageName);
+            params && page.setParams(params);
+            self.loadComponent(page.name(), page.loading);
+            self.pages.push(Pages.find(page => page.name() === pageName));
+        };
+        self.initialLoadComplete.subscribe(s => {
+            s && self.loadPage('natalForm');
+        });
+
+        self.hideOrb = ko.computed(() => self.natalFormReady() &&
+                                         !natalForm.showingComplete() &&
+                                         !natalForm.hidingComplete());
+        self.orbClass = ko.computed(() => {
+            let c = [];
+            if (!self.splashTimeout() || natalForm.showing()) c.push('orb-loader');
+            if (self.hideOrb()) c.push('masked');
+            if (self.natalFormReady() && natalForm.showingComplete()) c.push('logo');
+            if (self.poemReady()) c.push('logo');
+            return c.join(' ');
+        }); 
+
+        // Global input tracking:
         self.inputMode = ko.observable();
         self.pointerMode = ko.observable();
         self.inputMode.subscribe(newValue => {
@@ -14,66 +109,8 @@ define([
                 self.pointerMode(self.pointerMode());
             }
         });
-        self.registry = ko.observableArray(['pager']);
-        self.pages = [
-            'natalForm',
-            'poem'
-        ];
-        self.currentPageComponent = ko.observable({});
-        self.currentPage = ko.computed(() => {
-            return self.currentPageComponent().hasOwnProperty('name') ? self.currentPageComponent().name :
-                    typeof self.currentPageComponent() === 'string' ? self.currentPageComponent() : false;
-        });
-        self.changePage = function(name, params){
-            self.currentPageComponent(params ? { name: name, params: params } : name);
-            if (!self.registry().includes(name)) self.loadComponent(name);
-        }
-
-        self.isLoading = ko.observable(true);
-        self.loadComponent = function(name){
-            let cPath = "components";
-            let jsPath = `${cPath}/${name}/${name}`;
-            let htmlPath = `text!${cPath}/${name}/${name}.html`;
-            require([jsPath, htmlPath], function(viewModel, template){
-                var vm = {
-                    viewModel: {
-                        createViewModel: function(params, componentInfo){
-                            self[name] = new viewModel(params);
-                            return self[name];
-                        }
-                    },
-                    template: template
-                };
-                if (!self.registry().includes(name)) {
-                    ko.components.register(name, vm);
-                    self.registry.push(name);
-                }
-            });
-        };
-        self.removeComponent = function(name){
-            self.registry.remove(name);
-            ko.components.unregister(name);
-        };
-        self.currentPage.subscribe(newValue => {
-            let inactivePages = self.registry().filter(page => self.pages.includes(page) && page !== newValue);
-            if (inactivePages.length) {
-                inactivePages.forEach(page => {
-                    self.removeComponent(page);
-                });
-            }
-        });
-
-        self.ready = ko.computed(() => {
-            return self.registry().includes(self.currentPage());
-        });
-
-        setTimeout(() => {
-            self.changePage('natalForm');
-        }, 1200);
-        self.isLoading = ko.observable(true);
-        self.pageComponentAnimating = ko.observable(false);
-        self.orbAnimating = ko.observable(false);
-
+        
+        // Debug:
         self.requestCounter = ko.observableArray([{
             name: 'azure',
             requests: ko.observable(0)

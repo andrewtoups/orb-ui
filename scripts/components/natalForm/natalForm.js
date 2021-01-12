@@ -118,6 +118,8 @@ define([
         self.timeFieldsReady = ko.computed(() => {
             return self.months ? self.months().length === 12 : false && self.days ? self.days().length === self.months()[self.month() - 1].days : false;
         });
+        self.ready = ko.computed(() => self.timeFieldsReady() && self.suggestionFieldsReady());
+        self.ready.subscribe(s => { vm.natalFormReady(s) });
 
         // Location Data:
         let locationFields = [
@@ -269,7 +271,7 @@ define([
             fetch(`https://api.2psy.net/${route}`)
             .then(response => response.json())
             .then(data => {
-                vm.changePage('poem', {birthChart: data, birthData: {date: d, location: location, coord: coordinates}})
+                vm.loadPage('poem', {birthChart: data, birthData: {date: d, location: location, coord: coordinates}});
                 if (self.loadingRandom()) self.loadingRandom(false);
             });
         };
