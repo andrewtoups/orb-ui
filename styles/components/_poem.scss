@@ -30,6 +30,7 @@
         font-size: 90%;
         box-shadow: 0px 0px 5px $gold-bright;
         height: 36rem; width: 36rem;
+        @include xs { height: 55rem; width: 55rem; }
         display: flex;
         align-items: center; justify-content: center;
         > div {
