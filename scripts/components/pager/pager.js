@@ -97,7 +97,7 @@ define([
             if (!self.splashTimeout() || natalForm.showing()) c.push('orb-loader');
             if (self.hideOrb()) c.push('masked');
             if (self.natalFormReady() && natalForm.showingComplete()) c.push('logo');
-            if (self.poemReady()) c.push('logo');
+            if (self.poemDataReady()) c.push('logo');
             return c.join(' ');
         }); 
 
