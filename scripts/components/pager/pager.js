@@ -2,7 +2,7 @@ define([
     'ko',
     'utils/inputModeSwitcher',
     'utils/page'
-], function(ko, inputMode){
+], function(ko, inputMode, {Page, Transition}){
     return function() {
         var self = this;
         
