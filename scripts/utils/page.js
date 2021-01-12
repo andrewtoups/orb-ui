@@ -80,7 +80,7 @@ define(['ko', 'utils/transitionState'], ko => {
                 page.unbound = false;
             }
 
-            if (page.showState() && !page.showing()) {
+            if (page.showState() && !page.showingComplete()) {
                 page.showing(true);
                 setTimeout(() => {
                     page.hideClass.forEach(c => { c && element.classList.remove(c) });
@@ -88,7 +88,7 @@ define(['ko', 'utils/transitionState'], ko => {
                 }, timeout);
             }
 
-            if (page.hideState() && !page.hiding()) {
+            if (page.hideState() && !page.hidingComplete()) {
                 page.hiding(true);
                 page.hideClass.forEach(c => { c && element.classList.add(c) });
             }
