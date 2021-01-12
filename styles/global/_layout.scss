@@ -94,6 +94,7 @@ main .orb {
     position: absolute;
     top: 10px;
     text-align: center;
+    z-index: 5000;
     img {
       width: 25%;
       animation: Pulsate 5s ease-in-out infinite;
