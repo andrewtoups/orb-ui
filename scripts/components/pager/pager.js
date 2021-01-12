@@ -32,26 +32,27 @@ define([
         self.poemReady = ko.computed(() => self.poemDataReady() && natalForm.hiding());
         poem.show(new Transition(self.poemReady, 'zoom'));
 
-        self.isLoading = ko.observable(true);
-        self.loadComponent = function(name){
-            let cPath = "components";
-            let jsPath = `${cPath}/${name}/${name}`;
-            let htmlPath = `text!${cPath}/${name}/${name}.html`;
-            require([jsPath, htmlPath], function(viewModel, template){
-                var vm = {
-                    viewModel: {
-                        createViewModel: function(params, componentInfo){
-                            self[name] = new viewModel(params);
-                            return self[name];
-                        }
-                    },
-                    template: template
-                };
-                if (!self.registry().includes(name)) {
+        self.loadComponent = function(name, state){
+            if (!self.registry().includes(name)) {
+                state && state(true);
+                let cPath = "components";
+                let jsPath = `${cPath}/${name}/${name}`;
+                let htmlPath = `text!${cPath}/${name}/${name}.html`;
+                require([jsPath, htmlPath], function(viewModel, template){
+                    var vm = {
+                        viewModel: {
+                            createViewModel: function(params, componentInfo){
+                                self[name] = new viewModel(params);
+                                return self[name];
+                            }
+                        },
+                        template: template
+                    };
                     ko.components.register(name, vm);
                     self.registry.push(name);
-                }
-            });
+                    state && state(false);
+                });
+            }
         };
         self.removeComponent = function(name){
             self.registry.remove(name);
