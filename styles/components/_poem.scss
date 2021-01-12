@@ -27,6 +27,9 @@
         }
         background-color: opacity-compensate($main-bg-c, rgba($gold-2, .85));
         background-color: $gold-2;
+        background-image: url('jpg/cardboard-texture.jpg');
+        background-blend-mode: luminosity;
+        @include xs { background-repeat: no-repeat; background-size: cover; }
         font-size: 90%;
         box-shadow: 0px 0px 5px $gold-bright;
         height: 36rem; width: 36rem;
