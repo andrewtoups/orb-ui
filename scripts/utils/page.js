@@ -5,7 +5,6 @@ define(['ko', 'utils/transitionState'], ko => {
             (c.hasOwnProperty('name') && typeof c.name === 'string') &&
             (c.hasOwnProperty('params') && typeof c.params === 'object');
     };
-    // return (function() {
     const Transition = function(state, cssClass) {
         this.state = state || ko.observable();
         this.cssClass = cssClass || '';
@@ -96,5 +95,4 @@ define(['ko', 'utils/transitionState'], ko => {
         }
     };
     return {Page: Page, Transition: Transition};
-    // })();
 });
