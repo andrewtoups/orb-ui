@@ -37,6 +37,22 @@ section {
         opacity: 0;
         transition: opacity, ease-in, 1200ms;
     }
+    &.zoom {
+      transform: scale(1);
+      transition: transform, ease-in-out, 3000ms;
+      &.out {
+        transform: scale(.1);
+        transition: transform, ease-in-out, 3000ms;
+      }
+      #poem > div {
+        transform: rotate3d(0, 0, 0, 0deg);
+        transition: transform, ease-in-out, 3000ms;
+      }
+      &.out #poem > div {
+        transform: rotate3d(-.05, .1, .05, 7deg);
+        transition: transform, ease-in-out, 3000ms;
+      }
+    }
 }
 
 .loader { position: relative; height: 50px; width: 50px; }
