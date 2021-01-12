@@ -71,6 +71,7 @@ define(['ko', 'utils/transitionState'], ko => {
             page.setElement(element);
             page.hideClass.forEach(c => { element.classList.add(c) });
             page.baseClass.forEach(c => { element.classList.add(c) });
+        },
         update: (element, valueAccessor) => {
             let page = valueAccessor();
             let timeElapsed = Date.now() - page.created;
