@@ -59,11 +59,17 @@ define([
             return self.registry().includes(self.currentPage());
         });
 
-        setTimeout(() => {
-            self.changePage('natalForm');
-        }, 1200);
-        self.pageComponentAnimating = ko.observable(false);
-        self.orbAnimating = ko.observable(false);
+        self.hideOrb = ko.computed(() => self.natalFormReady() &&
+                                         !natalForm.showingComplete() &&
+                                         !natalForm.hidingComplete());
+        self.orbClass = ko.computed(() => {
+            let c = [];
+            if (!self.splashTimeout() || natalForm.showing()) c.push('orb-loader');
+            if (self.hideOrb()) c.push('masked');
+            if (self.natalFormReady() && natalForm.showingComplete()) c.push('logo');
+            if (self.poemReady()) c.push('logo');
+            return c.join(' ');
+        }); 
 
         // Global input tracking:
         self.inputMode = ko.observable();
