@@ -45,20 +45,20 @@ define(['ko', 'utils/transitionState'], ko => {
         });
 
         this.baseClass = [];
-        this.base = baseClass => { this.baseClass = baseClass };
+        this.base = baseClass => { this.baseClass = baseClass.split(' ') };
 
         this.showState = ko.observable();
-        this.showClass = '';
+        this.showClass = [];
         this.show = trans => {
-            this.showState = ko.pureComputed(() => trans.state());
-            this.showClass = trans.cssClass;
+            this.showState = ko.pureComputed(() => trans.state ? trans.state() : ko.observable());
+            this.showClass = trans.cssClass ? trans.cssClass.split(' ') : this.showClass;
         };
 
         this.hideState = ko.observable();
-        this.hideClass = hider;
+        this.hideClass = hider.split(' ');
         this.hide = trans => {
-            this.hideState = ko.pureComputed(() => trans.state());
-            this.hideClass = trans.cssClass || this.hideClass;
+            this.hideState = ko.pureComputed(() => trans.state ? trans.state() : ko.observable());
+            this.hideClass = trans.cssClass ? trans.cssClass.split(' ') : this.hideClass;
         };
 
         this.dispose = true;
@@ -70,8 +70,8 @@ define(['ko', 'utils/transitionState'], ko => {
             page.unbound = true;
             page.created = Date.now();
             page.setElement(element);
-            element.classList.add(page.hideClass);
-        },
+            page.hideClass.forEach(c => { element.classList.add(c) });
+            page.baseClass.forEach(c => { element.classList.add(c) });
         update: (element, valueAccessor) => {
             let page = valueAccessor();
             let timeElapsed = Date.now() - page.created;
@@ -84,14 +84,14 @@ define(['ko', 'utils/transitionState'], ko => {
             if (page.showState() && !page.showing()) {
                 page.showing(true);
                 setTimeout(() => {
-                    element.classList.remove(page.hideClass);
-                    page.showClass && element.classList.add(page.showClass);
+                    page.hideClass.forEach(c => { c && element.classList.remove(c) });
+                    page.showClass && page.showClass.forEach(c => { c && element.classList.add(c) });
                 }, timeout);
             }
 
             if (page.hideState() && !page.hiding()) {
                 page.hiding(true);
-                element.classList.add(page.hideClass);
+                page.hideClass.forEach(c => { c && element.classList.add(c) });
             }
         }
     };
