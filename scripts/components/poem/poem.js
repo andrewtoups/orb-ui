@@ -19,6 +19,11 @@ define(['ko'], function(ko){
         self.mercury = ko.observable(params.birthChart.mercury);
 
         self.poemData = ko.observableArray();
+        self.poemData.subscribe(s => {
+            s && self.isLoading(false);
+            s && vm.poemDataReady(true);
+            !s && vm.poemDataReady(false);
+        });
         self.isLoading = ko.observable(true)
         self.isLoading.subscribe(newValue => {
             vm.isLoading(newValue);
@@ -36,6 +41,5 @@ define(['ko'], function(ko){
             });
         });
         document.querySelector('main').focus();
-        self.isLoading(false);
     };
 });

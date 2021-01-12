@@ -29,9 +29,11 @@
         <div class="orb" data-bind="class: orbClass">
             <img src="styles/png/orb-logo.png">
         </div>
-        <!-- ko if: ready -->
-        <section data-bind="component: currentPageComponent, css: {masked: !registry().includes('suggestions')}"></section>
+
+        <!-- ko foreach: pages -->
+        <section data-bind="page: $data"></section>
         <!-- /ko -->
+
     </main>
     <script async data-main="scripts/rConfig" src="scripts/vendor/require.js"></script>
 </body>

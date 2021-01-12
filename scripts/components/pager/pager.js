@@ -20,6 +20,21 @@ define([
             self.currentPageComponent(params ? { name: name, params: params } : name);
             if (!self.registry().includes(name)) self.loadComponent(name);
         }
+        
+        self.pageLoading = ko.observable(false);
+        self.pageLoading.subscribe(s => { self.isLoading(s) });
+
+        self.natalFormReady = ko.observable(false);
+        self.poemDataReady = ko.observable(false);
+
+        // Define pages and show/hide states:
+        let natalForm = new Page('natalForm');
+        natalForm.show(new Transition(self.natalFormReady));
+        natalForm.hide(new Transition(self.poemDataReady));
+
+        let poem = new Page('poem');
+        self.poemReady = ko.computed(() => self.poemDataReady() && natalForm.hiding());
+        poem.show(new Transition(self.poemReady, 'zoom'));
 
         self.isLoading = ko.observable(true);
         self.loadComponent = function(name){
@@ -46,14 +61,23 @@ define([
             self.registry.remove(name);
             ko.components.unregister(name);
         };
-        self.currentPage.subscribe(newValue => {
-            let inactivePages = self.registry().filter(page => self.pages.includes(page) && page !== newValue);
-            if (inactivePages.length) {
-                inactivePages.forEach(page => {
-                    self.removeComponent(page);
+
+        let Pages = [
+            natalForm, poem
+        ];
+        self.pages = ko.observableArray([]);
+        Pages.forEach(page => {
+            page.loading.subscribe(s => self.pageLoading(s));
+            if (page.dispose) {
+                let sub = page.hidingComplete.subscribe(s => {
+                    if (self.pages().includes(page)) {
+                        self.pages(self.pages().filter(p => p !== page));
+                    };
+                    s && self.removeComponent(page.name());
+                    s && sub.dispose();
                 });
             }
-        });
+        });        
 
         self.ready = ko.computed(() => {
             return self.registry().includes(self.currentPage());
