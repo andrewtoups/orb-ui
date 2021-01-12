@@ -44,6 +44,9 @@ define(['ko', 'utils/transitionState'], ko => {
             }
         });
 
+        this.baseClass = [];
+        this.base = baseClass => { this.baseClass = baseClass };
+
         this.showState = ko.observable();
         this.showClass = '';
         this.show = trans => {

@@ -31,7 +31,9 @@ define([
 
         let poem = new Page('poem');
         self.poemReady = ko.computed(() => self.poemDataReady() && natalForm.hiding());
-        poem.show(new Transition(self.poemReady, 'zoom'));
+        poem.base('zoom');
+        poem.hide(new Transition(false, 'masked out'));
+        poem.show(new Transition(self.poemDataReady));
 
         self.loadComponent = function(name, state){
             if (!self.registry().includes(name)) {
