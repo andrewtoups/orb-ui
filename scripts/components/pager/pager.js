@@ -6,20 +6,17 @@ define([
     return function() {
         var self = this;
         
+        const splashDelay = 0;
+
         self.registry = ko.observableArray(['pager']);
-        self.pages = [
-            'natalForm',
-            'poem'
-        ];
-        self.currentPageComponent = ko.observable({});
-        self.currentPage = ko.computed(() => {
-            return self.currentPageComponent().hasOwnProperty('name') ? self.currentPageComponent().name :
-                    typeof self.currentPageComponent() === 'string' ? self.currentPageComponent() : false;
-        });
-        self.changePage = function(name, params){
-            self.currentPageComponent(params ? { name: name, params: params } : name);
-            if (!self.registry().includes(name)) self.loadComponent(name);
-        }
+
+        self.splashTimeout = ko.observable(true);
+        setTimeout(() => {self.splashTimeout(false)}, splashDelay);
+
+        self.initialLoadComplete = ko.computed(() => !self.splashTimeout() );
+        self.natalFormSubmitted = ko.observable(false);
+
+        self.isLoading = ko.observable(true);
         
         self.pageLoading = ko.observable(false);
         self.pageLoading.subscribe(s => { self.isLoading(s) });
@@ -79,8 +76,14 @@ define([
             }
         });        
 
-        self.ready = ko.computed(() => {
-            return self.registry().includes(self.currentPage());
+        self.loadPage = (pageName, params) => {
+            let page = Pages.find(page => page.name() === pageName);
+            params && page.setParams(params);
+            self.loadComponent(page.name(), page.loading);
+            self.pages.push(Pages.find(page => page.name() === pageName));
+        };
+        self.initialLoadComplete.subscribe(s => {
+            s && self.loadPage('natalForm');
         });
 
         self.hideOrb = ko.computed(() => self.natalFormReady() &&
