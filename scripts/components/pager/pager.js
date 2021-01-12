@@ -7,6 +7,7 @@ define([
         let self = this;
         const splashDelay = 0;
 
+        // Pager states:
         self.registry = ko.observableArray(['pager']);
 
         self.splashTimeout = ko.observable(true);
