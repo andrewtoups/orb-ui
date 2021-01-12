@@ -29,6 +29,7 @@ main:before {
 section {
     margin: 15px 0;
     @include xs { margin: 15px 10px; }
+    position: fixed;
 
     opacity: 1;
     transition: opacity, ease-out, 1200ms;
