@@ -99,5 +99,11 @@ main .orb {
       width: 45%;
       animation: Pulsate 5s ease-in-out infinite;
     }
+    @include xs {
+      top: 0;
+      padding: 10px 0;
+      width: 100%;
+      background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+    }
   }
 }
