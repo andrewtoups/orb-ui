@@ -7,13 +7,13 @@ body, html {
   height: 100%; width: 100%;
   @include xs { min-height: -webkit-fill-available; }
   margin: 0; overflow: hidden;
+  background-color: $main-bg-c;
 }
 
 main {
   height: 100%;
   display: flex;
   justify-content: center; align-items: center;
-  background-color: $main-bg-c;
   // @include moire;
   // animation: Moire 50s ease-in-out infinite;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
