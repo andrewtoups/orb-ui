@@ -106,11 +106,6 @@ main .orb {
     opacity: 0;
     transition: opacity ease-in 1200ms;
   }
-  &.orb-loader {
-    pointer-events: none;
-    z-index: 0;
-    img { max-width: 90vw; }
-  }
   &.logo {
     position: absolute;
     top: -$logo-height;
