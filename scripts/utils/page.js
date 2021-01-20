@@ -72,6 +72,7 @@ define(['ko', 'utils/transitionState'], ko => {
             page.hideClass.forEach(c => { element.classList.add(c) });
             page.baseClass.forEach(c => { element.classList.add(c) });
             element.classList.add(`${page.name()}-page`);
+            element.classList.add('fixed');
         },
         update: (element, valueAccessor) => {
             let page = valueAccessor();
@@ -89,6 +90,7 @@ define(['ko', 'utils/transitionState'], ko => {
                     page.showClass && page.showClass.forEach(c => { c && element.classList.add(c) });
                 }, timeout);
             }
+            else if (element.classList.contains('fixed') && page.showingComplete()) element.classList.remove('fixed');
 
             if (page.hideState() && !page.hidingComplete()) {
                 page.hiding(true);
