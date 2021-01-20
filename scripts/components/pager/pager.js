@@ -69,18 +69,13 @@ define([
         self.latestCompletePage = ko.observable('');
         Pages.forEach(page => {
             page.loading.subscribe(s => self.pageLoading(s));
-            if (page.dispose) {
-                let sub = page.hidingComplete.subscribe(s => {
-                    if (self.pages().includes(page)) {
-                        self.pages(self.pages().filter(p => p !== page));
-                    };
-                    s && self.removeComponent(page.name());
-                    s && sub.dispose();
-                });
-            }
             page.showingComplete.subscribe(s => {
                 if (s) {
                     self.latestCompletePage(`${page.name()}-page`);
+                    
+                    let disposables = self.pages().filter(p => p.dispose && p !== page);
+                    self.pages(self.pages().filter(p => !disposables.includes(p)));
+                    disposables.forEach(d => { self.removeComponent(d.name()) });
                 }
             });
         });        
