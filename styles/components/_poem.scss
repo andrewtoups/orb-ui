@@ -32,6 +32,7 @@
         background-blend-mode: luminosity;
         @include xs { background-repeat: no-repeat; background-size: cover; }
         font-size: 90%;
+        @include hz { font-size: 80%; }
         box-shadow: 0px 0px 5px $gold-bright;
         height: 36rem; width: 36rem;
         @include xs { height: 55rem; width: 55rem; }

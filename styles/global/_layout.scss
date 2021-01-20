@@ -4,10 +4,18 @@
 
 html { position: fixed; }
 body, html {
-  height: 100%; width: 100%;
-  @include xs { min-height: -webkit-fill-available; }
+  height: 100vh; width: 100vw;
   margin: 0; overflow: hidden;
   background-color: $main-bg-c;
+
+  @include xs {
+    min-height: -webkit-fill-available;
+    height: 100%;
+  }
+  
+  @include hz {
+    height: 100%;
+  }
 }
 
 body {
@@ -101,6 +109,7 @@ main .orb {
   &.logo {
     position: absolute;
     top: 10px;
+    @include hz { right: 15px; top: 15px; }
     text-align: center;
     z-index: 5000;
     img {

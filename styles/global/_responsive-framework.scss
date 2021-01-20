@@ -1,6 +1,7 @@
 $md: 1430px;
 $sm: 950px;
 $xs: 480px;
+$hz: 812px;
 
 @mixin md {
   @media (max-width: #{$md}) {
@@ -16,6 +17,12 @@ $xs: 480px;
 
 @mixin xs {
   @media (max-width: #{$xs}) {
+    @content;
+  }
+}
+
+@mixin hz {
+  @media only screen and (max-width: #{$hz}) and (orientation: landscape) {
     @content;
   }
 }

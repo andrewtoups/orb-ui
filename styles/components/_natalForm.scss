@@ -7,6 +7,7 @@ form.natal-form {
     padding: 10px;
     position: relative;
     z-index: 1;
+    @include hz { display: flex; }
 
     .loader {
         position: absolute;
