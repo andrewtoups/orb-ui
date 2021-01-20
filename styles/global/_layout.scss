@@ -97,6 +97,7 @@ section {
 $logo-height: 80px;
 $logo-height-xs: 12vh;
 $logo-height-hz: 60px;
+.orb img { max-width: 90vw; }
 main .orb {
   opacity: 1;
   transition: opacity ease-out 1200ms;
@@ -105,7 +106,6 @@ main .orb {
     transition: opacity ease-in 1200ms;
   }
   &.orb-loader {
-    position: fixed;
     pointer-events: none;
     z-index: 0;
     img { max-width: 90vw; }
