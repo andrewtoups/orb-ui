@@ -99,6 +99,7 @@ $logo-height-xs: 12vh;
 $logo-height-hz: 60px;
 .orb img { max-width: 90vw; }
 main .orb {
+  position: fixed;  
   opacity: 1;
   transition: opacity ease-out 1200ms;
   &.masked {
