@@ -69,6 +69,10 @@ section {
         transition: transform, ease-in-out, 3000ms;
       }
     }
+    &.poem-page.transform-complete {
+      transform: unset;
+      transition: unset;
+    }
 }
 
 .loader { position: relative; height: 50px; width: 50px; }

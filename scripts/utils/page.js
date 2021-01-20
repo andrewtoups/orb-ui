@@ -35,6 +35,7 @@ define(['ko', 'utils/transitionState'], ko => {
                 this.showing(false);
                 this.showingComplete(true);
                 this.hidingComplete(false);
+                getComputedStyle(this.element()).transform !== 'none' && this.element().classList.add('transform-complete');                
             }
             if (!s && this.hiding()) {
                 this.hiding(false);
@@ -85,6 +86,7 @@ define(['ko', 'utils/transitionState'], ko => {
 
             if (page.showState() && !page.showingComplete() && !page.hideState()) {
                 page.showing(true);
+                getComputedStyle(element).transform !== 'none' && element.classList.contains('transform-complete') && element.classList.remove('transform-complete');
                 setTimeout(() => {
                     page.hideClass.forEach(c => { c && element.classList.remove(c) });
                     page.showClass && page.showClass.forEach(c => { c && element.classList.add(c) });
