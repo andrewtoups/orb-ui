@@ -10,20 +10,27 @@ body, html {
   background-color: $main-bg-c;
 }
 
+body {
+  display: flex;
+  align-items: center; justify-content: center;
+  @include pseudo-clone('before');
+
+  &:before {
+    background-size: cover;
+    background: linear-gradient(44deg, rgba($coal, .5), rgba($gold-bright, .25));
+    animation: Gradient 20s ease-in-out infinite;
+  }
+}
+
 main {
-  height: 100%;
   display: flex;
   justify-content: center; align-items: center;
+  position: relative;
+  @include xs { height: 100%; width: 100%; }
+  @include hz { height: 100%; width: 100%; }
   // @include moire;
   // animation: Moire 50s ease-in-out infinite;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  @include pseudo-clone('before');
-}
-
-main:before {
-  background-size: cover;
-  background: linear-gradient(44deg, rgba($coal, .5), rgba($gold-bright, .25));
-  animation: Gradient 20s ease-in-out infinite;
 }
 
 section {

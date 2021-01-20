@@ -66,6 +66,7 @@ define([
             natalForm, poem
         ];
         self.pages = ko.observableArray([]);
+        self.latestCompletePage = ko.observable('');
         Pages.forEach(page => {
             page.loading.subscribe(s => self.pageLoading(s));
             if (page.dispose) {
@@ -77,6 +78,11 @@ define([
                     s && sub.dispose();
                 });
             }
+            page.showingComplete.subscribe(s => {
+                if (s) {
+                    self.latestCompletePage(`${page.name()}-page`);
+                }
+            });
         });        
 
         self.loadPage = (pageName, params) => {

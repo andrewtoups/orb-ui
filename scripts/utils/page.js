@@ -71,6 +71,7 @@ define(['ko', 'utils/transitionState'], ko => {
             page.setElement(element);
             page.hideClass.forEach(c => { element.classList.add(c) });
             page.baseClass.forEach(c => { element.classList.add(c) });
+            element.classList.add(`${page.name()}-page`);
         },
         update: (element, valueAccessor) => {
             let page = valueAccessor();

@@ -10,8 +10,6 @@
 
     <link rel="stylesheet" href="styles/main.css" type="text/css">
 </head>
-<body>
-    <main data-bind="event: {keydown: keyDown}, keydownBubble: false, inputMode: inputMode" tabindex="0">
         <div class="debug">
             <dl>
                 <!-- ko foreach: requestCounter -->
@@ -27,6 +25,8 @@
                 <dd data-bind="text: pointerMode"></dd>
             </dl>
         </div>
+<body data-bind="event: {keydown: keyDown}, keydownBubble: false, inputMode: inputMode" tabindex="0">
+    <main data-bind="class: latestCompletePage()">        
         <div class="orb" data-bind="class: orbClass">
             <!-- <img src="styles/png/orb-logo.png"> -->
             <img src="styles/png/orb-logo-blue-dot-church.png">
