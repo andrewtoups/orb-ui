@@ -80,6 +80,8 @@ define([
             });
         });        
 
+        self.pageTransitioning = ko.computed(() => self.pages().some(page => page.transitioning()));
+
         self.loadPage = (pageName, params) => {
             let page = Pages.find(page => page.name() === pageName);
             params && page.setParams(params);
@@ -90,12 +92,16 @@ define([
             s && self.loadPage('natalForm');
         });
 
-        self.hideOrb = ko.computed(() => self.natalFormReady() &&
-                                         !natalForm.showingComplete() &&
-                                         !natalForm.hidingComplete());
+        self.hideOrb = ko.computed(() => {
+            let conditions = [
+                (self.natalFormReady() && !natalForm.showingComplete() && !natalForm.hidingComplete()),
+                (self.pageTransitioning())
+            ];
+            return conditions.some(cond => cond);
+        });
         self.orbClass = ko.computed(() => {
             let c = [];
-            if (!self.splashTimeout() || natalForm.showing()) c.push('orb-loader');
+            if (self.pageTransitioning() && self.pages().length === 1) c.push('orb-loader');
             if (self.hideOrb()) c.push('masked');
             if (self.natalFormReady() && natalForm.showingComplete()) c.push('logo');
             if (self.poemDataReady()) c.push('logo');
