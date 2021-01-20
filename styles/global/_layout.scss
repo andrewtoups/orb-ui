@@ -110,6 +110,7 @@ main .orb {
     position: absolute;
     top: -$logo-height;
     @include hz { right: 15px; top: 15px; }
+    transition: opacity 1200ms ease-out;
     text-align: center;
     z-index: 5000;
     img {
