@@ -93,6 +93,10 @@ section {
   height: 60px; width: 60px;
   filter: $gold-2-svg;
 }
+
+$logo-height: 80px;
+$logo-height-xs: 12vh;
+$logo-height-hz: 60px;
 main .orb {
   opacity: 1;
   transition: opacity ease-out 1200ms;
@@ -108,12 +112,14 @@ main .orb {
   }
   &.logo {
     position: absolute;
-    top: 10px;
+    top: -$logo-height;
     @include hz { right: 15px; top: 15px; }
     text-align: center;
     z-index: 5000;
     img {
-      width: 45%;
+      height: $logo-height;
+      @include xs { height: $logo-height-xs; }
+      @include hz { height: $logo-height-hz; }
       animation: Pulsate 5s ease-in-out infinite;
     }
     @include xs {
