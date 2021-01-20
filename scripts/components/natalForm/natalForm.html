@@ -56,7 +56,7 @@
     <fieldset class="submit">
         <div>
             <button data-bind="click: calculateChart,
-                            enable: submitReady,
+                            enable: submitReady || !auto(),
                             hasFocus: submitReady,
                             css: {disabled: !submitReady(), enabled: submitReady()},
                             attr: {title: submitReady() ? '' : 'Fill out birth time and location to proceed.'}" type="button">Submit</button>

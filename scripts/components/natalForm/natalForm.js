@@ -272,7 +272,7 @@ define([
             .then(response => response.json())
             .then(data => {
                 vm.loadPage('poem', {birthChart: data, birthData: {date: d, location: location, coord: coordinates}});
-                if (self.loadingRandom()) self.loadingRandom(false);
+                self.auto() && self.auto(false);
             });
         };
 
@@ -351,7 +351,7 @@ define([
             if (self.loadingTZ()) return true;
             if (self.loadingGeoResults()) return true;
             if (self.suggestionsLoading()) return true;
-            if (self.loadingRandom()) return true;
+            if (self.auto()) return true;
             if (self.timeProcessing()) return true;
             return false;
         });
