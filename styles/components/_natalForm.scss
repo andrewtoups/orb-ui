@@ -30,10 +30,7 @@ form.natal-form {
             transition: opacity 500ms ease-in-out;
         }
         .legend {
-            position: absolute;
-            bottom: 102%;
             opacity: 1;
-            color: $form-bg-c;
             transition: opacity 500ms ease-in-out;
             animation: Wavy 10s ease-in-out infinite;
         }
@@ -41,7 +38,6 @@ form.natal-form {
         &:last-child { padding-top: 0; }
 
         legend, .legend {
-            border-bottom: 1px dashed $form-text-c;
             align-self: baseline;
         }
 
