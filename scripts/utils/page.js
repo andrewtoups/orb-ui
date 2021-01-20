@@ -83,7 +83,7 @@ define(['ko', 'utils/transitionState'], ko => {
                 page.unbound = false;
             }
 
-            if (page.showState() && !page.showingComplete()) {
+            if (page.showState() && !page.showingComplete() && !page.hideState()) {
                 page.showing(true);
                 setTimeout(() => {
                     page.hideClass.forEach(c => { c && element.classList.remove(c) });
