@@ -104,3 +104,13 @@
         outline: none;
     }
 }
+
+$logo-height-poem: 75px;
+.poem-page .orb.logo {
+  img { height: $logo-height-poem; }
+  @include xs { img { height: $logo-height-xs; }}
+  top: $logo-height-poem/2;
+  @include xs { top: 0; }
+  @include hz { top: 15px; right: 15px; }
+  transition: opacity 1200ms ease-out;
+}
