@@ -28,7 +28,7 @@
             <div>
                 <label>Hour</label> 
                 <span class="input-container">
-                    <select data-bind="cleanValue: hour, options: hours, optionsPlaceholder: 1"></select>
+                    <select data-bind="cleanValue: hour, options: hours, optionsPlaceholder: 1, optionsText: hour => hour, optionsValue: hour => hour === 12 ? 0 : hour"></select>
                 </span>
             </div>
             <div>
