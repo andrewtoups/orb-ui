@@ -2,7 +2,6 @@
 @import 'global/variables';
 @import 'global/responsive-framework';
 @import 'global/scrollbar';
-@import 'global/layout';
 
 @import 'animations/gradient';
 @import 'animations/orb';
@@ -12,6 +11,8 @@
 @import 'animations/pulsate';
 
 @import 'global/nav';
+@import 'global/layout';
+
 @import 'components/debug';
 @import 'components/natalForm';
 @import 'components/suggestions';
