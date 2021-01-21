@@ -55,6 +55,10 @@
             @include xs { margin-left: 0; }
             // text-align: center;
         }
+
+        @include hz {
+            right: 5vw;
+        }
     }
     form {
         margin: 0;
