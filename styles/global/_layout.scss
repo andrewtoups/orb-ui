@@ -49,6 +49,9 @@ section {
 
     opacity: 1;
     transition: opacity, ease-out, 1200ms;
+
+    display: flex;
+    justify-content: center; 
     &.masked {
         opacity: 0;
         transition: opacity, ease-in, 1200ms;
