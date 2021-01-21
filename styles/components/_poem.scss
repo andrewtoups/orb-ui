@@ -4,7 +4,6 @@
     box-shadow: 0px 0px 1000px -50px rgba($coal, .25);
     border-radius: 2px;
     animation: Wiggle 50s linear infinite;
-    z-index: 1000;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     @include pseudo-clone('after');
     &:after {
