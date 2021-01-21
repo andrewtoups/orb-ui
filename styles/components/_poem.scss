@@ -119,6 +119,8 @@
     }
 }
 
+@include xs { section.poem-page { margin: 0; } }
+
 $logo-height-poem: 75px;
 .poem-page .orb.logo {
   img { height: $logo-height-poem; }
