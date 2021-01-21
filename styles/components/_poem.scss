@@ -38,7 +38,6 @@
         // background-color: opacity-compensate($main-bg-c, rgba($gold-2, .85));
         background-color: $gold-2;
         background-image: url('png/moon-transparent.png');
-        background-size: cover;
         background-blend-mode: luminosity;
         background-size: $moon-size $moon-size;
         @include xs { background-repeat: no-repeat; background-size: $moon-size-xs $moon-size-xs; }
