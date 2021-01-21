@@ -35,7 +35,7 @@
             animation: Orb 30s ease-in-out infinite;
             @include xs { height: $moon-size-xs; width: $moon-size-xs; }
         }
-        background-color: opacity-compensate($main-bg-c, rgba($gold-2, .85));
+        // background-color: opacity-compensate($main-bg-c, rgba($gold-2, .85));
         background-color: $gold-2;
         background-image: url('png/moon-transparent.png');
         background-size: cover;
