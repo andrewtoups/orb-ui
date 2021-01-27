@@ -199,10 +199,14 @@ define([
             s += s && self.day() ? `/${self.day()}` : '';
             s += s && self.year() ? `/${self.year()}` : '';
             s += s && self.hour() ? ` ${self.hour()}` : '';
-            s += s && self.minute() ? `:${self.minute()} ` : '';
-            s += s && self.pmOffset() ? (self.pmOffset() === 0 ? 'AM' : 'PM') : '';
-            s += s && self.histTimeZone() ? self.histTimeZone() : '';
+            s += s && self.minute() ? `:${self.minute() < 10 ? '0'+self.minute() : self.minute()} ` : '';
+            s += s && self.pmOffset() > -1 ? (self.pmOffset() === 0 ? 'AM' : 'PM') : '';
+            s += s && self.histTimeZone() ? ` ${self.histTimeZone()}` : '';
             return s;
+        });
+        self.locationSummary = ko.computed(() => {
+            let a = self.currentLocationValue() ? self.currentLocationValue().address : false;
+            if (a) return `${a.city}, ${a.state}, ${a.country}`;
         });
         
         // Timezone offset Lookup:
