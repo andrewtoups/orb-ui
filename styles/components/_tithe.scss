@@ -1,0 +1,50 @@
+// :root {
+//     --b-pos: 0px; --s-pos: 0px; --e-pos: 0px;
+//     --duration: 3s; --delay: 0ms; --angle: 0deg;
+// }
+@keyframes Random-Drop {
+    0% {
+        transform:
+            translate(var(--s-pos), -40px)
+            rotate3d(1,1,1,var(--angle));
+    }
+    100% {
+        transform:
+            translate(var(--e-pos), var(--b-pos))
+            rotate3d(1,1,1,1080deg);
+        opacity: 0;
+    }
+}
+span[class^="currency"] {
+    transform:
+        translate(var(--s-pos), -40px)
+        rotate3d(1,1,1,var(--angle));
+    opacity: .75;
+    position: absolute;
+    animation-name: Random-Drop;
+    animation-duration: var(--duration);
+    animation-delay: var(--delay);
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+    font-size: 1.5em;
+    pointer-events: none;
+}
+
+.tithe section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative;
+    button { position: relative; }
+    p { text-align: center; }
+}
+.confetti-container {
+    position: absolute;
+    height: 100%; width: 100%;
+    @include xs { height: 100vh; }
+    overflow: hidden;
+    top: 0;
+}
+.bless-you-my-child {
+    text-align: center;
+}

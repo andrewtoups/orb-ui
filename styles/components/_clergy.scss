@@ -1,0 +1,22 @@
+.clergy {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    ul {
+        list-style: none; padding: 0; margin: 0;
+        li {
+            display: flow-root;
+            h2 a {
+                text-decoration: none;
+                color: $gold-2;
+            }
+            img {
+                float: left;
+                max-width: 50%;
+                min-height: 20px;
+                max-height: 50px;
+                margin-right: 10px; margin-bottom: 10px;
+                border-radius: 5px;
+                background-color: rgba(255,255,255,.5);
+            }
+        }
+    }
+}

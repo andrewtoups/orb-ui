@@ -1,0 +1,12 @@
+<section>
+    <div data-bind="foreach: confettis, childrenComplete: initializeConfetti" class="confetti-container">
+        <!-- ko if: active -->
+        <span data-bind="class: confettiClass(), text: currency, style: styleVars">
+        </span>
+        <!-- /ko -->
+    </div>
+    <div class="zoom-spin bless-you-my-child">
+        <div>Bless you</div>
+        <div>my child</div>
+    </div>
+</section>
