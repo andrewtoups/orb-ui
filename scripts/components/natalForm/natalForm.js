@@ -369,6 +369,7 @@ define([
             if (self.suggestionsLoading()) return true;
             if (self.auto()) return true;
             if (self.timeProcessing()) return true;
+            if (self.submitted()) return true;
             return false;
         });
         self.isLoading.subscribe(newValue => {
