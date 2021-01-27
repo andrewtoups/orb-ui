@@ -4,17 +4,21 @@
 
 html { position: fixed; }
 body, html {
-  height: 100vh; width: 100vw;
+  min-height: 100vh;
+  width: 100vw;
   margin: 0; overflow: hidden;
   background-color: $main-bg-c;
-
-  @include xs {
-    min-height: -webkit-fill-available;
-    height: 100%;
-  }
   
   @include hz {
-    height: 100%;
+    min-height: 100%;
+    max-height: 100vh;
+  }
+}
+@include xs { 
+  html { min-height: 100vh; min-height: -webkit-fill-available; }
+  body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
   }
 }
 
@@ -34,8 +38,8 @@ main {
   display: flex;
   justify-content: center; align-items: center;
   position: relative;
-  @include xs { height: 100%; width: 100%; }
-  @include hz { height: 100%; width: 100%; }
+  @include xs { min-height: 100vh; min-height: -webkit-fill-available; width: 100%; }
+  @include hz { min-height: 100vh; min-height: -webkit-fill-available; width: 100%; }
   // @include moire;
   // animation: Moire 50s ease-in-out infinite;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -116,7 +120,7 @@ main .orb {
   &.logo {
     position: absolute;
     top: -$logo-height;
-    @include hz { right: 15px; top: 15px; }
+    @include hz { right: 7vw; top: 15px; }
     transition: opacity 1200ms ease-out;
     text-align: center;
     z-index: 5000;
