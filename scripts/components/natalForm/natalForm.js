@@ -248,6 +248,7 @@ define([
         // Submit:
         self.auto = ko.observable(false);
         self.birthChart = ko.observable();
+        self.submitted = ko.observable(false);
         self.submitReady = ko.computed(() => {
             let cond = (
                 self.coordinates()
@@ -257,10 +258,19 @@ define([
             );
             if (cond && self.auto()) {
                 self.auto(false);
-                self.calculateChart();
+                self.submit();
             }
             return !!cond;
         });
+        self.submit = () => {
+            self.submitted(true);
+            let params = {
+                birthChart: self.birthChart(),
+                birthData: { date: self.UTCdate(), location: self.currentLocationValue().address, coord: self.coordinates() }
+            };
+            vm.loadPage('poem', params);
+            self.auto() && self.auto(false);
+        };
 
         self.calculateChart = function(){
             if (self.UTCdate() && self.coordinates()) {
