@@ -19,10 +19,11 @@ define(['ko'], function(ko){
         self.mercury = ko.observable(params.birthChart.mercury);
 
         self.poemData = ko.observableArray();
-        self.poemData.subscribe(s => {
-            s && self.isLoading(false);
-            s && vm.poemDataReady(true);
-            !s && vm.poemDataReady(false);
+        self.poemData.subscribe(newValue => {
+            let dataExists = !!newValue.length;
+            self.isLoading(!dataExists);
+            vm.poemDataReady(dataExists);
+            vm.hidePoem(false);
         });
         self.isLoading = ko.observable(true)
         self.isLoading.subscribe(newValue => {

@@ -30,6 +30,10 @@ define(['ko', 'utils/transitionState'], ko => {
         this.hiding = ko.observable(false);
         this.showingComplete = ko.observable(false);
         this.hidingComplete = ko.observable(false);
+        this.reset = () => {
+            this.loading(true); this.transitioning(false); this.showing(false);
+            this.hiding(false); this.showingComplete(false); this.hidingComplete(false);
+        };
         this.transitioning.subscribe(s => {
             console.log(this.name(), (s ? 'is' : 'is not'), 'transitioning');
             if (!s && this.showing()) {
@@ -75,6 +79,7 @@ define(['ko', 'utils/transitionState'], ko => {
             page.setElement(element);
             page.hideClass.forEach(c => { element.classList.add(c) });
             page.baseClass.forEach(c => { element.classList.add(c) });
+            if (page.name() === 'poem') console.log('on creation, poem showingComplete:',page.showingComplete());
             element.classList.add(`${page.name()}-page`);
             element.classList.add('fixed');
         },

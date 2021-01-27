@@ -28,12 +28,15 @@ define([
         let natalForm = new Page('natalForm');
         natalForm.show(new Transition(self.natalFormReady));
         natalForm.hide(new Transition(self.poemDataReady));
+        self.natalFormShowingComplete = natalForm.showingComplete;
+        self.natalFormHidingComplete = natalForm.hidingComplete;
 
         let poem = new Page('poem');
+        self.hidePoem = ko.observable(false);
         self.poemReady = ko.computed(() => self.poemDataReady() && natalForm.hiding());
         poem.base('zoom');
-        poem.hide(new Transition(false, 'masked out'));
         poem.show(new Transition(self.poemDataReady));
+        poem.hide(new Transition(self.hidePoem, 'masked out'));
 
         self.loadComponent = function(name, state){
             if (!self.registry().includes(name)) {
@@ -84,6 +87,7 @@ define([
 
         self.loadPage = (pageName, params) => {
             let page = Pages.find(page => page.name() === pageName);
+            page.reset();
             params && page.setParams(params);
             self.loadComponent(page.name(), page.loading);
             self.pages.push(Pages.find(page => page.name() === pageName));

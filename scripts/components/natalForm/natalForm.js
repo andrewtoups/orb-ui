@@ -130,8 +130,6 @@ define([
         self.timeFieldsReady = ko.computed(() => {
             return self.months ? self.months().length === 12 : false && self.days ? self.days().length === self.months()[self.month() - 1].days : false;
         });
-        self.ready = ko.computed(() => self.timeFieldsReady() && self.suggestionFieldsReady());
-        self.ready.subscribe(s => { vm.natalFormReady(s) });
 
         // Location Data:
         let locationFields = [
