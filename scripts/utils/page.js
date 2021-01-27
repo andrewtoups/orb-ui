@@ -23,8 +23,6 @@ define(['ko', 'utils/transitionState'], ko => {
         });
 
         this.loading = ko.observable(true);
-        // this.loading.subscribe(s => { !s && ko.applyBindingsToNode(this.element(), {component: this.component()}) });
-
         this.transitioning = ko.observable(false);
         this.showing = ko.observable(false);
         this.hiding = ko.observable(false);
