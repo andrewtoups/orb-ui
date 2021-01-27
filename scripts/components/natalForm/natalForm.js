@@ -68,7 +68,7 @@ define([
         
         self.days = ko.computed(() => {
             let length;
-            if (self.months() && self.month() ? self.months().length === 12 : false) {
+            if (self.months() && self.months().length === 12 && self.month()) {
                 let isLeapYear = ((self.year() % 4 == 0) && (self.year() % 100 != 0)) || (self.year() % 400 == 0);
                 length = self.months()[self.month() - 1].days;
                 if (isLeapYear && self.month() === "2") length++;
