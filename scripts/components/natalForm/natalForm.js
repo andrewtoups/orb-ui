@@ -46,6 +46,7 @@ define([
         });
         self.rawDate.extend({rateLimit: 1000});
         self.UTCdate = ko.observable();
+        self.historicalTZData = ko.observable();
 
         // Time webform observables:
         self.months = ko.observableArray();
@@ -233,8 +234,10 @@ define([
                                 let UTCdate = new Date(rawDate);
                                 UTCdate.setHours(UTCdate.getHours() - (historicalOffset + DSTOffset));
                                 self.UTCdate(UTCdate);
+                                self.historicalTZData(data.TimeZones[0].ReferenceTime);
                             } else {
                                 self.UTCdate(null);
+                                console.log("Warning: No timezone found for historical data.");
                             }
                             self.loadingTZ(false);
                         });
