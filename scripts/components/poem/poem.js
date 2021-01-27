@@ -1,9 +1,11 @@
-define(['ko'], function(ko){
+define(['ko', 'api'], function(ko, api){
     return function(params){
         let self = this;
         console.log(params.birthChart);
 
-        self.showPlacements = ko.observable(false);
+        self.showDebug = ko.observable(false);
+        self.linesActive = ko.observable(false);
+        self.toggleActive = () => { self.linesActive(!self.linesActive())};
         let bdate = params.birthData.date;
         let blocation = params.birthData.location;
         let bcoords = params.birthData.coord;
@@ -39,6 +41,6 @@ define(['ko'], function(ko){
                 };
             });
         });
-        document.querySelector('main').focus();
+        document.querySelector('body').focus();
     };
 });

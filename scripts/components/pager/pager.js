@@ -157,7 +157,7 @@ define([
         };
 
         self.keyDown = function(value, event){
-            if (event.key === "p" && vm.poem) vm.poem.showPlacements(!vm.poem.showPlacements());
+            if (event.key === "p" && vm.poem) vm.poem.showDebug(!vm.poem.showDebug());
             if (event.key === "`" && !self.natalFormSubmitted() && !self.isLoading()) vm.natalForm.randomChart();
             return true;
         };

@@ -5,6 +5,7 @@
     border-radius: 2px;
     animation: Wiggle 50s linear infinite;
     @include xs { animation: none; }
+    @include hz { animation: none; }
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     @include pseudo-clone('after');
     &:after {
@@ -83,7 +84,7 @@
             transition: color 700ms ease-in-out,
                         text-shadow 2000ms ease-in-out;
         }
-        &:hover, &:active {
+        &:hover, &.active {
             legend {
                 color: rgba($poem-text-hover-c, .5);
                 text-shadow: 0px 1px 1px rgba($coal, .5);
@@ -104,14 +105,7 @@
         padding: 2px;
         margin: 0;
     }
-    .debug-placement {
-        top: 25%;
-        left: -35%;
-    }
-    .debug-bday {
-        top: 0;
-        left: 0;
-    }
+    .debug-bday { bottom: 72px; }
     &.moon > div.debug-bday {
         margin: 0;
     }
@@ -125,10 +119,10 @@
 $logo-height-poem: 75px;
 .poem-page .orb.logo {
   img { height: $logo-height-poem; }
-  @include xs { img { height: $logo-height-xs; }}
+  @include xs { img { height: $logo-height-xs; } }
   top: $logo-height-poem/2;
   @include xs { top: 0; }
-  @include hz { top: 15px; right: 15px; }
+  @include hz { position: fixed; top: 15px; right: 7vw; }
   transition: opacity 1200ms ease-out;
 }
 .poem-page nav {
@@ -145,6 +139,8 @@ $logo-height-poem: 75px;
     width: 100%;
     background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
     font-size: 140%;
+
+    @include xs { font-size: 130%; }
     @include hz { font-size: 5vw; }
     z-index: 1000;
 
@@ -177,9 +173,6 @@ $logo-height-poem: 75px;
             transform: scale(1.2);
             transition: transform 250ms ease-in-out;
         }
-
-        background-color: rgba($blue-2, 0.3);
-        box-shadow: 0px 0px 5px 3px rgba($blue-2, 0.3);
         margin: 0 9px;
         @include hz { margin: 10px 0; }
         line-height: .9;
@@ -191,3 +184,4 @@ $logo-height-poem: 75px;
         transition: opacity, ease-in, 1200ms;
     }
 }
+// @include xs { main.poem-page { animation: Wiggle 50s linear infinite; } }
