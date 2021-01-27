@@ -34,7 +34,7 @@
             <div>
                 <label>Minutes</label>
                 <span class="input-container">
-                    <select data-bind="cleanValue: minute, options: minutes, optionsPlaceholder: 0"></select>
+                    <select data-bind="cleanValue: minute, options: minutes, optionsPlaceholder: '00', optionsText: minute => minute < 10 ? '0'+minute : minute, optionsValue: minute => minute"></select>
                 </span>
             </div>
             <div>
