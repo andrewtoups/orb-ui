@@ -423,20 +423,22 @@ define([
             }
             let time = 0;
             let rTime = 200;
-            let interval = rTime/5;
+            let interval = rTime/4;
             let waitTime = 100;
+            self.touchAll();
             const randomize = window.setInterval(() => {
                 time += interval;
-                self.month(setRand("months"));
-                self.day(setRand("days"));
-                self.year(setRand("years"));
-                self.hour(setRand("hours"));
-                self.minute(setRand("minutes"));
-                self.pmOffset(rInt(0,2)*12);
+                let delay = 50;
+                setTimeout(() => {self.month(setRand("months"))}, delay);
+                setTimeout(() => {self.day(setRand("days"))}, delay*2);
+                setTimeout(() => {self.year(setRand("years"))}, delay*3);
+                setTimeout(() => {self.hour(setRand("hours"))}, delay*4);
+                setTimeout(() => {self.minute(setRand("minutes"))}, delay*5);
+                setTimeout(() => {self.pmOffset(rInt(0,2)*12)}, delay*6);
+                
                 if (time > rTime) {
                     window.clearInterval(randomize)
                     setTimeout(() => {
-                        self.UTCdate(new Date(self.rawDate()));
                         let tryAgain = () => {
                             if (self.cityResponseData().length === 0) {
                                 randCity();
