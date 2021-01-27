@@ -376,6 +376,32 @@ define([
             vm.isLoading(newValue);
         });
 
+        self.touchAll = () => {
+            document.querySelectorAll('select, input[type="number"]').forEach(node => {
+                node.focus();
+                node.blur();
+            });
+        };
+        // Load programmatically:
+        self.ready = ko.computed(() => self.timeFieldsReady() && self.suggestionFieldsReady());
+        self.ready.subscribe(s => {
+            vm.natalFormReady(s)
+        });
+        vm.natalFormShowingComplete.subscribe(s => {
+            if (s && params && params.date && params.city) {
+                self.auto(true);
+                const d = params.date, c = params.city;
+                let interval = 100;
+                self.timeObservables.forEach(field => {
+                    setTimeout(() => {
+                        self[field](d[field]);
+                        interval += interval;
+                    }, interval);
+                });
+                self.touchAll();
+                self.cityQuery(c);
+            }
+        });
         
         //Debug:
         self.randomChart = function() {
