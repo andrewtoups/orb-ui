@@ -406,10 +406,6 @@ define([
         //Debug:
         self.randomChart = function() {
             self.auto(true);
-            document.querySelectorAll('select, input').forEach(node => {
-                node.focus();
-                node.blur();
-            });
             let randCity = () => {
                 require(['dataStore/cities'], cities => {
                     let randCity = cities[Math.floor(Math.random()*cities.length)];
