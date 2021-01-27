@@ -1,9 +1,10 @@
 define([
     'ko',
+    'api',
     'utils/clean',
     'utils/optionsPlaceholder'
-], function(ko){
-    return function() {
+], function(ko, api){
+    return function(params) {
         var self = this;
         // Loading:
         vm.loadComponent('suggestions');
@@ -246,6 +247,7 @@ define([
 
         // Submit:
         self.auto = ko.observable(false);
+        self.birthChart = ko.observable();
         self.submitReady = ko.computed(() => {
             let cond = (
                 self.coordinates()
@@ -261,19 +263,15 @@ define([
         });
 
         self.calculateChart = function(){
-            let d = self.UTCdate();
-            let coordinates = self.coordinates() ? self.coordinates() : [-92.0198427,30.2240897];
-            let long = coordinates[0];
-            let lat = coordinates[1];
-            let location = self.currentLocationValue().address;
-            let route = `calculateChart/${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}/${d.getHours()}/${d.getMinutes()}/${long}/${lat}`;
-            
-            fetch(`https://api.2psy.net/${route}`)
-            .then(response => response.json())
-            .then(data => {
-                vm.loadPage('poem', {birthChart: data, birthData: {date: d, location: location, coord: coordinates}});
-                self.auto() && self.auto(false);
-            });
+            if (self.UTCdate() && self.coordinates()) {
+                self.birthChart(null);
+                let d = self.UTCdate();
+                let coordinates = self.coordinates() ? self.coordinates() : [-92.0198427,30.2240897];
+                let location = self.currentLocationValue().address;
+
+                api.birthChart({date: d, coordinates: coordinates})
+                .then(data => { self.birthChart(data) });
+            }
         };
 
         // Geolocation lookup:

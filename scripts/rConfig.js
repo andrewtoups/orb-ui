@@ -2,7 +2,8 @@ requirejs.config({
     baseUrl: 'scripts',
     paths: {
         'ko': 'vendor/knockout',
-        'text': 'vendor/text'
+        'text': 'vendor/text',
+        'api': 'utils/api'
     }
 });
 

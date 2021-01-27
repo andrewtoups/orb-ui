@@ -28,9 +28,7 @@ define(['ko'], function(ko){
         self.isLoading.subscribe(newValue => {
             vm.isLoading(newValue);
         });
-        fetch('https://api.2psy.net/orbData/poem')
-        .then(response => response.json())
-        .then(data => self.poemData(data));
+        api.poem().then(data => { self.poemData(data) });
         self.lines = ko.computed(() => {
             return self.poemData().map(line => {
                 let planet = Object.keys(line)[0];

@@ -31,14 +31,17 @@ define(['ko', 'utils/transitionState'], ko => {
         this.showingComplete = ko.observable(false);
         this.hidingComplete = ko.observable(false);
         this.transitioning.subscribe(s => {
+            console.log(this.name(), (s ? 'is' : 'is not'), 'transitioning');
             if (!s && this.showing()) {
+                console.log('showing', this.name(), 'complete');
                 this.showing(false);
                 this.showingComplete(true);
                 this.hidingComplete(false);
                 getComputedStyle(this.element()).transform !== 'none' && this.element().classList.add('transform-complete');                
             }
             if (!s && this.hiding()) {
-                this.hiding(false);
+                console.log('hiding', this.name(), 'complete');
+                this.hiding(false); 
                 this.hidingComplete(true);
                 this.showingComplete(false);
             }
