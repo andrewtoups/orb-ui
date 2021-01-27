@@ -2,7 +2,8 @@ define([], function(){
     return (function(){
         let mobileMsgContainer = document.createElement('div');
         mobileMsgContainer.style.position = "absolute";
-        mobileMsgContainer.style.zIndex = "1";
+        mobileMsgContainer.style.top = "0px";
+        mobileMsgContainer.style.zIndex = "2000000000";
         mobileMsgContainer.style.width = "100%";
         mobileMsgContainer.style.maxHeight = "25vh";
         let count = 0;
@@ -19,9 +20,9 @@ define([], function(){
             count++;
             timeout = timeout || 2500;
             let msg = new mobileMsgDiv(text).div;
-            // mobileMsgContainer.prepend(msg);
+            mobileMsgContainer.prepend(msg);
             setTimeout(() => {
-                // mobileMsgContainer.removeChild(msg);
+                mobileMsgContainer.removeChild(msg);
             }, 2500);
         };
         return mobileMsg;
