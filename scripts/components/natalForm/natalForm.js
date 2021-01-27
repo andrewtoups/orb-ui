@@ -45,8 +45,18 @@ define([
             }
         });
         self.rawDate.extend({rateLimit: 1000});
-        self.UTCdate = ko.observable();
         self.historicalTZData = ko.observable();
+
+        self.tzOffset = ko.computed(() => {
+            let d = self.historicalTZData();
+            return d ? parseInt(d.StandardOffset) + parseInt(d.DaylightSavings) : null;
+        });
+
+        self.UTCdate = ko.computed(() => {
+            let t = self.tzOffset();
+            let d = t && self.rawDate() ? new Date(self.rawDate()) : null;
+            return t && d ? new Date(d.setHours(d.getHours() - t)) : null;
+        });
 
         // Time webform observables:
         self.months = ko.observableArray();
@@ -193,8 +203,7 @@ define([
         self.coordinates.extend({deferred: true});
 
         // Time summary:
-        self.tzOffset = ko.observable();
-        self.histTimeZone = ko.observable();
+        self.histTimeZone = ko.computed(() => self.historicalTZData() && self.historicalTZData().Tag);
         self.timeSummary = ko.computed(() => {
             let s =   self.month() ? self.month() : '';
             s += s && self.day() ? `/${self.day()}` : '';
@@ -225,18 +234,9 @@ define([
                     fetch(request)
                         .then(response => response.json())
                         .then(data => {
-                            if (data.hasOwnProperty('TimeZones') ? data.TimeZones.length : false) {
-                                let historicalOffset = parseInt(data.TimeZones[0].ReferenceTime.StandardOffset);
-                                let DSTOffset = parseInt(data.TimeZones[0].ReferenceTime.DaylightSavings);
-                                let timezoneTag = data.TimeZones[0].ReferenceTime.Tag;
-                                self.tzOffset(historicalOffset + DSTOffset);
-                                self.histTimeZone(timezoneTag);
-                                let UTCdate = new Date(rawDate);
-                                UTCdate.setHours(UTCdate.getHours() - (historicalOffset + DSTOffset));
-                                self.UTCdate(UTCdate);
+                            if (data.hasOwnProperty('TimeZones') && data.TimeZones.length) {
                                 self.historicalTZData(data.TimeZones[0].ReferenceTime);
                             } else {
-                                self.UTCdate(null);
                                 console.log("Warning: No timezone found for historical data.");
                             }
                             self.loadingTZ(false);
@@ -244,7 +244,7 @@ define([
                 }
             }
         }
-        let tzSub = newValue => {
+        let tzSub = () => {
             if (self.rawDate() && self.coordinates()) {
                 self.tzLookup(self.rawDate(), self.coordinates());
             }
@@ -257,17 +257,15 @@ define([
         self.birthChart = ko.observable();
         self.submitted = ko.observable(false);
         self.submitReady = ko.computed(() => {
-            let cond = (
-                self.coordinates()
-                && self.UTCdate()
-                && self.birthTimeTouched()
-                && !self.timeProcessing()
-            );
-            if (cond && self.auto()) {
-                self.auto(false);
-                self.submit();
-            }
-            return !!cond;
+            const touched = self.birthTimeTouched(), processing = self.timeProcessing(),
+            chart = self.birthChart(), auto = self.auto(), submitted = self.submitted();
+            if ( touched && !processing && chart && !submitted) {
+                if (auto) {
+                    self.auto(false);
+                    self.submit();
+                }
+                return true;
+            } else return false;
         });
         self.submit = () => {
             self.submitted(true);
@@ -290,6 +288,8 @@ define([
                 .then(data => { self.birthChart(data) });
             }
         };
+        self.UTCdate.subscribe(newValue => { self.calculateChart() } );
+        self.coordinates.subscribe(newValue => { self.calculateChart() } );
 
         // Geolocation lookup:
         self.loadingGeoResults = ko.observable(false);
