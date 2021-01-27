@@ -225,6 +225,7 @@ define([
         self.lastRequest = ko.observable();
         self.tzLookup = function(rawDate, coordinates){
             if (rawDate instanceof Date && !isNaN(rawDate) && coordinates !== null){
+                self.loadingTZ(true);
                 let coordString = `${coordinates[1]},${coordinates[0]}`;
                 let refDate = rawDate.toISOString();
                 let request = `https://atlas.microsoft.com/timezone/byCoordinates/json?subscription-key=${azureKey}&api-version=1.0&timestamp=${refDate}&query=${coordString}`;
