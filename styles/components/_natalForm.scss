@@ -230,13 +230,26 @@ form.natal-form {
     }
 }
 .summary {
-    font-size: 8px;
+    font-size: 51%;
     position: absolute;
     bottom: 0px;
     left: 0px;
     padding: 0 0 2px 2px;
-    max-width: 150px;
-    font-style: italic;
+    opacity: .75;
+    ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        list-style: none;
+        width: 85px;
+        padding: 0; margin: 0;
+        li {
+            margin-right: 2px;
+            display: flex;
+            flex-basis: 25px;
+            span:first-child { min-width: 10px; }
+        }
+    }
 }
 
 button#random {
