@@ -110,7 +110,26 @@ define([
             if (self.natalFormReady() && natalForm.showingComplete()) c.push('logo');
             if (self.poemDataReady()) c.push('logo');
             return c.join(' ');
-        }); 
+        });
+
+        // Modal controls:
+        self.loadingModal = ko.observable(false);
+        self.currentModal = ko.observable('');
+        self.modalParams = ko.observable();
+        self.modalActive = ko.computed(() => self.modalParams() ? true : false);
+        self.launchModal = (name) => {
+            self.loadComponent('modal', self.loadingModal);
+            self.currentModal(name);
+        };
+        self.closeModal = () => {
+            self.removeComponent(self.currentModal());
+            self.removeComponent('modal');
+            self.modalParams('');
+        };
+        self.loadingModal.subscribe(s => {
+            (!s) && self.modalParams({content: self.currentModal()});
+        });
+        
 
         // Global input tracking:
         self.inputMode = ko.observable();

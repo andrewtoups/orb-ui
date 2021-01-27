@@ -1,0 +1,9 @@
+<div data-bind="css: modalClasses, transitionState: transitionState, click: close" class="modal">
+    <div data-bind="class: content" class="modal-content">
+        <h1><!-- ko text: content --><!-- /ko --><i data-bind="click: close" class="x">go back</i></h1>
+        <!-- ko if: !loading() -->
+        <!-- ko component: content-->
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>
