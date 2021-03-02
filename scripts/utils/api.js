@@ -9,7 +9,7 @@ define([], () => {
         }
     };
     let poem = () => {
-        return fetch(`${hostName()}/orbData/poem`)
+        return fetch(`${hostName()}/getData/poem`)
         .then(response => response.json());
     };
     let birthChart = (params) => {
