@@ -31,6 +31,15 @@ define(['ko', 'api'], function(ko, api){
         self.isLoading.subscribe(newValue => {
             vm.isLoading(newValue);
         });
+        self.icons = ko.observableArray([]);
+        require(['dataStore/icons'], icons => { self.icons(icons); });
+        self.randIcon = () => {
+            if (self.icons().length) {
+                let index = Math.floor(Math.random()*self.icons().length);
+                let icon = self.icons().pop(index);
+                return icon;
+            }
+        }
         api.poem().then(data => { self.poemData(data) });
         self.lines = ko.computed(() => {
             return self.poemData().map(line => {
