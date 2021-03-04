@@ -124,7 +124,7 @@ define([
         }]);
 
         self.timeFieldsReady = ko.computed(() => {
-            return self.months ? self.months().length === 12 : false && self.days ? self.days().length === self.months()[self.month() - 1].days : false;
+            return self.months().length === 12;
         });
 
         // Location Data:
