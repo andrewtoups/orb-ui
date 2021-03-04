@@ -36,7 +36,7 @@ define(['ko', 'api'], function(ko, api){
         self.randIcon = () => {
             if (self.icons().length) {
                 let index = Math.floor(Math.random()*self.icons().length);
-                let icon = self.icons().pop(index);
+                let icon = self.icons().splice(index, 1)[0];
                 return icon;
             }
         }
