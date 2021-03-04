@@ -1,5 +1,5 @@
-$icon-size-primary: 80px;
-$icon-size: 55px;
+$icon-size-primary: 280px;
+$icon-size: 170px;
 $offset-primary: $icon-size-primary + 25px;
 $offset-base: 25px;
 $offset: $icon-size + $offset-base;
@@ -9,6 +9,10 @@ $path: 'png/icons/';
 }
 .image-region {
     position: absolute;
+    width: 26rem;
+    height: 26rem * 5/4;
+    display: flex;
+    align-items: center; justify-content: center;
     @include xs {
         width: 100vw;
         height: 100vw * (5/4);
@@ -20,29 +24,42 @@ $path: 'png/icons/';
     height: $icon-size; width: $icon-size;
     background-size: contain;
     position: absolute;
-    filter: invert(100%);
-    opacity: .7;
+    filter: brightness(75%);
+    opacity: .6;
     &.primary {
-        top: -50px;
-        @include xs { top: 25px; }
-        left: 25px;
+        bottom: 25px;
+        @include xs { bottom: 25px; }
+        left: -30px;
         height: $icon-size-primary; width: $icon-size-primary;
     }
-    &.bottom-1 {
-        bottom: -$icon-size;
-        @include xs { bottom: 20px; }
-        right: $offset-base;
+    &.secondary-1 {
+        bottom: 60px;
+        @include xs { bottom: 60px; }
+        right: 0;
     }
-    &.bottom-2 {
-        bottom: -$icon-size;
-        @include xs { bottom: 20px; }
-        right: $offset;
+    &.secondary-2 {
+        top: 90px;
+        @include xs { top: 90px; }
+        right: 30px;
     }
-    &.bottom-3 {
-        bottom: -$icon-size;
-        @include xs { bottom: 20px; }
-        right: $offset*2-$offset-base;
+    &.secondary-3 {
+        top: 60px;
+        @include xs { top: 60px; }
+        left: 15px;
     }
+    //tweaks:
+    &.alarm-clock       { opacity: .4; }
+    &.ball-gag          { opacity: .35; }
+    &.cassette          { opacity: .35; }
+    &.compact-mirror    { opacity: .45; }
+    &.dynamite          { opacity: .4; }
+    &.flask             { opacity: .5; }
+    &.game-controller   { opacity: .4; }
+    &.letter            { opacity: .5; }
+    &.lipstick          { opacity: .33; }
+    &.microphone        { opacity: .4; }
+    &.mushroom          { opacity: .4; }
+    &.pie               { opacity: .35; }
 
     &.alarm-clock       { @include icon('alarm-clock'); }
     &.ball-gag          { @include icon('ball-gag'); }
