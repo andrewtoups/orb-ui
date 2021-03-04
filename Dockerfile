@@ -7,4 +7,5 @@ ENV PATH="/dart-sass:$PATH"
 Add . /server
 Workdir /server
 Run sass styles/main.scss styles/main.css
+Run sass --watch styles/main.scss styles/main.css &
 Cmd python3 -m http.server 8080
