@@ -1,11 +1,11 @@
 <form class="natal-form" data-bind="css: {masked: vm.isLoading() && firstLoad()}" autocomplete="off">
     <i class="loader" data-bind="visible: isLoading"></i>
-    <fieldset class="birth-time" data-bind="if: timeFieldsReady && suggestionFieldsReady">
+    <fieldset class="birth-time" data-bind="if: ready">
         <div class="legend" role="legend">Birth time & location</div>
         <div>
             <div>
                 <label>Month</label>
-                <span class="input-container">
+                <span class="input-container" data-bind="if: timeFieldsReady">
                     <select data-bind="cleanValue: month, options: months, optionsPlaceholder: months()[0].short, optionsText: 'short', optionsValue: 'num'"></select>
                 </span>
             </div>
