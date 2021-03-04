@@ -1,0 +1,67 @@
+$icon-size-primary: 80px;
+$icon-size: 55px;
+$offset-primary: $icon-size-primary + 25px;
+$offset-base: 25px;
+$offset: $icon-size + $offset-base;
+$path: 'png/icons/';
+@mixin icon($name){
+    background-image: url('#{$path}#{$name}.png');
+}
+.image-region {
+    position: absolute;
+    @include xs {
+        width: 100vw;
+        height: 100vw * (5/4);
+        display: flex;
+        align-items: center; justify-content: center;
+    }
+}
+.icon {
+    height: $icon-size; width: $icon-size;
+    background-size: contain;
+    position: absolute;
+    filter: invert(100%);
+    opacity: .7;
+    &.primary {
+        top: -50px;
+        @include xs { top: 25px; }
+        left: 25px;
+        height: $icon-size-primary; width: $icon-size-primary;
+    }
+    &.bottom-1 {
+        bottom: -$icon-size;
+        @include xs { bottom: 20px; }
+        right: $offset-base;
+    }
+    &.bottom-2 {
+        bottom: -$icon-size;
+        @include xs { bottom: 20px; }
+        right: $offset;
+    }
+    &.bottom-3 {
+        bottom: -$icon-size;
+        @include xs { bottom: 20px; }
+        right: $offset*2-$offset-base;
+    }
+
+    &.alarm-clock       { @include icon('alarm-clock'); }
+    &.ball-gag          { @include icon('ball-gag'); }
+    &.book              { @include icon('book'); }
+    &.cassette          { @include icon('cassette'); }
+    &.compact-mirror    { @include icon('compact-mirror'); }
+    &.dynamite          { @include icon('dynamite'); }
+    &.flask             { @include icon('flask'); }
+    &.game-controller   { @include icon('game-controller'); }
+    &.heart-lock        { @include icon('heart-lock'); }
+    &.knife             { @include icon('knife'); }
+    &.lantern           { @include icon('lantern'); }
+    &.letter            { @include icon('letter'); }
+    &.lipstick          { @include icon('lipstick'); }
+    &.magic-wand        { @include icon('magic-wand'); }
+    &.microphone        { @include icon('microphone'); }
+    &.mushroom          { @include icon('mushroom'); }
+    &.pie               { @include icon('pie'); }
+    &.plant             { @include icon('plant'); }
+    &.rope              { @include icon('rope'); }
+    &.wishbone          { @include icon('wishbone'); }
+}
