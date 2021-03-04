@@ -4,12 +4,18 @@
         <div data-bind="text: location"></div>
         <div data-bind="text: coords"></div>
     </div>
-    <div data-bind="foreach: lines">
-        <form data-bind="css: {active: $parent.linesActive}">
-            <span data-bind="text: line"></span>
-            <legend data-bind="text: placement"></legend>
-        </form>
-    </div>
+    <span class="image-region">
+        <span class="icon primary" data-bind="class: randIcon()"></span>
+        <span class="icon bottom-1" data-bind="class: randIcon()"></span>
+        <span class="icon bottom-2" data-bind="class: randIcon()"></span>        
+        <span class="icon bottom-3" data-bind="class: randIcon()"></span>        
+        <div data-bind="foreach: lines">
+            <form data-bind="css: {active: $parent.linesActive}">
+                <span data-bind="text: line"></span>
+                <legend data-bind="text: placement"></legend>
+            </form>
+        </div>
+    </span>
     <nav data-bind="css: {masked: vm.pageTransitioning()}">
         <a data-bind="click: (data, event) => { vm.launchModal('clergy') }" href="#">♗Clergy</a>
         <a href="#">✛Relics</a>
