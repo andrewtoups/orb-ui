@@ -59,7 +59,7 @@ define([
         });
 
         // Time webform observables:
-        self.months = ko.observableArray();
+        self.months = ko.observableArray([]);
 	    api.months().then(data => { self.months(data) });
         
         self.days = ko.computed(() => {
