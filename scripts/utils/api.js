@@ -22,6 +22,12 @@ define([], () => {
         return fetch(`${hostName()}/${route}`)
             .then(response => response.json());
     };
+    let screenshot = (params) => {
+        const paramStr = new URLSearchParams(params).toString();
+        const route = `screenshot/${paramStr}`;
+        return fetch(`${hostName()}/${route}`)
+            .then(response => response.text());
+    };
     let api = {
         hostName: hostName,
         poem: poem,
