@@ -33,7 +33,7 @@ define([], () => {
         poem: poem,
 	    months: months,
         birthChart: birthChart,
-        screenshot: screenhot
+        screenshot: screenshot
     };
     return api;
 });
