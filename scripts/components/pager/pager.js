@@ -130,6 +130,9 @@ define([
             return c.join(' ');
         });
 
+        self.screenshotURI = ko.observable();
+        self.screenshotURI.subscribe(nv => { console.log("screenshotURI:",nv); });
+
         // Modal controls:
         self.loadingModal = ko.observable(false);
         self.currentModal = ko.observable('');
