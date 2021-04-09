@@ -2,12 +2,12 @@ define(['ko', 'api'], function(ko, api){
     return function(params){
         let self = this;
         console.log(params.birthChart);
+        api.screenshot(params.birthChart).then(data => vm.screenshotURI(data));
 
         self.showDebug = ko.observable(false);
         self.linesActive = ko.observable(false);
         self.toggleActive = () => { self.linesActive(!self.linesActive())};
         self.birthData = params.birthData;
-        // self.screenshotMode = params.screenshotMode || false;
         if (params.birthData){
             let bdate = params.birthData.date;
             let blocation = params.birthData.location;
