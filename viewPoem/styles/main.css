@@ -1,0 +1,704 @@
+@keyframes Gradient {
+  0% {
+    background-position: 69% 0%;
+    opacity: 0.15;
+  }
+  50% {
+    background-position: 32% 100%;
+    opacity: 0.45;
+  }
+  100% {
+    background-position: 69% 0%;
+    opacity: 0.15;
+  }
+}
+@keyframes Orb {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.45;
+  }
+  50% {
+    transform: rotate(180deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 0.45;
+  }
+}
+@keyframes Spinner {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  position: fixed;
+}
+
+body, html {
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  overflow: hidden;
+  background-color: #040132;
+}
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  body, html {
+    min-height: 100%;
+    max-height: 100vh;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+
+  body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+body:before {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+body:before {
+  background-size: cover;
+  background: linear-gradient(44deg, rgba(10, 10, 10, 0.5), rgba(255, 253, 231, 0.25));
+  animation: Gradient 20s ease-in-out infinite;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+@media (max-width: 480px) {
+  main {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  main {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    width: 100%;
+  }
+}
+
+.fixed {
+  position: fixed;
+}
+
+section {
+  margin: 15px 0;
+  opacity: 1;
+  transition: opacity, ease-out, 1200ms;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 480px) {
+  section {
+    margin: 15px 10px;
+  }
+}
+@media (max-width: 480px) {
+  section {
+    position: fixed;
+  }
+}
+section.masked {
+  opacity: 0;
+  transition: opacity, ease-in, 1200ms;
+}
+section.zoom {
+  transform: scale(1);
+  transition: transform, ease-in-out, 3000ms;
+}
+section.zoom.out {
+  transform: scale(0.1);
+  transition: transform, ease-in-out, 3000ms;
+}
+section.zoom #poem > div {
+  transform: rotate3d(0, 0, 0, 0deg);
+  transition: transform, ease-in-out, 3000ms;
+}
+section.zoom.out #poem > div {
+  transform: rotate3d(-0.05, 0.1, 0.05, 7deg);
+  transition: transform, ease-in-out, 3000ms;
+}
+section.poem-page.transform-complete {
+  transform: unset;
+  transition: unset;
+}
+
+.loader {
+  position: relative;
+  height: 50px;
+  width: 50px;
+}
+
+.loader:after {
+  content: "";
+  background-image: url(svg/eye-of-providence.svg);
+  background-size: contain;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  transition: opacity, ease-in-out, 400ms;
+  animation: Spinner 1.5s linear infinite;
+  color: rgba(10, 10, 10, 0.8);
+}
+
+.loader.masked:after {
+  opacity: 0;
+  transition: opacity, ease-in-out, 400ms;
+}
+
+.loader {
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  filter: invert(91%) sepia(38%) saturate(381%) hue-rotate(1deg) brightness(96%) contrast(91%);
+}
+
+.orb img {
+  max-width: 90vw;
+}
+
+main .orb {
+  position: fixed;
+  opacity: 1;
+  transition: opacity ease-out 1200ms;
+}
+main .orb.masked {
+  opacity: 0;
+  transition: opacity ease-in 1200ms;
+}
+main .orb.logo {
+  position: absolute;
+  top: -80px;
+  transition: opacity 1200ms ease-out;
+  text-align: center;
+  z-index: 5000;
+}
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  main .orb.logo {
+    right: 7vw;
+    top: 15px;
+  }
+}
+main .orb.logo img {
+  height: 80px;
+  animation: Pulsate 5s ease-in-out infinite;
+}
+@media (max-width: 480px) {
+  main .orb.logo img {
+    height: 12vh;
+  }
+}
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  main .orb.logo img {
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  main .orb.logo {
+    top: 0;
+    padding: 10px 0;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+  }
+}
+#poem {
+  background-color: rgba(255, 236, 187, 0.85);
+  box-shadow: 0px 0px 1000px -50px rgba(10, 10, 10, 0.25);
+  border-radius: 2px;
+  animation: Wiggle 50s linear infinite;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  position: relative;
+}
+@media (max-width: 480px) {
+  #poem {
+    animation: none;
+  }
+}
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  #poem {
+    animation: none;
+  }
+}
+#poem:after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+#poem:after {
+  background: linear-gradient(45deg, rgba(255, 253, 231, 0.15), rgba(10, 10, 10, 0.45));
+  background-size: contain;
+  animation: Gradient 10s ease-in-out infinite;
+}
+#poem.moon {
+  border-radius: 50%;
+  height: 36rem;
+  width: 36rem;
+  position: relative;
+  background-color: #eae999;
+  background-image: url("png/moon-transparent.png");
+  background-blend-mode: luminosity;
+  background-size: 36rem 36rem;
+  font-size: 90%;
+  box-shadow: 0px 0px 5px #fffde7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+@media (max-width: 480px) {
+  #poem.moon {
+    height: 55rem;
+    width: 55rem;
+  }
+}
+#poem.moon:before, #poem.moon:after {
+  border-radius: 50%;
+  height: 36rem;
+  width: 36rem;
+}
+@media (max-width: 480px) {
+  #poem.moon:before, #poem.moon:after {
+    height: 55rem;
+    width: 55rem;
+  }
+}
+#poem.moon:before {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+#poem.moon:before {
+  box-shadow: inset -25px -15px 40px rgba(0, 0, 0, 0.7);
+  background-image: linear-gradient(-45deg, rgba(103, 99, 90, 0.7) 0%, transparent 100%);
+  animation: Orb 30s ease-in-out infinite;
+}
+@media (max-width: 480px) {
+  #poem.moon:before {
+    height: 55rem;
+    width: 55rem;
+  }
+}
+@media (max-width: 480px) {
+  #poem.moon {
+    background-repeat: no-repeat;
+    background-size: 55rem 55rem;
+  }
+}
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  #poem.moon {
+    font-size: 80%;
+  }
+}
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  #poem.moon {
+    overflow: visible;
+  }
+}
+#poem.moon > div {
+  max-width: 100vw;
+  padding: 0 15px;
+  margin-left: 6%;
+}
+@media (max-width: 480px) {
+  #poem.moon > div {
+    margin-left: 0;
+  }
+}
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  #poem.moon {
+    right: 12vw;
+  }
+}
+#poem form {
+  margin: 0;
+  padding: 17px 15px;
+  color: #154360;
+  text-shadow: 0px 1px 1px rgba(21, 67, 96, 0.25);
+  position: relative;
+}
+@media (max-width: 480px) {
+  #poem form {
+    padding: 17px 30px;
+  }
+}
+#poem form legend {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  font-size: 9.5px;
+  padding-right: 2.2rem;
+  text-transform: uppercase;
+  user-select: none;
+  color: rgba(255, 236, 179, 0);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: 0px 0px 0px transparent;
+  transition: color 700ms ease-in-out, text-shadow 2000ms ease-in-out;
+}
+#poem form:hover legend, #poem form.active legend {
+  color: rgba(33, 97, 140, 0.5);
+  text-shadow: 0px 1px 1px rgba(10, 10, 10, 0.5);
+  transition: color 1200ms ease-in-out, text-shadow 700ms ease-in-out;
+}
+#poem .debug-placement, #poem .debug-bday {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: lighter;
+  position: absolute;
+  background-color: white;
+  color: black;
+  opacity: 0.7;
+  padding: 2px;
+  margin: 0;
+}
+#poem .debug-bday {
+  bottom: 72px;
+}
+#poem.moon > div.debug-bday {
+  margin: 0;
+}
+#poem:focus {
+  outline: none;
+}
+
+@media (max-width: 480px) {
+  section.poem-page {
+    margin: 0;
+  }
+}
+.poem-page .orb.logo {
+  top: 37.5px;
+  transition: opacity 1200ms ease-out;
+}
+.poem-page .orb.logo img {
+  height: 75px;
+}
+@media (max-width: 480px) {
+  .poem-page .orb.logo img {
+    height: 12vh;
+  }
+}
+@media (max-width: 480px) {
+  .poem-page .orb.logo {
+    top: 0;
+  }
+}
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  .poem-page .orb.logo {
+    position: fixed;
+    top: 15px;
+    right: 7vw;
+  }
+}
+
+.poem-page nav {
+  position: absolute;
+  bottom: 0;
+  padding: 4rem 0 2.4rem;
+  width: 100%;
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+  font-size: 140%;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity, ease-in, 1200ms;
+}
+@media (max-width: 480px) {
+  .poem-page nav {
+    position: fixed;
+  }
+}
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  .poem-page nav {
+    position: fixed;
+    bottom: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .poem-page nav {
+    font-size: 130%;
+  }
+}
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  .poem-page nav {
+    font-size: 5vw;
+  }
+}
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  .poem-page nav {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: right;
+    right: 0;
+    top: 0;
+    padding-right: 7vw;
+    height: 100vh;
+    width: auto;
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+  }
+}
+@media (max-width: 480px) {
+  .poem-page nav {
+    width: 100%;
+    bottom: 0;
+    padding: 2rem 0 1rem;
+  }
+}
+.poem-page nav a {
+  color: #d2b350;
+  text-shadow: 0px 0px 4px black;
+  transform: scale(1);
+  transition: transform 250ms ease-in-out;
+  margin: 0 9px;
+  line-height: 0.9;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.poem-page nav a:hover {
+  animation: Pulsate-Text 5s ease-out infinite;
+  transform: scale(1.2);
+  transition: transform 250ms ease-in-out;
+}
+@media only screen and (max-width: 812px) and (orientation: landscape) {
+  .poem-page nav a {
+    margin: 10px 0;
+  }
+}
+.poem-page nav.masked {
+  opacity: 0;
+  transition: opacity, ease-in, 1200ms;
+}
+
+.image-region {
+  position: absolute;
+  width: 26rem;
+  height: 32.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 480px) {
+  .image-region {
+    width: 100vw;
+    height: 125vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.icon {
+  height: 170px;
+  width: 170px;
+  background-size: contain;
+  position: absolute;
+  filter: brightness(75%);
+  opacity: 0.4;
+}
+.icon.primary {
+  bottom: 25px;
+  left: -30px;
+  height: 280px;
+  width: 280px;
+}
+@media (max-width: 480px) {
+  .icon.primary {
+    bottom: 25px;
+  }
+}
+.icon.secondary-1 {
+  bottom: 60px;
+  right: 0;
+}
+@media (max-width: 480px) {
+  .icon.secondary-1 {
+    bottom: 60px;
+  }
+}
+.icon.secondary-2 {
+  top: 90px;
+  right: 30px;
+}
+@media (max-width: 480px) {
+  .icon.secondary-2 {
+    top: 90px;
+  }
+}
+.icon.secondary-3 {
+  top: 60px;
+  left: 15px;
+}
+@media (max-width: 480px) {
+  .icon.secondary-3 {
+    top: 60px;
+  }
+}
+.icon.alarm-clock {
+  background-image: url("png/icons/alarm-clock.png");
+}
+.icon.ball-gag {
+  background-image: url("png/icons/ball-gag.png");
+}
+.icon.book {
+  background-image: url("png/icons/book.png");
+}
+.icon.cassette {
+  background-image: url("png/icons/cassette.png");
+}
+.icon.compact-mirror {
+  background-image: url("png/icons/compact-mirror.png");
+}
+.icon.dynamite {
+  background-image: url("png/icons/dynamite.png");
+}
+.icon.flask {
+  background-image: url("png/icons/flask.png");
+}
+.icon.game-controller {
+  background-image: url("png/icons/game-controller.png");
+}
+.icon.heart-lock {
+  background-image: url("png/icons/heart-lock.png");
+}
+.icon.knife {
+  background-image: url("png/icons/knife.png");
+}
+.icon.lantern {
+  background-image: url("png/icons/lantern.png");
+}
+.icon.letter {
+  background-image: url("png/icons/letter.png");
+}
+.icon.lipstick {
+  background-image: url("png/icons/lipstick.png");
+}
+.icon.magic-wand {
+  background-image: url("png/icons/magic-wand.png");
+}
+.icon.microphone {
+  background-image: url("png/icons/microphone.png");
+}
+.icon.mushroom {
+  background-image: url("png/icons/mushroom.png");
+}
+.icon.pie {
+  background-image: url("png/icons/pie.png");
+}
+.icon.plant {
+  background-image: url("png/icons/plant.png");
+}
+.icon.rope {
+  background-image: url("png/icons/rope.png");
+}
+.icon.wishbone {
+  background-image: url("png/icons/wishbone.png");
+}
+
+@media (max-width: 480px) {
+  .mushroom-layout .icon.primary {
+    background-image: url("png/icons/mushroom.png");
+    height: 924px;
+    width: 924px;
+    top: -185px;
+    left: -355px;
+  }
+  .mushroom-layout .icon.secondary {
+    height: 400px;
+    width: 400px;
+    top: 80px;
+    right: -110px;
+  }
+  .mushroom-layout .icon-tertiary {
+    height: 250px;
+    width: 250px;
+    bottom: -80px;
+    right: 50px;
+  }
+
+  .rope-layout .icon-primary {
+    background-image: url("png/icons/rope.png");
+    transform: rotate(90deg);
+    height: 1350px;
+    width: 1350px;
+    bottom: -550px;
+  }
+}
+.screenshot section.poem-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+}
+.screenshot section.poem-page.zoom {
+  transition: none;
+}
+.screenshot #poem.moon {
+  height: 130vh;
+  width: 130vh;
+  background-image: url("../../styles/png/moon-transparent.png");
+  background-size: 130vh 130vh;
+  font-size: 300%;
+}
+.screenshot #poem.moon:before, .screenshot #poem.moon:after {
+  height: 130vh;
+  width: 130vh;
+}
+.screenshot #poem form {
+  padding: 48px 15px;
+}
+.screenshot #poem form legend {
+  font-size: 60%;
+}
+.screenshot .image-region {
+  width: 90vw;
+  height: 112.5vw;
+}
+.screenshot nav {
+  display: none;
+}
+
+/*# sourceMappingURL=main.css.map */

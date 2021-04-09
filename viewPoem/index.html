@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Orb - a poem</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+
+    <script src="../scripts/vendor/domready.js"></script>
+
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
+</head>
+<body>
+    <main data-bind="css: {screenshot: screenshotMode}">
+        <!-- ko foreach: pages -->
+        <section data-bind="page: $data"></section>
+        <!-- /ko -->
+    </main>
+    <script async data-main="../scripts/viewPoem" src="../scripts/vendor/require.js"></script>
+</body>
+</html>
