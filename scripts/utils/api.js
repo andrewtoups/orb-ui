@@ -5,7 +5,7 @@ define([], () => {
         if (['localhost', '0.0.0.0', '127.0.0.1'].includes(name)) {
             return `http://${name}:${apiPort}`;
         } else {
-            return 'https://api.2psy.net';
+            return 'https://orb-api.2psy.net';
         }
     };
     let poem = () => {
