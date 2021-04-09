@@ -31,8 +31,9 @@ define([], () => {
     let api = {
         hostName: hostName,
         poem: poem,
-	months: months,
-        birthChart: birthChart
+	    months: months,
+        birthChart: birthChart,
+        screenshot: screenhot
     };
     return api;
 });
