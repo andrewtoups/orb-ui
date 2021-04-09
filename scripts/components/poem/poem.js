@@ -6,12 +6,16 @@ define(['ko', 'api'], function(ko, api){
         self.showDebug = ko.observable(false);
         self.linesActive = ko.observable(false);
         self.toggleActive = () => { self.linesActive(!self.linesActive())};
-        let bdate = params.birthData.date;
-        let blocation = params.birthData.location;
-        let bcoords = params.birthData.coord;
-        self.birthDay = ko.observable(`${bdate.getMonth()+1}/${bdate.getDate()}/${bdate.getFullYear()} -- ${bdate.getHours()+1}:${(bdate.getMinutes()<10?'0':'')+bdate.getMinutes()} UTC`);
-        self.coords = ko.observable(`${bcoords[0]},${bcoords[1]}`);
-        self.location = ko.observable(`${blocation.city}, ${blocation.state} ${blocation.country}`);
+        self.birthData = params.birthData;
+        // self.screenshotMode = params.screenshotMode || false;
+        if (params.birthData){
+            let bdate = params.birthData.date;
+            let blocation = params.birthData.location;
+            let bcoords = params.birthData.coord;
+            self.birthDay = ko.observable(`${bdate.getMonth()+1}/${bdate.getDate()}/${bdate.getFullYear()} -- ${bdate.getHours()+1}:${(bdate.getMinutes()<10?'0':'')+bdate.getMinutes()} UTC`);
+            self.coords = ko.observable(`${bcoords[0]},${bcoords[1]}`);
+            self.location = ko.observable(`${blocation.city}, ${blocation.state} ${blocation.country}`);            
+        }
 
         self.sun = ko.observable(params.birthChart.sun);
         self.mars = ko.observable(params.birthChart.mars);

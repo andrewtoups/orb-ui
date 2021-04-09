@@ -1,5 +1,5 @@
 <article data-bind="visible: poemData, event: {click: toggleActive}" id="poem" class="moon">
-    <div class="debug-bday" data-bind="visible: showDebug">
+    <div class="debug-bday" data-bind="visible: showDebug, if: birthData">
         <div data-bind="text: birthDay"></div>
         <div data-bind="text: location"></div>
         <div data-bind="text: coords"></div>
