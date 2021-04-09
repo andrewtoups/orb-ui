@@ -92,8 +92,26 @@ define([
             self.loadComponent(page.name(), page.loading);
             self.pages.push(Pages.find(page => page.name() === pageName));
         };
+        self.screenshotMode = ko.observable(false);
         self.initialLoadComplete.subscribe(s => {
-            s && self.loadPage('natalForm');
+            if (s) {
+                let path = window.location.pathname.split('/').filter(i => !!i);
+                if (path[0] === "viewPoem") {
+                    console.log('are we in here');
+                    let qParams = new URLSearchParams(window.location.search);
+                    let birthChart = {};
+                    let screenshot = false;
+                    for (const [key, value] of qParams.entries()) {
+                        if (key === "screenshot")   self.screenshotMode(value);
+                        else                        birthChart[key] = value;
+                    }
+                    let params = {birthChart: birthChart};
+                    console.log(params);
+                    self.loadPage('poem', params);
+                } else {
+                    self.loadPage('natalForm');       
+                }                
+            }
         });
 
         self.hideOrb = ko.computed(() => {
