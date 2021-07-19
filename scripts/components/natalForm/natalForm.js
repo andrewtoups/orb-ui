@@ -60,11 +60,12 @@ define([
 
         // Time webform observables:
         self.months = ko.observableArray();
-        fetch('https://api.2psy.net/orbData/months')
-        .then(response => response.json())
-        .then(data => {
-            self.months(data);
-        });
+	api.months().then(data => { self.months(data) });
+        //fetch('https://api.2psy.net/orbData/months')
+        //.then(response => response.json())
+        //.then(data => {
+        //    self.months(data);
+        //});
         
         self.days = ko.computed(() => {
             let length;

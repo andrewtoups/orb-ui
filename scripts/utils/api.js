@@ -9,8 +9,12 @@ define([], () => {
         }
     };
     let poem = () => {
-        return fetch(`${hostName()}/orbData/poem`)
+        return fetch(`${hostName()}/getData/poem`)
         .then(response => response.json());
+    };
+    let months = () => {
+	return fetch(`${hostName()}/getData/months`)
+	.then(response => response.json());
     };
     let birthChart = (params) => {
         const d = params.date,      long = params.coordinates[0],       lat = params.coordinates[1];
@@ -21,6 +25,7 @@ define([], () => {
     let api = {
         hostName: hostName,
         poem: poem,
+	months: months,
         birthChart: birthChart
     };
     return api;
