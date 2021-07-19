@@ -17,8 +17,9 @@ define(['ko'], (ko) => {
         });
         self.transitionState = ko.observable(false);
         self.close = (v, e) => {
-            e.stopPropagation();
+            // e.stopPropagation();
             if ([document.querySelector('.modal'), document.querySelector('.x')].includes(e.target)) self.closing(true)
+            return true;
         };
         self.transitionState.subscribe(s => {
             !s && self.closing() && vm.closeModal();

@@ -26,7 +26,8 @@ define([], () => {
     };
     let screenshot = (params) => {
         const paramStr = new URLSearchParams(params).toString();
-        const route = `screenshot/${paramStr}`;
+        const route = `screenshot/?${paramStr}`;
+        console.log("route:",route);
         return fetch(`${hostName()}/${route}`)
             .then(response => response.text());
     };
