@@ -1,0 +1,84 @@
+$icon-size-primary: 280px;
+$icon-size: 170px;
+$offset-primary: $icon-size-primary + 25px;
+$offset-base: 25px;
+$offset: $icon-size + $offset-base;
+$path: 'png/icons/';
+@mixin icon($name){
+    background-image: url('#{$path}#{$name}.png');
+}
+.image-region {
+    position: absolute;
+    width: 26rem;
+    height: 26rem * 5/4;
+    display: flex;
+    align-items: center; justify-content: center;
+    @include xs {
+        width: 100vw;
+        height: 100vw * (5/4);
+        display: flex;
+        align-items: center; justify-content: center;
+    }
+}
+.icon {
+    height: $icon-size; width: $icon-size;
+    background-size: contain;
+    position: absolute;
+    filter: brightness(75%);
+    opacity: .6;
+    &.primary {
+        bottom: 25px;
+        @include xs { bottom: 25px; }
+        left: -30px;
+        height: $icon-size-primary; width: $icon-size-primary;
+    }
+    &.secondary-1 {
+        bottom: 60px;
+        @include xs { bottom: 60px; }
+        right: 0;
+    }
+    &.secondary-2 {
+        top: 90px;
+        @include xs { top: 90px; }
+        right: 30px;
+    }
+    &.secondary-3 {
+        top: 60px;
+        @include xs { top: 60px; }
+        left: 15px;
+    }
+    //tweaks:
+    &.alarm-clock       { opacity: .4; }
+    &.ball-gag          { opacity: .35; }
+    &.cassette          { opacity: .35; }
+    &.compact-mirror    { opacity: .45; }
+    &.dynamite          { opacity: .4; }
+    &.flask             { opacity: .5; }
+    &.game-controller   { opacity: .4; }
+    &.letter            { opacity: .5; }
+    &.lipstick          { opacity: .33; }
+    &.microphone        { opacity: .4; }
+    &.mushroom          { opacity: .4; }
+    &.pie               { opacity: .35; }
+
+    &.alarm-clock       { @include icon('alarm-clock'); }
+    &.ball-gag          { @include icon('ball-gag'); }
+    &.book              { @include icon('book'); }
+    &.cassette          { @include icon('cassette'); }
+    &.compact-mirror    { @include icon('compact-mirror'); }
+    &.dynamite          { @include icon('dynamite'); }
+    &.flask             { @include icon('flask'); }
+    &.game-controller   { @include icon('game-controller'); }
+    &.heart-lock        { @include icon('heart-lock'); }
+    &.knife             { @include icon('knife'); }
+    &.lantern           { @include icon('lantern'); }
+    &.letter            { @include icon('letter'); }
+    &.lipstick          { @include icon('lipstick'); }
+    &.magic-wand        { @include icon('magic-wand'); }
+    &.microphone        { @include icon('microphone'); }
+    &.mushroom          { @include icon('mushroom'); }
+    &.pie               { @include icon('pie'); }
+    &.plant             { @include icon('plant'); }
+    &.rope              { @include icon('rope'); }
+    &.wishbone          { @include icon('wishbone'); }
+}

@@ -59,13 +59,8 @@ define([
         });
 
         // Time webform observables:
-        self.months = ko.observableArray();
-	api.months().then(data => { self.months(data) });
-        //fetch('https://api.2psy.net/orbData/months')
-        //.then(response => response.json())
-        //.then(data => {
-        //    self.months(data);
-        //});
+        self.months = ko.observableArray([]);
+        api.months().then(data => { self.months(data) });
         
         self.days = ko.computed(() => {
             let length;
@@ -129,7 +124,7 @@ define([
         }]);
 
         self.timeFieldsReady = ko.computed(() => {
-            return self.months ? self.months().length === 12 : false && self.days ? self.days().length === self.months()[self.month() - 1].days : false;
+            return self.months().length === 12;
         });
 
         // Location Data:

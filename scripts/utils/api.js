@@ -7,7 +7,7 @@ define([], () => {
         if (['localhost', '0.0.0.0', '127.0.0.1'].includes(name)) {
             return `http://${name}:${apiPort}`;
         } else {
-            return 'https://api.2psy.net';
+            return 'https://orb-api.2psy.net';
         }
     };
     let poem = () => {
@@ -24,11 +24,18 @@ define([], () => {
         return fetch(`${hostName()}/${route}`)
             .then(response => response.json());
     };
+    let screenshot = (params) => {
+        const paramStr = new URLSearchParams(params).toString();
+        const route = `screenshot/${paramStr}`;
+        return fetch(`${hostName()}/${route}`)
+            .then(response => response.text());
+    };
     let api = {
         hostName: hostName,
         poem: poem,
 	months: months,
-        birthChart: birthChart
+        birthChart: birthChart,
+        screenshot: screenshot
     };
     return api;
 });

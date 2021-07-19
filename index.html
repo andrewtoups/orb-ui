@@ -37,6 +37,12 @@
         <section data-bind="page: $data"></section>
         <!-- /ko -->
 
+        <i class="loader" data-bind="visible: loadingModal"></i>
+        <!-- ko if: modalActive -->
+        <!-- ko component: {name: 'modal', params: modalParams} -->
+        <!-- /ko -->
+        <!-- /ko -->
+
     </main>
     <script async data-main="scripts/rConfig" src="scripts/vendor/require.js"></script>
 </body>
