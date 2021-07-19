@@ -26,6 +26,7 @@ $path: 'png/icons/';
     position: absolute;
     filter: brightness(75%);
     opacity: .6;
+    opacity: 0; // keep this hidden until the layout work is complete
     &.primary {
         bottom: 25px;
         @include xs { bottom: 25px; }
