@@ -2,7 +2,7 @@ define(['ko', 'api'], function(ko, api){
     return function(params){
         let self = this;
         console.log(params.birthChart);
-        api.screenshot(params.birthChart).then(data => vm.screenshotURI(data));
+        !vm.screenshotMode() && api.screenshot(params.birthChart).then(data => vm.screenshotURI(data));
 
         self.showDebug = ko.observable(false);
         self.linesActive = ko.observable(false);
