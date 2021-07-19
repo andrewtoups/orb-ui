@@ -20,7 +20,7 @@
             <div>
                 <label>Year</label>
                 <span class="input-container">
-                    <input data-bind="cleanValue: year, attr: {max: maxYear, min: minYear}, event: {focus: setDefaultYear, input: validate}" type="number" inputmode="numeric">
+                    <select data-bind="cleanValue: year, options: years, optionsPlaceholder: 2000"></select>
                 </span>
             </div>
         </div>

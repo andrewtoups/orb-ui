@@ -79,27 +79,13 @@ define([
         });
         
         let years = [];
-        const minYear = 1800;
-        const maxYear = new Date().getFullYear();
+        const maxYear = new Date().getFullYear()+25;
+        const minYear = maxYear-325;
         for (let i = 0; i <= maxYear - minYear; i++){
             years[i] = minYear + i;
         }
         self.years = ko.observableArray(years);
         self.defaultYear = ko.observable(maxYear - 18);
-        self.setDefaultYear = (data, e) => {
-            if (!e.target.value && vm.pointerMode() !== 'touch') e.target.value = self.defaultYear();
-            return true;
-        };
-        self.validate = (data, e) => {
-            if (e.target.matches(":invalid") && e.inputType.includes('insert')) {
-                let l = e => {
-                    e.target.value = self.year();
-                    e.target.removeEventListener('change', l);
-                };
-                e.target.addEventListener('change', l);
-            }
-            else return true;
-        }
         self.maxYear = ko.observable(maxYear);
         self.minYear = ko.observable(minYear);
         
