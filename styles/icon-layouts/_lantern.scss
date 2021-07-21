@@ -1,0 +1,39 @@
+.image-region.lantern-layout {
+    $lantern-size: 850px;
+    .icon.primary {
+        height: $lantern-size; width: $lantern-size;
+        left:-385px; top: -85px;
+    }
+    $lantern-secondary-size: 390px;
+    .icon.secondary {
+        height: $lantern-secondary-size; width: $lantern-secondary-size;
+        top: -45px; right: -70px;
+        &.compact-mirror { top: 0px; right: -100px; }
+        &.letter { right: -90px; }
+        &.game-controller {
+            transform: rotate(35deg);
+            right: -90px;
+        }
+    }
+    $lantern-tertiary-size: 400px;
+    .icon.tertiary {
+        height: $lantern-tertiary-size; width: $lantern-tertiary-size;
+        bottom: -150px; right: -120px;
+        &.knife { transform: rotate(230deg); }
+        &.pie { bottom: -175px; }
+        &.lipstick {
+            transform: rotate(330deg);
+            bottom: -180px; right: -60px;
+        }
+        &.dynamite {
+            transform: rotate(65deg);
+            right: -65px;
+        }
+        $lantern-book-size: 500px;
+        &.book {
+            height: $lantern-book-size; width: $lantern-book-size;
+            bottom: -190px; right: -190px;
+        }
+    }
+
+}

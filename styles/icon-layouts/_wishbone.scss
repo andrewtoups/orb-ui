@@ -1,0 +1,35 @@
+.image-region.wishbone-layout {
+    $wishbone-size: 590px;
+    .icon.primary {
+        height: $wishbone-size; width: $wishbone-size;
+        left:-270px; top: -140px;
+    }
+    $wishbone-secondary-size: 400px;
+    .icon.secondary {
+        height: $wishbone-secondary-size; width: $wishbone-secondary-size;
+        top: -90px; right: -100px;
+
+        &.letter { right: -132px; }
+        &.game-controller { right: -120px; }
+    }
+    $wishbone-tertiary-size: 350px;
+    .icon.tertiary {
+        height: $wishbone-tertiary-size; width: $wishbone-tertiary-size;
+        bottom: -150px; right: -80px;
+
+        $wishbone-book-size: 500px;
+        &.book {
+            height: $wishbone-book-size; width: $wishbone-book-size;
+            bottom: -200px; right: -190px;
+        }
+
+        &.lipstick {
+            bottom: -110px;
+            transform: rotate(270deg);
+        }
+
+        $wishbone-ballgag-size: 400px;
+        &.ball-gag { width: $wishbone-ballgag-size; height: $wishbone-ballgag-size; }
+    }
+
+}

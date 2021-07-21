@@ -1,0 +1,38 @@
+.image-region.mushroom-layout {
+    $mushroom-size: 800px;
+    .icon.primary {
+        height: $mushroom-size; width: $mushroom-size;
+        left:-330px; top: -235px;
+    }
+    $mushroom-secondary-size: 390px;
+    .icon.secondary {
+        height: $mushroom-secondary-size; width: $mushroom-secondary-size;
+        top: 45px; right: -80px;
+
+        &.game-controller { right: -100px; }
+        &.letter { right: -90px; }
+        &.compact-mirror { right: -90px; }
+    }
+    $mushroom-tertiary-size: 360px;
+    .icon.tertiary {
+        height: $mushroom-tertiary-size; width: $mushroom-tertiary-size;
+        bottom: -180px; left: 0px;
+        &.knife { transform: rotate(-120deg); }
+        &.pie {
+            transform: rotate(50deg);
+            bottom: -200px;
+        }
+        $mushroom-lipstick-size: 400px;
+        &.lipstick {
+            transform: rotate(270deg);
+            height: $mushroom-lipstick-size; width: $mushroom-lipstick-size;
+            bottom: -160px; left: 20px;
+        }
+        $mushroom-book-size: 440px;
+        &.book {
+            height: $mushroom-book-size; width: $mushroom-book-size;
+            bottom: -190px; left: -30px;
+        }
+    }
+
+}

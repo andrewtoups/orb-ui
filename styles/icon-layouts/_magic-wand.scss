@@ -1,0 +1,49 @@
+.image-region.magic-wand-layout {
+    $magic-wand-size: 730px;
+    .icon.primary {
+        height: $magic-wand-size; width: $magic-wand-size;
+        left:-285px; top: -35px;
+    }
+    $magic-wand-secondary-size: 390px;
+    .icon.secondary {
+        height: $magic-wand-secondary-size; width: $magic-wand-secondary-size;
+        top: -20px; right: -60px;
+        &.alarm-clock { right: -70px; }
+        &.letter { right: -90px; }
+        &.compact-mirror { right: -100px; }
+        &.heart-lock { right: -90px; }
+        $magic-wand-game-controller-size: 500px;
+        &.game-controller {
+            transform: rotate(-12deg);
+            height: $magic-wand-game-controller-size; width: $magic-wand-game-controller-size;
+            right: -190px; top: -40px;
+        }
+    }
+    $magic-wand-tertiary-size: 360px;
+    .icon.tertiary {
+        height: $magic-wand-tertiary-size; width: $magic-wand-tertiary-size;
+        bottom: -130px; right: -70px;
+        &.pie {
+            bottom: -170px;
+            right: -60px;
+        }
+        &.lipstick {
+            transform: rotate(320deg);
+            bottom: -170px; right: -60px;
+        }
+        &.knife {
+            transform: rotate(310deg);
+            bottom: -160px;
+        }
+        &.dynamite {
+            transform: rotate(70deg);
+            bottom: -150px; right: -40px;
+        }
+        $magic-wand-book-size: 500px;
+        &.book {
+            height: $magic-wand-book-size; width: $magic-wand-book-size;
+            bottom: -190px; right: -190px;
+        }
+    }
+
+}

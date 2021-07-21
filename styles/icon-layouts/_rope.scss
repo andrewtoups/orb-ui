@@ -1,0 +1,41 @@
+.image-region.rope-layout {
+    $rope-size: 1600px;
+    .icon.primary {
+        left: unset;
+        height: $rope-size; width: $rope-size;
+        right:-835px; top: -570px;
+    }
+    $rope-secondary-size: 410px;
+    .icon.secondary {
+        height: $rope-secondary-size; width: $rope-secondary-size;
+        top: -50px; left: -120px;
+        &.game-controller { left: -170px; }
+        &.compact-mirror { left: -160px; top: -65px; }
+        &.letter { left: -160px; top: -30px; }
+        &.heart-lock { top: -70px; left: -130px; }
+    }
+    $rope-tertiary-size: 400px;
+    .icon.tertiary {
+        height: $rope-tertiary-size; width: $rope-tertiary-size;
+        bottom: -150px; left: -140px;
+        &.pie { bottom: -165px; }
+        &.knife {
+            transform: rotate(-35deg);
+            bottom: -170px; left: -100px;
+        }
+        &.lipstick {
+            transform: rotate(30deg);
+            bottom: -170px; left: -100px;
+        }
+        &.dynamite {
+            transform: rotate(120deg);
+            bottom: -135px; left: -100px;
+        }
+        $rope-book-size: 600px;
+        &.book {
+            height: $rope-book-size; width: $rope-book-size;
+            bottom: -220px; left: -320px;
+        }
+    }
+
+}

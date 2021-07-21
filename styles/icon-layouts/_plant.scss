@@ -1,0 +1,49 @@
+.image-region.plant-layout {
+    $plant-size: 870px;
+    .icon.primary {
+        left: unset;
+        height: $plant-size; width: $plant-size;
+        right:-320px; top: -130px;
+        opacity: .3;
+    }
+    $plant-secondary-size: 360px;
+    .icon.secondary {
+        right: unset;
+        height: $plant-secondary-size; width: $plant-secondary-size;
+        top: 10px; left: -130px;
+
+        $plant-game-controller-size: 330px;
+        &.game-controller {
+            height: $plant-game-controller-size; width: $plant-game-controller-size;
+            top: 40px; left: -80px;
+        }
+    }
+    $plant-tertiary-size: 350px;
+    .icon.tertiary {
+        right: unset;
+        height: $plant-tertiary-size; width: $plant-tertiary-size;
+        bottom: -110px; left: -100px;
+
+        &.knife { transform: rotate(40deg); }
+
+        $plant-lipstick-size: 390px;
+        &.lipstick {
+            height: $plant-lipstick-size; width: $plant-lipstick-size;
+            bottom: -120px; left: -150px;
+            transform: rotate(90deg);
+        }
+
+        $plant-book-size: 450px;
+        &.book {
+            height: $plant-book-size; width: $plant-book-size;
+            bottom: -160px; left: -200px;
+        }
+
+        $plant-pie-size: 320px;
+        &.pie {
+            height: $plant-pie-size; width: $plant-pie-size;
+            bottom: -120px; left: -80px;
+        }
+    }
+
+}
