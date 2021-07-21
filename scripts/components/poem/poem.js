@@ -35,15 +35,59 @@ define(['ko', 'api'], function(ko, api){
         self.isLoading.subscribe(newValue => {
             vm.isLoading(newValue);
         });
-        self.icons = ko.observableArray([]);
-        require(['dataStore/icons'], icons => { self.icons(icons); });
-        self.randIcon = () => {
-            if (self.icons().length) {
-                let index = Math.floor(Math.random()*self.icons().length);
-                let icon = self.icons().splice(index, 1)[0];
-                return icon;
+        let icons = {};
+        self.iconPrimary = ko.observable(""), self.iconSecondary = ko.observable(""), self.iconTertiary = ko.observable("");
+        require(['dataStore/icons'], iconObj => {
+            icons = iconObj;
+            self.randomizeIcons();
+        });
+        self.keyDown = (v, e) => {
+            if (e.code==="KeyR") {
+                self.randomizeIcons();
             }
+            if (e.code==="KeyQ") {
+                self.cycleIcons(icons.primary, self.iconPrimary, "up");
+            }
+            if (e.code==="KeyW") {
+                self.cycleIcons(icons.primary, self.iconPrimary, "down");
+            }
+            if (e.code==="KeyA") {
+                self.cycleIcons(icons.secondary, self.iconSecondary, "up");
+            }
+            if (e.code==="KeyS") {
+                self.cycleIcons(icons.secondary, self.iconSecondary, "down");
+            }
+            if (e.code==="KeyZ") {
+                self.cycleIcons(icons.tertiary, self.iconTertiary, "up");
+            }
+            if (e.code==="KeyX") {
+                self.cycleIcons(icons.tertiary, self.iconTertiary, "down");
+            }
+            return true;
         }
+        self.randIcon = (iconSet, icon) => {
+            let i;
+            while (!i) {
+                let t = Math.floor(Math.random()*iconSet.length);
+                if (t !== iconSet.indexOf(icon())) i = t;
+            }
+            i > -1 && i < iconSet.length-1 && icon(iconSet[i]);
+        }
+        self.randomizeIcons = () => {
+            self.randIcon(icons.primary, self.iconPrimary);
+            self.randIcon(icons.secondary, self.iconSecondary);
+            self.randIcon(icons.tertiary, self.iconTertiary);
+        };
+        self.cycleIcons = (iconSet, icon, dir) => {
+            let i;
+            if (dir==="up") {
+                i = iconSet.indexOf(icon()) === iconSet.length-1 ? 0 : iconSet.indexOf(icon())+1;
+            }
+            if (dir==="down") {
+                i = iconSet.indexOf(icon()) === 0 ? iconSet.length-1 : iconSet.indexOf(icon())-1;
+            }
+            i > -1 && icon(iconSet[i]);
+        };
         api.poem().then(data => { self.poemData(data) });
         self.lines = ko.computed(() => {
             return self.poemData().map(line => {
