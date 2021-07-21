@@ -1,24 +1,30 @@
 define([], function(){
-    return [
-        'alarm-clock',
-        'ball-gag',
-        'book',
-        'cassette',
-        'compact-mirror',
-        'dynamite',
-        'flask',
-        'game-controller',
-        'heart-lock',
-        'knife',
-        'lantern',
-        'letter',
-        'lipstick',
-        'magic-wand',
-        'microphone',
-        'mushroom',
-        'pie',
-        'plant',
-        'rope',
-        'wishbone'
-    ];
+    return {
+        primary: [
+            'lantern',
+            'magic-wand',
+            'mushroom',
+            'plant',
+            'rope',
+            'wishbone'
+        ],
+        secondary: [
+            'alarm-clock',
+            'compact-mirror',
+            'flask',
+            'game-controller',
+            'heart-lock',
+            'letter',
+            'microphone'
+        ],
+        tertiary: [
+            'ball-gag',
+            'book',
+            'cassette',
+            'dynamite',
+            'knife',
+            'lipstick',
+            'pie'
+        ]
+    }               
 });
