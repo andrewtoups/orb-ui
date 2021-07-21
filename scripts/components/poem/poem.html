@@ -1,14 +1,13 @@
-<article data-bind="visible: poemData, event: {click: toggleActive}" id="poem" class="moon">
+<article data-bind="visible: poemData, event: {click: toggleActive, keydown: keyDown}" tabindex="1" id="poem" class="moon">
     <div class="debug-bday" data-bind="visible: showDebug, if: birthData">
         <div data-bind="text: birthDay"></div>
         <div data-bind="text: location"></div>
         <div data-bind="text: coords"></div>
     </div>
-    <span class="image-region">
-        <span class="icon primary" data-bind="class: randIcon()"></span>
-        <span class="icon secondary-1" data-bind="class: randIcon()"></span>
-        <span class="icon secondary-2" data-bind="class: randIcon()"></span>        
-        <span class="icon secondary-3" data-bind="class: randIcon()"></span>        
+    <span class="image-region" data-bind="class: iconPrimary()+'-layout'">
+        <span class="icon primary" data-bind="class: iconPrimary"></span>
+        <span class="icon secondary" data-bind="class: iconSecondary"></span>
+        <span class="icon tertiary" data-bind="class: iconTertiary"></span>
         <div data-bind="foreach: lines">
             <form data-bind="css: {active: $parent.linesActive}">
                 <span data-bind="text: line"></span>
