@@ -136,7 +136,9 @@ define([
         self.currentModal = ko.observable('');
         self.modalParams = ko.observable();
         self.modalActive = ko.computed(() => self.modalParams() ? true : false);
-        self.launchModal = (name) => {
+        self.modalData = ko.observable();
+        self.launchModal = (name, data) => {
+            data && self.modalData(data);
             self.loadComponent('modal', self.loadingModal);
             self.currentModal(name);
         };
@@ -146,7 +148,12 @@ define([
             self.modalParams('');
         };
         self.loadingModal.subscribe(s => {
-            (!s) && self.modalParams({content: self.currentModal()});
+            if (!s) {
+                self.modalParams({
+                    content: self.currentModal(),
+                    data: self.modalData()
+                });
+            }
         });
         
 

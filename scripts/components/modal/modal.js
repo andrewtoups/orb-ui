@@ -3,6 +3,7 @@ define(['ko'], (ko) => {
         let self = this;
         let start = new Date();
         self.content = params.content;
+        self.data = params.data;
         self.loading = ko.observable(true);
         self.closing = ko.observable(false);
         self.modalClasses = ko.computed(() => {

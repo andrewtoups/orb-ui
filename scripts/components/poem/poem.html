@@ -16,8 +16,6 @@
         </div>
     </span>
     <nav data-bind="css: {masked: vm.pageTransitioning()}">
-        <a data-bind="click: (data, event) => { vm.launchModal('clergy') }" href="#">♗Clergy</a>
-        <a href="#">✛Relics</a>
-        <a data-bind="click: (data, event) => { vm.launchModal('tithe') }" href="#">¢Tithe</a>
+        <a data-bind="click: (data, event) => { vm.launchModal('stats', stats) }" href="#">view stats</a>
     </nav>
 </article>
