@@ -25,7 +25,7 @@ $path: 'png/icons/';
     background-size: contain;
     position: absolute;
     filter: brightness(75%);
-    opacity: .6;
+    opacity: .35;
     &.primary {
         bottom: 25px;
         @include xs { bottom: 25px; }
@@ -48,18 +48,19 @@ $path: 'png/icons/';
         left: 15px;
     }
     //tweaks:
-    &.alarm-clock       { opacity: .4; }
-    &.ball-gag          { opacity: .35; }
-    &.cassette          { opacity: .35; }
-    &.compact-mirror    { opacity: .45; }
-    &.dynamite          { opacity: .4; }
-    &.flask             { opacity: .5; }
-    &.game-controller   { opacity: .4; }
-    &.letter            { opacity: .5; }
+    &.alarm-clock       { opacity: .3; }
+    &.ball-gag          { opacity: .25; }
+    &.cassette          { opacity: .25; }
+    &.compact-mirror    { opacity: .3; }
+    &.dynamite          { opacity: .3; }
+    &.flask             { opacity: .3; }
+    &.game-controller   { opacity: .3; }
+    &.letter            { opacity: .3; }
     &.lipstick          { opacity: .33; }
-    &.microphone        { opacity: .4; }
-    &.mushroom          { opacity: .4; }
-    &.pie               { opacity: .35; }
+    &.microphone        { opacity: .3; }
+    &.mushroom          { opacity: .3; }
+    &.pie               { opacity: .3; }
+    &.plant             { opacity: .3; }
 
     transition: opacity 1000ms ease-in;
     &.masked { opacity: 0; }
