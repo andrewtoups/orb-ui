@@ -92,8 +92,8 @@ define(['ko', 'api'], function(ko, api){
             return self.poemData().map(line => {
                 let planet = Object.keys(line)[0];
                 return {
-                    line: line[planet][self[planet]()],
-                    placement: `${self[planet]()} ${planet}`
+                    line: line[planet][self[planet]().sign],
+                    placement: `${self[planet]().sign} ${planet}`
                 };
             });
         });

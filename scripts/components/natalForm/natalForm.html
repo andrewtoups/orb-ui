@@ -63,30 +63,30 @@
         </div>
     </fieldset>
     <div class="summary">
-        <ul data-bind="if: birthChart">
+        <ul data-bind="if: typeof birthChart() !== 'undefined' && typeof birthChart().sun !== 'undefined'">
             <li>
                 <span>☉</span>
-                <span data-bind="text: birthChart().sun.substring(0,3)"></span>
+                <span data-bind="text: birthChart().sun.sign.substring(0,3)"></span>
             </li>
             <li>
                 <span>☽</span>
-                <span data-bind="text: birthChart().moon.substring(0,3)"></span>
+                <span data-bind="text: birthChart().moon.sign.substring(0,3)"></span>
             </li>
             <li>
                 <span>↑</span>
-                <span data-bind="text: birthChart().ascendant.substring(0,3)"></span>
+                <span data-bind="text: birthChart().ascendant.sign.substring(0,3)"></span>
             </li>
             <li>
                 <span>☿</span>
-                <span data-bind="text: birthChart().mercury.substring(0,3)"></span>
+                <span data-bind="text: birthChart().mercury.sign.substring(0,3)"></span>
             </li>
             <li>
                 <span>♀</span>
-                <span data-bind="text: birthChart().venus.substring(0,3)"></span>
+                <span data-bind="text: birthChart().venus.sign.substring(0,3)"></span>
             </li>
             <li>
                 <span>♂</span>
-                <span data-bind="text: birthChart().mars.substring(0,3)"></span>
+                <span data-bind="text: birthChart().mars.sign.substring(0,3)"></span>
             </li>
         </ul>
         <div data-bind="text: timeSummary"></div>
