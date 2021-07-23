@@ -23,17 +23,6 @@ define(['ko', 'api'], function(ko, api){
         self.moon = ko.observable(params.birthChart.moon);
         self.mercury = ko.observable(params.birthChart.mercury);
 
-        self.poemData = ko.observableArray();
-        self.poemData.subscribe(newValue => {
-            let dataExists = !!newValue.length;
-            self.isLoading(!dataExists);
-            vm.poemDataReady(dataExists);
-            vm.hidePoem(false);
-        });
-        self.isLoading = ko.observable(true)
-        self.isLoading.subscribe(newValue => {
-            vm.isLoading(newValue);
-        });
         let icons = {};
         self.iconPrimary = ko.observable(""), self.iconSecondary = ko.observable(""), self.iconTertiary = ko.observable("");
         require(['dataStore/icons'], iconObj => {
@@ -265,6 +254,18 @@ define(['ko', 'api'], function(ko, api){
             }
             i > -1 && icon(iconSet[i]);
         };
+        self.poemData = ko.observableArray();
+        self.poemData.subscribe(newValue => {
+            let dataExists = !!newValue.length;
+            self.isLoading(!dataExists);
+            vm.poemDataReady(dataExists);
+            vm.hidePoem(false);
+        });
+        self.isLoading = ko.observable(true)
+        self.isLoading.subscribe(newValue => {
+            vm.isLoading(newValue);
+        });
+
         api.poem().then(data => { self.poemData(data) });
         self.lines = ko.computed(() => {
             return self.poemData().map(line => {
