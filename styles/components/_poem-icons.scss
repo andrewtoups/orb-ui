@@ -32,21 +32,6 @@ $path: 'png/icons/';
         left: -30px;
         height: $icon-size-primary; width: $icon-size-primary;
     }
-    &.secondary-1 {
-        bottom: 60px;
-        @include xs { bottom: 60px; }
-        right: 0;
-    }
-    &.secondary-2 {
-        top: 90px;
-        @include xs { top: 90px; }
-        right: 30px;
-    }
-    &.secondary-3 {
-        top: 60px;
-        @include xs { top: 60px; }
-        left: 15px;
-    }
     //tweaks:
     &.alarm-clock       { opacity: .3; }
     &.ball-gag          { opacity: .25; }
