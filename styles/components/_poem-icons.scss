@@ -61,6 +61,9 @@ $path: 'png/icons/';
     &.mushroom          { opacity: .4; }
     &.pie               { opacity: .35; }
 
+    transition: opacity 1000ms ease-in;
+    &.masked { opacity: 0; }
+
     &.alarm-clock       { @include icon('alarm-clock'); }
     &.ball-gag          { @include icon('ball-gag'); }
     &.book              { @include icon('book'); }
