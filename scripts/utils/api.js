@@ -2,8 +2,6 @@ define([], () => {
     let hostName = () => {
         const name = window.location.hostname;
         const apiPort = 3000;
-	console.log('name:',name);
-	console.log('condition:', ['localhost', '0.0.0.0', '127.0.0.1'].includes(name));
         if (['localhost', '0.0.0.0', '127.0.0.1'].includes(name)) {
             return `http://${name}:${apiPort}`;
         } else {
@@ -27,7 +25,6 @@ define([], () => {
     let screenshot = (params) => {
         const paramStr = new URLSearchParams(params).toString();
         const route = `screenshot/?${paramStr}`;
-        console.log("route:",route);
         return fetch(`${hostName()}/${route}`)
             .then(response => response.text());
     };

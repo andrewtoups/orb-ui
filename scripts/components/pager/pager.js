@@ -97,7 +97,6 @@ define([
             if (s) {
                 let path = window.location.pathname.split('/').filter(i => !!i);
                 if (path[0] === "viewPoem") {
-                    console.log('are we in here');
                     let qParams = new URLSearchParams(window.location.search);
                     let birthChart = {};
                     let screenshot = false;
@@ -131,7 +130,6 @@ define([
         });
 
         self.screenshotURI = ko.observable();
-        self.screenshotURI.subscribe(nv => { console.log("screenshotURI:",nv); });
 
         // Modal controls:
         self.loadingModal = ko.observable(false);
