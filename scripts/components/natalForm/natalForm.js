@@ -260,7 +260,7 @@ define([
 
         self.calculateChart = function(){
             if (self.UTCdate() && self.coordinates()) {
-                self.birthChart(null);
+                self.birthChart(false);
                 let d = self.UTCdate();
                 let coordinates = self.coordinates() ? self.coordinates() : [-92.0198427,30.2240897];
                 let location = self.currentLocationValue().address;
