@@ -11,7 +11,10 @@
             <a data-bind="attr: {href: href()}" download="an-orb-poem-of-ones-own.jpg" target="_blank"></a>
             <!-- /ko -->
         </button>
-    <!-- /ko -->
+        <form>
+            <label for="showPlacements">Show Placements?</label>
+            <input type="checkbox" data-bind="checked: showPlacements" id="showPlacements">    
+        </form>    <!-- /ko -->
 
     <!-- ko ifnot: vm.screenshotURI() && vm.screenshotPlacementsURI() -->
     <em>Loading preview...</em>
