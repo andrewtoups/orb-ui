@@ -14,6 +14,12 @@
                 <legend data-bind="text: placement"></legend>
             </form>
         </div>
+        <span data-bind="if: vm.screenshotMode()" class="watermark-container">
+            <img src="/styles/png/orb-url-handwritten.png">
+        </span>
+        <span data-bind="if: vm.screenshotMode()" class="logo-container">
+            <img src="/styles/png/orb-logo-isolated.png">
+        </span>
     </span>
     <nav data-bind="css: {masked: vm.pageTransitioning()}">
         <a href="#" data-bind="click: (data, event) => { vm.launchModal('share')}" class="share-link"><img src="/styles/png/share.png"></a>

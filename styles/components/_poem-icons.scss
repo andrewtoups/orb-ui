@@ -3,9 +3,9 @@ $icon-size: 170px;
 $offset-primary: $icon-size-primary + 25px;
 $offset-base: 25px;
 $offset: $icon-size + $offset-base;
-$path: 'png/icons/';
+$iconPath: 'png/icons/';
 @mixin icon($name){
-    background-image: url('#{$path}#{$name}.png');
+    background-image: url("#{$iconPath}#{$name}.png");
 }
 .image-region {
     position: absolute;
