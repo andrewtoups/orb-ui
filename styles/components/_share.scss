@@ -1,11 +1,26 @@
-.share-section {
+.modal-content section.share-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     button {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        background-repeat: no-repeat;
+        margin-top: 15px;
         &.long-press {
-            background-image: url("styles/png/long-press-to-save.png");
+            width: 330px;
+            height: 50px;
+            background-image: url("png/long-press-to-save.png");
+            background-size: 325px;
         }
         &.save-btn {
-            background-image: url("styles/png/save.png");
-            a { 
+            background-image: url("png/save.png");
+            background-size: 125px;
+            width: 133px;
+            height: 41px;
+            a {
+                display: inline-block;
                 height: 100%;
                 width: 100%;
             }
