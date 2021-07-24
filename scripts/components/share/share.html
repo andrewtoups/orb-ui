@@ -1,0 +1,20 @@
+<section class="share-section">
+    <!-- ko if: vm.screenshotURI() && vm.screenshotPlacementsURI()-->
+        <!-- ko if: !showPlacements()-->
+        <img data-bind="attr: {src: vm.screenshotURI()}" style="max-width: 100%; max-height: 80%;">
+        <!-- /ko -->
+        <!-- ko if: showPlacements()-->
+        <img data-bind="attr: {src: vm.screenshotPlacementsURI()}" style="max-width: 100%; max-height: 80%;">
+        <!-- /ko -->
+        <button data-bind="class: btnCls()">
+            <!-- ko if: btnEnabled -->
+            <a data-bind="attr: {href: href()}" download="an-orb-poem-of-ones-own.jpg" target="_blank"></a>
+            <!-- /ko -->
+        </button>
+    <!-- /ko -->
+
+    <!-- ko ifnot: vm.screenshotURI() && vm.screenshotPlacementsURI() -->
+    <em>Loading preview...</em>
+    <!-- /ko -->
+
+</section>

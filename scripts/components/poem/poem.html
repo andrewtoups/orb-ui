@@ -16,6 +16,7 @@
         </div>
     </span>
     <nav data-bind="css: {masked: vm.pageTransitioning()}">
-        <a data-bind="click: (data, event) => { vm.launchModal('stats', stats) }" href="#">view stats</a>
+        <a href="#" data-bind="click: (data, event) => { vm.launchModal('share')}" class="share-link"><img src="/styles/png/share.png"></a>
+        <a data-bind="click: (data, event) => { vm.launchModal('stats', stats) }" class="stats-link" href="#">view stats</a>
     </nav>
 </article>

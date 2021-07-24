@@ -177,6 +177,18 @@ $logo-height-poem: 75px;
         @include hz { margin: 10px 0; }
         line-height: .9;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+        &.share-link {
+            img {
+                width: 140px;
+            }
+        }
+        &.stats-link {
+            position: absolute;
+            left: -6px;
+            bottom: 10px;
+            font-size: 16px;
+        }
     }
 
     &.masked {

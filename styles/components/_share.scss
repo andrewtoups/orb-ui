@@ -1,0 +1,14 @@
+.share-section {
+    button {
+        &.long-press {
+            background-image: url("styles/png/long-press-to-save.png");
+        }
+        &.save-btn {
+            background-image: url("styles/png/save.png");
+            a { 
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}
