@@ -24,12 +24,11 @@ define(["ko"], ko => {
         this.clergy = [
             new Minister({
                 name: 'Dylan Krieger',
-                bio: `<p>Only the prettiest them in the whole world.</p>
-                <p>Also the world's <em>best</em> poet.</p>
-                <p>Words cannot say how much I love her</p>
-                <p>She has a <em>wikipedia article</em>.</p>
-                <p>This site would be nothing without her.</p>`,
+                bio: `<p>Dylan Krieger is the poet and High Priestess of The Orb.</p>
+                <p>She is death rattle sun, crybaby moon, and brain-in-a-vat rising.</p>
+                <p>Author of six books of poetry, including the NYT-lauded <em>Giving Godhead</em> (Delete, 2017), she can be found at <a href="https://dylankrieger.com">dylankrieger.com</a>.</p>`,
                 link: 'dylankrieger.com',
+                pic: '/styles/jpg/dylan-krieger.jpg',
                 birthData: {
                     date: {
                         month: 3, day: 6, year: 1990,
