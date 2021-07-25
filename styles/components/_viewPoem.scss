@@ -12,7 +12,7 @@
         &:after {
             height: $screenshotMoonSize; width: $screenshotMoonSize;
         }
-        &:before { content: ""; }
+        &:before, &:after { animation: none; }
         font-size: 110%;
         form {
             // padding: 10px 20px;
