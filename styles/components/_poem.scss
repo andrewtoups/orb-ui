@@ -193,6 +193,7 @@ $logo-height-poem: 75px;
         &.share-link {
             img {
                 width: 140px;
+                filter: drop-shadow(0px 0px 2px $yellow-logo);
             }
         }
         &.stats-link {
