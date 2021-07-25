@@ -12,18 +12,14 @@
         &:after {
             height: $screenshotMoonSize; width: $screenshotMoonSize;
         }
-        font-size: 130%;
+        font-size: 110%;
         form {
-            padding: 10px 20px;
+            // padding: 10px 20px;
             &.active legend {
                 text-shadow: 0px .25px .25px rgba(10, 10, 10, 0.5);
                 bottom: -7px; right: -30px;
                 font-size: 12.5px;
             }
-        }
-        .image-region div {
-            position: relative;
-            bottom: 15px;
         }
         .watermark-container {
             position: absolute;
@@ -37,12 +33,11 @@
         }
         .logo-container {
             position: absolute;
-            bottom: 10px;
+            top: 15px;
             width: 100%;
-            text-align: left;
-            padding-left: 10px;
+            text-align: center;
             img {
-                width: 53px;
+                width: 59px;
                 opacity: .65;
             }
         }
