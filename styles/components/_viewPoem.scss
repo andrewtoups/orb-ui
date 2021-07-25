@@ -12,6 +12,7 @@
         &:after {
             height: $screenshotMoonSize; width: $screenshotMoonSize;
         }
+        &:before { content: ""; }
         font-size: 110%;
         form {
             // padding: 10px 20px;
