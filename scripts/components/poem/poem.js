@@ -163,27 +163,9 @@ define(['ko', 'api'], function(ko, api){
                 placementTertiary = t;
             }
 
-            // let elementPrimary = Object.keys(elementRank[0])[0];
-            // let placementPrimary =   tieBreaker.find(placement => params.birthChart[placement].element === elementPrimary) || tieBreaker[0];
-            // tieBreaker = tieBreaker.filter(i => i!==placementPrimary);
-            // stats.logger(`primary   placement:  ${placementPrimary}`);
-            // stats.logger("tieBreaker after selecting primary: "+tieBreaker);
-            // let elementSecondary = elementRank.length > 1 ? Object.keys(elementRank[1])[0] : elementPrimary;
-            // let placementSecondary = tieBreaker.find(placement => params.birthChart[placement].element === elementSecondary) || tieBreaker[0];
-            // tieBreaker = tieBreaker.filter(i => i!==placementSecondary);
-            // stats.logger(`secondary placement:  ${placementSecondary}`);
-            // stats.logger("tieBreaker after selecting secondary: "+tieBreaker);
-            // let elementTertiary = elementRank.length > 2 ? Object.keys(elementRank[2])[0] : elementSecondary;
-            // let placementTertiary =  tieBreaker.find(placement => params.birthChart[placement].element === elementTertiary) || tieBreaker[0];
-            // tieBreaker = tieBreaker.filter(i => i!==placementTertiary);
-            // stats.logger(`tertiary  placement:  ${placementTertiary}`);
-            // stats.logger("tieBreaker after selecting tertiary: "+tieBreaker);
             let signPrimary =   params.birthChart[placementPrimary].sign;
-            // stats.logger(`primary   sign:       ${signPrimary}`);
             let signSecondary = params.birthChart[placementSecondary].sign;
-            // stats.logger(`secondary sign:       ${signSecondary}`);
             let signTertiary =  params.birthChart[placementTertiary].sign;
-            // stats.logger(`tertiary  sign:       ${signTertiary}`);
 
             self.iconPrimary(iconMap[signPrimary].primary[placementPrimary]);
             self.iconSecondary(iconMap[signSecondary].secondary[placementSecondary]);
