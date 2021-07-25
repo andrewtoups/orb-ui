@@ -43,7 +43,9 @@
         background-size: $moon-size $moon-size;
         @include xs { background-repeat: no-repeat; background-size: $moon-size-xs $moon-size-xs; }
 
-        font-size: 90%;
+        line-height: 1.2;
+        font-size: 78%;
+
         @include hz { font-size: 80%; }
         box-shadow: 0px 0px 5px $gold-bright;
         display: flex;
