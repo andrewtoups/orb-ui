@@ -1,10 +1,11 @@
 <section class="share-section">
     <!-- ko if: vm.screenshotURI() && vm.screenshotPlacementsURI()-->
+    <div class="image-container">
         <!-- ko if: !showPlacements()-->
-        <img data-bind="attr: {src: vm.screenshotURI()}" style="max-width: 100%; max-height: 80%;">
+        <img data-bind="attr: {src: vm.screenshotURI()}">
         <!-- /ko -->
         <!-- ko if: showPlacements()-->
-        <img data-bind="attr: {src: vm.screenshotPlacementsURI()}" style="max-width: 100%; max-height: 80%;">
+        <img data-bind="attr: {src: vm.screenshotPlacementsURI()}">
         <!-- /ko -->
         <button data-bind="class: btnCls()">
             <!-- ko if: btnEnabled -->
@@ -17,7 +18,9 @@
         </form>    <!-- /ko -->
 
     <!-- ko ifnot: vm.screenshotURI() && vm.screenshotPlacementsURI() -->
-    <em>Loading preview...</em>
+    <div class="placeholder">
+        <em>Loading preview...</em>
+    </div>
     <!-- /ko -->
 
 </section>

@@ -1,7 +1,17 @@
 .modal-content section.share-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    .placeholder, .image-container {
+        min-height: 69%;
+        width: 100%;
+    }
+    .placeholder {
+        display: flex; align-items: center; justify-content: center;
+    }
+    .image-container {
+        img {
+            max-width: 100%; max-height: 60%;
+            @include xs { max-height: 80%; }
+        }
+    }
     button {
         background-color: transparent;
         border: none;
