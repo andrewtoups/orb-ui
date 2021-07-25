@@ -33,6 +33,7 @@ define(['ko', 'api'], function(ko, api){
             icons = iconObj;
         });
         self.stats = ko.observable({});
+        self.iconsReady = ko.observable(false);
         require(['dataStore/iconMap'], iconMap => {
             let Stats = function(){
                 this.log = [],
@@ -187,6 +188,7 @@ define(['ko', 'api'], function(ko, api){
             self.iconPrimary(iconMap[signPrimary].primary[placementPrimary]);
             self.iconSecondary(iconMap[signSecondary].secondary[placementSecondary]);
             self.iconTertiary(iconMap[signTertiary].tertiary[placementTertiary]);
+            self.iconsReady(true);
 
             stats.logger(`natal chart:`);
             placementOrder.forEach(i => {
