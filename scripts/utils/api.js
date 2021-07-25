@@ -12,6 +12,10 @@ define([], () => {
         return fetch(`${hostName()}/getData/poem`)
         .then(response => response.json());
     };
+    let updatePoemData = () => {
+        return fetch(`${hostName()}/updatePoemData`)
+        .then(response => response.text());
+    };
     let months = () => {
 	return fetch(`${hostName()}/getData/months`)
 	.then(response => response.json());
@@ -37,7 +41,8 @@ define([], () => {
     let api = {
         hostName: hostName,
         poem: poem,
-	months: months,
+        updatePoemData: updatePoemData,
+	    months: months,
         birthChart: birthChart,
         screenshot: screenshot
     };

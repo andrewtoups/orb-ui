@@ -3,7 +3,7 @@ requirejs.config({
     paths: {
         'ko': 'vendor/knockout',
         'text': 'vendor/text',
-        'api': 'utils/api',
+        'api': 'api',
         'transitionState': 'utils/transitionState'
     }
 });
