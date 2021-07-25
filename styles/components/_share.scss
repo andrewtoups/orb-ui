@@ -49,10 +49,12 @@
         opacity: 1;
         transition: opacity 500ms ease-in;
         &.masked { 
-            visibility: hidden;
-            opacity: 0;
+            .show-placements, .save-btn { cursor: not-allowed; }
+            .show-placements button, .save-btn a { pointer-events: none; }
+            opacity: .2;
         }
         margin-top: 5px;
+        margin-bottom: 20px;
         width: 100%;
         text-align: center;
         .show-placements {
