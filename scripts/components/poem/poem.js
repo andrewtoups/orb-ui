@@ -31,7 +31,6 @@ define(['ko', 'api'], function(ko, api){
         self.iconPrimary = ko.observable(""), self.iconSecondary = ko.observable(""), self.iconTertiary = ko.observable("");
         require(['dataStore/icons'], iconObj => {
             icons = iconObj;
-            self.randomizeIcons();
         });
         self.stats = ko.observable({});
         require(['dataStore/iconMap'], iconMap => {
