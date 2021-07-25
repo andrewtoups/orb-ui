@@ -27,12 +27,11 @@
         }
         .watermark-container {
             position: absolute;
-            bottom: 14px;
-            width: 100%;
-            text-align: left;
-            padding-left: 67px;
+            top: -4px;
+            width: calc(100% - 30px);
+            text-align: center;
             img {
-                width: 160px;
+                width: 110px;
                 opacity: .5;
             }
         }

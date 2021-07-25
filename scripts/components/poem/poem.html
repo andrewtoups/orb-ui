@@ -10,13 +10,15 @@
         <span class="icon tertiary" data-bind="class: iconTertiary, css: {masked: vm.pageTransitioning() || isLoading()}"></span>
         <div data-bind="foreach: lines">
             <form data-bind="css: {active: $parent.linesActive}">
+                <!-- ko if: ($index() === 3) -->
+                <span data-bind="if: vm.screenshotMode()" class="watermark-container">
+                    <img src="/styles/png/orb-url-handwritten.png">
+                </span>        
+                <!-- /ko -->
                 <span data-bind="text: line"></span>
                 <legend data-bind="text: placement"></legend>
             </form>
         </div>
-        <span data-bind="if: vm.screenshotMode()" class="watermark-container">
-            <img src="/styles/png/orb-url-handwritten.png">
-        </span>
         <span data-bind="if: vm.screenshotMode()" class="logo-container">
             <img src="/styles/png/orb-logo-isolated.png">
         </span>
