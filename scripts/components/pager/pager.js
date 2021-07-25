@@ -1,9 +1,12 @@
 define([
     'ko',
     'utils/inputModeSwitcher',
-    'utils/page'
-], function(ko, inputMode, {Page, Transition}){
+    'utils/page',
+    'api'
+], function(ko, inputMode, {Page, Transition}, api){
     return function() {
+        // pull new poem data from spreadsheet:
+        api.updatePoemData().then(data => console.log(data));
         let self = this;
         const splashDelay = 0;
 
