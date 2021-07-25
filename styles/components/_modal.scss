@@ -14,8 +14,7 @@
     &.show, &.hide { transition: opacity 500ms ease-in-out; }
 }
 .modal-content {
-    min-width: 25vw;
-    height: 70vh; max-width: 50vw;
+    height: 80vh; max-width: 450px;
     @include xs { height: 100vh; max-width: unset; }
     @include hz { height: 100vh; max-width: unset; }
 
@@ -30,28 +29,29 @@
     > h1 {
         position: absolute;
         z-index: 1000;
-        top: -60px; left: 0;
+        top: -45px; left: 0;
+        padding: 0 15px;
         @include xs { top: 0; }
         @include hz { top: 0; }
         display: flex;
         width: 100%;
         margin: 0;
         @include xs { 
-            padding: 15px 15px 30px;
+            padding: 5px 15px 15px;
             background-image: linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,1));
         }
         @include hz {
-            padding: 15px 15px 30px;
+            padding: 5px 15px 15px;
             background-image: linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,1));
         }
         justify-content: space-between;
         text-transform: capitalize;
         > i.x {
-            font-size: 50%;
             margin: 5px;
-            background-color: $coal;
-            opacity: .75;
-            padding: 2px 8px;
+            background-image: url('png/return.png');
+            width: 130px;
+            height: 26px;
+            background-size: 130px;
             cursor: pointer;
             @include xs { font-size: 75%; }
         }
