@@ -23,21 +23,6 @@ define(["ko"], ko => {
         };
         this.clergy = [
             new Minister({
-                name: '2psy',
-                bio: `<p>Just another thembo.</p>
-                <p>It really grinds my gears when programmers call themselves a <em>code monkey</em>.</p>
-                <p>I'm neither particularly dignified nor piteous. I'm just a person who writes code. Sheesh.</p>
-                <p>I do make memes though. I guess that part is piteous. I still wouldn't call myself a <em>meme monkey</em> though.</p>`,
-                link: 'www.instagram.com/andonuts',
-                birthData: {
-                    date: {
-                        month: 1, day: 5, year: 1983,
-                        hour: 3, minute: 15, pmOffset: 12
-                    },
-                    city: 'Opelousas, LA'
-                }
-            }),
-            new Minister({
                 name: 'Dylan Krieger',
                 bio: `<p>Only the prettiest them in the whole world.</p>
                 <p>Also the world's <em>best</em> poet.</p>
@@ -50,23 +35,39 @@ define(["ko"], ko => {
                         month: 3, day: 6, year: 1990,
                         hour: 5, minute: 16, pmOffset: 12
                     },
-                    city: 'South Bend, IN'
+                    city: 'South Bend Indiana'
                 }
             }),
             new Minister({
-                name: 'Chris Payne',
-                bio: `<p>Artist and designer.</p>
-                <p>Sweet cancer bb.</p>
-                <p>Do not cross him.</p>`,
+                name: 'Christopher Payne',
+                bio: `<p>Christopher Payne is the designer and Magician of The Orb.</p>
+                <p>He is tender wound sun, homesick moon, and humble guru rising.</p>
+                <p>An artist and illustrator whose work has appeared in <em>Silicon Valley</em> (HBO) and <em>Loosely Exactly Nicole</em> (MTV), he can be found at <a href="https://saltedteeth.com">saltedteeth.com</a>.</p>`,
                 link: 'saltedteeth.com',
+                pic: '/styles/jpg/christopher-payne.jpg',
                 birthData: {
                     date: {
                         month: 7, day: 11, year: 1985,
                         hour: 10, minute: 44, pmOffset: 12
                     },
-                    city: 'Lodi, CA'
+                    city: 'Lodi California'
                 }
-            })
+            }),
+            new Minister({
+                name: 'Andrew Toups',
+                bio: `<p>Andrew Toups is the developer and Supreme Hierophant of The Orb.</p>
+                <p>He is obsolete god sun, style maven moon, and mischievous wit rising.</p>
+                <p>A musician in Grammy-nominated band Feufollet, he is taking applications for new reply guys on his <a href="www.instagram.com/andonuts">instagram page</a>.</p>`,
+                link: 'www.instagram.com/andonuts',
+                pic: '/styles/jpg/2ps.jpg',
+                birthData: {
+                    date: {
+                        month: 1, day: 5, year: 1983,
+                        hour: 3, minute: 15, pmOffset: 12
+                    },
+                    city: 'Opelousas Louisiana'
+                }
+            })            
         ];
     }
 })
