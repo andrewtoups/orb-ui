@@ -92,11 +92,7 @@
                             text-shadow 700ms ease-in-out;
             }
         }
-        @include xs {
-            &:hover legend {
-                color: rgba($poem-text-hover-c, .0);
-            }
-        }
+        &:hover legend { @include xs { color: rgba($poem-text-hover-c, 0); } }
     }
 
     //Debug:
