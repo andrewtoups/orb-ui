@@ -16,8 +16,8 @@ define([], function(){
         },
         "Taurus": {
             primary: {
-                sun: "rope", moon: "rope", ascendant: "rope",
-                mercury: "rope", venus: "rope", mars: "rope"
+                sun: "magic-wand", moon: "magic-wand", ascendant: "magic-wand",
+                mercury: "magic-wand", venus: "magic-wand", mars: "magic-wand"
             },
             secondary: {
                 sun: "game-controller", moon: "game-controller", ascendant: "game-controller",
@@ -30,8 +30,8 @@ define([], function(){
         },
         "Gemini": {
             primary: {
-                sun: "mushroom", moon: "mushroom", ascendant: "mushroom",
-                mercury: "mushroom", venus: "mushroom", mars: "mushroom"
+                sun: "lantern", moon: "lantern", ascendant: "lantern",
+                mercury: "lantern", venus: "lantern", mars: "lantern"
             },
             secondary: {
                 sun: "compact-mirror", moon: "compact-mirror", ascendant: "compact-mirror",
@@ -44,8 +44,8 @@ define([], function(){
         },
         "Cancer": {
             primary: {
-                sun: "magic-wand", moon: "magic-wand", ascendant: "magic-wand",
-                mercury: "magic-wand", venus: "magic-wand", mars: "magic-wand"
+                sun: "wishbone", moon: "wishbone", ascendant: "wishbone",
+                mercury: "wishbone", venus: "wishbone", mars: "wishbone"
             },
             secondary: {
                 sun: "heart-lock", moon: "heart-lock", ascendant: "heart-lock",
@@ -128,8 +128,8 @@ define([], function(){
         },
         "Capricorn": {
             primary: {
-                sun: "wishbone", moon: "wishbone", ascendant: "wishbone",
-                mercury: "wishbone", venus: "wishbone", mars: "wishbone"
+                sun: "rope", moon: "rope", ascendant: "rope",
+                mercury: "rope", venus: "rope", mars: "rope"
             },
             secondary: {
                 sun: "heart-lock", moon: "heart-lock", ascendant: "heart-lock",
@@ -142,8 +142,8 @@ define([], function(){
         },
         "Aquarius": {
             primary: {
-                sun: "lantern", moon: "lantern", ascendant: "lantern",
-                mercury: "lantern", venus: "lantern", mars: "lantern"
+                sun: "mushroom", moon: "mushroom", ascendant: "mushroom",
+                mercury: "mushroom", venus: "mushroom", mars: "mushroom"
             },
             secondary: {
                 sun: "microphone", moon: "microphone", ascendant: "microphone",
