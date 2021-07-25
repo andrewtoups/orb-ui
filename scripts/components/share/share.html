@@ -7,21 +7,24 @@
         <!-- ko if: showPlacements()-->
         <img data-bind="attr: {src: vm.screenshotPlacementsURI()}">
         <!-- /ko -->
-        <button data-bind="class: btnCls()">
-            <!-- ko if: btnEnabled -->
-            <a data-bind="attr: {href: href()}" download="an-orb-poem-of-ones-own.jpg" target="_blank"></a>
-            <!-- /ko -->
-        </button>
-        <form>
-            <label for="showPlacements">Show Placements?</label>
-            <input type="checkbox" data-bind="checked: showPlacements" id="showPlacements">    
-        </form>    <!-- /ko -->
-
+    </div>
+    <!-- /ko -->
     <!-- ko ifnot: vm.screenshotURI() && vm.screenshotPlacementsURI() -->
     <div class="placeholder">
         <em>Loading preview...</em>
     </div>
     <!-- /ko -->
+    <form data-bind="css: {masked: !(vm.screenshotURI() && vm.screenshotPlacementsURI())}">
+        <button class="long-press"></button>
+        <button class="save-btn">
+            <a data-bind="attr: {href: href()}" download="an-orb-poem-of-ones-own.jpg" target="_blank"></a>
+        </button>
+        <div class="show-placements">
+            <button class="mobile-toggle" data-bind="class: btnCls(), click: toggleShowPlacements"></button>
+            <input type="checkbox" data-bind="checked: showPlacements" id="showPlacements">
+            <label for="showPlacements">Show Placements</label>
+        </div>
+    </form>
     <h2>Clergy</h2>
     <ul data-bind="foreach: clergy" class="clergy">
         <li>
