@@ -20,6 +20,10 @@
     }
 }
 
+@mixin ripple($color-primary, $color-secondary) {
+    background-image: radial-gradient(circle, rgba(255,255,255,0) 1%, rgba($color-primary,0.5) 2%, rgba($color-secondary,0.25) 4%, rgba(255,255,255,0) 10%);
+}
+
 @mixin moire {
     background-image:   linear-gradient(to right, rgba(192, 192, 192, 0), rgba(192, 192, 192, 0)),
                         linear-gradient(to right, #00000005 50%, #ffffff05 50%),
