@@ -27,7 +27,7 @@
         <a href="#" data-bind="click: (data, event) => { vm.launchModal('share')}" class="share-link"><img src="/styles/png/share.png"></a>
     </nav>
 </article>
-<div class="hamburger-container" data-bind="css: {open: open}">
+<div class="hamburger-container" data-bind="css: {open: open, masked: vm.pageTransitioning() || isLoading()}">
     <img src="/styles/png/hamburger.png" class="hamburger" data-bind="click: toggleOpen">
     <nav class="aux">
         <a data-bind="click: (data, event) => { vm.launchModal('stats', stats) }" class="stats-link" href="#">view stats</a>
