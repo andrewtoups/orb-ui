@@ -249,6 +249,7 @@ $logo-height-poem: 75px;
         a {
             padding: 12px 0;
             margin: 0;
+            width: 100%;
             @include xs {
                 background-color: rgba(0,0,0,.65);
                 a.stats-link { background-color: none; }    
