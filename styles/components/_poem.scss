@@ -198,6 +198,7 @@ $logo-height-poem: 75px;
         }
         &.stats-link {
             font-size: 16px;
+            opacity: .04;
         }
     }
 
@@ -239,7 +240,6 @@ $logo-height-poem: 75px;
         bottom: 55px;
         @include xs {
             left: -134px;
-            background-color: rgba(0,0,0,.65);
             transition: left 500ms ease-in-out;
         }
         width: 134px;
@@ -249,8 +249,14 @@ $logo-height-poem: 75px;
         background-image: none;
         a {
             padding: 12px 0;
+            margin: 0;
+            @include xs {
+                background-color: rgba(0,0,0,.65);
+                a.stats-link { background-color: none; }    
+            }
             img {
                 max-height: 25px;
+                margin: 0 9px;
             }
         }
     }
