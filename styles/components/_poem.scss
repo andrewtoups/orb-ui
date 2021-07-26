@@ -3,7 +3,6 @@
     background-color: opacity-compensate($main-bg-c, rgba($gold, .85));
     box-shadow: 0px 0px 1000px -50px rgba($coal, .25);
     border-radius: 2px;
-    animation: Wiggle 50s linear infinite;
     @include xs { animation: none; }
     @include hz { animation: none; }
     font-family: 'Noto Serif TC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
