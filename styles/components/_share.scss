@@ -76,7 +76,7 @@
             opacity: .2;
         }
         margin-top: 5px;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
         width: 100%;
         text-align: center;
         .show-placements {
@@ -107,6 +107,8 @@
                     }
                 }
             }
+            label { visibility: hidden; position: absolute; }
+            img { height: 20px;}
             @include xs { align-self: end; }
             input[type="checkbox"] {
                 display: none;
@@ -122,9 +124,9 @@
     }
     .img-heading {
         text-align: center;
-        padding-top: 20px;
-        border-top: 4px dotted $yellow-logo;
-        margin: 0 15%;
+        // padding-top: 20px;
+        // border-top: 4px dotted $yellow-logo;
+        // margin: 0 15%;
 
         img { height: 45px; }
     }
