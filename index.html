@@ -10,21 +10,21 @@
 
     <link rel="stylesheet" href="styles/main.css" type="text/css">
 </head>
-        <div class="debug">
-            <dl>
+        <!-- <div class="debug"> -->
+            <!-- <dl> -->
                 <!-- ko foreach: requestCounter -->
-                <dt data-bind="text: name"></dt>
-                <dd data-bind="text: requests"></dd>
+                <!-- <dt data-bind="text: name"></dt> -->
+                <!-- <dd data-bind="text: requests"></dd> -->
                 <!-- /ko -->
-                <dt>total:</dt><dd data-bind="text: requestsThisSession"></dd>
-            </dl>
-            <dl>
-                <dt>Input Mode:</dt>
-                <dd data-bind="text: inputMode"></dd>
-                <dt>Pointer mode:</dt>
-                <dd data-bind="text: pointerMode"></dd>
-            </dl>
-        </div>
+                <!-- <dt>total:</dt><dd data-bind="text: requestsThisSession"></dd> -->
+            <!-- </dl> -->
+            <!-- <dl> -->
+                <!-- <dt>Input Mode:</dt> -->
+                <!-- <dd data-bind="text: inputMode"></dd> -->
+                <!-- <dt>Pointer mode:</dt> -->
+                <!-- <dd data-bind="text: pointerMode"></dd> -->
+            <!-- </dl> -->
+        <!-- </div> -->
 <body data-bind="event: {keydown: keyDown}, keydownBubble: false, inputMode: inputMode" tabindex="0" ontouchstart="">
     <main data-bind="class: latestCompletePage()">        
         <div class="orb" data-bind="class: orbClass">
