@@ -113,6 +113,13 @@
             }
         }
     }
+    .divider {
+        background-image: url('png/divider.png');
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 50px;
+        background-size: 100%;
+    }
     .img-heading {
         text-align: center;
         padding-top: 20px;
