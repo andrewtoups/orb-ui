@@ -26,7 +26,7 @@ define(["ko"], ko => {
                 name: 'Dylan Krieger',
                 bio: `<p>Dylan Krieger is the poet and High Priestess of The Orb.</p>
                 <p>She is death rattle sun, crybaby moon, and brain-in-a-vat rising.</p>
-                <p>Author of six books of poetry, including the NYT-lauded <em>Giving Godhead</em> (Delete, 2017), she can be found at <a href="https://dylankrieger.com">dylankrieger.com</a>.</p>`,
+                <p>Author of six books of poetry, including NYT-lauded <em>Giving Godhead</em> (Delete, 2017), she can be found at <a href="https://dylankrieger.com">dylankrieger.com</a>.</p>`,
                 link: 'dylankrieger.com',
                 pic: '/styles/jpg/dylan-krieger.jpg',
                 birthData: {
