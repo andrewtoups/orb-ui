@@ -43,6 +43,7 @@
             background-image: url("png/long-press-to-save.png");
             background-size: 90vw;
             display: none;
+            pointer-events: none;
             @include xs { display: block; }
         }
         &.save-btn {
