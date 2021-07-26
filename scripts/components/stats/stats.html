@@ -2,8 +2,6 @@
     .stats {
         font-family: monospace;
         font-size: 12px;
-        overflow: auto;
-        padding-top: 30px;
     }
     .stats pre {
         margin: 0;
@@ -15,8 +13,10 @@
     }
 </style>
 
-<div class="stats">
-    <!-- ko foreach: stats -->
-    <pre data-bind="text: $data, css: {spacer: $data==='nl'}"></pre>
-    <!-- /ko -->
-</div>
+<section>
+    <div class="stats">
+        <!-- ko foreach: stats -->
+        <pre data-bind="text: $data, css: {spacer: $data==='nl'}"></pre>
+        <!-- /ko -->
+    </div>    
+</section>
