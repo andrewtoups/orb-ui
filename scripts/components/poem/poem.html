@@ -4,7 +4,7 @@
         <div data-bind="text: location"></div>
         <div data-bind="text: coords"></div>
     </div>
-    <span class="image-region" data-bind="class: iconPrimary()+'-layout'">
+    <span class="image-region" data-bind="class: iconPrimary()+'-layout', css: {'icons-ready': iconsReady()}">
         <span class="icon primary" data-bind="class: iconPrimary, css: {masked: vm.pageTransitioning() || isLoading()}"></span>
         <span class="icon secondary" data-bind="class: iconSecondary, css: {masked: vm.pageTransitioning() || isLoading()}"></span>
         <span class="icon tertiary" data-bind="class: iconTertiary, css: {masked: vm.pageTransitioning() || isLoading()}"></span>
