@@ -1,48 +1,45 @@
 .image-region.magic-wand-layout {
-    $magic-wand-size: 730px;
+    $magic-wand-size: 175.48%;
     .icon.primary {
-        height: $magic-wand-size; width: $magic-wand-size;
-        left:-285px; top: -35px;
+        width: $magic-wand-size; height: $magic-wand-size * 4/5;
+        left: -68.509%; top: -6.73%;
     }
-    $magic-wand-secondary-size: 390px;
+    $magic-wand-secondary-size: 93.75%;
     .icon.secondary {
-        height: $magic-wand-secondary-size; width: $magic-wand-secondary-size;
-        top: -20px; right: -60px;
-        &.alarm-clock { right: -70px; }
-        &.letter { right: -90px; }
-        &.compact-mirror { right: -100px; }
-        &.heart-lock { right: -90px; }
-        $magic-wand-game-controller-size: 500px;
+        width: $magic-wand-secondary-size; height: $magic-wand-secondary-size * 4/5;
+        right: -14.42%; top: -3.846%;
+        &.alarm-clock { right: -16.826%; }
+        &.letter { right: -21.63%; }
+        &.compact-mirror { right: -24.038%; }
+        &.heart-lock { right: -24.038%; }
+        $magic-wand-game-controller-size: 120.19%;
         &.game-controller {
             transform: rotate(-12deg);
-            height: $magic-wand-game-controller-size; width: $magic-wand-game-controller-size;
-            right: -190px; top: -40px;
+            width: $magic-wand-game-controller-size; height: $magic-wand-game-controller-size * 4/5;
+            right: -45.67%; top: -7.69%;
         }
     }
-    $magic-wand-tertiary-size: 360px;
+    $magic-wand-tertiary-size: 86.538%;
     .icon.tertiary {
-        height: $magic-wand-tertiary-size; width: $magic-wand-tertiary-size;
-        bottom: -130px; right: -70px;
-        &.pie {
-            bottom: -170px;
-            right: -60px;
-        }
+        width: $magic-wand-tertiary-size; height: $magic-wand-tertiary-size * 4/5;
+        right: -16.826%; bottom: -25%;
+        &.pie { right: -14.42%; bottom: -32.69%; }
         &.lipstick {
             transform: rotate(320deg);
-            bottom: -170px; right: -60px;
+            right: -14.42%; bottom: -32.69%;
         }
         &.knife {
             transform: rotate(310deg);
-            bottom: -160px;
+            bottom: -30.769%;
         }
         &.dynamite {
             transform: rotate(70deg);
-            bottom: -150px; right: -40px;
+            right: -9.615%; bottom: -28.846%; 
         }
-        $magic-wand-book-size: 500px;
+        $magic-wand-book-size: 120.19%;
         &.book {
-            height: $magic-wand-book-size; width: $magic-wand-book-size;
-            bottom: -190px; right: -190px;
+            width: $magic-wand-book-size; height: $magic-wand-book-size * 4/5;
+            right: -45.67%; bottom: -36.538%;
         }
     }
 

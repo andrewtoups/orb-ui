@@ -1,47 +1,47 @@
 .image-region.plant-layout {
-    $plant-size: 870px;
+    $plant-size: 209.13%;
     .icon.primary {
         left: unset;
-        height: $plant-size; width: $plant-size;
-        right:-320px; top: -130px;
+        width: $plant-size; height: $plant-size * 4/5;
+        right:-76.92%; top: -25%;
     }
-    $plant-secondary-size: 360px;
+    $plant-secondary-size: 86.538%;
     .icon.secondary {
         right: unset;
-        height: $plant-secondary-size; width: $plant-secondary-size;
-        top: 10px; left: -130px;
+        width: $plant-secondary-size; height: $plant-secondary-size *4/5;
+        left: -31.25%; top: 1.92%;
 
-        $plant-game-controller-size: 330px;
+        $plant-game-controller-size: 79.326%;
         &.game-controller {
-            height: $plant-game-controller-size; width: $plant-game-controller-size;
-            top: 40px; left: -80px;
+            width: $plant-game-controller-size; height: $plant-game-controller-size * 4/5;
+            left: -19.23%; top: 7.69%;
         }
     }
-    $plant-tertiary-size: 350px;
+    $plant-tertiary-size: 84.13%;
     .icon.tertiary {
         right: unset;
-        height: $plant-tertiary-size; width: $plant-tertiary-size;
-        bottom: -110px; left: -100px;
+        width: $plant-tertiary-size; height: $plant-tertiary-size * 4/5;
+        left: -24.038%; bottom: -21.15%;
 
         &.knife { transform: rotate(40deg); }
 
-        $plant-lipstick-size: 390px;
+        $plant-lipstick-size: 93.75%;
         &.lipstick {
-            height: $plant-lipstick-size; width: $plant-lipstick-size;
-            bottom: -120px; left: -150px;
+            width: $plant-lipstick-size; height: $plant-lipstick-size * 4/5;
+            left: -36.057%; bottom: -23.076%;
             transform: rotate(90deg);
         }
 
-        $plant-book-size: 450px;
+        $plant-book-size: 108.17%;
         &.book {
-            height: $plant-book-size; width: $plant-book-size;
-            bottom: -160px; left: -200px;
+            width: $plant-book-size; height: $plant-book-size * 4/5;
+            left: -48.076%; bottom: -30.769%; 
         }
 
-        $plant-pie-size: 320px;
+        $plant-pie-size: 76.92%;
         &.pie {
-            height: $plant-pie-size; width: $plant-pie-size;
-            bottom: -120px; left: -80px;
+            width: $plant-pie-size; height: $plant-pie-size * 4/5;
+            left: -19.23%; bottom: -23.076%;
         }
     }
 

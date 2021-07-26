@@ -1,40 +1,40 @@
 .image-region.rope-layout {
-    $rope-size: 1600px;
+    $rope-size: 384.615%;
     .icon.primary {
         left: unset;
-        height: $rope-size; width: $rope-size;
-        right:-835px; top: -570px;
+        width: $rope-size; height: $rope-size * 4/5;
+        right: -200.72%; top: -109.615%;
     }
-    $rope-secondary-size: 410px;
+    $rope-secondary-size: 98.557%;
     .icon.secondary {
-        height: $rope-secondary-size; width: $rope-secondary-size;
-        top: -50px; left: -120px;
-        &.game-controller { left: -170px; }
-        &.compact-mirror { left: -160px; top: -65px; }
-        &.letter { left: -160px; top: -30px; }
-        &.heart-lock { top: -70px; left: -130px; }
+        width: $rope-secondary-size; height: $rope-secondary-size * 4/5;
+        left: -28.846%; top: -9.615%;
+        &.game-controller { left: -40.865%; }
+        &.compact-mirror { left: -38.46%; top: -12.5%; }
+        &.letter { left: -38.46%; top: -5.769%; }
+        &.heart-lock {  left: -31.25%; top: -13.46%; }
     }
-    $rope-tertiary-size: 400px;
+    $rope-tertiary-size: 96.15%;
     .icon.tertiary {
-        height: $rope-tertiary-size; width: $rope-tertiary-size;
-        bottom: -150px; left: -140px;
-        &.pie { bottom: -165px; }
+        width: $rope-tertiary-size; height: $rope-tertiary-size * 4/5;
+        left: -33.65%; bottom: -28.846%;
+        &.pie { bottom: -31.73%; }
         &.knife {
             transform: rotate(-35deg);
-            bottom: -170px; left: -100px;
+            left: -24.038%; bottom: -32.69%;
         }
         &.lipstick {
             transform: rotate(30deg);
-            bottom: -170px; left: -100px;
+            left: -24.038%; bottom: -32.69%;
         }
         &.dynamite {
             transform: rotate(120deg);
-            bottom: -135px; left: -100px;
+            left: -24.038%; bottom: -25.96%;
         }
-        $rope-book-size: 600px;
+        $rope-book-size: 144.23%;
         &.book {
-            height: $rope-book-size; width: $rope-book-size;
-            bottom: -220px; left: -320px;
+            width: $rope-book-size; height: $rope-book-size * 4/5;
+            left: -76.92%; bottom: -42.307%;
         }
     }
 

@@ -1,35 +1,35 @@
 .image-region.wishbone-layout {
-    $wishbone-size: 590px;
+    $wishbone-size: 141.826%;
     .icon.primary {
-        height: $wishbone-size; width: $wishbone-size;
-        left:-270px; top: -140px;
+        width: $wishbone-size; height: $wishbone-size * 4/5;
+        left:-64.90%; top: -26.92%;
     }
-    $wishbone-secondary-size: 400px;
+    $wishbone-secondary-size: 96.15%;
     .icon.secondary {
-        height: $wishbone-secondary-size; width: $wishbone-secondary-size;
-        top: -90px; right: -100px;
+        width: $wishbone-secondary-size; height: $wishbone-secondary-size * 4/5;
+        right: -24.038%; top: -17.307%;
 
-        &.letter { right: -132px; }
-        &.game-controller { right: -120px; }
+        &.letter { right: -31.73%; }
+        &.game-controller { right: -28.846%; }
     }
-    $wishbone-tertiary-size: 350px;
+    $wishbone-tertiary-size: 84.13%;
     .icon.tertiary {
-        height: $wishbone-tertiary-size; width: $wishbone-tertiary-size;
-        bottom: -150px; right: -80px;
+        width: $wishbone-tertiary-size; height: $wishbone-tertiary-size * 4/5;
+        right: -19.23%; bottom: -28.846%;
 
-        $wishbone-book-size: 500px;
+        $wishbone-book-size: 120.19%;
         &.book {
-            height: $wishbone-book-size; width: $wishbone-book-size;
-            bottom: -200px; right: -190px;
+            width: $wishbone-book-size; height: $wishbone-book-size * 4/5;
+            right: -45.67%; bottom: -38.46%;
         }
 
         &.lipstick {
-            bottom: -110px;
+            bottom: -21.15%;
             transform: rotate(270deg);
         }
 
-        $wishbone-ballgag-size: 400px;
-        &.ball-gag { width: $wishbone-ballgag-size; height: $wishbone-ballgag-size; }
+        $wishbone-ballgag-size: 96.15%;
+        &.ball-gag { width: $wishbone-ballgag-size; height: $wishbone-ballgag-size * 4/5; }
     }
 
 }
