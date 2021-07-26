@@ -19,6 +19,7 @@ $blood:             #ef4c40; //#ef4c40
 $blood-2:           #c40e01; //#c40e01
 $blood-svg:         invert(37%) sepia(27%) saturate(5395%) hue-rotate(340deg) brightness(100%) contrast(88%);
 $yellow-logo:       #d2b350;
+$deep-red:          #6e0909;
 
 $main-bg-c:     darken($blue-2, 5%);
 $main-bg-c-svg: $blue-2-svg;
@@ -29,7 +30,7 @@ $form-text-c:           $main-bg-c;
 $form-text-c-svg:       $main-bg-c-svg;
 $poem-text-c:           $blue;
 $poem-text-c-svg:       $blue-svg;
-$poem-text-hover-c: $blue-light;
+$poem-text-hover-c:     $deep-red;
 $poem-text-hover-c-svg: $blue-light-svg;
 
 $moon-color: $gold-2;
