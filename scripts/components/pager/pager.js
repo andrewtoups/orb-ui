@@ -138,8 +138,8 @@ define([
             return c.join(' ');
         });
 
-        self.screenshotURI = ko.observable();
-        self.screenshotPlacementsURI = ko.observable();
+        self.screenshot = ko.observable();
+        self.screenshotPlacements = ko.observable();
 
         // Modal controls:
         self.loadingModal = ko.observable(false);

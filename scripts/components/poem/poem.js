@@ -1,9 +1,9 @@
 define(['ko', 'api'], function(ko, api){
     return function(params){
         let self = this;
-        !vm.screenshotMode() && api.screenshot(params.birthChart).then(data => vm.screenshotURI(data));
-        vm.screenshotURI.subscribe(nv => {
-            if (typeof nv !== 'undefined') api.screenshot(params.birthChart, true).then(data => vm.screenshotPlacementsURI(data));
+        !vm.screenshotMode() && api.screenshot(params.birthChart).then(data => vm.screenshot(data));
+        vm.screenshot.subscribe(nv => {
+            if (typeof nv !== 'undefined') api.screenshot(params.birthChart, true).then(data => vm.screenshotPlacements(data));
         });
 
         self.showDebug = ko.observable(false);

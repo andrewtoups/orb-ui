@@ -1,21 +1,21 @@
 <section class="share-section">
-    <!-- ko if: vm.screenshotURI() && vm.screenshotPlacementsURI()-->
+    <!-- ko if: vm.screenshot() && vm.screenshotPlacements()-->
     <div class="image-container">
         <!-- ko if: !showPlacements()-->
-        <img data-bind="attr: {src: vm.screenshotURI()}">
+        <img data-bind="attr: {src: vm.screenshot()}">
         <!-- /ko -->
         <!-- ko if: showPlacements()-->
-        <img data-bind="attr: {src: vm.screenshotPlacementsURI()}">
+        <img data-bind="attr: {src: vm.screenshotPlacements()}">
         <!-- /ko -->
     </div>
     <!-- /ko -->
-    <!-- ko ifnot: vm.screenshotURI() && vm.screenshotPlacementsURI() -->
+    <!-- ko ifnot: vm.screenshot() && vm.screenshotPlacements() -->
     <div class="placeholder">
         <div class="logo-ripple" style="background-size: 10000%"><img src="/styles/png/orb-logo-isolated.png"></div>        
         <img src="/styles/png/loading-preview.png">
     </div>
     <!-- /ko -->
-    <form data-bind="css: {masked: !(vm.screenshotURI() && vm.screenshotPlacementsURI())}">
+    <form data-bind="css: {masked: !(vm.screenshot() && vm.screenshotPlacements())}">
         <button class="long-press"></button>
         <button class="save-btn">
             <a data-bind="attr: {href: href()}" download="an-orb-poem-of-ones-own.jpg" target="_blank"></a>
