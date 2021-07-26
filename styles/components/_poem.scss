@@ -218,12 +218,11 @@ $logo-height-poem: 75px;
         @include xs {
             display: block;
             position: absolute;
-            left: -100px; bottom: 10px;
-            max-height: 40px;
+            right: 1rem; bottom: 1rem;
+            max-height: 32px;
             z-index: 10000;
             cursor: pointer;
             position: fixed;
-            left: 6px;
             transform: scale(1);
             transition: transform 100ms ease-out;
             &:active {
@@ -236,11 +235,11 @@ $logo-height-poem: 75px;
         filter: drop-shadow(1px 1px 3px white);
     }
     nav.aux {
-        left: -100px;
+        right: -100px;
         bottom: 55px;
         @include xs {
-            left: -134px;
-            transition: left 500ms ease-in-out;
+            right: -134px;
+            transition: right 500ms ease-in-out;
         }
         width: 134px;
         display: flex;
@@ -262,8 +261,8 @@ $logo-height-poem: 75px;
     }
     &.open nav.aux {
         @include xs {
-            left: 0;
-            transition: left 500ms ease-in-out;
+            right: 0;
+            transition: right 500ms ease-in-out;
         }
     }
     opacity: 1;
