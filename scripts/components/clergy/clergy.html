@@ -1,11 +1,12 @@
 <section>
-    <ul data-bind="foreach: clergy">
+    <div class="img-heading"><img alt="clergy" src="/styles/png/clergy.png"></div>
+    <ul data-bind="foreach: clergy" class="clergy">
         <li>
             <h2><a data-bind="text: name, attr: {href: link}"></a></h2>
             <!-- ko if: pic -->
             <img data-bind="attr: {src: pic}, click: (event, data) => showPoem(birthData)">
             <!-- /ko -->
-            <div data-bind="html: bio"></div>
+            <div data-bind="html: bio" class="content"></div>
         </li>
     </ul>
 </section>
