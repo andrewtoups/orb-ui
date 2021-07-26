@@ -151,7 +151,6 @@ $logo-height-poem: 75px;
     }
 
     width: 100%;
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
     font-size: 140%;
 
     @include xs { font-size: 130%; }
@@ -211,4 +210,61 @@ $logo-height-poem: 75px;
         transition: opacity, ease-in, 1200ms;
     }
 }
+
+.hamburger-container {
+    position: absolute;
+    left: -100px; bottom: 0;
+    width: 200px;
+    z-index: 1000;
+    > img {
+        display: none;
+        @include xs {
+            display: block;
+            position: absolute;
+            left: -100px; bottom: 10px;
+            max-height: 40px;
+            z-index: 10000;
+            cursor: pointer;
+            position: fixed;
+            left: 6px;
+            transform: scale(1);
+            transition: transform 100ms ease-out;
+            &:active {
+                transform: scale(1.1);
+                transition: transform 100ms ease-in;
+            }
+        }
+    }
+    &.open > img {
+        filter: drop-shadow(1px 1px 3px white);
+    }
+    nav.aux {
+        left: -100px;
+        bottom: 55px;
+        @include xs {
+            left: -134px;
+            background-color: rgba(0,0,0,.65);
+            transition: left 500ms ease-in-out;
+        }
+        width: 134px;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        background-image: none;
+        a {
+            padding: 12px 0;
+            img {
+                max-height: 25px;
+            }
+        }
+    }
+    &.open nav.aux {
+        @include xs {
+            left: 0;
+            transition: left 500ms ease-in-out;
+        }
+    }
+
+}
+
 // @include xs { main.poem-page { animation: Wiggle 50s linear infinite; } }

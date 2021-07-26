@@ -243,6 +243,8 @@ define(['ko', 'api'], function(ko, api){
             }
             i > -1 && icon(iconSet[i]);
         };
+        self.open = ko.observable(false);
+        self.toggleOpen = () => { self.open(!self.open()) };
         self.poemData = ko.observableArray();
         self.poemData.subscribe(newValue => {
             let dataExists = !!newValue.length;
