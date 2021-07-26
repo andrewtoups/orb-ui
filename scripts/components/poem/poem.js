@@ -38,14 +38,14 @@ define(['ko', 'api'], function(ko, api){
         self.iconsReady.subscribe(() => {console.log("...icons ready!")});
         require(['dataStore/iconMap'], iconMap => {
             let Stats = function(){
-                this.log = [
+                this.log = !vm.screenshotMode() ? [
                     `nl`,
                     `Birthday: ${self.birthDay()}`,
                     `Location: ${self.location()}`,
                     `Coords: ${self.coords()}`,
                     `***************************`,
                     `nl`,`nl`
-                ],
+                ] : [];
                 this.logger = msg => { 
                     msg!=="nl" && console.log(msg);
                     this.log.push(msg);
