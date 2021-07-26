@@ -37,10 +37,11 @@
         .logo-container {
             position: absolute;
             top: 15px;
+            left: 15px;
             width: 100%;
-            text-align: center;
+            text-align: left;
             img {
-                width: 59px;
+                width: 41px;
                 opacity: .65;
             }
         }
