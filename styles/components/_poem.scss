@@ -235,9 +235,10 @@ $logo-height-poem: 75px;
         filter: drop-shadow(1px 1px 3px white);
     }
     nav.aux {
-        right: -100px;
+        left: -100px;
         bottom: 55px;
         @include xs {
+            left: unset;
             right: -134px;
             transition: right 500ms ease-in-out;
         }
