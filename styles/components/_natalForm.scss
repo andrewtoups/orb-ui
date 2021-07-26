@@ -255,13 +255,11 @@ form.natal-form {
 }
 
 button#random {
-    position: absolute;
-    opacity: .75;
-    bottom: 5px;
-    right: 5px; 
+    position: fixed;
+    bottom: 1vh;
+    left: 1vw; 
     max-width: 120px;
     text-transform: uppercase;
     padding: 6px 10px;
-    transform: scale(0.56);
-    transform-origin: bottom right;
+    opacity: .04;
 }
