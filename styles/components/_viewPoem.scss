@@ -5,6 +5,7 @@
             transition: none;
         }
     }
+    .hamburger-container nav.aux { display: none; }
     #poem.moon {
         $screenshotMoonSize: 46rem;
         height: $screenshotMoonSize; width: $screenshotMoonSize;
