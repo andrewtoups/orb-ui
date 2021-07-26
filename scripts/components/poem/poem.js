@@ -34,7 +34,7 @@ define(['ko', 'api'], function(ko, api){
         });
         self.stats = ko.observable({});
         self.iconsReady = ko.observable(false);
-        self.iconsReady.extend({rateLimit: 5000});
+        self.iconsReady.extend({rateLimit: 500});
         self.iconsReady.subscribe(() => {console.log("...icons ready!")});
         require(['dataStore/iconMap'], iconMap => {
             let Stats = function(){
