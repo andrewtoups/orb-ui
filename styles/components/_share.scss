@@ -12,21 +12,16 @@
         .logo-ripple {
             height: 45px; width: 45px;
             display: flex; align-items: center; justify-content: center;
-            position: relative;
             img {
                 position: relative;
                 width: 30px;
             }
-            &:before {
-                content: "";
-                position: absolute;
-                width: 100%; height: 100%;
-                border-radius: 50%;
-                background-position: center;
-                background-repeat: no-repeat;
-                @include ripple($blood, $blue-light);
-                animation: Ripple 1s ease-in infinite;
-            }
+            border-radius: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            @include ripple($blood, $blue-light);
+            animation: Ripple 1s ease-in infinite;
+
         }
     }
     .image-container {
