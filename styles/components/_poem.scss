@@ -5,7 +5,7 @@
     border-radius: 2px;
     @include xs { animation: none; }
     @include hz { animation: none; }
-    font-family: 'Noto Serif TC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Source Serif Pro TC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     @include pseudo-clone('after');
     &:after {
         background: linear-gradient(45deg, rgba($gold-bright,0.15), rgba($coal, .45));
@@ -188,7 +188,7 @@ $logo-height-poem: 75px;
         margin: 0 9px;
         @include hz { margin: 10px 0; }
         line-height: .9;
-        font-family: 'Noto Serif TC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-family: 'Source Serif Pro TC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
         &.share-link {
             img {
