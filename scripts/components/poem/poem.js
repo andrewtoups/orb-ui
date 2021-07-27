@@ -7,9 +7,8 @@ define(['ko', 'api', 'utils/noOrphans'], function(ko, api){
         });
 
         self.showDebug = ko.observable(false);
-        self.linesActive = ko.observable(false);
-        if (vm.placementsMode()) self.linesActive(true);
-        self.toggleActive = () => { if(!vm.placementsMode()) self.linesActive(!self.linesActive())};
+        if (vm.placementsMode()) vm.showPlacements(true);
+        self.toggleActive = () => { if(!vm.placementsMode()) vm.showPlacements(!vm.showPlacements())};
         self.birthData = params.birthData;
         if (params.birthData){
             let bdate = params.birthData.date;

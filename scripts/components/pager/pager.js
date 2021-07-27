@@ -140,6 +140,7 @@ define([
 
         self.screenshot = ko.observable();
         self.screenshotPlacements = ko.observable();
+        self.showPlacements = ko.observable(true);
 
         // Modal controls:
         self.loadingModal = ko.observable(false);

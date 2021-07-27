@@ -1,10 +1,10 @@
 <section class="share-section">
     <!-- ko if: vm.screenshot() && vm.screenshotPlacements()-->
     <div class="image-container">
-        <!-- ko if: !showPlacements()-->
+        <!-- ko if: !vm.showPlacements()-->
         <img data-bind="attr: {src: vm.screenshot()}">
         <!-- /ko -->
-        <!-- ko if: showPlacements()-->
+        <!-- ko if: vm.showPlacements()-->
         <img data-bind="attr: {src: vm.screenshotPlacements()}">
         <!-- /ko -->
     </div>
@@ -22,7 +22,7 @@
         </button>
         <div class="show-placements">
             <button class="mobile-toggle" data-bind="class: btnCls(), click: toggleShowPlacements"></button>
-            <input type="checkbox" data-bind="checked: showPlacements" id="showPlacements">
+            <input type="checkbox" data-bind="checked: vm.showPlacements" id="showPlacements">
             <label for="showPlacements">Show Placements</label>
             <img src="/styles/png/show-placements.png" data-bind="click: toggleShowPlacements">
         </div>
