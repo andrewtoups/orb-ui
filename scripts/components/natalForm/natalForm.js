@@ -241,12 +241,14 @@ define([
             const touched = self.birthTimeTouched(), processing = self.timeProcessing(),
             chart = self.birthChart(), auto = self.auto(), submitted = self.submitted();
             if ( touched && !processing && chart && !submitted) {
-                if (auto) {
-                    self.auto(false);
-                    self.submit();
-                }
                 return true;
             } else return false;
+        });
+        self.submitReady.subscribe(nv=>{
+            if (nv && self.auto()) {
+                self.auto(false);
+                self.submit();
+            }
         });
         self.submit = () => {
             self.submitted(true);
