@@ -104,6 +104,7 @@ define([
                 if (path[0] === "viewPoem") {
                     let qParams = new URLSearchParams(window.location.search);
                     let birthChart = {};
+                    self.placementsMode(false);
                     for (const [key, value] of qParams.entries()) {
                         let metaKey;
                         if (key === "screenshot")    self.screenshotMode(value === 'true');
