@@ -6,7 +6,7 @@
             <!-- ko if: pic -->
             <img data-bind="attr: {src: pic}, click: (event, data) => showPoem(birthData)">
             <!-- /ko -->
-            <div data-bind="html: bio" class="content"></div>
+            <div data-bind="html: bio, noOrphans: ['p']" class="content"></div>
         </li>
     </ul>
 </section>

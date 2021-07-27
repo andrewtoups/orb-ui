@@ -1,4 +1,4 @@
-define(['ko', 'api'], (ko, api) => {
+define(['ko', 'api', 'utils/noOrphans'], (ko, api) => {
     return function() {
         let self = this;
         let Minister = function(p) {

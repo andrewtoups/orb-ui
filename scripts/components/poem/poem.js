@@ -1,4 +1,4 @@
-define(['ko', 'api'], function(ko, api){
+define(['ko', 'api', 'utils/noOrphans'], function(ko, api){
     return function(params){
         let self = this;
         !vm.screenshotMode() && api.screenshot(params.birthChart).then(data => {
