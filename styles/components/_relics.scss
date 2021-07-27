@@ -20,13 +20,13 @@
         background-color: rgba(0,0,0,.5);
         position: relative;
         transform: scale(1);
-        transition: transform 100ms ease-out,
-                    box-shadow 100ms ease-out;
+        transition: transform 120ms ease-in,
+                    box-shadow 70ms ease-in;
         &:hover, &:active {
             transform: scale(1.1);
             box-shadow: 0px 0px 15px rgba($yellow-logo, 0.95), 0px 0px 5px #2c2b20 inset;
-            transition: transform 100ms ease-in,
-                        box-shadow 100ms ease-in;
+            transition: transform 100ms ease-out,
+                        box-shadow 500ms ease-out;
         }
         a {
             color: transparent;

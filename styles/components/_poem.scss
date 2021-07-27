@@ -142,13 +142,13 @@ $logo-height-poem: 75px;
     position: absolute;
     bottom: 0;
     padding: 4rem 0 2.4rem;
+    @include xs { padding: 0; }
 
     @include xs { position: fixed; }
     @include hz {
         position: fixed;
         bottom: 1rem;
     }
-
     width: 100%;
     font-size: 140%;
 
@@ -166,12 +166,6 @@ $logo-height-poem: 75px;
         background-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
     }
 
-    @include xs {
-        width: 100%;
-        bottom: 0;
-        padding: 2rem 0 1rem;
-    }
-
     opacity: 1;
     transition: opacity, ease-in, 1200ms;
     
@@ -186,19 +180,17 @@ $logo-height-poem: 75px;
             transition: transform 250ms ease-in-out;
         }
         margin: 0 9px;
+        @include xs { padding: 10px; }
         @include hz { margin: 10px 0; }
         line-height: .9;
         font-family: 'Source Serif Pro TC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
         &.share-link {
+            @include xs { position: relative; right: 1%; }
             img {
                 width: 140px;
                 filter: drop-shadow(0px 0px 2px $yellow-logo);
             }
-        }
-        &.stats-link {
-            font-size: 16px;
-            opacity: .04;
         }
     }
 
@@ -213,16 +205,16 @@ $logo-height-poem: 75px;
     left: -100px; bottom: 0;
     width: 200px;
     z-index: 1000;
-    > img {
+    > img.hamburger {
         display: none;
         @include xs {
             display: block;
-            position: absolute;
-            right: 1rem; bottom: 1rem;
-            max-height: 32px;
+            position: fixed;
+            right: 0; bottom: 0;
+            padding: 10px 10px 12px 10px;
+            max-height: 52px;
             z-index: 10000;
             cursor: pointer;
-            position: fixed;
             transform: scale(1);
             transition: transform 100ms ease-out;
             &:active {
@@ -236,10 +228,10 @@ $logo-height-poem: 75px;
     }
     nav.aux {
         left: -100px;
-        bottom: 55px;
+        bottom: 0px;
         @include xs {
             left: unset;
-            right: -134px;
+            right: -134px; bottom: 55px;
             transition: right 500ms ease-in-out;
         }
         width: 134px;
@@ -265,6 +257,12 @@ $logo-height-poem: 75px;
                 }
                 transform: scale(1);
                 transition: transform 250ms ease-in-out;
+            }
+            &.stats-link {
+                opacity: 0;
+                position: fixed;
+                left: 0; bottom: 0;
+                height: 45px; width: 45px;
             }
         }
     }
