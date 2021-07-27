@@ -96,7 +96,8 @@ define([
             self.pages.push(Pages.find(page => page.name() === pageName));
         };
         self.screenshotMode = ko.observable(false);
-        self.placementsMode = ko.observable(false);
+        self.placementsMode = ko.observable(true);
+        self.togglePlacementsMode = () => { self.placementsMode(!self.placementsMode())} ;
         self.initialLoadComplete.subscribe(s => {
             if (s) {
                 let path = window.location.pathname.split('/').filter(i => !!i);
@@ -140,7 +141,6 @@ define([
 
         self.screenshot = ko.observable();
         self.screenshotPlacements = ko.observable();
-        self.showPlacements = ko.observable(true);
 
         // Modal controls:
         self.loadingModal = ko.observable(false);

@@ -1,10 +1,10 @@
 <section class="share-section">
     <!-- ko if: vm.screenshot() && vm.screenshotPlacements()-->
     <div class="image-container">
-        <!-- ko if: !vm.showPlacements()-->
+        <!-- ko if: !vm.placementsMode()-->
         <img data-bind="attr: {src: vm.screenshot()}">
         <!-- /ko -->
-        <!-- ko if: vm.showPlacements()-->
+        <!-- ko if: vm.placementsMode()-->
         <img data-bind="attr: {src: vm.screenshotPlacements()}">
         <!-- /ko -->
     </div>
@@ -21,10 +21,10 @@
             <a data-bind="attr: {href: href()}" download="an-orb-poem-of-ones-own.jpg" target="_blank"></a>
         </button>
         <div class="show-placements">
-            <button class="mobile-toggle" data-bind="class: btnCls(), click: toggleShowPlacements"></button>
-            <input type="checkbox" data-bind="checked: vm.showPlacements" id="showPlacements">
-            <label for="showPlacements">Show Placements</label>
-            <img src="/styles/png/show-placements.png" data-bind="click: toggleShowPlacements">
+            <button class="mobile-toggle" data-bind="class: btnCls(), click: vm.togglePlacementsMode"></button>
+            <input type="checkbox" data-bind="checked: vm.placementsMode" id="placementsMode">
+            <label for="placementsMode">Show Placements</label>
+            <img src="/styles/png/show-placements.png" data-bind="click: toggleplacementsMode">
         </div>
     </form>
 </section>
