@@ -23,6 +23,7 @@ define(['ko'], function(ko) {
             element.removeEventListener('blur', touch);
         };
         element.addEventListener('blur', touch);
+        element.addEventListener('click', touch);
 
         let cssRules = {
             untouched: v.untouched,

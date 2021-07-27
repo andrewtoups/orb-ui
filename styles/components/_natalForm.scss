@@ -159,7 +159,7 @@ form.natal-form {
         }
         
         &:focus { outline: none; }
-        &.clean, &.clean::placeholder, &.clean[type="text"] {
+        &.clean.untouched, &.clean.untouched::placeholder, &.clean.untouched[type="text"] {
             border-bottom: 1px dashed rgba($form-text-c, 1);
             color: rgba($form-text-c,0);
             &:focus {
