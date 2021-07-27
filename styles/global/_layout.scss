@@ -38,8 +38,8 @@ main {
   display: flex;
   justify-content: center; align-items: center;
   position: relative;
-  @include xs { min-height: 100vh; min-height: -webkit-fill-available; width: 100%; }
-  @include hz { min-height: 100vh; min-height: -webkit-fill-available; width: 100%; }
+  @include xs { height: 100vh; height: -webkit-fill-available; width: 100%; }
+  @include hz { height: 100vh; height: -webkit-fill-available; width: 100%; }
   // @include moire;
   // animation: Moire 50s ease-in-out infinite;
   font-family: 'Gothic A1', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
