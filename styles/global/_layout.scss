@@ -47,8 +47,6 @@ main {
 
 .fixed { position: fixed; }
 section {
-    margin: 15px 0;
-    // @include xs { margin: 15px 10px; }
     @include xs { position: fixed; }
 
     opacity: 1;

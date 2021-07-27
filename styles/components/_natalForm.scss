@@ -9,6 +9,8 @@ form.natal-form {
     padding: 10px;
     position: relative;
     z-index: 1;
+    margin: 15px 0 0;
+    @include xs { margin: 0; }
     @include hz { display: flex; }
 
     .loader {
