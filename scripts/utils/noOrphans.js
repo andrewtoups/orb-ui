@@ -20,8 +20,8 @@ define(['ko'], ko => {
                     if (lastTwo.length === 2) textArr.push(`${lastTwo[1]}&nbsp${lastTwo[0]}`)
                     el.innerHTML = textArr.join(" ");
                 };
-                let tags = ko.unwrap(valueAccessor);
-                if (!tags.length) {
+                let tags = ko.unwrap(valueAccessor());
+                if (!tags) {
                     eliminateOrphans(element);
                 } else {
                     tags.forEach(tag => {
