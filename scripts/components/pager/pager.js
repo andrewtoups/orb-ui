@@ -48,18 +48,20 @@ define([
                 let jsPath = `${cPath}/${name}/${name}`;
                 let htmlPath = `text!${cPath}/${name}/${name}.html`;
                 require([jsPath, htmlPath], function(viewModel, template){
-                    var vm = {
-                        viewModel: {
-                            createViewModel: function(params, componentInfo){
-                                self[name] = new viewModel(params);
-                                return self[name];
-                            }
-                        },
-                        template: template
-                    };
-                    ko.components.register(name, vm);
-                    self.registry.push(name);
-                    state && state(false);
+                    if (!self.registry().includes(name) && !ko.components.isRegistered(name)) {
+                        var vm = {
+                            viewModel: {
+                                createViewModel: function(params, componentInfo){
+                                    self[name] = new viewModel(params);
+                                    return self[name];
+                                }
+                            },
+                            template: template
+                        };
+                        ko.components.register(name, vm);
+                        self.registry.push(name);
+                        state && state(false);
+                    }
                 });
             }
         };
