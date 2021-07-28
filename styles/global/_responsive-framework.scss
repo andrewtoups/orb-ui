@@ -1,7 +1,9 @@
 $md: 1430px;
 $sm: 950px;
 $xs: 480px;
-$hz: 812px;
+$hz: 900px;
+$hz-lg-ht: 350px;
+$mn-sz: 700px;
 
 @mixin md {
   @media (max-width: #{$md}) {
@@ -15,14 +17,26 @@ $hz: 812px;
   }
 }
 
+@mixin nav-cutoff {
+  @media (max-width: #{$mn-sz}) {
+    @content;
+  }
+}
+
 @mixin xs {
   @media (max-width: #{$xs}) {
     @content;
   }
 }
 
-@mixin hz {
+@mixin hz-lg {
   @media only screen and (max-width: #{$hz}) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin hz {
+  @media only screen and (max-width: #{$hz}) and (max-height: #{$hz-lg-ht}) and (orientation: landscape) {
     @content;
   }
 }
