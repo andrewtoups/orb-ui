@@ -45,6 +45,8 @@
             display: none;
             pointer-events: none;
             @include xs { display: block; }
+            @include hz-lg { display: block; }
+            @include hz { display: block; }
         }
         &.save-btn {
             background-image: url("png/save.png");
@@ -58,7 +60,8 @@
             }
             display: block;
             @include xs { display: none; }
-        }
+            @include hz-lg { display: none; }
+            @include hz { display: none; }        }
     }
     form {
         display: flex;
@@ -111,6 +114,29 @@
                 display: none;
             }
         }
+    }
+    @include hz-lg {
+        padding-top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        .image-container {
+            width: auto;
+            min-height: unset;
+            img { max-height: 92vh; }
+        }
+        form {
+            max-width: unset;
+            width: auto;
+            .long-press {
+                width: 45vw;
+                height: 4.5vw;
+                background-size: 45vw;
+            }
+        }
+        > :last-child {
+            padding: 0;
+        }        
     }
     .divider {
         background-image: url('png/divider.png');

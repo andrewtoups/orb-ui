@@ -1,39 +1,46 @@
-.img-heading {
-    text-align: center;
-    // padding-top: 20px;
-    // border-top: 4px dotted $yellow-logo;
-    // margin: 0 15%;
+section.clergy {
+    @include hz-lg {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        flex-direction: column;
+        padding-top: 10vh;
+    }
+    .img-heading {
+        text-align: center;
+        img { height: 45px; }
+    }
+    ul {
+        @include hz-lg {max-width: 50vw; }
+        font-family: 'Source Serif Pro TC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        list-style: none; padding: 0; margin: 0;
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        li {
+            display: flow-root;
+            h2 {
+                font-family: 'Gothic A1', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                text-transform: uppercase;
+                font-size: 130%;
+                margin-bottom: 7px;
+                a { color: $gold-2; }
+            }
+            img {
+                float: left;
+                max-width: 50%;
+                min-height: 20px;
+                max-height: 100px;
+                margin-right: 10px;
+                border-radius: 5px;
+                // background-color: rgba(255,255,255,.5);
+            }
+            .content {
+                margin-top: -10px;
+                font-size: 80%;
+            }
+        }
+    }        
+}
 
-    img { height: 45px; }
-}
-ul.clergy {
-    font-family: 'Source Serif Pro TC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    list-style: none; padding: 0; margin: 0;
-    a {
-        text-decoration: none;
-        color: white;
-    }
-    li {
-        display: flow-root;
-        h2 {
-            font-family: 'Gothic A1', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            text-transform: uppercase;
-            font-size: 130%;
-            margin-bottom: 7px;
-            a { color: $gold-2; }
-        }
-        img {
-            float: left;
-            max-width: 50%;
-            min-height: 20px;
-            max-height: 100px;
-            margin-right: 10px;
-            border-radius: 5px;
-            // background-color: rgba(255,255,255,.5);
-        }
-        .content {
-            margin-top: -10px;
-            font-size: 80%;
-        }
-    }
-}
