@@ -151,15 +151,35 @@ define([
         self.modalParams = ko.observable();
         self.modalActive = ko.computed(() => self.modalParams() ? true : false);
         self.modalData = ko.observable();
+        window.location.hash = "#main";
+        self.hashState = window.location.hash;
+        if (!self.screenshotMode()){
+            let i = setInterval(() => {
+                if (self.hashState.includes("#modal") && window.location.hash === "#main" && document.querySelector('.modal .x')) {
+                    document.querySelector('.modal .x').click();
+                } else if (self.hashState === "#main" && window.location.hash.includes("#modal") && self.modalParams()==="") {
+                    let modalName = window.location.hash.split("#")[2];
+                    self.launchModal(modalName);
+                }
+                else self.hashState=window.location.hash;
+            }, 50);
+        }
         self.launchModal = (name, data) => {
-            data && self.modalData(data);
-            self.loadComponent('modal', self.loadingModal);
-            self.currentModal(name);
+            if (!self.registry().includes('modal')) {
+                window.location.hash = `#modal#${name}`;
+                data && self.modalData(data);
+                self.loadComponent('modal', self.loadingModal);
+                self.currentModal(name);
+            }
         };
         self.closeModal = () => {
-            self.removeComponent(self.currentModal());
-            self.removeComponent('modal');
-            self.modalParams('');
+            if (self.registry().includes('modal')) {
+                console.log("closing modal");
+                window.location.hash = "#main";
+                self.removeComponent(self.currentModal());
+                self.removeComponent('modal');
+                self.modalParams('');
+            }
         };
         self.loadingModal.subscribe(s => {
             if (!s) {
