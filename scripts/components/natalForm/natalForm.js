@@ -218,7 +218,15 @@ define([
                             if (data.hasOwnProperty('TimeZones') && data.TimeZones.length) {
                                 self.historicalTZData(data.TimeZones[0].ReferenceTime);
                             } else {
-                                console.log("Warning: No timezone found for historical data.");
+                                console.log("Warning: No timezone found for historical data... using present day timezone.");
+                                fetch(`https://atlas.microsoft.com/timezone/byCoordinates/json?subscription-key=${azureKey}&api-version=1.0&query=${coordString}`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log("present day tz lookup:",data);
+                                    if (data.hasOwnProperty('TimeZones') && data.TimeZones.length) {
+                                        self.historicalTZData(data.TimeZones[0].ReferenceTime);
+                                    }
+                                });
                             }
                             self.loadingTZ(false);
                         });
