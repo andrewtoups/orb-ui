@@ -4,6 +4,9 @@ form.natal-form {
     color: $form-text-c;
     font-family: 'Gothic A1', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
     border-radius: 2px;
     padding: 10px;
@@ -235,10 +238,12 @@ form.natal-form {
         position: absolute;
         background: #e14521;
         padding: 5px;
-        left: -15%;
         color: $form-bg-c;
-        bottom: -25%;
-        width: 130%;
+        &.masked { z-index: 0; }
+        z-index: 1;
+        width: 80%;
+        font-size: 70%;
+        &:before {content: "!"};
     }
 }
 .summary {

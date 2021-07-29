@@ -228,6 +228,7 @@ define([
                                 self.loadingTZ(false);
                             } else {
                                 console.log("Warning: No timezone found for historical data... using present day timezone.");
+                                self.timeZoneWarning(true);
                                 fetch(`https://atlas.microsoft.com/timezone/byCoordinates/json?subscription-key=${azureKey}&api-version=1.0&query=${coordString}`)
                                 .then(response => response.json())
                                 .then(data => {
