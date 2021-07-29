@@ -93,5 +93,8 @@
         <div data-bind="text: locationSummary"></div>
     </div>
     <button id="random" type="button" data-bind="click: randomChart">random chart</button>
+    <section class="timezone-warning" data-bind="css: {masked: !timeZoneWarning()}">
+        Timezone data not found for specified location. Try a larger city in the same timezone.
+    </section>
 </form>
 

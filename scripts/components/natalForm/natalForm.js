@@ -201,6 +201,14 @@ define([
         
         // Timezone offset Lookup:
         const azureKey = "zFm6zIHbxMFA9y-fM4rFv2HLSPw7UjBYulvrTTe2TeE";
+        self.timeZoneWarning = ko.observable(false);
+        self.timeZoneWarning.subscribe(nv => {
+            if (nv) {
+                setTimeout(function(){
+                    self.timeZoneWarning(false);
+                }, 6000);
+            }
+        });
         self.loadingTZ = ko.observable(false);
         self.lastRequest = ko.observable();
         self.tzLookup = function(rawDate, coordinates){
@@ -217,7 +225,9 @@ define([
                         .then(data => {
                             if (data.hasOwnProperty('TimeZones') && data.TimeZones.length) {
                                 self.historicalTZData(data.TimeZones[0].ReferenceTime);
+                                self.loadingTZ(false);
                             } else {
+<<<<<<< Updated upstream
                                 console.log("Warning: No timezone found for historical data... using present day timezone.");
                                 fetch(`https://atlas.microsoft.com/timezone/byCoordinates/json?subscription-key=${azureKey}&api-version=1.0&query=${coordString}`)
                                 .then(response => response.json())
@@ -227,8 +237,11 @@ define([
                                         self.historicalTZData(data.TimeZones[0].ReferenceTime);
                                     }
                                 });
+=======
+                                self.timeZoneWarning(true);
+                                console.log("Warning: No timezone found for historical data.");
+>>>>>>> Stashed changes
                             }
-                            self.loadingTZ(false);
                         });
                 }
             }

@@ -231,6 +231,15 @@ form.natal-form {
             }
         }
     }
+    section.timezone-warning {
+        position: absolute;
+        background: #e14521;
+        padding: 5px;
+        left: -15%;
+        color: $form-bg-c;
+        bottom: -25%;
+        width: 130%;
+    }
 }
 .summary {
     font-size: 51%;
