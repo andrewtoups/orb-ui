@@ -95,6 +95,7 @@
     <button id="random" type="button" data-bind="click: randomChart">random chart</button>
     <section class="timezone-warning" data-bind="css: {masked: !timeZoneWarning()}, click: () => { timeZoneWarning(false)}">
         Warning: Historical timezone data not found for specified location. Using present timezone data instead, but results may be less accurate.
+        <div class="btn-container"><button>Dismiss</button></div>
     </section>
 </form>
 

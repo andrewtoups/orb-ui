@@ -236,14 +236,30 @@ form.natal-form {
     }
     section.timezone-warning {
         position: absolute;
+        display: block;
         background: #e14521;
-        padding: 5px;
+        padding: 5px 23px;
         color: $form-bg-c;
         &.masked { z-index: 0; }
         z-index: 1;
         width: 80%;
         font-size: 70%;
-        &:before {content: "!"};
+        &:before {
+            content: "!";
+            position: absolute;
+            right: 0;
+            bottom: 12px;
+            font-size: 666%;
+        };
+        .btn-container {
+            text-align: center;
+            padding: 10px 0;
+            button {
+                box-shadow: 0px 0px 3px $gold-2 inset;
+                background-color: rgba($gold-2,.5);
+                padding: 5px;
+            }
+        }
     }
 }
 .summary {
