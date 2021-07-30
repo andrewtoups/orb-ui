@@ -54,8 +54,12 @@ define([
 
         self.UTCdate = ko.computed(() => {
             let t = self.tzOffset();
-            let d = typeof t !== 'undefined' && t >= 0 && self.rawDate() ? new Date(self.rawDate()) : null;
-            return d ? new Date(d.setHours(d.getHours() - t)) : null;
+            let d = t && self.rawDate() ? new Date(self.rawDate()) : null;
+            if (t && d) {
+                return  new Date(d.setHours(d.getHours() - t));
+            } else {
+                return null;
+            }
         });
 
         // Time webform observables:
