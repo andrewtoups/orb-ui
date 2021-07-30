@@ -54,8 +54,8 @@ define([
 
         self.UTCdate = ko.computed(() => {
             let t = self.tzOffset();
-            let d = t && self.rawDate() ? new Date(self.rawDate()) : null;
-            if (t && d) {
+            let d = typeof t === 'number' && self.rawDate() ? new Date(self.rawDate()) : null;
+            if (d !== null) {
                 return  new Date(d.setHours(d.getHours() - t));
             } else {
                 return null;
