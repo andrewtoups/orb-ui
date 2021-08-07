@@ -67,6 +67,16 @@
         //     right: 12vw;
         // }
     }
+    .watermark-container {
+        position: absolute;
+        top: -4px;
+        width: calc(100% - 30px);
+        text-align: center;
+        img {
+            width: 110px;
+            opacity: .25;
+        }
+    }
     form {
         margin: 0;
         padding: 17px 15px;
