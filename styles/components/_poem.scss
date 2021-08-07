@@ -274,6 +274,12 @@ $logo-height-poem: 4rem;
     &.open > img {
         filter: drop-shadow(1px 1px 3px white);
     }
+    &.open nav.aux {
+        @include xs {
+            transform: translateX(0);
+            transition: transform 500ms ease-in-out;
+        }
+    }
     nav.aux {
         left: 3rem;
         bottom: 0px;
@@ -282,8 +288,10 @@ $logo-height-poem: 4rem;
         }
         @include xs {
             left: unset;
-            right: -134px; bottom: 55px;
-            transition: right 500ms ease-in-out;
+            right: 0;
+            bottom: 55px;
+            transform: translateX(134px);
+            transition: transform 500ms ease-in-out;
         }
         @include tablet {
             padding-bottom: 2.4rem;
@@ -320,12 +328,6 @@ $logo-height-poem: 4rem;
                 left: 0; bottom: 0;
                 height: 45px; width: 45px;
             }
-        }
-    }
-    &.open nav.aux {
-        @include xs {
-            right: 0;
-            transition: right 500ms ease-in-out;
         }
     }
     opacity: 1;
