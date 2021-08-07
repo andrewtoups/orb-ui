@@ -40,3 +40,13 @@ $mn-sz: 700px;
     @content;
   }
 }
+
+@mixin tablet {
+  @media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+    @content;
+  }
+}

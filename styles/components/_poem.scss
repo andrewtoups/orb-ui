@@ -69,28 +69,33 @@
     }
     .watermark-container {
         position: absolute;
-        top: -4px;
-        width: calc(100% - 30px);
+        top: -0.2rem;
+        width: calc(100% - 2rem);
         text-align: center;
         img {
-            width: 110px;
-            opacity: .25;
+            width: 5.5rem;
+            opacity: .35;
         }
     }
     form {
         margin: 0;
-        padding: 17px 15px;
-        @include xs { padding: 17px 30px; }
+        padding: 1rem 1rem;
         color: $poem-text-c;
         text-shadow: 0px 1px 1px rgba($blue, .25);
+        font-size: 125%;
+        @include hz {
+            font-size: 100%;
+        }
+        @include hz-lg {
+            font-size: 100%;
+        }
 
         position: relative;
         legend {
             position: absolute;
-            bottom: 4px;
-            right: 4px;
-            font-size: 9.5px;
-            padding-right: 2.2rem;
+            bottom: -0.2rem;
+            right: 1rem;
+            font-size: 65%;
             text-transform: uppercase;
             user-select: none;
             color: rgba($gold, 0);
@@ -132,10 +137,15 @@
                 position: relative;
                 bottom: 6vh;
                 form {            
-                    padding: 4.8vh 15px;
                     legend { bottom: 0; }
                 }
             }
+        }
+    }
+    @include tablet {
+        .image-region {
+            width: 100vw;
+            height: 100vw * 5/4;
         }
     }
 
@@ -161,14 +171,17 @@
 
 @include xs { section.poem-page { margin: 0; } }
 
-$logo-height-poem: 75px;
+$logo-height-poem: 4rem;
 .poem-page .orb.logo {
-  img { height: $logo-height-poem; }
-  @include xs { img { height: $logo-height-xs; } }
-  top: $logo-height-poem/2;
-  @include xs { top: 0; }
-//   @include hz { position: fixed; top: 15px; right: 7vw; }
-  transition: opacity 1200ms ease-out;
+    img {
+        height: $logo-height-poem;
+        top: 2rem;
+    }
+    @include xs { img { height: $logo-height-xs; } }
+    top: $logo-height-poem/2;
+    @include xs { top: 0; }
+    //   @include hz { position: fixed; top: 15px; right: 7vw; }
+    transition: opacity 1200ms ease-out;
 }
 .poem-page nav {
     position: absolute;
@@ -220,7 +233,7 @@ $logo-height-poem: 75px;
         &.share-link {
             @include xs { position: relative; right: 1%; }
             img {
-                width: 140px;
+                width: 7rem;
                 filter: drop-shadow(0px 0px 2px $yellow-logo);
             }
         }
@@ -237,6 +250,9 @@ $logo-height-poem: 75px;
     left: -100px; bottom: 0;
     width: 200px;
     z-index: 1000;
+    @include tablet {
+        left: 0;
+    }
     > img.hamburger {
         display: none;
         @include xs {
@@ -269,6 +285,9 @@ $logo-height-poem: 75px;
             right: -134px; bottom: 55px;
             transition: right 500ms ease-in-out;
         }
+        @include tablet {
+            padding-bottom: 2.4rem;
+        }
         width: 134px;
         display: flex;
         flex-direction: column;
@@ -284,7 +303,7 @@ $logo-height-poem: 75px;
             }
             &:hover { transform: unset; }
             img {
-                max-height: 25px;
+                max-height: 1.3rem;
                 filter: drop-shadow(0px 0px 3px black);
                 @include nav-cutoff { max-height: 3.3vw; }
                 margin: 0 9px;

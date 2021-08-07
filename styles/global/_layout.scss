@@ -2,7 +2,19 @@
   box-sizing: border-box;
 }
 
-html { position: fixed; }
+html {
+  position: fixed;
+  font-size: $root-font-size;
+  @include xs {
+    font-size: $xs-root-font-size;
+  }
+  @include hz {
+    font-size: $hz-root-font-size;
+  }
+  @include hz-lg {
+    font-size: $hz-root-font-size;
+  }
+}
 body, html {
   height: 100%;
   width: 100%;
@@ -91,7 +103,7 @@ section {
   filter: $gold-2-svg;
 }
 
-$logo-height: 80px;
+$logo-height: 4.5rem;
 $logo-height-xs: 12vh;
 $logo-height-hz: 60px;
 .orb img { max-width: 90vw; }
