@@ -104,7 +104,7 @@ section {
 }
 
 $logo-height: 4.5rem;
-$logo-height-xs: 12vh;
+$logo-height-xs: 4.5rem;
 $logo-height-hz: 60px;
 .orb img { max-width: 90vw; }
 main .orb {
@@ -184,6 +184,5 @@ main .orb {
     top: 0;
     padding: 10px 0;
     width: 100%;
-    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
   }
 }
