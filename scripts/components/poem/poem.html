@@ -31,8 +31,8 @@
 </article>
 <div class="hamburger-container" data-bind="css: {open: open, masked: vm.pageTransitioning() || isLoading()}">
     <img src="/styles/png/hamburger.png" class="hamburger" data-bind="click: toggleOpen">
+    <a data-bind="click: (data, event) => { vm.launchModal('stats', stats) }" class="stats-link" href="#">view stats</a>
     <nav class="aux">
-        <a data-bind="click: (data, event) => { vm.launchModal('stats', stats) }" class="stats-link" href="#">view stats</a>
         <a data-bind="click: (data, event) => { vm.launchModal('clergy') }" href="#"><img src="/styles/png/clergy.png"></a>
         <a data-bind="click: (data, event) => { vm.launchModal('relics') }" href="#"><img src="/styles/png/relics.png"></a>
     </nav>    

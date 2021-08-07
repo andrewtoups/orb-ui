@@ -253,6 +253,12 @@ $logo-height-poem: 4rem;
     @include tablet {
         left: 0;
     }
+    .stats-link {
+        opacity: 0;
+        position: fixed;
+        left: 0; bottom: 0;
+        height: 45px; width: 45px;
+    }
     > img.hamburger {
         display: none;
         @include xs {
@@ -321,12 +327,6 @@ $logo-height-poem: 4rem;
                 }
                 transform: scale(1);
                 transition: transform 250ms ease-in-out;
-            }
-            &.stats-link {
-                opacity: 0;
-                position: fixed;
-                left: 0; bottom: 0;
-                height: 45px; width: 45px;
             }
         }
     }
