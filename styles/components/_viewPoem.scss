@@ -1,4 +1,5 @@
-.screenshot {
+#screenshot {
+    font-size: initial; 
     .icon { transition: none; }
     section.poem-page {
         &.zoom {
@@ -8,6 +9,7 @@
     .hamburger-container nav.aux { display: none; }
     .nav-link { display: none; }
     #poem.moon {
+        font-size: 100%;
         $screenshotMoonSize: 46rem;
         height: $screenshotMoonSize; width: $screenshotMoonSize;
         background-size: $screenshotMoonSize $screenshotMoonSize;
@@ -16,7 +18,6 @@
             height: $screenshotMoonSize; width: $screenshotMoonSize;
         }
         &:before, &:after { animation: none; }
-        font-size: 110%;
         form {
             // padding: 10px 20px;
             &.active legend {
