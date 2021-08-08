@@ -286,11 +286,25 @@ form.natal-form {
 }
 
 button#random {
-    position: fixed;
-    bottom: 1vh;
-    left: 1vw; 
-    max-width: 120px;
+    position: absolute;
+    bottom: -2.5rem;
     text-transform: uppercase;
     padding: 6px 10px;
-    opacity: 0;
+    color: #d2b350;
+    border-radius: 5px;
+    text-shadow: 0px 0px 14px #d2b350;
+    opacity: 1;
+    box-shadow: 0px 0px 5px rgba($yellow-logo, 0);
+    transition: opacity 1000ms ease-in,
+                box-shadow 1000ms ease-in;
+    &.masked {
+        opacity: 0;
+    }
+    &.glow {
+        animation-delay: 1s;
+        box-shadow: 0px 0px 5px rgba($yellow-logo, 1);
+    }
+    &.animate {
+        animation: Wavy 20000ms ease-in-out infinite;
+    }
 }

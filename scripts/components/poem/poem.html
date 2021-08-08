@@ -32,6 +32,10 @@
 <div class="hamburger-container" data-bind="css: {open: open, masked: vm.pageTransitioning() || isLoading()}">
     <img src="/styles/png/hamburger.png" class="hamburger" data-bind="click: toggleOpen">
     <a data-bind="click: (data, event) => { vm.launchModal('stats', stats) }" class="stats-link" href="#">view stats</a>
+    <div class="social-links">
+        <a href="https://twitter.com/church_orb" target="_blank" class="social-icon twitter"></a>
+        <a href="https://www.instagram.com/the.orb.astrology/" target="_blank" class="social-icon instagram"></a>
+    </div>
     <nav class="aux">
         <a data-bind="click: (data, event) => { vm.launchModal('clergy') }" href="#"><img src="/styles/png/clergy.png"></a>
         <a data-bind="click: (data, event) => { vm.launchModal('relics') }" href="#"><img src="/styles/png/relics.png"></a>

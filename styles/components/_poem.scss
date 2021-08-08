@@ -250,9 +250,13 @@ $logo-height-poem: 4rem;
 
 .hamburger-container {
     position: absolute;
-    left: -100px; bottom: 0;
-    width: 200px;
     z-index: 1000;
+    left: 0; bottom: 0;
+    width: 100%;
+    @include xs {
+        left: -100px; bottom: 0;
+        width: 200px;    
+    }
     @include tablet {
         left: 0;
     }
@@ -268,14 +272,14 @@ $logo-height-poem: 4rem;
             display: block;
             position: fixed;
             right: 0; bottom: 0;
-            padding: 10px 10px 12px 10px;
-            max-height: 52px;
+            margin: 0.3rem;
+            max-height: 2rem;
             z-index: 10000;
             cursor: pointer;
             transform: scale(1);
             transition: transform 100ms ease-out;
             &:active {
-                transform: scale(1.1);
+                transform: scale(1.3);
                 transition: transform 100ms ease-in;
             }
         }
@@ -285,45 +289,46 @@ $logo-height-poem: 4rem;
     }
     &.open nav.aux {
         @include xs {
-            transform: translateX(0);
+            transform: translateX(1rem);
             transition: transform 500ms ease-in-out;
         }
     }
     nav.aux {
-        left: 3rem;
-        bottom: 0px;
+        left: -3rem; bottom: 0px;
         @include nav-cutoff {
             left: 40%;
         }
         @include xs {
             left: unset;
             right: 0;
-            bottom: 55px;
-            transform: translateX(134px);
+            bottom: 3rem;
+            transform: translateX(9.1rem);
             transition: transform 500ms ease-in-out;
+            box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.65);
         }
         @include tablet {
             padding-bottom: 2.4rem;
         }
-        width: 134px;
+        border-radius: 3px;
+        overflow: hidden;
+        width: 9rem;
         display: flex;
         flex-direction: column;
         padding: 0;
         background-image: none;
         a {
-            padding: 12px 0;
+            padding: 0.5rem 0;
             margin: 0;
             width: 100%;
             @include xs {
-                background-color: rgba(0,0,0,.65);
+                background-color: rgba(0, 0, 0, .65);
                 a.stats-link { background-color: none; }    
             }
             &:hover { transform: unset; }
             img {
-                max-height: 1.3rem;
+                max-height: 1.5rem;
                 filter: drop-shadow(0px 0px 3px black);
-                @include nav-cutoff { max-height: 3.3vw; }
-                margin: 0 9px;
+                margin: 0 0.5rem;
                 &:hover {
                     transform: scale(1.1);
                     transition: transform 250ms ease-in-out;
@@ -340,5 +345,28 @@ $logo-height-poem: 4rem;
     }
     transition: opacity 1500ms ease-in;
 }
-
+.social-links {
+	display: flex;
+	justify-content: space-evenly;
+	margin-bottom: 0.1rem;
+    margin-left: 0.1rem;
+    position: absolute;
+    right: 0; bottom: 0;
+    @include xs {
+        position: fixed;
+        left: 0;    
+        right: unset;
+    }
+    .social-icon {
+        display: inline-block;
+        width: 2rem; height: 2rem;
+        filter: invert(100%);
+        @include xs { filter: invert(0%); }
+        background-size: 100%;
+        background-repeat: no-repeat;
+        margin: 5px;
+        &.instagram { background-image: url("svg/instagram.svg"); }
+        &.twitter   { background-image: url("svg/twitter.svg");   }
+    }
+}
 // @include xs { main.poem-page { animation: Wiggle 50s linear infinite; } }

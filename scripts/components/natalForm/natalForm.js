@@ -413,6 +413,18 @@ define([
         });
         
         //Debug:
+        self.randomBtnVisible = ko.observable(true);
+        setTimeout(() => {
+            self.randomBtnVisible(false);
+        }, 3500);
+        self.randomGlow = ko.observable(false);
+        setTimeout(() => {
+            self.randomGlow(true);
+        }, 5000);
+        self.randomAnimate = ko.observable(false);
+        setTimeout(() => {
+            self.randomAnimate(true);
+        }, 6000);
         self.randomChart = function() {
             self.auto(true);
             let randCity = () => {
