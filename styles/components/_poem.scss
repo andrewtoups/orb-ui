@@ -177,7 +177,10 @@ $logo-height-poem: 4rem;
         height: $logo-height-poem;
         top: 2rem;
     }
-    @include xs { img { height: $logo-height-xs; } }
+    @include xs { img {
+        height: auto;
+        max-height: $logo-height-xs;
+    } }
     top: $logo-height-poem/2;
     @include xs { top: 0; }
     //   @include hz { position: fixed; top: 15px; right: 7vw; }

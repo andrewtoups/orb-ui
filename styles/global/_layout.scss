@@ -118,9 +118,8 @@ section {
 }
 
 $logo-height: 4.5rem;
-$logo-height-xs: 4.5rem;
+$logo-height-xs: 13vh;
 $logo-height-hz: 60px;
-.orb img { max-width: 90vw; }
 main .orb {
   position: fixed;  
   opacity: 1;
@@ -131,13 +130,20 @@ main .orb {
   }
   &.logo {
     position: absolute;
-    top: -$logo-height;
+    top: $logo-height;
     transition: opacity 1200ms ease-out;
     text-align: center;
     z-index: 5000;
+    @include xs {
+      top: 0;
+      padding: 2vh 0;
+    }
     img {
       height: $logo-height;
-      @include xs { height: $logo-height-xs; }
+      @include xs {
+        height: auto;
+        max-height: $logo-height-xs;
+      }
       animation: Pulsate 5s ease-in-out infinite;
     }
   }
@@ -190,13 +196,5 @@ main .orb {
       position: fixed;
       right: -10vw;
     }
-  }
-}
-
-@include xs {
-  main .orb.logo {
-    top: 0;
-    padding: 10px 0;
-    width: 100%;
   }
 }
