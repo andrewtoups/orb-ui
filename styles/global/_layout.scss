@@ -120,6 +120,7 @@ section {
 $logo-height: 4.5rem;
 $logo-height-xs: 10vh;
 $logo-height-hz: 60px;
+.orb img { max-width: 90vw; }
 main .orb {
   position: fixed;  
   opacity: 1;
