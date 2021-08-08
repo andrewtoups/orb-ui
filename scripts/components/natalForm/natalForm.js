@@ -18,6 +18,10 @@ define([
         self.timeObservables.forEach((name, index) => {
             self[name] = ko.observable();
         });
+        self.scrollToTop = () => {
+            console.log("scrollin' baby");
+            window.scrollTo(0,0);
+        }
         
         self.birthTimeTouched = function() {
             return self.timeObservables.every(name => self[name].touched ? self[name].touched() : false);
@@ -168,7 +172,8 @@ define([
                 results: self[type+"ResponseData"],
                 value: self[type],
                 status: self[type+"resultsLoading"],
-                index: self[type+"Index"]
+                index: self[type+"Index"],
+                blur: self.scrollToTop
             };
         });
         

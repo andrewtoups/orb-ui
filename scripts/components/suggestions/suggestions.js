@@ -11,6 +11,7 @@ define(['ko'], function(ko){
 
         self.value = params.value;
         self.index = params.index;
+        self.blur = params.blur || (() => {});
         self.value(null);
         self.valueSet = ko.computed(() => self.value() !== null );
         self.setValue = function(index, result, event){

@@ -1,6 +1,6 @@
 <div data-bind="event: {keydown: keyDown}, keyDownBubble: false" class="suggestion-select">
     <input class="placeholder" type="text" data-bind="attr: { placeholder: placeholder }" readonly tabindex="-1">
-    <input class="suggestion-input" type="text" data-bind="cleanTextInput: query, hasFocus: inputFocus, attr: {disabled: valueSet}" autocomplete="chrome-off">
+    <input class="suggestion-input" type="text" data-bind="cleanTextInput: query, hasFocus: inputFocus, attr: {disabled: valueSet}, event: {blur: blur}" autocomplete="chrome-off">
     <div data-bind="visible: valueSet, hasFocus: valueSet" class="selection-mask" tabindex="0">
         <span data-bind="text: value"></span>
         <button data-bind="click: unsetValue" type="button" tabindex="-1">×</button>
