@@ -364,7 +364,7 @@ $logo-height-poem: 4rem;
         @include xs { filter: invert(0%); }
         background-size: 100%;
         background-repeat: no-repeat;
-        margin: 5px;
+        margin: 0.2rem;
         &.instagram { background-image: url("svg/instagram.svg"); }
         &.twitter   { background-image: url("svg/twitter.svg");   }
     }
