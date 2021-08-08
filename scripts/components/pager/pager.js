@@ -99,6 +99,7 @@ define([
         };
         self.screenshotMode = ko.observable(false);
         self.placementsMode = ko.observable(true);
+        self.printMode = ko.observable(false);
         self.togglePlacementsMode = () => { self.placementsMode(!self.placementsMode())} ;
         self.initialLoadComplete.subscribe(s => {
             if (s) {
@@ -111,6 +112,7 @@ define([
                         let metaKey;
                         if (key === "screenshot")    self.screenshotMode(value === 'true');
                         if (key === "placements")    self.placementsMode(value === 'true');
+                        if (key === "print")         self.printMode(value === 'true');
                         if (key.includes("Element")) metaKey = key.replace("Element", "");
                         if (key.includes("Sign"))    metaKey = key.replace("Sign", "");
                         if (typeof birthChart[metaKey] === "undefined") birthChart[metaKey] = {sign: "", element: ""};

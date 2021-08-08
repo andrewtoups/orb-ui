@@ -14,6 +14,7 @@
         height: $screenshotMoonSize; width: $screenshotMoonSize;
         background-size: $screenshotMoonSize $screenshotMoonSize;
         transform: scale(2.597); // Magic number
+        &.print { transform: scale(5); }
         &:after {
             height: $screenshotMoonSize; width: $screenshotMoonSize;
         }
