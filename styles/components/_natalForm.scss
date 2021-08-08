@@ -30,17 +30,7 @@ form.natal-form {
         display: flex;
         flex-direction: column;
         text-align: center;
-
-        &:focus-within legend { color: $coal; }
-        &:focus-within .legend {
-            opacity: 0;
-            transition: opacity 500ms ease-in-out;
-        }
-        .legend {
-            opacity: 1;
-            transition: opacity 500ms ease-in-out;
-            animation: Wavy 10s ease-in-out infinite;
-        }
+        color: $coal;
 
         &:last-child { padding-top: 0; }
 
@@ -299,6 +289,7 @@ button#random {
                 box-shadow 1000ms ease-in;
     &.masked {
         opacity: 0;
+        cursor: initial;
     }
     &.glow {
         animation-delay: 1s;
