@@ -26,6 +26,9 @@ define([
         self.birthTimeTouched = function() {
             return self.timeObservables.every(name => self[name].touched ? self[name].touched() : false);
         };
+        self.formTouched = function() {
+            return self.timeObservables.some(name => self[name].touched ? self[name].touched() : false) || self.city() !== null;
+        }
         
         self.milHour = ko.computed(() => parseInt(self.hour()) + parseInt(self.pmOffset()));
         self.timeProcessing = ko.observable(false);
