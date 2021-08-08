@@ -20,8 +20,8 @@ define(['ko', 'api', 'utils/noOrphans'], (ko, api) => {
                 name: 'Dylan Krieger',
                 bio: `<p>Dylan Krieger is the poet and High Priestess of The Orb.</p>
                 <p>She is death rattle sun, crybaby moon, and brain-in-a-vat rising.</p>
-                <p>Author of six books of poetry, including NYT-lauded <em>Giving Godhead</em> (Delete, 2017), she can be found at <a href="https://dylankrieger.com">dylankrieger.com</a>.</p>`,
-                link: 'dylankrieger.com',
+                <p>Author of six books of poetry, including NYT-lauded <em>Giving Godhead</em> (Delete, 2017), she can be found at <a href="https://dylankrieger.com">dylankrieger.com</a> or <a href="https://dylankriegerpoetry.bigcartel.com">dylankriegerpoetry.bigcartel.com</a>.</p>`,
+                link: 'https://dylankriegerpoetry.bigcartel.com',
                 pic: '/styles/jpg/dylan-krieger.jpg',
                 birthData: {
                     date: {
@@ -37,7 +37,7 @@ define(['ko', 'api', 'utils/noOrphans'], (ko, api) => {
                 <p>He is tender wound sun, homesick moon, and humble guru rising.</p>
                 <p>Co-founder of literary and visual arts magazine Fine Print, he has worked with Vegetarian Alcoholic Press, Tilted House Review and Birdcoat Quarterly.</p>
                 <p>He can be found at <a href="https://saltedteeth.com">saltedteeth.com</a>.</p>`,
-                link: 'saltedteeth.com',
+                link: 'https://saltedteeth.com',
                 pic: '/styles/jpg/christopher-payne.jpg',
                 birthData: {
                     date: {
@@ -51,8 +51,8 @@ define(['ko', 'api', 'utils/noOrphans'], (ko, api) => {
                 name: 'Andrew Toups',
                 bio: `<p>Andrew Toups is the developer and Supreme Hierophant of The Orb.</p>
                 <p>He is obsolete god sun, style maven moon, and mischievous wit rising.</p>
-                <p>A musician in Grammy-nominated band Feufollet, he is taking applications for new orbiters on his <a href="www.instagram.com/andonuts">instagram page</a>.</p>`,
-                link: 'www.instagram.com/andonuts',
+                <p>A musician in Grammy-nominated band Feufollet, he is taking applications for new orbiters on his <a href="https://www.instagram.com/andonuts">instagram page</a>.</p>`,
+                link: 'https://www.instagram.com/andonuts',
                 pic: '/styles/jpg/2ps.jpg',
                 birthData: {
                     date: {
