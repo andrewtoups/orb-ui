@@ -16,7 +16,7 @@
             <!-- /ko -->
             <form data-bind="css: {active: vm.placementsMode}">
                 <!-- ko if: ($index() === 3) -->
-                <span data-bind="if: vm.screenshotMode() && !vm.printMode()" class="watermark-container">
+                <span data-bind="css: {masked: vm.pageTransitioning()}" class="watermark-container">
                     <img src="/styles/png/orb-url-handwritten.png">
                 </span>        
                 <!-- /ko -->
