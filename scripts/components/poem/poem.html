@@ -1,4 +1,4 @@
-<article data-bind="visible: poemData(), event: {keydown: keyDown}" tabindex="1" id="poem" class="moon">
+<article data-bind="visible: poemData(), event: {keydown: keyDown}, css: {print: vm.printMode()}" tabindex="1" id="poem" class="moon">
     <div class="debug-bday" data-bind="visible: showDebug, if: birthData">
         <div data-bind="text: birthDay"></div>
         <div data-bind="text: location"></div>
@@ -10,13 +10,13 @@
         <span class="icon tertiary" data-bind="class: iconTertiary, css: {masked: vm.pageTransitioning() || isLoading()}"></span>
         <div data-bind="foreach: lines">
             <!-- ko if: ($index() === 0)-->
-                <span data-bind="if: vm.screenshotMode()" class="logo-container">
+                <span data-bind="if: vm.screenshotMode() && !vm.printMode()" class="logo-container">
                     <img src="/styles/png/orb-logo-isolated.png">
                 </span>
             <!-- /ko -->
             <form data-bind="css: {active: vm.placementsMode}">
                 <!-- ko if: ($index() === 3) -->
-                <span class="watermark-container">
+                <span data-bind="if: vm.screenshotMode() && !vm.printMode()" class="watermark-container">
                     <img src="/styles/png/orb-url-handwritten.png">
                 </span>        
                 <!-- /ko -->
