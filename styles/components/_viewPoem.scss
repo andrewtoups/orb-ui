@@ -44,7 +44,7 @@
             .image-region > div { transform: scale(1.6) };
             &:before, &:after { content: none; }
             .icon {opacity: .45; }
-            .watermark { display: none; }
+            .watermark-container { display: none; }
         }
         .image-region > div {
             position: relative;
