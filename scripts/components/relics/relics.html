@@ -1,7 +1,10 @@
 <section>
-    <div class="merch-coming-soon">
-        <img src="/styles/png/merch-coming-soon.png">
+    <div class="print-preview" data-bind="if: vm.printScreenshot()">
+        <img data-bind="attr: {src: vm.printScreenshot()}">
     </div>
+    <p data-bind="if: !vm.printScreenshot()">
+        loading print...
+    </p>
     <div class="tithe">
         <button><a href="https://www.paypal.com/donate?hosted_button_id=PDE4GSNZWLD3G">Tithe</a></button>
     </div>

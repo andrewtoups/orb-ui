@@ -100,6 +100,7 @@ define([
         self.screenshotMode = ko.observable(false);
         self.placementsMode = ko.observable(true);
         self.printMode = ko.observable(false);
+        self.printScreenshot = ko.observable();
         self.togglePlacementsMode = () => { self.placementsMode(!self.placementsMode())} ;
         self.initialLoadComplete.subscribe(s => {
             if (s) {

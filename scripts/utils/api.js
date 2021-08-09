@@ -26,13 +26,14 @@ define([], () => {
         return fetch(`${hostName()}/${route}`)
             .then(response => response.json());
     };
-    let screenshot = (params, placementsMode) => {
+    let screenshot = (params, modes) => {
+        modes = modes || {};
         const paramObj = {};
         for (p in params) {
             paramObj[`${p}Sign`] = params[p].sign;
             paramObj[`${p}Element`] = params[p].element;
         }
-        if (placementsMode) paramObj.placements = true;
+        for (mode in modes) paramObj[mode] = modes[mode];
         const paramStr = new URLSearchParams(paramObj).toString();
         const route = `screenshot/?${paramStr}`;
         return fetch(`${hostName()}/${route}`)
