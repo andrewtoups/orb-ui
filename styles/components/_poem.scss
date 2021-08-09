@@ -76,6 +76,12 @@
             width: 5.5rem;
             opacity: .35;
         }
+	opacity: 1;
+	transition: opacity 500ms ease-in-out;
+	&.masked {
+	    opacity: 0;
+	    transition: opacity 500ms ease-in-out;
+	}
     }
     form {
         margin: 0;
