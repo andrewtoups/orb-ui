@@ -23,6 +23,7 @@ $iconPath: 'png/icons/';
 .icon {
     height: $icon-size; width: $icon-size;
     background-size: contain;
+    background-repeat: no-repeat;
     position: absolute;
     filter: brightness(75%);
     opacity: .35;
