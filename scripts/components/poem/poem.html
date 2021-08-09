@@ -9,7 +9,7 @@
         <span class="icon secondary" data-bind="class: iconSecondary, css: {masked: vm.pageTransitioning() || isLoading()}"></span>
         <span class="icon tertiary" data-bind="class: iconTertiary, css: {masked: vm.pageTransitioning() || isLoading()}"></span>
         <div data-bind="foreach: lines">
-            <!-- ko if: ($index() === 0)-->
+            <!-- ko if: ($index() === 0 && vm.screenshotMode() && !vm.printMode())-->
                 <span data-bind="if: vm.screenshotMode() && !vm.printMode()" class="logo-container">
                     <img src="/styles/png/orb-logo-isolated.png">
                 </span>
