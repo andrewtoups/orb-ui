@@ -39,7 +39,6 @@
             }
         }
         &.print {
-            background-image: none;
             .image-region { transform: scale(0.6) };
             .image-region > div { transform: scale(1.6) };
             &:before, &:after { content: none; }
