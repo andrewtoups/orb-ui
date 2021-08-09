@@ -8,6 +8,7 @@
     }
     .hamburger-container nav.aux { display: none; }
     .nav-link { display: none; }
+    .social-links { display: none; }
     #poem.moon {
         font-size: 100%;
         $screenshotMoonSize: 46rem;
@@ -36,6 +37,13 @@
                 width: 110px;
                 opacity: .25;
             }
+        }
+        &.print {
+            background-image: none;
+            .image-region { transform: scale(0.6) };
+            .image-region > div { transform: scale(1.6) };
+            &:before, &:after { content: none; }
+            .icon {opacity: .45; }
         }
         .image-region > div {
             position: relative;
