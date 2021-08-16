@@ -1,5 +1,5 @@
-define(['ko', 'api'], (ko, api) => {
-    return function(){
+define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
+    return function(params){
         let self = this;
 
         self.ready = ko.observable(false);
@@ -50,7 +50,29 @@ define(['ko', 'api'], (ko, api) => {
                     country_code: "US"
                 };
             }
+        })
+        
+        self.saveOrderData = () => {
+            self.requestSent(true);
+            let body = {
+                orderName: self.name(),
+                address: self.address(),
+                natalChart: vm.poem.birthChart,
+                birthInfo: `${vm.poem.birthDay()} ${vm.natalForm.rawDate()}`,
+                poem: vm.poem.lines().map(i => i.line),
+                comments: self.comments()
+            };
+            paypal.saveOrderData(body)
+            .then(response => {
+                vm.printScreenshot(`${api.hostName()}/prints/${response}.png`);
             });
-        }
+        };
+
+            paypal.createButton({
+                onApprove: self.saveOrderData,
+                state: self.ready,
+                address: self.ppAddress,
+                name: self.name
+            });           
     }
 });

@@ -26,14 +26,15 @@ define([], () => {
         return fetch(`${hostName()}/${route}`)
             .then(response => response.json());
     };
-    let screenshot = (params, modes) => {
-        modes = modes || {};
+    const getChartParams = (params, modes) => {
         const paramObj = {};
         for (p in params) {
             paramObj[`${p}Sign`] = params[p].sign;
             paramObj[`${p}Element`] = params[p].element;
         }
         for (mode in modes) paramObj[mode] = modes[mode];
+        return paramObj;
+    }
         const paramStr = new URLSearchParams(paramObj).toString();
         const route = `screenshot/?${paramStr}`;
         return fetch(`${hostName()}/${route}`)
@@ -45,7 +46,8 @@ define([], () => {
         updatePoemData: updatePoemData,
 	    months: months,
         birthChart: birthChart,
-        screenshot: screenshot
+        screenshot: screenshot,
+        getChartParams: getChartParams
     };
     return api;
 });
