@@ -5,7 +5,7 @@
     border-radius: 2px;
     @include xs { animation: none; }
     // @include hz { animation: none; }
-    font-family: 'Source Serif Pro TC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: $serif;
     @include pseudo-clone('after');
     &:after {
         background: linear-gradient(45deg, rgba($gold-bright,0.15), rgba($coal, .45));
@@ -105,7 +105,7 @@
             text-transform: uppercase;
             user-select: none;
             color: rgba($gold, 0);
-            font-family: 'Gothic A1', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-family: $sans-serif;
             text-shadow: 0px 0px 0px transparent;
             transition: color 700ms ease-in-out,
                         text-shadow 2000ms ease-in-out;
@@ -157,7 +157,7 @@
 
     //Debug:
     .debug-placement, .debug-bday {
-        font-family: 'Gothic A1', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-family: $sans-serif;
         font-weight: lighter;
         position: absolute;
         background-color: white;
@@ -237,7 +237,7 @@ $logo-height-poem: 4rem;
         @include xs { padding: 10px; }
         // @include hz { margin: 10px 0; }
         line-height: .9;
-        font-family: 'Source Serif Pro TC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-family: $serif;
 
         &.share-link {
             @include xs { position: relative; right: 1%; }

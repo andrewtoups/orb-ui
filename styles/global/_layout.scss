@@ -46,7 +46,7 @@ body {
     padding: 15px;
     border-radius: 2px;
     box-shadow: 0px 0px 18px $gold;
-    font-family: 'Gothic A1', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: $sans-serif;
   }
 }
 
@@ -56,7 +56,7 @@ main {
   position: relative;
   @include xs { height: 100%; height: -webkit-fill-available; width: 100%; }
   @include hz-lg { pointer-events: none; opacity: 0; }
-  font-family: 'Gothic A1', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: $sans-serif;
 }
 
 .fixed { position: fixed; }
