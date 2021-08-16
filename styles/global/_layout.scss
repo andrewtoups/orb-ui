@@ -199,3 +199,24 @@ main .orb {
     }
   }
 }
+
+.creative-commons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: .5rem;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  color: $form-bg-c;
+  font-size: 50%;
+  a { color: $form-bg-c; }
+  img {
+    width: 3rem;
+    filter: sepia(1);    
+  }
+  p {
+    padding-left: 0.5rem;
+    max-width: 15rem;    
+  }
+}
