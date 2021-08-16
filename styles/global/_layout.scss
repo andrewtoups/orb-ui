@@ -206,12 +206,12 @@ main .orb {
   position: fixed;
   bottom: 0;
   left: 0;
-  padding: .5rem;
+  padding: .1rem;
   opacity: 0.5;
   display: flex;
   align-items: center;
   color: $form-bg-c;
-  font-size: 50%;
+  font-size: 45%;
   a { color: $form-bg-c; }
   img {
     width: 3rem;
@@ -219,6 +219,8 @@ main .orb {
   }
   p {
     padding-left: 0.5rem;
-    max-width: 15rem;    
+    max-width: 15rem;
+    word-break: break-all;
+    white-space: pre-wrap;
   }
 }
