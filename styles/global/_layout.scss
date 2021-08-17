@@ -39,7 +39,7 @@ body {
 
 .pls-rotate {
   display: none;
-  @include hz-lg {
+  @include hz {
     display: block;
     background-color: $gold;
     color: $poem-text-c;
