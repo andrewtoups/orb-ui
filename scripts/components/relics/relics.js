@@ -5,6 +5,21 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
         self.ready = ko.observable(false);
         vm.modal.loadingComplete(false);
         params.closeCb(() => { self.ready(false) });
+        self.ritePassed = ko.observable(false);
+        self.sacredRite = ko.observable();
+        self.sacredRite.subscribe(nv => {
+            if (nv.length > 3) {
+                try {
+                    paypal.validateClergy(nv)
+                    .then(response => {
+                        if (response.status === 200) self.ritePassed(true)
+                        else self.ritePassed(false);
+                    });
+                } catch {
+
+                }
+            }
+        });
         
         self.ready.subscribe(nv => {
             vm.modal.modalLoading(!nv);
@@ -68,11 +83,15 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
             });
         };
 
+        self.ritePassed.subscribe(nv => {
+            vm.modal.modalLoading(true);
             paypal.createButton({
                 onApprove: self.saveOrderData,
                 state: self.ready,
                 address: self.ppAddress,
                 name: self.name
             });           
+        });
+
     }
 });

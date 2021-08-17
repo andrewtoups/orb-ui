@@ -2,6 +2,11 @@ define(['api'], api => {
     const client_id = 'AelbqPdJ0y4EVqub7mTRrUXgxohk7S1pI4CS4FH6kVYQtCefij6mp1yg0FlQGLIg2thkk9ohLLQwpmjw';
     const client_se = 'EIfBreGqJBaOM58gk2FCMp1ObG42aYeG-06Cs4I_6IfRBfkUNZD_Vwgp91h2OLMUErQLufHsiNGfWenz';    
     return {
+
+        validateClergy: (str) => {
+            return fetch(`${api.hostName()}/validateClergy/${str}`);
+        },
+
         stateCodes: [
             { "label": "Alabama", "value": "AL" }, { "label": "Alaska", "value": "AK" },
             { "label": "Arizona", "value": "AZ" }, { "label": "Arkansas", "value": "AR" },

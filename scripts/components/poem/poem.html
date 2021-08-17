@@ -42,3 +42,6 @@
         <a data-bind="click: (data, event) => { vm.launchModal('clergy') }" href="#"><img src="/styles/png/clergy.png"></a>
     </nav>    
 </div>
+<div data-bind="if: sk">
+    <div class="sacred-rites" data-bind="click: (data, event) => { vm.launchModal('relics') }"></div>
+</div>

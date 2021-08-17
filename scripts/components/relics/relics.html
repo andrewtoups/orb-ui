@@ -1,4 +1,5 @@
-<section>
+<!-- ko if: ritePassed -->
+<section data-bind="css: {masked: !ready()}">
     <div class="print-preview" data-bind="if: vm.printScreenshot()">
         <img data-bind="attr: {src: vm.printScreenshot()}">
     </div>
@@ -66,3 +67,10 @@
         <!-- /ko -->
     </div>
 </section>
+<!-- /ko -->
+<!-- ko if: !ritePassed() -->
+    <div class="rc">
+        <p>Awaiting sacred rites...</p>
+        <input data-bind="textInput: sacredRite">
+    </div>
+<!-- /ko -->
