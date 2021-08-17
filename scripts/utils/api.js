@@ -1,5 +1,5 @@
 define([], () => {
-    let hostName = () => {
+    const hostName = () => {
         const name = window.location.hostname;
         const apiPort = 3000;
         if (['localhost', '0.0.0.0', '127.0.0.1'].includes(name)) {
@@ -8,19 +8,19 @@ define([], () => {
             return 'https://orb-api.2psy.net';
         }
     };
-    let poem = () => {
+    const poem = () => {
         return fetch(`${hostName()}/getData/poem`)
         .then(response => response.json());
     };
-    let updatePoemData = () => {
+    const updatePoemData = () => {
         return fetch(`${hostName()}/updatePoemData`)
         .then(response => response.text());
     };
-    let months = () => {
-	return fetch(`${hostName()}/getData/months`)
-	.then(response => response.json());
+    const months = () => {
+        return fetch(`${hostName()}/getData/months`)
+        .then(response => response.json());
     };
-    let birthChart = (params) => {
+    const birthChart = (params) => {
         const d = params.date,      long = params.coordinates[0],       lat = params.coordinates[1];
         const route = `calculateChart/${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}/${d.getHours()}/${d.getMinutes()}/${long}/${lat}`;
         return fetch(`${hostName()}/${route}`)
@@ -40,7 +40,8 @@ define([], () => {
         return fetch(`${hostName()}/${route}`)
             .then(response => response.text());
     };
-    let api = {
+    
+    const api = {
         hostName: hostName,
         poem: poem,
         updatePoemData: updatePoemData,
