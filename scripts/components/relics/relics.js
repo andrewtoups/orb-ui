@@ -67,15 +67,18 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
             }
         })
         
-        self.saveOrderData = () => {
-            self.requestSent(true);
+        self.saveOrderData = data => {
             let body = {
                 orderName: self.name(),
                 address: self.address(),
                 natalChart: vm.poem.birthChart,
                 birthInfo: `${vm.poem.birthDay()} ${vm.natalForm.rawDate()}`,
                 poem: vm.poem.lines().map(i => i.line),
-                comments: self.comments()
+                comments: self.comments(),
+                paypalName: `${data.payer.name.given_name} ${data.payer.name.surname}`,
+                paypalOrderId: data.id,
+                paypalPayerId: data.payer.payer_id,
+                paypalEmail: data.payer.email_address
             };
             paypal.saveOrderData(body)
             .then(response => {

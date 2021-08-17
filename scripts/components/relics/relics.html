@@ -1,8 +1,5 @@
 <!-- ko if: ritePassed -->
 <section data-bind="css: {masked: !ready()}">
-    <div class="print-preview" data-bind="if: vm.printScreenshot()">
-        <img data-bind="attr: {src: vm.printScreenshot()}">
-    </div>
     <form>
         <div class="field">
             <label for="name" class="required">Recipient name</label>
@@ -45,6 +42,9 @@
 
         <div id="paypal-button-container" data-bind="css: {disabled: !valid()}"></div>
     </form>
+    <div class="print-preview" data-bind="if: vm.printScreenshot()">
+        <img data-bind="attr: {src: vm.printScreenshot()}">
+    </div>    
 </section>
 <!-- /ko -->
 <!-- ko if: !ritePassed() -->
