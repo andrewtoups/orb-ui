@@ -67,10 +67,22 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
             }
         })
         
+        // self.showMiniModal = ko.computed(() => self.validating() || self.validationQuestions() );
+        // self.mmOpen = ko.observable(false);
+        // self.showMiniModal.subscribe(nv => {if (nv) self.mmOpen(true)});
+        // self.mmTransitioning = ko.observable(false);
+        // self.mmTransitioning.subscribe(nv => {
+        //     if (!nv && self.mmOpen()) {
+        //         self.mmOpen(false);
+        //     }
+        // });
+
+        // self.requestSent = ko.observable(false);     
+                
         self.saveOrderData = data => {
             let body = {
                 orderName: self.name(),
-                address: self.address(),
+                address: self.addressStr(),
                 natalChart: vm.poem.birthChart,
                 birthInfo: `${vm.poem.birthDay()} ${vm.natalForm.rawDate()}`,
                 poem: vm.poem.lines().map(i => i.line),
