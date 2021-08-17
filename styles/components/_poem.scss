@@ -306,7 +306,7 @@ $logo-height-poem: 4rem;
         }
         @include xs {
             left: unset;
-            right: 0;
+            right: -0.5rem;
             bottom: 3rem;
             transform: translateX(9.1rem);
             transition: transform 500ms ease-in-out;
