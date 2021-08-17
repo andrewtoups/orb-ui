@@ -301,8 +301,15 @@ define([
                 .then(data => { self.birthChart(data) });
             }
         };
-        self.UTCdate.subscribe(newValue => { self.calculateChart() } );
-        self.coordinates.subscribe(newValue => { self.calculateChart() } );
+        self.formCompleted = ko.computed(() => {
+            return !!self.UTCdate() && self.coordinates();
+        });
+        self.formCompleted.subscribe(nv => {
+            console.log("form is complete.");
+            console.log("utcdate is:",self.UTCdate());
+            console.log("coordinates is:",self.coordinates());
+            if (nv && !self.submitted()) self.calculateChart();
+        });
 
         // Geolocation lookup:
         self.loadingGeoResults = ko.observable(false);
@@ -415,7 +422,7 @@ define([
             }
         });
         
-        //Debug:
+        //Random functionality:
         self.randomBtnVisible = ko.observable(true);
         setTimeout(() => {
             self.randomBtnVisible(false);
@@ -436,7 +443,6 @@ define([
                     self.cityQuery(randCity);
                 });
             };
-            randCity();
             let rInt = (min,max) => Math.floor(Math.random() * (max - min) + min);
             let setRand = (name) => {
                 let max = self[name]().length;
@@ -461,19 +467,18 @@ define([
                 setTimeout(() => {self.pmOffset(rInt(0,2)*12)}, delay*6);
                 
                 if (time > rTime) {
-                    window.clearInterval(randomize)
-                    setTimeout(() => {
-                        let tryAgain = () => {
-                            if (self.cityResponseData().length === 0) {
-                                randCity();
-                                setTimeout(tryAgain, waitTime + rTime);
-                            }
+                    window.clearInterval(randomize);
+                    let tryCity = () => {
+                        if (self.cityResponseData().length === 0) {
+                            console.log("trying city...");
+                            randCity();
                         }
-                        let sub = self.loadingGeoResults.subscribe(status => {
-                            if (!status && self.auto() && self.cityResponseData().length === 0) tryAgain();
-                            else sub.dispose();
-                        });
-                    }, waitTime);
+                    }
+                    let sub = self.cityResponseData.subscribe(nv => {
+                        if (!self.loadingGeoResults() && nv.length === 0) tryCity();
+                        else sub.dispose();
+                    });
+                    tryCity();
                 };
             }, interval);
         }
