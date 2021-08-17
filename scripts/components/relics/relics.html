@@ -13,12 +13,12 @@
             <legend>Recipient address</legend>
             
             <div class="field">
-                <label for="street-address" class="required" data-bind="attr: {'data-append': validationErrors.line1 }">Street Address</label>
+                <label for="street-address" class="required">Street Address</label>
                 <input data-bind="value: line1" type="text" placeholder="Line 1" id="street-address" autocomplete="address-line1">
             </div>
             
             <div class="field">
-                <label for="street-address-optional" data-bind="attr: {'data-append': validationErrors.line2 }">Line 2 of Street Address</label>
+                <label for="street-address-optional">Line 2 of Street Address</label>
                 <input data-bind="value: line2" type="text" placeholder="Line 2" id="street-address-optional" autocomplete="address-line2">
             </div>
 
@@ -45,27 +45,6 @@
 
         <div id="paypal-button-container" data-bind="css: {disabled: !valid()}"></div>
     </form>
-    <div class="mini-modal" data-bind="css: { masked: !showMiniModal() }, transitionState: mmTransitioning">
-        <!-- ko if: mmOpen -->
-        <div class="mini-modal-content">
-            <em data-bind="if: validating">Validating address...</em>
-            <!-- ko if: validationQuestions -->
-            <h4>Verify Address:</h4>
-            <p data-bind="if: cleansedAddresses().length === 1">Just checking... is this your correct address?</p>
-            <p data-bind="if: cleansedAddresses().length > 1">Just checking... is one of the following your correct address?</p>
-            <div class="address-preview" data-bind="foreach: cleansedAddresses">
-                <p data-bind="text: line1"></p>
-                <!-- ko if: line2 -->
-                <p data-bind="text: line2"></p>
-                <!-- /ko -->
-                <p data-bind="text: city"></p>
-                <p data-bind="text: state"></p>
-                <p data-bind="text: zip"></p>
-            </div>
-            <!-- /ko -->
-        </div>
-        <!-- /ko -->
-    </div>
 </section>
 <!-- /ko -->
 <!-- ko if: !ritePassed() -->
