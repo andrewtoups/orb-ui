@@ -37,6 +37,9 @@ define([], () => {
         for (mode in modes) paramObj[mode] = modes[mode];
         return paramObj;
     }
+    const screenshot = (params, modes) => {
+        modes = modes || {};
+        const paramObj = getChartParams(params, modes);
         const paramStr = new URLSearchParams(paramObj).toString();
         const route = `screenshot/?${paramStr}`;
         return fetch(`${hostName()}/${route}`)
