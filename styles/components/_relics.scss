@@ -22,32 +22,139 @@
 .print-preview img {
     width: 90%;
 }
-    button {
-        background-image: url("png/tithe.png");
-        background-repeat: no-repeat;
-        background-size: auto 31px;
-        width: 180px; height: 45px;
-        border: none;
-        box-shadow: 0px 0px 45px rgba($yellow-logo, 0.5), 0px 0px 32px #2c2b20 inset;
-        border-radius: 24px;
-        background-position: center;
-        background-color: rgba(0,0,0,.5);
-        position: relative;
-        transform: scale(1);
-        transition: transform 120ms ease-in,
-                    box-shadow 70ms ease-in;
-        &:hover, &:active {
-            transform: scale(1.1);
-            box-shadow: 0px 0px 15px rgba($yellow-logo, 0.95), 0px 0px 5px #2c2b20 inset;
-            transition: transform 100ms ease-out,
-                        box-shadow 500ms ease-out;
+.relics form {
+    font-family: $sans-serif;
+    max-width: 25rem;
+    margin: 0 auto;
+    @include xs { max-width: auto; }
+    legend, label {
+        font-size: 75%;
+        text-transform: uppercase;
+    }
+    .field {
+        display: flex;
+        flex-direction: column-reverse;
+        label {
+            margin-bottom: 7px;
+            text-align: right;
+            &.required {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                &:before {
+                    content: "required";
+                    color: rgba($gold-bright, .75);
+                    font-size: 10px;
+                    font-style: italic;
+                    text-transform: lowercase;
+                }
+            }
         }
-        a {
-            color: transparent;
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            border-radius: 24px;
+        input, textarea, select {
+            background-color: transparent;
+            padding-top: 10px;
+            border-width: 0;
+            border-bottom: 1px dotted $gold-bright;
+            font-size: 100%;
+            color: $gold-bright;
+            &:focus {
+                outline: none;
+                border-style: solid;
+            }
+        }
+        &.select {
+            label {
+                border-top: 1px dotted $gold-bright;
+                margin-left: 0;
+                padding-left: 5px;
+            }
+            select {
+                border-bottom: none;
+                position: relative;
+                left: -1.5px;                
+            }
+            &.placeholder select { opacity: .375; }
+        }
+        option {
+            background-color: $coal;
+            color: $gold-bright;
+        }
+        textarea {
+            resize: vertical;
+            margin: 5px;
+            border-left: 1px dashed $gold-bright;
+            &::placeholder {
+                font-family: $serif;
+                font-style: italic;
+            }
         }
     }
+    fieldset { 
+        border-top: 2px dotted; border-bottom: 2px dotted;
+        border-left: none; border-right: none;
+        padding: 5px 15px;
+        margin: 15px 0;
+
+        legend {
+            text-align: center;
+            padding: 0 5px;
+            font-size: 65%;
+            margin-bottom: -3px;
+            opacity: .75;
+        }
+
+        label {
+            margin-left: 5px;
+            font-size: 65%;
+        }
+    }
+    button {
+        background-color: $gold-bright;
+        width: 80%;
+        margin: 0 auto;
+        display: block;
+        height: 50px;
+        font-size: 120%;
+        text-transform: uppercase;
+        text-shadow: 0px 2px 1px rgb(0 0 0 / 20%);
+    }
+}
+
+// fuck with the paypal iframe:
+.relics #paypal-button-container {
+    margin: 10px;
+    opacity: 1;
+    filter: blur(0px);
+    transition: opacity 500ms ease-in,
+                filter 500ms ease-in;
+    &.disabled {
+        opacity: .5;
+        filter: blur(5px);
+        transition: opacity 500ms ease-in,
+                    filter 500ms ease-in;
+        @include pseudo-clone('before');
+        &:before {
+            z-index: 10000;
+            cursor: not-allowed;
+            &:hover {
+                content: "Please fill all required fields.";
+            }
+        }
+    }
+}
+
+// do our best to override autocomplete:
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: $gold-bright;
+//   -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
