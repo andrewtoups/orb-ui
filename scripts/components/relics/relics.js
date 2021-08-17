@@ -84,7 +84,7 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
                 orderName: self.name(),
                 address: self.addressStr(),
                 natalChart: vm.poem.birthChart,
-                birthInfo: `${vm.poem.birthDay()} ${vm.natalForm.rawDate().toLocaleString()} ${vm.natalForm.locationSummary()}`,
+                birthInfo: `${vm.natalForm.rawDate().toLocaleString()} ${vm.natalForm.locationSummary()}`,
                 poem: vm.poem.lines().map(i => i.line),
                 comments: self.comments(),
                 paypalName: `${data.payer.name.given_name} ${data.payer.name.surname}`,
