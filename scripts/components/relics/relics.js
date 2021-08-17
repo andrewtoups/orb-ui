@@ -1,5 +1,5 @@
-define(['ko'], (ko) => {
-    return function(){
+define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
+    return function(params){
         let self = this;
 
         self.ready = ko.observable(false);
@@ -24,7 +24,6 @@ define(['ko'], (ko) => {
         self.ready.subscribe(nv => {
             vm.modal.modalLoading(!nv);
             if (nv) { vm.modal.loadingComplete(true); }
-            console.log("paypal ready");
         });
 
         self.name = ko.observable();
@@ -80,7 +79,6 @@ define(['ko'], (ko) => {
             };
             paypal.saveOrderData(body)
             .then(response => {
-                console.log("response is:", response);
                 vm.printScreenshot(`${api.hostName()}/prints/${response}.png`);
             });
         };

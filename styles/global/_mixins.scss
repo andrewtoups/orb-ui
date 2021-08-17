@@ -21,6 +21,10 @@
 }
 
 @mixin ripple($color-primary, $color-secondary) {
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0%;
     background-image: radial-gradient(circle, rgba(255,255,255,0) 1%, rgba($color-primary,0.5) 2%, rgba($color-secondary,0.25) 4%, rgba(255,255,255,0) 10%);
 }
 

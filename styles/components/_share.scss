@@ -16,9 +16,6 @@
                 position: relative;
                 width: 30px;
             }
-            border-radius: 50%;
-            background-position: center;
-            background-repeat: no-repeat;
             @include ripple($blood, $blue-light);
             animation: Ripple 1s ease-in infinite;
 

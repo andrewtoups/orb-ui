@@ -1,6 +1,7 @@
 define(['ko', 'api', 'utils/noOrphans'], function(ko, api){
     return function(params){
         let self = this;
+        self.birthChart = params.birthChart;
         !vm.screenshotMode() && api.screenshot(params.birthChart).then(data => {
             vm.screenshot(          `${api.hostName()}/${data}/an-orb-poem-of-ones-own.jpg`);
             vm.screenshotPlacements(`${api.hostName()}/${data}/an-orb-poem-of-ones-own-placements.jpg`);
@@ -34,6 +35,7 @@ define(['ko', 'api', 'utils/noOrphans'], function(ko, api){
         self.iconsReady = ko.observable(false);
         self.iconsReady.extend({rateLimit: 500});
         self.iconsReady.subscribe(() => {console.log("...icons ready!")});
+        self.sf = ko.observable(false);
         require(['dataStore/iconMap'], iconMap => {
             let Stats = function(){
                 this.log = !vm.screenshotMode() ? [
@@ -201,6 +203,7 @@ define(['ko', 'api', 'utils/noOrphans'], function(ko, api){
             // stats.logger("birthChart params:", params.birthChart);
             self.stats(stats.log);
         });
+        self.sk = ko.observable(false);
         self.keyDown = (v, e) => {
             if (e.code==="KeyR") {
                 self.randomizeIcons();
@@ -222,6 +225,9 @@ define(['ko', 'api', 'utils/noOrphans'], function(ko, api){
             }
             if (e.code==="KeyX") {
                 self.cycleIcons(icons.tertiary, self.iconTertiary, "down");
+            }
+            if (e.which===173 && self.sf()) {
+                self.sk(true);
             }
             return true;
         }

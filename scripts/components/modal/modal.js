@@ -3,7 +3,7 @@ define(['ko'], (ko) => {
         let self = this;
         let start = new Date();
         self.content = params.content;
-        self.data = params.data;
+        self.data = params.data || {};
         self.loading = ko.observable(true);
         self.closing = ko.observable(false);
         self.modalClasses = ko.computed(() => {
@@ -17,9 +17,15 @@ define(['ko'], (ko) => {
             } else return 'show';
         });
         self.transitionState = ko.observable(false);
+        self.data.closeCb = ko.observable();
+        self.modalLoading = ko.observable(false);
+        self.loadingComplete = ko.observable(true);
+        self.modalLoading.subscribe(nv => {console.log(`modal loading: ${nv}`)});
         self.close = (v, e) => {
-            // e.stopPropagation();
-            if ([document.querySelector('.modal'), document.querySelector('.x')].includes(e.target)) self.closing(true)
+            if ([document.querySelector('.modal'), document.querySelector('.x')].includes(e.target)) {
+                self.closing(true);
+                self.data.closeCb() && self.data.closeCb()();
+            }
             return true;
         };
         self.transitionState.subscribe(s => {

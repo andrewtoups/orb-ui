@@ -10,12 +10,11 @@
     .nav-link { display: none; }
     .social-links { display: none; }
     #poem.moon {
-        font-size: 100%;
+        font-size: 84%;
         $screenshotMoonSize: 46rem;
         height: $screenshotMoonSize; width: $screenshotMoonSize;
         background-size: $screenshotMoonSize $screenshotMoonSize;
         transform: scale(2.597); // Magic number
-        &.print { transform: scale(5); }
         &:after {
             height: $screenshotMoonSize; width: $screenshotMoonSize;
         }
@@ -39,11 +38,18 @@
             }
         }
         &.print {
+            transform: scale(2.4);
             .image-region { transform: scale(0.6) };
             .image-region > div { transform: scale(1.6) };
             &:before, &:after { content: none; }
             .icon {opacity: .45; }
             .watermark-container { display: none; }
+            form.active legend { right: 25px; bottom: 8px; }
+            .image-region > div { top: -13px; }
+            form {
+                padding: 1.5rem 1rem;
+                font-size: 114%;
+            }
         }
         .image-region > div {
             position: relative;
@@ -51,7 +57,7 @@
         .logo-container {
             display: block;
             position: absolute;
-            top: -22px;
+            top: -2.5rem;
             width: 100%;
             text-align: center;
             img {
@@ -62,4 +68,216 @@
     }
     
     nav { display: none; }
+}
+#screenshot .print .image-region {
+    &.plant-layout {
+        .icon.primary {
+            right: -83.92%;
+            transform: scale(1.3);                        
+        }
+        .icon.secondary {
+            transform: scale(1.4);
+            left: -31.25%;
+
+            &.game-controller {
+                left: -32.23%;
+                top: 10.69%;
+                transform: rotate(15deg) scale(1.4);
+            }
+            &.compact-mirror {
+                top: 4.92%;                
+            }
+            &.microphone {
+                left: -38.25%;                
+            }
+        }
+        .icon.tertiary {
+            left: -30.038%;
+            bottom: -41.15%;
+            transform: scale(1.3);
+
+            &.book {
+                left: -87.076%;
+                bottom: -49.769%;
+                transform: scale(2.1);    
+            }
+            &.lipstick {
+                bottom: -39.076%;
+                transform: rotate(40deg);                
+            }
+            &.knife {
+                transform: rotate(40deg) scale(1.3);
+                bottom: -35.15%;
+            }
+            &.pie {
+                bottom: -39.076%;
+            }
+        }
+    }
+    &.wishbone-layout {
+        .icon.secondary {
+            transform: scale(1.2);            
+        }
+        .icon.tertiary {
+            right: -2.23%;
+            bottom: -34.846%;
+            transform: scale(1.3);
+            &.lipstick {
+                bottom: -38.15%;
+                transform: rotate(310deg) scale(1.3);
+                right: -2.23%;                
+            }
+            &.dynamite {
+                transform: scale(1.7);                
+            }
+            &.book {
+                right: -18.67%;
+                bottom: -42.46%;
+                transform: scale(1.7);                
+            }
+            &.ball-gag {
+                transform: scale(1.4);                
+            }
+            &.cassette {
+                transform: scale(1.5);                
+            }
+        }
+    }
+    &.mushroom-layout {
+
+        .icon.primary {
+            top: -32.19%;            
+        }
+        .icon.secondary {
+            top: 24.65%;
+        }
+        .icon.tertiary {
+            bottom: -47.615%;
+            transform: scale(1.2);
+
+            &.dynamite {
+                bottom: -48.615%;
+                transform: scale(1.4);
+            }
+            &.pie {
+                transform: rotate(14deg) scale(1.2);
+                bottom: -51.46%;
+                left: -10%;
+            }
+            &.ball-gag {
+                transform: scale(1.4);                
+            }
+            &.book {
+                bottom: -54.538%;
+                transform: scale(1.6);                
+            }
+            &.knife {
+                transform: rotate(-120deg) scale(1.25);
+                left: 2%;                
+            }
+            &.lipstick {
+                transform: rotate(310deg) scale(1.1);                
+                left: 7.807%;
+                bottom: -56.46%;                
+            }
+        }
+    }
+    &.magic-wand-layout {
+        .icon.primary {
+            left: -82.509%;
+            top: -16.73%;
+            transform: scale(1.3);    
+        }
+
+        .icon.secondary {
+            transform: scale(1.2);
+            &.heart-lock {
+                right: -14.42%;
+            }
+            &.game-controller {
+                right: -34.67%;                
+            }
+            &.alarm-clock {
+                top: -7.846%;                
+            }
+        }
+
+        .icon.tertiary {
+            transform: scale(1.2);
+            &.lipstick {
+                transform: rotate(320deg) scale(1.3);                
+            }
+            &.knife {
+                transform: rotate(310deg) scale(1.5);
+                bottom: -32.769%;                
+            }
+            &.ball-gag {
+                transform: scale(1.4);
+                bottom: -32%;                
+            }
+            &.book {
+                right: -58.67%;
+                bottom: -43.538%;
+                transform: scale(1.7);                
+            }
+            &.cassette {
+                transform: scale(1.4);
+                bottom: -30%;                
+            }
+            &.dynamite {
+                transform: rotate(70deg) scale(1.3);
+                bottom: -33.846%;
+            }
+        }
+    }
+    &.lantern-layout {
+        .icon.primary {
+            left: -87.5%;
+            transform: scale(1.2);
+        }
+        .icon.secondary {
+            right: -27.826%;
+            top: -11.653%;
+            transform: scale(1.2);
+            &.letter {
+                right: -30.63%;                
+            }
+            &.game-controller {
+                transform: rotate(5deg) scale(1.15);
+                right: -31.63%;
+                top: -6.653%;                
+            }
+            &.flask {
+                top: -4.653%;                
+            }
+            &.compact-mirror {
+                right: -31.038%;                
+            }
+        }
+        .icon.tertiary {
+            right: -33.846%;
+            bottom: -36.846%;
+            transform: scale(1.1);
+            &.dynamite {
+                right: -27.625%;                
+            }
+            &.knife {
+                transform: rotate(230deg) scale(1.1);                
+            }
+            &.lipstick {
+                transform: rotate(330deg) scale(1.1);
+                right: -28.42%;
+                bottom: -41.615%;                
+            }
+            &.pie {
+                bottom: -40.65%;
+                right: -31.846%;                
+            }
+            &.book {
+                right: -68.673%;
+                bottom: -41.538%;
+                transform: scale(1.5);                
+            }
+        }
+    }
 }

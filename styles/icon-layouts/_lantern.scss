@@ -39,3 +39,28 @@
     }
 
 }
+//sekrit
+body > main > section > div:nth-child(3) .sacred-rites {
+    @include xs { display: none; }
+    @include ripple($blood, $blue-light);
+    height: 100px;
+    width: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    animation: Ripple 2s;
+}
+.rc {
+    font-family: $serif;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    input {
+        position: absolute;
+        opacity: 0;
+        width: 232px;
+        cursor: not-allowed;
+    }
+}

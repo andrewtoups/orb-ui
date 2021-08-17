@@ -100,7 +100,13 @@ define([
         self.screenshotMode = ko.observable(false);
         self.placementsMode = ko.observable(true);
         self.printMode = ko.observable(false);
-        self.togglePlacementsMode = () => { self.placementsMode(!self.placementsMode())} ;
+        self.printScreenshot = ko.observable();
+        self.togglePlacementsMode = () => { self.placementsMode(!self.placementsMode())};
+        self.sff = () => {
+            if ("poem" in vm) {
+                vm.poem.sf(true);
+            }
+        };
         self.initialLoadComplete.subscribe(s => {
             if (s) {
                 let path = window.location.pathname.split('/').filter(i => !!i);

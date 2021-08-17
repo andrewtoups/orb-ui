@@ -3,7 +3,7 @@ define(['ko'], ko => {
         ko.bindingHandlers.noOrphans = {
             init: (element, valueAccessor) => {
                 const eliminateOrphans = el => {
-                    let textArr = el.innerHTML.split(/ (?=[^>]*(?:<|$))/);
+                    let textArr = el.innerHTML.trim().split(/ (?=[^>]*(?:<|$))/);
                     let lastTwo = [];
                     let searching = true;
                     for (let i = textArr.length - 1; i >= 0; i--) {

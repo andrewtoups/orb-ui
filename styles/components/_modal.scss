@@ -25,7 +25,24 @@
 
     padding: 0 15px;
     color: $gold-2;
-    position: relative;
+
+    @include pseudo-clone('before');
+    &:before { content: none; }
+    &.loading-text:before {
+        content: "Please wait...";
+        font-family: $serif;
+        font-style: italic;
+        display: flex;
+        align-items: center; justify-content: center;
+
+        opacity: 0;
+        transition: opacity 500ms ease-in;
+    }
+
+    &.loading:before {
+        opacity: 1;
+        transition: opacity 500ms ease-in;
+    }
     
     > h1 {
         position: absolute;
