@@ -28,6 +28,11 @@
     <nav data-bind="css: {masked: vm.pageTransitioning()}">
         <a href="#" data-bind="click: (data, event) => { vm.launchModal('share')}" class="share-link"><img src="/styles/png/share.png"></a>
     </nav>
+    <!-- ko if: vm.printMode() -->
+    <img src="/styles/png/signature-chris.png" class="signature chris">
+    <img src="/styles/png/signature-dylan.png" class="signature dylan">
+    <img src="/styles/png/signature-toups.png" class="signature toups">
+    <!-- /ko -->    
 </article>
 <div class="hamburger-container" data-bind="css: {open: open, masked: vm.pageTransitioning() || isLoading()}">
     <img src="/styles/png/hamburger.png" class="hamburger" data-bind="click: toggleOpen">

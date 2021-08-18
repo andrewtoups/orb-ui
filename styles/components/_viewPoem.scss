@@ -50,6 +50,24 @@
                 padding: 1.5rem 1rem;
                 font-size: 114%;
             }
+            .signature {
+                position: fixed;
+                &.chris {
+                    right: 13rem; bottom: 5.2rem;
+                    width: 7rem;
+                    opacity: .6;
+                }
+                &.dylan {
+                    left: 16rem; bottom: 5.1rem;
+                    width: 5rem;
+                    opacity: .6;
+                }
+                &.toups {
+                    left: 11rem; bottom: 5rem;
+                    width: 3.4rem;
+                    opacity: 0.4;
+                }
+            }
         }
         .image-region > div {
             position: relative;
