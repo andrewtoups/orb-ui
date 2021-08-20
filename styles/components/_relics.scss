@@ -15,23 +15,90 @@
 .modal-content.relics {
     max-width: 100vw;
     h1 {
-        padding-left: 5rem;
+        margin: 0 auto;
+        left: calc(50vw - 12.5rem);
+        text-align: center;
+        padding: 0;
+        @include xs { left: 0; }
     }
 }
 
-.print-preview {
+.relics {
+    button {
+        cursor: pointer;
+        background-color: transparent;
+        color: $gold;
+        border: $gold-bright 0.09rem dotted;
+        box-shadow: 0px 0px 15px rgba($gold-bright,.25) inset;
+        text-transform: uppercase;
+    }
+}
+
+.print-pitch {
     max-width: 25rem;
     margin: 0 auto;
-    text-align: center;    
+    text-align: center;
+    margin-top: .25rem;
+    position: initial;
+    opacity: 1;
+    transition: opacity 500ms ease-in-out;
+    &.masked {
+        opacity: 0;
+        position: absolute;
+        transition: opacity 500ms ease-in-out;
+        width: 100%;
+        visibility: hidden;
+    }    
     img {
-        width: 90%;
+        width: 16.5rem;
+        @include xs { width: 90%; }
+        padding: 0.2rem;
+        border: $gold-bright 0.09rem dotted;
+        box-shadow: 0px 0px 0.8rem rgba($gold-bright,.6);
+        animation: Throb 3.25s ease-in-out infinite;
     }
+}
+.blurb {
+    width: 22.5rem;
+    @include xs { width: 90%; }
+    font-size: 90%;
+    @include xs { font-size: 3.2vw; }
+    margin: .5rem auto 0;
+    text-transform: uppercase;
+}
+.blurb-caption {
+    font-family: $serif;
+    font-size: 70%;
+    margin: .2rem 0 0;
+    opacity: .9;
+    &:before, &:after { content: " - "; }
+}
+button.buy {
+    padding: .25rem .5rem;
+    margin: .25rem 0;
+    font-size: 120%;
+    @include xs {
+        width: 100%;
+        padding: .5rem;
+    }
+}
+.relics .content {
+    max-width: 25rem;
+    margin: 0 auto;
+    text-align: center;
 }
 .relics form {
     font-family: $sans-serif;
-    max-width: 25rem;
-    margin: 0 auto;
     @include xs { max-width: auto; }
+    position: initial;
+    opacity: 1;
+    transition: opacity 500ms ease-in-out;
+    &.masked {
+        opacity: 0;
+        position: absolute;
+        transition: opacity 500ms ease-in-out;
+        visibility: hidden;
+    }
     legend, label {
         font-size: 75%;
         text-transform: uppercase;
@@ -86,11 +153,19 @@
         }
         textarea {
             resize: vertical;
-            margin: 5px;
-            border-left: 1px dashed $gold-bright;
+            margin: 5px 0;
+            border-left: 1px dotted rgba($gold-bright, .6);
+            padding-top: 0;
+            height: 1.3rem;
+            font-family: $sans-serif;
             &::placeholder {
+                font-family: $sans-serif;
+            }
+            &#comments::placeholder {
                 font-family: $serif;
                 font-style: italic;
+                transform: scale(.9);
+                transform-origin: bottom left;
             }
         }
     }
@@ -99,6 +174,17 @@
         border-left: none; border-right: none;
         padding: 5px 15px;
         margin: 15px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &.validating .field { opacity: 0.25; }
+        &.verified select { text-transform: uppercase; }
+        
+        .loader {
+            align-self: center;
+            width: 1.5rem; height: 1.5rem;
+        }
 
         legend {
             text-align: center;
@@ -113,17 +199,78 @@
             font-size: 65%;
         }
     }
-    button {
-        background-color: $gold-bright;
-        width: 80%;
-        margin: 0 auto;
-        display: block;
-        height: 50px;
-        font-size: 120%;
+}
+
+.relics .mini-modal-content {
+    p {
         text-transform: uppercase;
-        text-shadow: 0px 2px 1px rgb(0 0 0 / 20%);
+        font-size: 67%;
+    }
+    .btn-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+        justify-content: center;        
+    }
+    button {
+        padding: .5rem 2rem;
+        align-self: center;
+        @include xs { width: 100%; }
+    }
+    a {
+        color: #e1e093;
+        font-size: 53%;
+        margin-top: 0.5rem;
+        text-decoration: underline;
+        cursor: pointer;        
     }
 }
+.validation-warning {
+    p {
+        width: 17rem;
+    }
+    .address-preview {
+        background-color: $gold-bright;
+        color: $poem-text-c;
+        text-align: left;
+        font-style: normal;
+        text-transform: capitalize;
+        display: inline-block;
+        padding: 0 1rem;
+        font-size: 75%;
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.3rem 0;        
+        }
+    }
+    button {
+        margin: 0.2rem 0;
+        background-color: transparent;
+        border: none;
+        color: $gold-bright;
+        box-shadow: 0 0 3px #e1e093;
+        padding: .5rem 2rem;
+        align-self: center;
+        cursor: pointer;        
+    }
+}
+
+.validation-error {
+    ul {
+        background-color: $gold-bright;
+        color: $poem-text-c;
+        padding: .25rem 1rem;
+        text-align: left;
+        font-size: 60%;
+        display: inline-block;
+    }
+    li::marker {
+        content: "- ";
+    }
+    button { margin-bottom: 1rem; }
+}
+
 
 // fuck with the paypal iframe:
 .relics #paypal-button-container {
