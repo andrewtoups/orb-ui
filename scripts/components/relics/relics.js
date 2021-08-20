@@ -16,7 +16,7 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
                         else self.ritePassed(false);
                     });
                 } catch {
-
+                    // shh
                 }
             }
         });
