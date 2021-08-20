@@ -1,50 +1,105 @@
 <!-- ko if: ritePassed -->
 <section data-bind="css: {masked: !ready()}">
-    <form>
-        <div class="field">
-            <label for="name" class="required">Recipient name</label>
-            <input data-bind="value: name" type="text" placeholder="Name" id="name" autocomplete="name">
+    <div class="content">
+    
+        <div class="print-pitch" data-bind="if: vm.printScreenshot(), css: {masked: buying}">
+            <img data-bind="attr: {src: vm.printScreenshot()}">
+            <p class="blurb">Purchase a customized, high-quality giclée print of your poem on 5"x7" archival paper</p>
+            <p class="blurb-caption">$20 Shipped</p>
+            <p class="blurb-caption">US Only</p>
+            <button class="buy" data-bind="click: initiateOrder">Order Now</button>
         </div>
 
-        <fieldset>
-            <legend>Recipient address</legend>
-            
+        <form data-bind="css: {masked: !buying()}">
             <div class="field">
-                <label for="street-address" class="required">Street Address</label>
-                <input data-bind="value: line1" type="text" placeholder="Line 1" id="street-address" autocomplete="address-line1">
-            </div>
-            
-            <div class="field">
-                <label for="street-address-optional">Line 2 of Street Address</label>
-                <input data-bind="value: line2" type="text" placeholder="Line 2" id="street-address-optional" autocomplete="address-line2">
-            </div>
-
-            <div class="field">                
-                <label for="city" class="required">City</label>
-                <input data-bind="value: city" type="text" placeholder="City" id="city" autocomplete="address-level2">
-            </div>
-
-            <div class="field select" data-bind="css: {placeholder: !state()}">
-                <label for="state" class="required">State</label>
-                <select data-bind="options: stateCodes, optionsText: 'label', optionsValue: 'value', optionsCaption: 'State', value: state" autocomplete="address-level1"></select>
+                <label for="name" class="required">Recipient name</label>
+                <input data-bind="value: name" type="text" placeholder="Name" id="name" autocomplete="name">
             </div>
 
             <div class="field">
-                <label for="zip" class="required">Postal Code</label>
-                <input data-bind="value: zip" type="text" placeholder="Postal Code" autocomplete="postal-code">                    
+                <label for="email" class="required">Your email</label>
+                <input data-bind="value: email" type="email" placeholder="Email Address" id="email" autocomplete="email">
             </div>
-        </fieldset>
 
-        <div class="field">
-            <label for="comments">Order comments</label>
-            <textarea data-bind="value: comments" placeholder="Praise us" id="comments"></textarea>
+            <fieldset data-bind="css: {validating: validating, verified: verified() || verificationFailed()}">
+                <legend>Recipient address</legend>
+                <i class="loader" data-bind="visible: validating"></i>
+                
+                <div class="field">
+                    <label for="street-address-line1" class="required">Street Address</label>
+                    <input data-bind="value: line1, disable: validating, attr: {placeholder: line1Placeholder}, event: {blur: unsetRejected}" type="text" id="street-address-line1" autocomplete="address-line1">
+                </div>
+                
+                <div class="field">
+                    <label for="street-address-line2">Apt/Suite</label>
+                    <input data-bind="value: line2, disable: validating, attr: {placeholder: line2Placeholder}, event: {blur: unsetRejected}" type="text" id="street-address-line2" autocomplete="address-line2">
+                </div>
+
+                <div class="field">
+                    <label for="gate-code-or-instructions">Gate code/Delivery instructions</label>
+                    <textarea data-bind="value: deliveryNotes" placeholder="Gate code: 666"></textarea>
+                </div>
+
+                <div class="field">                
+                    <label for="city" class="required">City</label>
+                    <input data-bind="value: city, disable: validating, attr: {placeholder: cityPlaceholder}, event: {blur: unsetRejected}" type="text" id="city" autocomplete="address-level2">
+                </div>
+
+                <div class="field select" data-bind="css: {placeholder: !state()}">
+                    <label for="state" class="required">State</label>
+                    <select data-bind="options: stateCodes, optionsText: 'label', optionsValue: 'value', optionsCaption: statePlaceholder, value: state, disable: validating, event: {blur: unsetRejected}" autocomplete="address-level1" id="state"></select>
+                </div>
+
+                <div class="field">
+                    <label for="zip" class="required">Postal Code</label>
+                    <input data-bind="value: zip, disable: validating, attr: {placeholder: zipPlaceholder}, event: {blur: unsetRejected}" type="text" id="zip" autocomplete="postal-code">                    
+                </div>
+            </fieldset>
+
+            <div class="field">
+                <label for="comments">Order comments</label>
+                <textarea data-bind="value: comments" placeholder="Praise us" id="comments"></textarea>
+            </div>
+
+            <div id="paypal-button-container" data-bind="css: {disabled: !readyToPay()}"></div>
+        </form>
+        <div class="mini-modal" data-bind="css: {masked: !showMiniModal()}, transitionState: mmTransitioning">
+            <div class="mini-modal-content">
+                <!-- ko if: mmContent() === "validationWarning" -->
+                <div class="validation-warning">
+                    <p>For fastest shipping, please use this USPS verified shipping address:</p>
+                    <address class="address-preview">
+                        <ul>
+                            <li data-bind="text: validatedAddress().line1.toLowerCase()"></li>
+                            <!-- ko if: validatedAddress().line2.length -->
+                            <li data-bind="text: validatedAddress().line2.toLowerCase()"></li>
+                            <!-- /ko -->
+                            <li data-bind="text: `${validatedAddress().city.toLowerCase()}, ${validatedAddress().state}`"></li>
+                            <li data-bind="text: `${validatedAddress().zip}-${validatedAddress().zipExt}`"></li>
+                        </ul>
+                    </address>
+                    <div class="btn-container">
+                        <button data-bind="click: applyValidation">Use USPS Verified Address</button>
+                        <a data-bind="click: dismissValidation">Use My Provided Address</a>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: mmContent() === "notDeliverable" -->
+                    <div class="validation-error">
+                        <p>The address you provided has been marked as undeliverable by the USPS.</p>
+                        <!-- ko if: validationErrors().length -->
+                        <p>The following issues were reported:</p>
+                        <ul data-bind="foreach: validationErrors">
+                            <li data-bind="text: $data"></li>
+                        </ul>
+                        <!-- /ko -->
+                        <p>Please enter a valid address.</p>
+                        <button data-bind="click: dismissError">OK</button>
+                    </div>
+                <!-- /ko -->                    
+            </div>
         </div>
-
-        <div id="paypal-button-container" data-bind="css: {disabled: !valid()}"></div>
-    </form>
-    <div class="print-preview" data-bind="if: vm.printScreenshot()">
-        <img data-bind="attr: {src: vm.printScreenshot()}">
-    </div>    
+    </div>
 </section>
 <!-- /ko -->
 <!-- ko if: !ritePassed() -->
