@@ -101,5 +101,32 @@
             padding-top: 8vh;
             > :last-child { padding-bottom: 15vh; }
         }
+
+        .mini-modal {
+            position: fixed;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0,0,0,.85);
+            z-index: 1000;
+            visibility: visible;
+            opacity: 1;
+            transition: all 500ms ease-in;
+            &.masked {
+                opacity: 0;
+                visibility: hidden;
+                &.transitioning { visibility: visible; }
+                transition: all 500ms ease-in;
+            }
+            .mini-modal-content {
+                width: 25rem;
+                padding: .5rem 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
     }
 }
