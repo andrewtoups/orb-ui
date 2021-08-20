@@ -40,14 +40,13 @@
 
 }
 //sekrit
-body > main > section > div:nth-child(3) .sacred-rites {
+body > main > section > div:nth-child(3).sacred-rites {
     @include xs { display: none; }
-    @include ripple($blood, $blue-light);
     height: 100px;
     width: 100px;
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     animation: Ripple 2s;
 }
 .rc {
