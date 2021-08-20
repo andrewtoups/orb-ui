@@ -297,6 +297,7 @@ define([
                 let coordinates = self.coordinates() ? self.coordinates() : [-92.0198427,30.2240897];
                 let location = self.currentLocationValue().address;
 
+                console.log("calculating chart...");
                 api.birthChart({date: d, coordinates: coordinates})
                 .then(data => { self.birthChart(data) });
             }
