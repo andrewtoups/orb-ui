@@ -2,11 +2,15 @@ define(['ko', 'api', 'utils/noOrphans'], function(ko, api){
     return function(params){
         let self = this;
         self.birthChart = params.birthChart;
-        !vm.screenshotMode() && api.screenshot(params.birthChart).then(data => {
-            vm.screenshot(          `${api.hostName()}/${data}/an-orb-poem-of-ones-own.jpg`);
-            vm.screenshotPlacements(`${api.hostName()}/${data}/an-orb-poem-of-ones-own-placements.jpg`);
-        });
-
+        if (!vm.screenshotMode()){
+            api.screenshot(params.birthChart).then(data => {
+                vm.screenshot(          `${api.hostName()}/screenshots/${data}/an-orb-poem-of-ones-own.jpg`);
+                vm.screenshotPlacements(`${api.hostName()}/screenshots/${data}/an-orb-poem-of-ones-own-placements.jpg`);
+                api.printPreview(params.birthChart).then(data => {
+                    vm.printScreenshot(     `${api.hostName()}/printPreviews/${data}/printPreview.png`);
+                });
+            });
+        }
         self.showDebug = ko.observable(false);
         if (vm.placementsMode()) vm.placementsMode(true);
         self.birthData = params.birthData;
