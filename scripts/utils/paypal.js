@@ -109,7 +109,87 @@ define(['api'], api => {
                 body: JSON.stringify(params)
             })
             .then(response => response.text());
-        }
+        },
 
+        validateAddress: (address) => {
+            return fetch(`${api.hostName()}/validateAddress`, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(address)
+            }).then(response => response.text())
+            .then(data => {
+                let parser = new DOMParser();
+                let xml = parser.parseFromString(data, "application/xml");
+                const tags = {"Address2": "line1", "Address1": "line2", "City": "city", "State": "state", "Zip5": "zip", "Zip4": "zipExt"};
+                const a = xml.querySelector('Address');
+
+                const address = {};
+                for (t in tags) {
+                    address[tags[t]] = a.querySelector(t) ? a.querySelector(t).textContent : "";
+                }
+                const addressComplete = ["line1", "city", "state", "zip"].every(i => address[i].length);
+                const deliverableCodes = ["Y","D","S"];
+                const DPV = a.querySelector('DPVConfirmation');
+                const deliverable = DPV ? deliverableCodes.includes(DPV.textContent) : false;
+
+                const footNoteStr = a.querySelector("Footnotes") ? a.querySelector("Footnotes").textContent : "";
+                const codes = footNoteStr.includes("LI") ? footNoteStr.replace("LI","").split("").push("LI").sort() : footNoteStr.split("");
+
+                const errors = USPSErrorCodes.filter(c => codes.includes(c)).map(c => USPSNotes[c]);
+                const notes = codes.filter(c => !USPSErrorCodes.includes(c)).map(c => USPSNotes[c]);
+
+                if (a.querySelector("Error")) {
+                    a.querySelectorAll("Error").forEach(el => {
+                        if (el.querySelector("Description") && el.querySelector("Description").textContent) {
+                            errors.push(el.querySelector("Description").textContent);
+                        }
+                    });
+                }
+
+                const modified = codes.some(c => USPSModificiationCodes.includes(c));
+
+                return {
+                    address:         address,
+                    addressComplete: addressComplete,
+                    deliverable:     deliverable,
+                    errors:          errors,
+                    notes:           notes,
+                    modified:        modified
+                };
+            });
+        }
     };
 });
+
+const USPSErrorCodes =         ["C", "F", "H", "I", "J", "R", "S", "T", "V", "W"];
+const USPSModificiationCodes = ["A", "B", "L", "M", "N"];
+const USPSNotes = {
+    A:  "Zip Code Corrected",
+    B:  "City / State Spelling Corrected",
+    C:  "Invalid City / State / Zip",
+    D:  "No ZIP+4 Assigned",
+    E:  "Zip Code Assigned for Multiple Response",
+    F:  "Address could not be found in the National Directory File Database",
+    G:  "Information in Firm Line used for matching",
+    H:  "Missing Secondary Number",
+    I:  "Insufficient / Incorrect Address Data",
+    J:  "Dual Address",
+    K:  "Multiple Response due to Cardinal Rule",
+    L:  "Address component changed",
+    LI: "Match has been converted via LACS",
+    M:  "Street Name changed",
+    N:  "Address Standardized",
+    O:  "Lowest +4 Tie-Breaker",
+    P:  "Better address exists",
+    Q:  "Unique Zip Code match",
+    R:  "No match due to EWS",
+    S:  "Incorrect Secondary Address",
+    T:  "Multiple response due to Magnet Street Syndrome",
+    U:  "Unofficial Post Office name",
+    V:  "Unverifiable City / State",
+    W:  "Invalid Delivery Address",
+    X:  "No match due to out of range alias",
+    Y:  "Military match",
+    Z:  "Match made using the ZIPMOVE product data"
+};
