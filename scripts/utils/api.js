@@ -45,6 +45,15 @@ define([], () => {
         return fetch(`${hostName()}/${route}`)
             .then(response => response.text());
     };
+    const printPreview = params => {
+        const modes = {
+            print: true,
+        };
+        const paramObj = getChartParams(params, modes);
+        const paramStr = new URLSearchParams(paramObj).toString();
+        return fetch (`${hostName()}/printPreview?${paramStr}`)
+            .then(response => response.text());
+    };
     
     const api = {
         hostName: hostName,
@@ -53,6 +62,7 @@ define([], () => {
 	    months: months,
         birthChart: birthChart,
         screenshot: screenshot,
+        printPreview: printPreview,
         getChartParams: getChartParams
     };
     return api;
