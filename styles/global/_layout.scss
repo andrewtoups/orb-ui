@@ -238,6 +238,7 @@ main .orb {
   .privacy-policy {
     font-size: 55%;
     top: 0;
+    bottom: unset;
     transition: color 500ms ease-in;    
   }
   .poem-page .privacy-policy {
@@ -251,4 +252,8 @@ main .orb {
   font-size: 60%;
   a { color: white; }
   li { margin: 3px 0; }
+  h3 {
+    border-bottom: 1px dotted;
+    display: inline-block;
+  }
 }
