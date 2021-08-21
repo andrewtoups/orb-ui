@@ -52,8 +52,12 @@ define([
                         var vm = {
                             viewModel: {
                                 createViewModel: function(params, componentInfo){
-                                    self[name] = new viewModel(params);
-                                    return self[name];
+                                    if (viewModel){
+                                        self[name] = new viewModel(params);
+                                        return self[name];
+                                    } else {
+                                        return {};
+                                    }
                                 }
                             },
                             template: template
@@ -62,6 +66,13 @@ define([
                         self.registry.push(name);
                         state && state(false);
                     }
+                }, err => {
+                    err.requireModules.forEach(mod => {
+                        requirejs.undef(mod);
+                        const dummy = function(){}
+                        define(mod, [], dummy);
+                        require([mod], dummy);
+                    })
                 });
             }
         };
