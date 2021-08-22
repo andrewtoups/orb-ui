@@ -1,3 +1,4 @@
+const version = 0;
 requirejs.config({
     baseUrl: '../scripts',
     paths: {
@@ -5,7 +6,8 @@ requirejs.config({
         'text': 'vendor/text',
         'api': 'utils/api',
         'transitionState': 'utils/transitionState'
-    }
+    },
+    urlArgs: "v=" +  version
 });
 
 requirejs(['main']);
