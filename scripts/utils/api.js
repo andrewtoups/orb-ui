@@ -23,7 +23,7 @@ define([], () => {
     const birthChart = (params) => {
         const d = params.date,      long = params.coordinates[0],       lat = params.coordinates[1];
         let hours = d.getHours() < 9 ? `0${d.getHours()}` : d.getHours();
-        let minutes = d.getSeconds() < 9 ? `0${d.getSeconds()}` : d.getSeconds();
+        let minutes = d.getMinutes() < 9 ? `0${d.getMinutes()}` : d.getMinutes();
         const route = `calculateChart/${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}/${hours}/${minutes}/${long}/${lat}`;
         return fetch(`${hostName()}/${route}`)
             .then(response => response.json());
