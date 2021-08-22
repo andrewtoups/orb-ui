@@ -1,5 +1,4 @@
-<!-- ko if: ritePassed -->
-<section data-bind="css: {masked: !ready()}">
+<section>
     <div class="content">
     
         <div class="print-pitch" data-bind="if: vm.printScreenshot(), css: {masked: buying}">
@@ -104,10 +103,3 @@
         </div>
     </div>
 </section>
-<!-- /ko -->
-<!-- ko if: !ritePassed() -->
-    <div class="rc">
-        <p>Awaiting sacred rites...</p>
-        <input data-bind="textInput: sacredRite">
-    </div>
-<!-- /ko -->

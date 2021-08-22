@@ -29,7 +29,7 @@
     @include pseudo-clone('before');
     &:before { content: none; }
     &.loading-text:before {
-        content: "Please wait...";
+        content: "Loading...";
         font-family: $serif;
         font-style: italic;
         display: flex;

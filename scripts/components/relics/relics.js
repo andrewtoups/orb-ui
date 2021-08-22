@@ -2,30 +2,6 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
     return function(params){
         let self = this;
 
-        self.ready = ko.observable(false);
-        vm.modal.loadingComplete(false);
-        params.closeCb(() => { self.ready(false) });
-        self.ritePassed = ko.observable(false);
-        self.sacredRite = ko.observable();
-        self.sacredRite.subscribe(nv => {
-            if (nv.length > 3) {
-                try {
-                    paypal.validateClergy(nv)
-                    .then(response => {
-                        if (response.status === 200) self.ritePassed(true)
-                        else self.ritePassed(false);
-                    });
-                } catch {
-                    // shh
-                }
-            }
-        });
-        
-        self.ready.subscribe(nv => {
-            vm.modal.modalLoading(!nv);
-            if (nv) { vm.modal.loadingComplete(true); }
-        });
-
         self.buying = ko.observable(false);
         self.initiateOrder = () => { self.buying(true) };
         self.cancelOrder = () => { self.buying(false) };
@@ -166,7 +142,8 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
             }
         })
         self.mmTransitioning = ko.observable(false);
-                
+
+        self.orderComplete = ko.observable(false);
         self.saveOrderData = data => {
             let body = {
                 orderName:          self.name(),
@@ -191,16 +168,11 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
             });
         };
 
-        self.orderComplete = ko.observable(false);
-        self.ritePassed.subscribe(nv => {
-            vm.modal.modalLoading(true);
-            paypal.createButton({
-                onApprove: self.saveOrderData,
-                state: self.ready,
-                address: self.ppAddress,
-                name: self.name
-            });
+        paypal.createButton({
+            onApprove: self.saveOrderData,
+            state: self.ready,
+            address: self.ppAddress,
+            name: self.name
         });
-
     }
 });
