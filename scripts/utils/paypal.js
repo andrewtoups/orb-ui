@@ -64,7 +64,6 @@ define(['api'], api => {
                             }],
                             application_context: {
                                 shipping_preference: 'SET_PROVIDED_ADDRESS',
-                                // shipping_preference: 'NO_SHIPPING',
                                 brand_name: "Orb.Church",
                                 user_action: "PAY_NOW"
                             }
@@ -75,15 +74,7 @@ define(['api'], api => {
                     onApprove: function(data, actions) {
                         return actions.order.capture().then(function(orderData) {
                             config.onApprove && config.onApprove(orderData);
-                            // Successful capture! For dev/demo purposes:
-                            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                             var transaction = orderData.purchase_units[0].payments.captures[0];
-
-                            // When ready to go live, remove the alert and show a success message within this page. For example:
-                            // var element = document.getElementById('paypal-button-container');
-                            // element.innerHTML = '';
-                            // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-                            // Or go to another URL:  actions.redirect('thank_you.html');
                         });
                     }
                 }).render('#paypal-button-container'); 
