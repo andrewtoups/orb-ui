@@ -186,10 +186,12 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
             };
             paypal.saveOrderData(body)
             .then(response => {
-                vm.printScreenshot(`${api.hostName()}/prints/${response}.png`);
+                self.orderComplete(true);
+                setTimeout(() => {document.querySelector('.x').click()}, 2500);
             });
         };
 
+        self.orderComplete = ko.observable(false);
         self.ritePassed.subscribe(nv => {
             vm.modal.modalLoading(true);
             paypal.createButton({
@@ -197,7 +199,7 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
                 state: self.ready,
                 address: self.ppAddress,
                 name: self.name
-            });           
+            });
         });
 
     }

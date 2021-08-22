@@ -271,6 +271,25 @@ button.buy {
     button { margin-bottom: 1rem; }
 }
 
+.order-complete {
+    position: initial;
+    opacity: 1;
+    transition: opacity 500ms ease-in-out;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $serif;
+    font-style: italic;
+    font-size: 130%;    
+    &.masked {
+        position: absolute;        
+        opacity: 0;
+        transition: opacity 500ms ease-in-out;
+        visibility: hidden;
+    }
+}
+
 
 // fuck with the paypal iframe:
 .relics #paypal-button-container {

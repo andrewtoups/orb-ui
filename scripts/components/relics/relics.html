@@ -10,7 +10,7 @@
             <button class="buy" data-bind="click: initiateOrder">Order Now</button>
         </div>
 
-        <form data-bind="css: {masked: !buying()}">
+        <form data-bind="css: {masked: !buying() || orderComplete()}">
             <div class="field">
                 <label for="name" class="required">Recipient name</label>
                 <input data-bind="value: name" type="text" placeholder="Name" id="name" autocomplete="name">
@@ -63,6 +63,9 @@
 
             <div id="paypal-button-container" data-bind="css: {disabled: !readyToPay()}"></div>
         </form>
+        <div class="order-complete" data-bind="css: {masked: !orderComplete()}">
+            <p>Thank you for your order!</p>
+        </div>
         <div class="mini-modal" data-bind="css: {masked: !showMiniModal()}, transitionState: mmTransitioning">
             <div class="mini-modal-content">
                 <!-- ko if: mmContent() === "validationWarning" -->
