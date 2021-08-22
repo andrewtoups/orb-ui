@@ -5,7 +5,7 @@
         <div class="print-pitch" data-bind="if: vm.printScreenshot(), css: {masked: buying}">
             <img data-bind="attr: {src: vm.printScreenshot()}">
             <p class="blurb">Purchase a customized, high-quality giclée print of your poem on 5"x7" archival paper</p>
-            <p class="blurb-caption">$20 Shipped</p>
+            <p class="blurb-caption">$20 (Shipping Included)</p>
             <p class="blurb-caption">US Only</p>
             <button class="buy" data-bind="click: initiateOrder">Order Now</button>
         </div>
@@ -37,7 +37,7 @@
 
                 <div class="field">
                     <label for="gate-code-or-instructions">Gate code/Delivery instructions</label>
-                    <textarea data-bind="value: deliveryNotes" placeholder="Gate code: 666"></textarea>
+                    <textarea data-bind="value: deliveryNotes" placeholder="Gate code/Delivery instructions"></textarea>
                 </div>
 
                 <div class="field">                

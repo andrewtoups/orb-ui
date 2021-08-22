@@ -43,8 +43,8 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
         self.comments = ko.observable("");
 
         self.rejectedAddress  = ko.observable({line1: "", line2: "", city: "", state: "", zip: ""});
-        self.line1Placeholder = ko.computed(() => self.rejectedAddress().line1 || "Line 1");
-        self.line2Placeholder = ko.computed(() => self.rejectedAddress().line2 || "Line 2");
+        self.line1Placeholder = ko.computed(() => self.rejectedAddress().line1 || "Street Address");
+        self.line2Placeholder = ko.computed(() => self.rejectedAddress().line2 || "Apt/Suite");
         self.cityPlaceholder  = ko.computed(() => self.rejectedAddress().city  || "City");
         self.statePlaceholder = ko.computed(() => self.rejectedAddress().state || "State");
         self.zipPlaceholder   = ko.computed(() => self.rejectedAddress().zip   || "Postal Code");
