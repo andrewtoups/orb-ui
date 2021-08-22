@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../styles/viewPoem.css" type="text/css">
 </head>
 <body>
-    <main data-bind="css: {screenshot: screenshotMode}">
+    <main data-bind="css: {screenshot: screenshotMode, 'icons-ready': iconsReady()}">
         <!-- ko foreach: pages -->
         <section data-bind="page: $data"></section>
         <!-- /ko -->

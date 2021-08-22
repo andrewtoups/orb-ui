@@ -111,7 +111,20 @@ define([
         self.screenshotMode = ko.observable(false);
         self.placementsMode = ko.observable(true);
         self.printMode = ko.observable(false);
+
+        self.screenshot = ko.observable();
+        self.screenshotPlacements = ko.observable();        
         self.printScreenshot = ko.observable();
+        const preload = (url, onload) => {
+            let img = document.createElement('img');
+            img.src = url;
+            img.onload = function(){
+                img.remove();
+                onload && onload();
+            };
+        };
+        self.iconsReady = ko.observable(false);
+        self.screenshot.subscribe(preload); self.screenshotPlacements.subscribe(preload); self.printScreenshot.subscribe(preload);
         self.togglePlacementsMode = () => { self.placementsMode(!self.placementsMode())};
         self.initialLoadComplete.subscribe(s => {
             if (s) {
@@ -133,7 +146,28 @@ define([
                     }
                     let params = {birthChart: birthChart};
                     console.log(params);
-                    self.loadPage('poem', params);
+                    const icons = [
+                        "lantern", "magic-wand", "wishbone", "mushroom", "plant", "rope",
+                        "flask", "compact-mirror", "game-controller", "heart-lock", "microphone", "alarm-clock", "letter",
+                        "knife", "book", "ball-gag", "cassette", "lipstick", "pie", "dynamite"
+                    ];
+                    self.iconsCount = ko.observable(0);
+                    self.iconsPreloaded = ko.computed(() => self.iconsCount() === icons.length);
+                    icons.forEach(i => {
+                        preload(`${window.location.origin}/styles/png/icons/${i}.png`, () => {
+                            self.iconsCount(self.iconsCount()+1);
+                        });
+                    });
+                    self.iconsPreloaded.subscribe(nv => {
+                        if (nv) self.loadPage('poem', params);
+                    });
+                    const sub = self.isLoading.subscribe(nv => {
+                        if (!nv) {
+                            setTimeout(() => {self.iconsReady(true)}, 500);
+                            sub.dispose();
+                        }
+                    });
+
                 } else {
                     self.loadPage('natalForm');       
                 }                
@@ -155,9 +189,6 @@ define([
             if (self.poemDataReady()) c.push('logo');
             return c.join(' ');
         });
-
-        self.screenshot = ko.observable();
-        self.screenshotPlacements = ko.observable();
 
         // Modal controls:
         self.loadingModal = ko.observable(false);
