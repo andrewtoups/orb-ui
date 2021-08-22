@@ -1,8 +1,7 @@
 define(['api'], api => {
-    const client_id = 'AelbqPdJ0y4EVqub7mTRrUXgxohk7S1pI4CS4FH6kVYQtCefij6mp1yg0FlQGLIg2thkk9ohLLQwpmjw';
-    const client_se = 'EIfBreGqJBaOM58gk2FCMp1ObG42aYeG-06Cs4I_6IfRBfkUNZD_Vwgp91h2OLMUErQLufHsiNGfWenz';    
+    const sandbox_client_id = 'AelbqPdJ0y4EVqub7mTRrUXgxohk7S1pI4CS4FH6kVYQtCefij6mp1yg0FlQGLIg2thkk9ohLLQwpmjw';
+    const client_id = 'AUOOZZESnKSLVFRDafVAl24ZJsP2cRSnHZuCWTQGN7fHcq0Qf94rm6V2Urx7-CbdJOOR58mMMMQ7NZYg';
     return {
-
         validateClergy: (str) => {
             return fetch(`${api.hostName()}/validateClergy/${str}`);
         },
