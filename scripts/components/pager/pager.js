@@ -6,7 +6,7 @@ define([
 ], function(ko, inputMode, {Page, Transition}, api){
     return function() {
         // pull new poem data from spreadsheet:
-        // api.updatePoemData().then(data => console.log(data));
+        api.updatePoemData().then(data => console.log(data));
         let self = this;
         const splashDelay = 0;
 
