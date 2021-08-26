@@ -178,6 +178,10 @@ button.buy {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        @include xs {
+            min-width: auto;
+            padding: 5px 2px;
+        }
 
         &.validating .field { opacity: 0.25; }
         &.verified select { text-transform: uppercase; }
@@ -193,6 +197,7 @@ button.buy {
             font-size: 65%;
             margin-bottom: -3px;
             opacity: .75;
+            @include xs { max-width: 145px; }
         }
 
         label {
