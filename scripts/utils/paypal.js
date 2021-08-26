@@ -41,7 +41,7 @@ define(['api'], api => {
         ],
 
         createButton: (config) => {
-            const paypalScript = `https://www.paypal.com/sdk/js?client-id=${client_id}&currency=USD`;
+            const paypalScript = `https://www.paypal.com/sdk/js?client-id=${sandbox_client_id}&currency=USD`;
             const head = document.querySelector('head');
             let script = document.createElement('script');
             script.type = 'text/javascript';
