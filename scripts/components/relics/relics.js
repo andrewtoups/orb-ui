@@ -43,6 +43,7 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
         self.readyToPay = ko.computed(() => {
             return  !!self.name() &&
                     !!self.email() &&
+                    !!self.includePlacements() &&
                     self.valid() &&
                     self.verified() || self.verificationFailed()
         });
@@ -149,7 +150,7 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
             let body = {
                 orderName:          self.name(),
                 orderEmail:         self.email(),
-                includePlacements:  self.includePlacements(),
+                includePlacements:  self.includePlacements() === 'true',
                 address:            self.addressStr(self.address()),
                 correctionDenied:   self.correctionDenied(),
                 validatedAddress:   self.addressStr(self.validatedAddress()),
