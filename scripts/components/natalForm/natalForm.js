@@ -19,7 +19,6 @@ define([
             self[name] = ko.observable();
         });
         self.scrollToTop = () => {
-            console.log("scrollin' baby");
             window.scrollTo(0,0);
         }
         
