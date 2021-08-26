@@ -3,7 +3,10 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
         let self = this;
 
         self.buying = ko.observable(false);
-        self.initiateOrder = () => { self.buying(true) };
+        self.initiateOrder = () => {
+            self.buying(true);
+            document.querySelector('.modal-content section').scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        };
         self.cancelOrder = () => { self.buying(false) };
 
         self.name = ko.observable("");
@@ -140,7 +143,7 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
         self.showMiniModal.subscribe(nv => {
             if (nv) {
                 document.activeElement.blur();
-                setTimeout(() => { window.scrollTo(0,0) }, 50);
+                setTimeout(() => { window.scrollTo({top: 0, left:0, behavior: smooth}) }, 50);
                 self.validationWarning() && self.mmContent("validationWarning");
                 self.addressNotDeliverable() && self.mmContent("notDeliverable");
             }
