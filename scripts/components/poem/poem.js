@@ -4,10 +4,12 @@ define(['ko', 'api', 'utils/noOrphans'], function(ko, api){
         self.birthChart = params.birthChart;
         if (!vm.screenshotMode()){
             api.screenshot(params.birthChart).then(data => {
-                vm.screenshot(          `${api.hostName()}/screenshots/${data}/an-orb-poem-of-ones-own.jpg`);
-                vm.screenshotPlacements(`${api.hostName()}/screenshots/${data}/an-orb-poem-of-ones-own-placements.jpg`);
+                const shots = JSON.parse(data);
+                vm.screenshot(`${api.hostName()}/${shots.screenshot}`);
+                vm.screenshotPlacements(`${api.hostName()}/${shots.placements}`);
                 api.printPreview(params.birthChart).then(data => {
-                    vm.printScreenshot(     `${api.hostName()}/printPreviews/${data}/printPreview.png`);
+                    const previews = JSON.parse(data);
+                    vm.printScreenshot(`${api.hostName()}/${previews.screenshot}`);
                 });
             });
         }
