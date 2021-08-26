@@ -74,12 +74,15 @@
     &:before, &:after { content: " - "; }
 }
 button.buy {
-    padding: .25rem .5rem;
-    margin: .25rem 0;
-    font-size: 120%;
+    margin: 0.25rem 0;
+    width: 15rem; height: 3rem;
+    color: transparent; user-select: none;
+    background-image: url(png/place-order.png);
+    background-size: 80%; background-repeat: no-repeat; background-position: center;
+    border: none;
+    box-shadow: 0px 0px 5px rgba($gold-bright,.25);
     @include xs {
-        width: 100%;
-        padding: .5rem;
+        width: 95%;
     }
 }
 .relics .content {
@@ -278,10 +281,12 @@ button.buy {
 }
 
 .order-complete {
-    position: initial;
+    position: fixed;
+    top: 0;
     opacity: 1;
     transition: opacity 500ms ease-in-out;
     height: 100%;
+    max-width: 25rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -293,6 +298,9 @@ button.buy {
         opacity: 0;
         transition: opacity 500ms ease-in-out;
         visibility: hidden;
+    }
+    img {
+        width: 90%;
     }
 }
 

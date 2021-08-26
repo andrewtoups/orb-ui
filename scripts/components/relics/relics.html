@@ -6,7 +6,7 @@
             <p class="blurb">Purchase a customized, high-quality giclée print of your poem on 5" x 7" archival paper</p>
             <p class="blurb-caption">$20 (Shipping Included)</p>
             <p class="blurb-caption">US Only</p>
-            <button class="buy" data-bind="click: initiateOrder">Order Now</button>
+            <button class="buy" data-bind="click: initiateOrder">Place order</button>
         </div>
 
         <form data-bind="css: {masked: !buying() || orderComplete()}">
@@ -72,7 +72,7 @@
             <div id="paypal-button-container" data-bind="css: {disabled: !readyToPay()}"></div>
         </form>
         <div class="order-complete" data-bind="css: {masked: !orderComplete()}">
-            <p>Thank you for your order!</p>
+            <img src="/styles/png/order-thanks.png">
         </div>
         <div class="mini-modal" data-bind="css: {masked: !showMiniModal()}, transitionState: mmTransitioning">
             <div class="mini-modal-content">
