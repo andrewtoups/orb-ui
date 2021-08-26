@@ -168,11 +168,15 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
             paypal.saveOrderData(body)
             .then(response => {
                 self.orderComplete(true);
+                self.inPaypal(false);
                 setTimeout(() => {document.querySelector('.x').click()}, 2500);
             });
         };
 
+        self.inPaypal = ko.observable(false);
+
         paypal.createButton({
+            inPaypal: self.inPaypal,
             onApprove: self.saveOrderData,
             state: self.ready,
             address: self.ppAddress,

@@ -50,7 +50,7 @@ define(['api'], api => {
                 paypal.Buttons({
                     // Sets up the transaction when a payment button is clicked
                     createOrder: function(data, actions) {
-                        config.createOrder && config.createOrder();
+                        config.inPaypal(true);
                         return actions.order.create({
                             purchase_units: [{
                                 amount: {
@@ -68,6 +68,10 @@ define(['api'], api => {
                                 user_action: "PAY_NOW"
                             }
                         });
+                    },
+
+                    onCancel: function(data) {
+                        config.inPaypal(false);
                     },
 
                     // Finalize the transaction after payer approval

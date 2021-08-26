@@ -9,7 +9,7 @@
             <button class="buy" data-bind="click: initiateOrder">Place order</button>
         </div>
 
-        <form data-bind="css: {masked: !buying() || orderComplete()}">
+        <form data-bind="css: {masked: !buying() || orderComplete(), 'do-not-close': inPaypal() && !orderComplete()}">
             <div class="field">
                 <label for="name" class="required">Recipient name</label>
                 <input data-bind="value: name" type="text" placeholder="Name" id="name" autocomplete="name">

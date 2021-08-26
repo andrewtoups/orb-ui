@@ -208,6 +208,28 @@ button.buy {
             font-size: 65%;
         }
     }
+    &:before {
+        content: "Please wait... Do not close the browser until the order is complete.";
+        font-family: $serif;
+        font-style: italic;
+        font-size: 80%;
+        position: fixed;
+        left: 0; top: 0;        
+        width: 100%; height: 100%;
+        display: flex;
+        justify-content: center; align-items: center;
+        background-color: rgba(0,0,0,.75);
+        z-index: -1;
+        opacity: 0;
+        transition: z-index 500ms ease-in,
+        opacity 500ms ease-in;
+    }
+    &.do-not-close:before {
+        opacity: 1;
+        z-index: 1000;
+        transition: z-index 500ms ease-in,
+                    opacity 500ms ease-in;
+    }
 }
 
 .relics .mini-modal-content {
