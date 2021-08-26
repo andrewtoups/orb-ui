@@ -48,6 +48,7 @@ define([], () => {
     const printPreview = params => {
         const modes = {
             print: true,
+            preview: true
         };
         const paramObj = getChartParams(params, modes);
         const paramStr = new URLSearchParams(paramObj).toString();

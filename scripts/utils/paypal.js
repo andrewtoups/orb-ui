@@ -87,7 +87,7 @@ define(['api'], api => {
 
         saveOrderData: (params) => {
             const modes = {
-                print: true,
+                print: true
             };
             let paramObj = api.getChartParams(params.natalChart, modes);
             params.chartParams = new URLSearchParams(paramObj).toString();

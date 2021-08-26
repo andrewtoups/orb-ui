@@ -37,39 +37,6 @@
                 opacity: .25;
             }
         }
-        &.print {
-            transform: scale(2.4);
-            .image-region { transform: scale(0.6) };
-            .image-region > div { transform: scale(1.6) };
-            &:before, &:after { content: none; }
-            .icon {opacity: .45; }
-            .watermark-container { display: none; }
-            form.active legend { right: 25px; bottom: 8px; }
-            .image-region > div { top: -13px; }
-            form {
-                padding: 1.5rem 1rem;
-                font-size: 114%;
-                color: rgb(55,55,55);
-            }
-            .signature {
-                position: fixed;
-                &.chris {
-                    left: 20.2rem; bottom: 5.2rem;
-                    width: 7rem;
-                    opacity: .6;
-                }
-                &.dylan {
-                    left: 14.7rem; bottom: 5rem;
-                    width: 5rem;
-                    opacity: .6;
-                }
-                &.toups {
-                    left: 11rem; bottom: 5rem;
-                    width: 3.4rem;
-                    opacity: 0.4;
-                }
-            }
-        }
         .image-region > div {
             position: relative;
         }
@@ -85,8 +52,47 @@
             }
         }
     }
-    
     nav { display: none; }
+}
+#screenshot .print {
+    #poem.moon {
+        transform: scale(2.4);
+        &:before, &:after { content: none; }        
+    }
+    &.preview #poem.moon {
+        transform: scale(1.2);
+    }
+    .image-region { transform: scale(0.6); }
+    .image-region > div {
+        transform: scale(1.6);
+        top: -13px;
+    }
+    .icon {opacity: .45; }
+    .watermark-container { display: none; }
+    form.active legend { right: 25px; bottom: 8px; }
+    form {
+        padding: 1.5rem 1rem;
+        font-size: 114%;
+        color: rgb(55,55,55);
+    }
+    .signature {
+        position: fixed;
+        &.chris {
+            left: 20.2rem; bottom: 5.2rem;
+            width: 7rem;
+            opacity: .6;
+        }
+        &.dylan {
+            left: 14.7rem; bottom: 5rem;
+            width: 5rem;
+            opacity: .6;
+        }
+        &.toups {
+            left: 11rem; bottom: 5rem;
+            width: 3.4rem;
+            opacity: 0.4;
+        }
+    }
 }
 #screenshot .print .image-region {
     &.plant-layout {
