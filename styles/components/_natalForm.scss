@@ -17,7 +17,7 @@ form.natal-form {
 
     .loader {
         position: absolute;
-        top: 0; right: 0;
+        left: 0.1rem; top: 0.1rem;
         @include xs { position: fixed; }
         height: 25px; width: 25px;
         filter: $form-text-c-svg;
