@@ -139,6 +139,7 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
         self.mmContent = ko.observable(false);
         self.showMiniModal.subscribe(nv => {
             if (nv) {
+                document.activeElement.blur();
                 self.validationWarning() && self.mmContent("validationWarning");                
                 self.addressNotDeliverable() && self.mmContent("notDeliverable");
             }
