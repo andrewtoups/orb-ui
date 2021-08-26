@@ -8,6 +8,7 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
 
         self.name = ko.observable("");
         self.email = ko.observable("");
+        self.includePlacements = ko.observable();
 
         self.line1 = ko.observable("");
         self.line2 = ko.observable("");
@@ -148,6 +149,7 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
             let body = {
                 orderName:          self.name(),
                 orderEmail:         self.email(),
+                includePlacements:  self.includePlacements(),
                 address:            self.addressStr(self.address()),
                 correctionDenied:   self.correctionDenied(),
                 validatedAddress:   self.addressStr(self.validatedAddress()),

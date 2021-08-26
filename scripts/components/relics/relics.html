@@ -20,6 +20,15 @@
                 <input data-bind="value: email" type="email" placeholder="Email Address" id="email" autocomplete="email">
             </div>
 
+            <div class="field select" data-bind="css: {placeholder: !includePlacements()}">
+                <label for="placements" class="required">Include placements</label>
+                <select data-bind="value: includePlacements" id="placements">
+                    <option value="" disabled='disabled' selected>Include placements on print?</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
             <fieldset data-bind="css: {validating: validating, verified: verified() || verificationFailed()}">
                 <legend>Recipient address</legend>
                 <i class="loader" data-bind="visible: validating"></i>
