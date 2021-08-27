@@ -31,6 +31,19 @@
         border: $gold-bright 0.09rem dotted;
         box-shadow: 0px 0px 15px rgba($gold-bright,.25) inset;
         text-transform: uppercase;
+        &.buy {
+            margin: 0.25rem 0;
+            width: 15rem; height: 3rem;
+            color: transparent; user-select: none;
+            background-image: url(png/place-order.png);
+            background-size: 90%; background-repeat: no-repeat; background-position: center;
+            border: none;
+            box-shadow: none;
+            animation: Pulsate 5s ease-in-out infinite;
+            @include xs {
+                width: 95%;
+            }
+        }        
     }
 }
 
@@ -72,19 +85,6 @@
     margin: .2rem 0 0;
     opacity: .9;
     &:before, &:after { content: " - "; }
-}
-button.buy {
-    margin: 0.25rem 0;
-    width: 15rem; height: 3rem;
-    color: transparent; user-select: none;
-    background-image: url(png/place-order.png);
-    background-size: 80%; background-repeat: no-repeat; background-position: center;
-    border: none;
-    box-shadow: none;
-    animation: Pulsate 5s ease-in-out infinite;
-    @include xs {
-        width: 95%;
-    }
 }
 .relics .content {
     max-width: 25rem;

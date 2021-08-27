@@ -236,8 +236,16 @@ define([
                 });
             }
         });
-        
 
+        self.goToRelics = () => {
+            document.querySelector('.modal .return') && document.querySelector('.modal .return').click();
+            const s = self.modal.transitionState.subscribe(nv => {
+                if (!nv) {
+                    self.launchModal('relics');
+                    s.dispose();
+                }
+            });
+        };
         // Global input tracking:
         self.inputMode = ko.observable();
         self.pointerMode = ko.observable();
