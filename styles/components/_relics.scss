@@ -39,7 +39,7 @@
             background-size: 90%; background-repeat: no-repeat; background-position: center;
             border: none;
             box-shadow: none;
-            animation: Pulsate 5s ease-in-out infinite;
+            animation: PulsateBig 4s ease-in-out infinite;
             @include xs {
                 width: 95%;
             }
