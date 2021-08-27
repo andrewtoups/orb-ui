@@ -173,7 +173,7 @@ define(['ko', 'paypal', 'api'], (ko, paypal, api) => {
             .then(response => {
                 self.orderComplete(true);
                 self.inPaypal(false);
-                setTimeout(() => {document.querySelector('.x').click()}, 2500);
+                setTimeout(() => {document.querySelector('.return').click()}, 2500);
             });
         };
 

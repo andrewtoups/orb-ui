@@ -1,6 +1,11 @@
 <div data-bind="css: modalClasses, transitionState: transitionState, click: close" class="modal">
     <div data-bind="class: content, css: {loading: modalLoading, 'loading-text': !loadingComplete()}" class="modal-content">
-        <h1><i data-bind="click: close" class="x"></i></h1>
+        <div class="modal-header">
+            <button data-bind="click: close" class="return">Return</button>
+            <!-- ko if: content === 'share'-->
+            <button class="buy-a-print" data-bind="click: vm.goToRelics">Buy a print</button>
+            <!-- /ko -->            
+        </div>
         <!-- ko if: !loading() -->
         <!-- ko component: {
             name: content,

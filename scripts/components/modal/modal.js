@@ -22,7 +22,7 @@ define(['ko'], (ko) => {
         self.loadingComplete = ko.observable(true);
         self.modalLoading.subscribe(nv => {console.log(`modal loading: ${nv}`)});
         self.close = (v, e) => {
-            if ([document.querySelector('.modal'), document.querySelector('.x')].includes(e.target)) {
+            if ([document.querySelector('.modal'), document.querySelector('.return')].includes(e.target)) {
                 self.closing(true);
                 self.data.closeCb() && self.data.closeCb()();
             }

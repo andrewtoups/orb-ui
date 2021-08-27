@@ -202,8 +202,8 @@ define([
         self.hashState = window.location.hash;
         if (!self.screenshotMode()){
             let i = setInterval(() => {
-                if (self.hashState.includes("#modal") && window.location.hash === "#main" && document.querySelector('.modal .x')) {
-                    document.querySelector('.modal .x').click();
+                if (self.hashState.includes("#modal") && window.location.hash === "#main" && document.querySelector('.modal .return')) {
+                    document.querySelector('.modal .return').click();
                 } else if (self.hashState === "#main" && window.location.hash.includes("#modal") && self.modalParams()==="") {
                     let modalName = window.location.hash.split("#")[2];
                     self.launchModal(modalName);
