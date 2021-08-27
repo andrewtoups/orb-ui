@@ -1,13 +1,22 @@
 .modal-content section.share-section {
-    .placeholder, .image-container {
-        min-height: 515px;
-        @include xs { min-height: 69%; }
-        width: 100%;
-    }
     .placeholder {
         display: flex; align-items: center; justify-content: center;
-        img {
-            max-width: 80%;
+        position: relative;
+        width: 100%;
+        img.blank {
+            max-height: 92vh;
+            @include xs { max-height: 77vh; }            
+            max-width: 100%;
+        }
+        .loading-container {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        img.loading-preview {
+            align-self: center;
+            width: calc(100% - 50px);            
         }
         .logo-ripple {
             height: 45px; width: 45px;
@@ -18,14 +27,28 @@
             }
             @include ripple($blood, $blue-light);
             animation: Ripple 1s ease-in infinite;
-
         }
     }
     .image-container {
         text-align: center;
+        position: relative;
         img {
+            max-height: 92vh;
+            @include xs { max-height: 77vh; }            
             max-width: 100%;
-            @include xs { max-height: 77vh; }
+        }
+        img.placements {
+            position: absolute;
+            left: 0; top: 0;
+            opacity: 1;
+            z-index: 0;
+            transition: opacity 250ms ease-in;
+            &.masked {
+                z-index: -1;
+                opacity: 0;
+                transition: opacity 250ms ease-out,
+                            z-index 250ms;
+            }
         }
     }
     button {
@@ -56,9 +79,7 @@
                 width: 100%;
             }
             display: block;
-            @include xs { display: none; }
-            @include hz-lg { display: none; }
-            @include hz { display: none; }        }
+            @include xs { display: none; }      }
     }
     form {
         display: flex;
@@ -66,6 +87,7 @@
         align-items: center;
         opacity: 1;
         transition: opacity 500ms ease-in;
+        margin: 0;
         &.masked { 
             .show-placements, .save-btn { cursor: not-allowed; }
             .show-placements button, .save-btn a { pointer-events: none; }

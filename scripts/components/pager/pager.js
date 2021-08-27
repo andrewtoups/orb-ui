@@ -125,7 +125,19 @@ define([
             };
         };
         self.iconsReady = ko.observable(false);
-        self.screenshot.subscribe(preload); self.screenshotPlacements.subscribe(preload); self.printScreenshot.subscribe(preload);
+        self.screenshotLoaded = ko.observable(false);
+        self.placementsShotLoaded = ko.observable(false);
+        self.screenshot.subscribe(nv => {
+            preload(nv, () => {
+                self.screenshotLoaded(true);
+            });
+        });
+        self.screenshotPlacements.subscribe(nv => {
+            preload(nv, () => {
+                self.placementsShotLoaded(true);
+            });
+        });
+        self.printScreenshot.subscribe(preload);
         self.togglePlacementsMode = () => { self.placementsMode(!self.placementsMode())};
         self.initialLoadComplete.subscribe(s => {
             if (s) {

@@ -1,18 +1,17 @@
 <section class="share-section">
-    <!-- ko if: vm.screenshot() && vm.screenshotPlacements()-->
+    <!-- ko if: vm.screenshotLoaded() && vm.placementsShotLoaded() -->
     <div class="image-container">
-        <!-- ko if: !vm.placementsMode()-->
-        <img data-bind="attr: {src: vm.screenshot()}">
-        <!-- /ko -->
-        <!-- ko if: vm.placementsMode()-->
-        <img data-bind="attr: {src: vm.screenshotPlacements()}">
-        <!-- /ko -->
+        <img data-bind="attr: {src: vm.screenshot()}, css: {behind: vm.placementsMode()}" class="plain">
+        <img data-bind="attr: {src: vm.screenshotPlacements()}, css: {masked: !vm.placementsMode()}" class="placements">
     </div>
     <!-- /ko -->
-    <!-- ko ifnot: vm.screenshot() && vm.screenshotPlacements() -->
+    <!-- ko ifnot: vm.screenshotLoaded() && vm.placementsShotLoaded() -->
     <div class="placeholder">
-        <div class="logo-ripple" style="background-size: 10000%"><img src="/styles/png/orb-logo-isolated.png"></div>        
-        <img src="/styles/png/loading-preview.png">
+        <img src="/styles/png/placeholder.png" class="blank">
+        <div class="loading-container">
+            <div class="logo-ripple" style="background-size: 10000%"><img src="/styles/png/orb-logo-isolated.png"></div>        
+            <img src="/styles/png/loading-preview.png" class="loading-preview">
+        </div>
     </div>
     <!-- /ko -->
     <form data-bind="css: {masked: !(vm.screenshot() && vm.screenshotPlacements())}">

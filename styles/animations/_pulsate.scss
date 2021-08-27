@@ -3,6 +3,13 @@
     50%     { filter: drop-shadow(0px 0px 1px black) drop-shadow(0px 0px 10px $blue-2); }
     100%    { filter: drop-shadow(0px 0px 3px black) drop-shadow(0px 0px 2px  $blood-2); }
 }
+@keyframes PulsateBig {
+    0%      { filter: drop-shadow(0px 0px 3px black) drop-shadow(0px 0px 2px  $blood-2); }
+    25%      { filter: drop-shadow(0px 0px 2px black) drop-shadow(0px 0px 11px  $gold); }
+    50%     { filter: drop-shadow(0px 0px 1px black) drop-shadow(0px 0px 20px $blue-light); }
+    75%      { filter: drop-shadow(0px 0px 2px black) drop-shadow(0px 0px 11px  $gold); }
+    100%    { filter: drop-shadow(0px 0px 3px black) drop-shadow(0px 0px 2px  $blood-2); }
+}
 @keyframes Pulsate-Text {
     0%      { text-shadow: 0px 0px 4px  darken($blood-2, 50%); }
     50%     { text-shadow: 0px 0px 15px $blue-2; }

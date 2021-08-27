@@ -84,20 +84,9 @@
         position: static;
         overflow: auto;
         margin: 0;
-        height: 100%;
-        max-height: 100vh;
-        max-height: -webkit-fill-avialable;
         @include xs {
             padding-top: 7.5vh;
-            > :last-child { padding-bottom: 15vh; }
-        }
-        @include hz-lg {
-            padding-top: 8vh;
-            > :last-child { padding-bottom: 15vh; }
-        }
-        @include hz {
-            padding-top: 8vh;
-            > :last-child { padding-bottom: 15vh; }
+            > :last-child { padding-bottom: 12vh; }
         }
 
         .mini-modal {
