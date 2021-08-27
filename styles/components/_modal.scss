@@ -83,6 +83,7 @@
         display: block;
         position: static;
         overflow: auto;
+        height: 100%;
         margin: 0;
         @include xs {
             padding-top: 7.5vh;
