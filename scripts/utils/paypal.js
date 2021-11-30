@@ -54,7 +54,7 @@ define(['api'], api => {
                         return actions.order.create({
                             purchase_units: [{
                                 amount: {
-                                    value: '20.00'
+                                    value: '30.00'
                                 },
                                 shipping: {
                                     type: "SHIPPING",
