@@ -68,7 +68,10 @@
                 <label for="comments">Order comments</label>
                 <textarea data-bind="value: comments" placeholder="Praise us" id="comments"></textarea>
             </div>
-
+            <div class="disclaimer">
+                <p>Note: Prints are made to order.</p>
+                <p>Please allow 3-4 weeks for shipping.</p>    
+            </div>
             <div id="paypal-button-container" data-bind="css: {disabled: !readyToPay()}"></div>
         </form>
         <div class="order-complete" data-bind="css: {masked: !orderComplete()}">

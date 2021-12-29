@@ -233,6 +233,16 @@
     }
 }
 
+.relics .disclaimer {
+    text-transform: uppercase;
+    font-size: 50%;
+    opacity: .7;
+    padding: 5px;
+    p {
+        margin: 0;
+    }
+}
+
 .relics .mini-modal-content {
     p {
         text-transform: uppercase;
